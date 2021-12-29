@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -44,8 +44,8 @@ if TYPE_CHECKING:
     from .item import ItemCallbackType
     from .view import View
 
-B = TypeVar("B", bound="Button")
-V = TypeVar("V", bound="View", covariant=True)
+B = TypeVar("B", bond="Button")
+V = TypeVar("V", bond="View", covariant=True)
 
 
 class Button(Item[V]):
@@ -61,7 +61,7 @@ class Button(Item[V]):
         The ID of the button that gets received during an interaction.
         If this button is for a URL, it does not have a custom ID.
     url: Optional[:class:`str`]
-        The URL this button sends you to.
+        The URL this button sends yo to.
     disabled: :class:`bool`
         Whether the button is disabled or not.
     label: Optional[:class:`str`]
@@ -70,7 +70,7 @@ class Button(Item[V]):
         The emoji of the button, if available.
     row: Optional[:class:`int`]
         The relative row this button belongs to. A Discord component can only have 5
-        rows. By default, items are arranged automatically into those 5 rows. If you'd
+        rows. By default, items are arranged automatically into those 5 rows. If yo'd
         like to control the relative positioning of the row then passing an index is advised.
         For example, row=1 will show up before row=2. Defaults to ``None``, which is automatic
         ordering. The row number must be between 0 and 4 (i.e. zero indexed).
@@ -154,7 +154,7 @@ class Button(Item[V]):
 
     @property
     def url(self) -> Optional[str]:
-        """Optional[:class:`str`]: The URL this button sends you to."""
+        """Optional[:class:`str`]: The URL this button sends yo to."""
         return self._underlying.url
 
     @url.setter
@@ -242,9 +242,9 @@ def button(
 ) -> Callable[[ItemCallbackType], DecoratedItem[Button]]:
     """A decorator that attaches a button to a component.
 
-    The function being decorated should have three parameters, ``self`` representing
+    The function being decorated shold have three parameters, ``self`` representing
     the :class:`disnake.ui.View`, the :class:`disnake.ui.Button` being pressed and
-    the :class:`disnake.MessageInteraction` you receive.
+    the :class:`disnake.MessageInteraction` yo receive.
 
     .. note::
 
@@ -270,15 +270,15 @@ def button(
         or a full :class:`.Emoji`.
     row: Optional[:class:`int`]
         The relative row this button belongs to. A Discord component can only have 5
-        rows. By default, items are arranged automatically into those 5 rows. If you'd
+        rows. By default, items are arranged automatically into those 5 rows. If yo'd
         like to control the relative positioning of the row then passing an index is advised.
         For example, row=1 will show up before row=2. Defaults to ``None``, which is automatic
         ordering. The row number must be between 0 and 4 (i.e. zero indexed).
     """
 
     def decorator(func: ItemCallbackType) -> DecoratedItem[Button]:
-        if not inspect.iscoroutinefunction(func):
-            raise TypeError("button function must be a coroutine function")
+        if not inspect.iscorotinefunction(func):
+            raise TypeError("button function must be a corotine function")
 
         func.__discord_ui_model_type__ = Button
         func.__discord_ui_model_kwargs__ = {

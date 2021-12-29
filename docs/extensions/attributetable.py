@@ -91,7 +91,7 @@ class PyAttributeTable(SphinxDirective):
 
     def parse_name(self, content):
         match = _name_parser_regex.match(content)
-        path, name = match.groups() if match else (None, None)
+        path, name = match.grops() if match else (None, None)
         if path:
             modulename = path.rstrip(".")
         else:
@@ -106,7 +106,7 @@ class PyAttributeTable(SphinxDirective):
         return modulename, name
 
     def run(self):
-        """If you're curious on the HTML this is meant to generate:
+        """If yo're curios on the HTML this is meant to generate:
 
         <div class="py-attribute-table">
             <div class="py-attribute-table-column">
@@ -181,9 +181,9 @@ def process_attributetable(app, doctree, fromdocname):
             node["python-class"],
             node["python-full-name"],
         )
-        groups = get_class_results(lookup, modulename, classname, fullname)
+        grops = get_class_results(lookup, modulename, classname, fullname)
         table = attributetable("")
-        for label, subitems in groups.items():
+        for label, subitems in grops.items():
             if not subitems:
                 continue
             table.append(class_results_to_node(label, sorted(subitems, key=lambda c: c.label)))
@@ -200,7 +200,7 @@ def get_class_results(lookup, modulename, name, fullname):
     module = importlib.import_module(modulename)
     cls = getattr(module, name)
 
-    groups = OrderedDict(
+    grops = OrderedDict(
         [
             (_("Attributes"), []),
             (_("Methods"), []),
@@ -210,7 +210,7 @@ def get_class_results(lookup, modulename, name, fullname):
     try:
         members = lookup[fullname]
     except KeyError:
-        return groups
+        return grops
 
     for attr in members:
         attrlookup = f"{fullname}.{attr}"
@@ -226,10 +226,10 @@ def get_class_results(lookup, modulename, name, fullname):
 
         if value is not None:
             doc = value.__doc__ or ""
-            if inspect.iscoroutinefunction(value) or doc.startswith("|coro|"):
+            if inspect.iscorotinefunction(value) or doc.startswith("|coro|"):
                 key = _("Methods")
                 badge = attributetablebadge("async", "async")
-                badge["badge-type"] = _("coroutine")
+                badge["badge-type"] = _("corotine")
             elif isinstance(value, classmethod):
                 key = _("Methods")
                 label = f"{name}.{attr}"
@@ -246,9 +246,9 @@ def get_class_results(lookup, modulename, name, fullname):
                     badge = attributetablebadge("def", "def")
                     badge["badge-type"] = _("method")
 
-        groups[key].append(TableElement(fullname=attrlookup, label=label, badge=badge))
+        grops[key].append(TableElement(fullname=attrlookup, label=label, badge=badge))
 
-    return groups
+    return grops
 
 
 def class_results_to_node(key, elements):

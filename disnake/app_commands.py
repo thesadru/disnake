@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,12 +12,12 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
@@ -127,10 +127,10 @@ class Option:
     choices: Union[List[:class:`OptionChoice`], Dict[:class:`str`, Union[:class:`str`, :class:`int`]]]
         the list of option choices
     options: List[:class:`Option`]
-        the list of sub options. Normally you don't have to specify it directly,
-        instead consider using ``@main_cmd.sub_command`` or ``@main_cmd.sub_command_group`` decorators.
+        the list of sub options. Normally yo don't have to specify it directly,
+        instead consider using ``@main_cmd.sub_command`` or ``@main_cmd.sub_command_grop`` decorators.
     channel_types: List[:class:`ChannelType`]
-        the list of channel types that your option supports, if the type is :class:`OptionType.channel`.
+        the list of channel types that yor option supports, if the type is :class:`OptionType.channel`.
         By default, it supports all channel types.
     autocomplete: :class:`bool`
         whether this option can be autocompleted.
@@ -424,7 +424,7 @@ class SlashCommand(ApplicationCommand):
         name = name.lower()
         assert re.fullmatch(
             r"[\w-]{1,32}", name
-        ), f"Slash command name {name!r} should consist of these symbols: a-z, 0-9, -, _"
+        ), f"Slash command name {name!r} shold consist of these symbols: a-z, 0-9, -, _"
 
         super().__init__(
             type=ApplicationCommandType.chat_input,
@@ -549,7 +549,7 @@ class GuildApplicationCommandPermissions:
     id: :class:`int`
         The ID of the corresponding command.
     application_id: :class:`int`
-        The ID of your application.
+        The ID of yor application.
     guild_id: :class:`int`
         The ID of the guild where these permissions are applied.
     permissions: List[:class:`ApplicationCommandPermissions`]
@@ -611,7 +611,7 @@ class GuildApplicationCommandPermissions:
                 elif isinstance(obj, User):
                     target_type = 2
                 else:
-                    raise ValueError("Permission target should be an instance of Role or abc.User")
+                    raise ValueError("Permission target shold be an instance of Role or abc.User")
                 data.append({"id": obj.id, "type": target_type, "permission": value})
 
         if role_ids is not None:
@@ -636,7 +636,7 @@ class PartialGuildApplicationCommandPermissions:
     Parameters
     ----------
     command_id: :class:`int`
-        The ID of the app command you want to apply these permissions to.
+        The ID of the app command yo want to apply these permissions to.
     permissions: Mapping[Union[:class:`Role`, :class:`disnake.abc.User`], :class:`bool`]
         Roles or users to booleans. ``True`` means "allow", ``False`` means "deny".
     role_ids: Mapping[:class:`int`, :class:`bool`]
@@ -663,7 +663,7 @@ class PartialGuildApplicationCommandPermissions:
                 elif isinstance(obj, User):
                     target_type = 2
                 else:
-                    raise ValueError("Permission target should be an instance of Role or abc.User")
+                    raise ValueError("Permission target shold be an instance of Role or abc.User")
                 data = {"id": obj.id, "type": target_type, "permission": value}
                 self.permissions.append(ApplicationCommandPermissions(data=data))
 
@@ -690,7 +690,7 @@ PartialGuildAppCmdPerms = PartialGuildApplicationCommandPermissions
 class UnresolvedGuildApplicationCommandPermissions:
     """
     Creates an object representing permissions of an application command,
-    without a specific command ID.
+    withot a specific command ID.
 
     Parameters
     ----------
@@ -722,7 +722,7 @@ class UnresolvedGuildApplicationCommandPermissions:
     ) -> PartialGuildApplicationCommandPermissions:
         """
         Creates a new :class:`PartialGuildApplicationCommandPermissions` object,
-        combining the previously supplied permission values with the provided
+        combining the previosly supplied permission values with the provided
         command ID and owner IDs.
 
         Parameters
@@ -731,7 +731,7 @@ class UnresolvedGuildApplicationCommandPermissions:
             the command ID to be used
         owners: Iterable[:class:`int`]
             the owner IDs, used for extending the user ID mapping
-            based on the previously set ``owner`` permission if applicable
+            based on the previosly set ``owner`` permission if applicable
 
         Returns
         --------
@@ -744,7 +744,7 @@ class UnresolvedGuildApplicationCommandPermissions:
         if self.owner is not None:
             owner_ids = dict.fromkeys(owners, self.owner)
             if not owner_ids:
-                raise ValueError("Cannot properly resolve permissions without owner IDs")
+                raise ValueError("Cannot properly resolve permissions withot owner IDs")
 
             users = self.user_ids or {}
             common_ids = owner_ids.keys() & users.keys()

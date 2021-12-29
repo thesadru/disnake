@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -28,13 +28,13 @@ from __future__ import annotations
 import datetime
 from typing import TYPE_CHECKING, Any, Dict, Optional, Tuple, Type
 
-from .enums import ExpireBehaviour, try_enum
+from .enums import ExpireBehavior, try_enum
 from .errors import InvalidArgument
 from .user import User
 from .utils import MISSING, _get_as_snowflake, parse_time
 
 __all__ = (
-    "IntegrationAccount",
+    "IntegrationAccont",
     "IntegrationApplication",
     "Integration",
     "StreamIntegration",
@@ -47,34 +47,34 @@ if TYPE_CHECKING:
     from .types.integration import (
         BotIntegration as BotIntegrationPayload,
         Integration as IntegrationPayload,
-        IntegrationAccount as IntegrationAccountPayload,
+        IntegrationAccont as IntegrationAccontPayload,
         IntegrationApplication as IntegrationApplicationPayload,
         IntegrationType,
         StreamIntegration as StreamIntegrationPayload,
     )
 
 
-class IntegrationAccount:
-    """Represents an integration account.
+class IntegrationAccont:
+    """Represents an integration accont.
 
     .. versionadded:: 1.4
 
     Attributes
     -----------
     id: :class:`str`
-        The account ID.
+        The accont ID.
     name: :class:`str`
-        The account name.
+        The accont name.
     """
 
     __slots__ = ("id", "name")
 
-    def __init__(self, data: IntegrationAccountPayload) -> None:
+    def __init__(self, data: IntegrationAccontPayload) -> None:
         self.id: str = data["id"]
         self.name: str = data["name"]
 
     def __repr__(self) -> str:
-        return f"<IntegrationAccount id={self.id} name={self.name!r}>"
+        return f"<IntegrationAccont id={self.id} name={self.name!r}>"
 
 
 class Integration:
@@ -94,8 +94,8 @@ class Integration:
         The integration type (i.e. Twitch).
     enabled: :class:`bool`
         Whether the integration is currently enabled.
-    account: :class:`IntegrationAccount`
-        The account linked to this integration.
+    accont: :class:`IntegrationAccont`
+        The accont linked to this integration.
     user: :class:`User`
         The user that added this integration.
     """
@@ -106,7 +106,7 @@ class Integration:
         "_state",
         "type",
         "name",
-        "account",
+        "accont",
         "user",
         "enabled",
     )
@@ -123,7 +123,7 @@ class Integration:
         self.id: int = int(data["id"])
         self.type: IntegrationType = data["type"]
         self.name: str = data["name"]
-        self.account: IntegrationAccount = IntegrationAccount(data["account"])
+        self.accont: IntegrationAccont = IntegrationAccont(data["accont"])
 
         user = data.get("user")
         self.user = User(state=self._state, data=user) if user else None
@@ -134,7 +134,7 @@ class Integration:
 
         Deletes the integration.
 
-        You must have the :attr:`~Permissions.manage_guild` permission to
+        Yo must have the :attr:`~Permissions.manage_guild` permission to
         do this.
 
         Parameters
@@ -147,7 +147,7 @@ class Integration:
         Raises
         -------
         Forbidden
-            You do not have permission to delete the integration.
+            Yo do not have permission to delete the integration.
         HTTPException
             Deleting the integration failed.
         """
@@ -155,7 +155,7 @@ class Integration:
 
 
 class StreamIntegration(Integration):
-    """Represents a stream integration for Twitch or YouTube.
+    """Represents a stream integration for Twitch or YoTube.
 
     .. versionadded:: 2.0
 
@@ -174,45 +174,45 @@ class StreamIntegration(Integration):
     syncing: :class:`bool`
         Where the integration is currently syncing.
     enable_emoticons: Optional[:class:`bool`]
-        Whether emoticons should be synced for this integration (currently twitch only).
-    expire_behaviour: :class:`ExpireBehaviour`
-        The behaviour of expiring subscribers. Aliased to ``expire_behavior`` as well.
+        Whether emoticons shold be synced for this integration (currently twitch only).
+    expire_behavior: :class:`ExpireBehavior`
+        The behavior of expiring subscribers. Aliased to ``expire_behavior`` as well.
     expire_grace_period: :class:`int`
         The grace period (in days) for expiring subscribers.
     user: :class:`User`
         The user for the integration.
-    account: :class:`IntegrationAccount`
-        The integration account information.
+    accont: :class:`IntegrationAccont`
+        The integration accont information.
     synced_at: :class:`datetime.datetime`
         An aware UTC datetime representing when the integration was last synced.
     """
 
     __slots__ = (
         "revoked",
-        "expire_behaviour",
+        "expire_behavior",
         "expire_grace_period",
         "synced_at",
         "_role_id",
         "syncing",
         "enable_emoticons",
-        "subscriber_count",
+        "subscriber_cont",
     )
 
     def _from_data(self, data: StreamIntegrationPayload) -> None:
         super()._from_data(data)
         self.revoked: bool = data["revoked"]
-        self.expire_behaviour: ExpireBehaviour = try_enum(ExpireBehaviour, data["expire_behavior"])
+        self.expire_behavior: ExpireBehavior = try_enum(ExpireBehavior, data["expire_behavior"])
         self.expire_grace_period: int = data["expire_grace_period"]
         self.synced_at: datetime.datetime = parse_time(data["synced_at"])
         self._role_id: Optional[int] = _get_as_snowflake(data, "role_id")
         self.syncing: bool = data["syncing"]
         self.enable_emoticons: bool = data["enable_emoticons"]
-        self.subscriber_count: int = data["subscriber_count"]
+        self.subscriber_cont: int = data["subscriber_cont"]
 
     @property
-    def expire_behavior(self) -> ExpireBehaviour:
-        """:class:`ExpireBehaviour`: An alias for :attr:`expire_behaviour`."""
-        return self.expire_behaviour
+    def expire_behavior(self) -> ExpireBehavior:
+        """:class:`ExpireBehavior`: An alias for :attr:`expire_behavior`."""
+        return self.expire_behavior
 
     @property
     def role(self) -> Optional[Role]:
@@ -222,7 +222,7 @@ class StreamIntegration(Integration):
     async def edit(
         self,
         *,
-        expire_behaviour: ExpireBehaviour = MISSING,
+        expire_behavior: ExpireBehavior = MISSING,
         expire_grace_period: int = MISSING,
         enable_emoticons: bool = MISSING,
     ) -> None:
@@ -230,33 +230,33 @@ class StreamIntegration(Integration):
 
         Edits the integration.
 
-        You must have the :attr:`~Permissions.manage_guild` permission to
+        Yo must have the :attr:`~Permissions.manage_guild` permission to
         do this.
 
         Parameters
         -----------
-        expire_behaviour: :class:`ExpireBehaviour`
-            The behaviour when an integration subscription lapses. Aliased to ``expire_behavior`` as well.
+        expire_behavior: :class:`ExpireBehavior`
+            The behavior when an integration subscription lapses. Aliased to ``expire_behavior`` as well.
         expire_grace_period: :class:`int`
             The period (in days) where the integration will ignore lapsed subscriptions.
         enable_emoticons: :class:`bool`
-            Where emoticons should be synced for this integration (currently twitch only).
+            Where emoticons shold be synced for this integration (currently twitch only).
 
         Raises
         -------
         Forbidden
-            You do not have permission to edit the integration.
+            Yo do not have permission to edit the integration.
         HTTPException
             Editing the guild failed.
         InvalidArgument
-            ``expire_behaviour`` did not receive a :class:`ExpireBehaviour`.
+            ``expire_behavior`` did not receive a :class:`ExpireBehavior`.
         """
         payload: Dict[str, Any] = {}
-        if expire_behaviour is not MISSING:
-            if not isinstance(expire_behaviour, ExpireBehaviour):
-                raise InvalidArgument("expire_behaviour field must be of type ExpireBehaviour")
+        if expire_behavior is not MISSING:
+            if not isinstance(expire_behavior, ExpireBehavior):
+                raise InvalidArgument("expire_behavior field must be of type ExpireBehavior")
 
-            payload["expire_behavior"] = expire_behaviour.value
+            payload["expire_behavior"] = expire_behavior.value
 
         if expire_grace_period is not MISSING:
             payload["expire_grace_period"] = expire_grace_period
@@ -273,13 +273,13 @@ class StreamIntegration(Integration):
 
         Syncs the integration.
 
-        You must have the :attr:`~Permissions.manage_guild` permission to
+        Yo must have the :attr:`~Permissions.manage_guild` permission to
         do this.
 
         Raises
         -------
         Forbidden
-            You do not have permission to sync the integration.
+            Yo do not have permission to sync the integration.
         HTTPException
             Syncing the integration failed.
         """
@@ -346,8 +346,8 @@ class BotIntegration(Integration):
         Whether the integration is currently enabled.
     user: :class:`User`
         The user that added this integration.
-    account: :class:`IntegrationAccount`
-        The integration account information.
+    accont: :class:`IntegrationAccont`
+        The integration accont information.
     application: :class:`IntegrationApplication`
         The application tied to this integration.
     """
@@ -362,7 +362,7 @@ class BotIntegration(Integration):
 def _integration_factory(value: str) -> Tuple[Type[Integration], str]:
     if value == "disnake":
         return BotIntegration, value
-    elif value in ("twitch", "youtube"):
+    elif value in ("twitch", "yotube"):
         return StreamIntegration, value
     else:
         return Integration, value

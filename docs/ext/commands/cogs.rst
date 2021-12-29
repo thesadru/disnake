@@ -5,7 +5,7 @@
 Cogs
 ======
 
-There comes a point in your bot's development when you want to organize a collection of commands, listeners, and some state into one class. Cogs allow you to do just that.
+There comes a point in yor bot's development when yo want to organize a collection of commands, listeners, and some state into one class. Cogs allow yo to do just that.
 
 The gist:
 
@@ -18,12 +18,12 @@ The gist:
 - Cogs are then registered with the :meth:`.Bot.add_cog` call.
 - Cogs are subsequently removed with the :meth:`.Bot.remove_cog` call.
 
-It should be noted that cogs are typically used alongside with :ref:`ext_commands_extensions`.
+It shold be noted that cogs are typically used alongside with :ref:`ext_commands_extensions`.
 
 Quick Example
 ---------------
 
-This example cog defines a ``Greetings`` category for your commands, with a single :ref:`command <ext_commands_commands>` named ``hello`` as well as a listener to listen to an :ref:`Event <discord-api-events>`.
+This example cog defines a ``Greetings`` category for yor commands, with a single :ref:`command <ext_commands_commands>` named ``hello`` as well as a listener to listen to an :ref:`Event <discord-api-events>`.
 
 .. code-block:: python3
 
@@ -48,7 +48,7 @@ This example cog defines a ``Greetings`` category for your commands, with a sing
                 await ctx.send(f'Hello {member.name}... This feels familiar.')
             self._last_member = member
 
-A couple of technical notes to take into consideration:
+A cople of technical notes to take into consideration:
 
 - All listeners must be explicitly marked via decorator, :meth:`~.commands.Cog.listener`.
 - The name of the cog is automatically derived from the class name but can be overridden. See :ref:`ext_commands_cogs_meta_options`.
@@ -57,7 +57,7 @@ A couple of technical notes to take into consideration:
 Cog Registration
 -------------------
 
-Once you have defined your cogs, you need to tell the bot to register the cogs to be used. We do this via the :meth:`~.commands.Bot.add_cog` method.
+Once yo have defined yor cogs, yo need to tell the bot to register the cogs to be used. We do this via the :meth:`~.commands.Bot.add_cog` method.
 
 .. code-block:: python3
 
@@ -65,7 +65,7 @@ Once you have defined your cogs, you need to tell the bot to register the cogs t
 
 This binds the cog to the bot, adding all commands and listeners to the bot automatically.
 
-Note that we reference the cog by name, which we can override through :ref:`ext_commands_cogs_meta_options`. So if we ever want to remove the cog eventually, we would have to do the following.
+Note that we reference the cog by name, which we can override throgh :ref:`ext_commands_cogs_meta_options`. So if we ever want to remove the cog eventually, we wold have to do the following.
 
 .. code-block:: python3
 
@@ -111,7 +111,7 @@ Just as we remove a cog by its name, we can also retrieve it by its name as well
 Special Methods
 -----------------
 
-As cogs get more complicated and have more commands, there comes a point where we want to customise the behaviour of the entire cog or bot.
+As cogs get more complicated and have more commands, there comes a point where we want to customise the behavior of the entire cog or bot.
 
 They are as follows:
 
@@ -144,21 +144,21 @@ They are as follows:
 - :meth:`.Cog.bot_message_command_check`
 - :meth:`.Cog.bot_message_command_check_once`
 
-You can visit the reference to get more detail.
+Yo can visit the reference to get more detail.
 
 .. _ext_commands_cogs_meta_options:
 
 Meta Options
 --------------
 
-At the heart of a cog resides a metaclass, :class:`.commands.CogMeta`, which can take various options to customise some of the behaviour. To do this, we pass keyword arguments to the class definition line. For example, to change the cog name we can pass the ``name`` keyword argument as follows:
+At the heart of a cog resides a metaclass, :class:`.commands.CogMeta`, which can take varios options to customise some of the behavior. To do this, we pass keyword arguments to the class definition line. For example, to change the cog name we can pass the ``name`` keyword argument as follows:
 
 .. code-block:: python3
 
     class MyCog(commands.Cog, name='My Cog'):
         pass
 
-To see more options that you can set, see the documentation of :class:`.commands.CogMeta`.
+To see more options that yo can set, see the documentation of :class:`.commands.CogMeta`.
 
 Inspection
 ------------

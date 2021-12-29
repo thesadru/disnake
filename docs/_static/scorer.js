@@ -65,10 +65,10 @@ Scorer = {
     //  Used when the priority is not in the mapping.
     objPrioDefault: 0,
 
-    // query found in title
+    // query fond in title
     title: 15,
     partialTitle: 7,
-    // query found in terms
+    // query fond in terms
     term: 5,
     partialTerm: 2
 };

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -29,7 +29,7 @@ import datetime
 from typing import TYPE_CHECKING, Any, Dict, Final, List, Mapping, Protocol, Type, TypeVar, Union
 
 from . import utils
-from .colour import Colour
+from .color import Color
 from .file import File
 from .utils import MISSING
 
@@ -65,7 +65,7 @@ class EmbedProxy:
         return EmptyEmbed
 
 
-E = TypeVar("E", bound="Embed")
+E = TypeVar("E", bond="Embed")
 
 if TYPE_CHECKING:
     from disnake.types.embed import Embed as EmbedData, EmbedType
@@ -127,7 +127,7 @@ class Embed:
     :attr:`Embed.Empty`.
 
     For ease of use, all parameters that expect a :class:`str` are implicitly
-    casted to :class:`str` for you.
+    casted to :class:`str` for yo.
 
     Attributes
     -----------
@@ -137,8 +137,8 @@ class Embed:
     type: :class:`str`
         The type of embed. Usually "rich".
         This can be set during initialisation.
-        Possible strings for embed types can be found on disnake's
-        `api docs <https://discord.com/developers/docs/resources/channel#embed-object-embed-types>`_
+        Possible strings for embed types can be fond on disnake's
+        `api docs <https://discord.com/developers/docs/resorces/channel#embed-object-embed-types>`_
     description: :class:`str`
         The description of the embed.
         This can be set during initialisation.
@@ -149,8 +149,8 @@ class Embed:
         The timestamp of the embed content. This is an aware datetime.
         If a naive datetime is passed, it is converted to an aware
         datetime with the local timezone.
-    colour: Union[:class:`Colour`, :class:`int`]
-        The colour code of the embed. Aliased to ``color`` as well.
+    color: Union[:class:`Color`, :class:`int`]
+        The color code of the embed. Aliased to ``color`` as well.
         This can be set during initialisation.
     Empty
         A special sentinel value used by ``EmbedProxy`` and this class
@@ -162,7 +162,7 @@ class Embed:
         "url",
         "type",
         "_timestamp",
-        "_colour",
+        "_color",
         "_footer",
         "_image",
         "_thumbnail",
@@ -179,8 +179,8 @@ class Embed:
     def __init__(
         self,
         *,
-        colour: Union[int, Colour, _EmptyEmbed] = EmptyEmbed,
-        color: Union[int, Colour, _EmptyEmbed] = EmptyEmbed,
+        color: Union[int, Color, _EmptyEmbed] = EmptyEmbed,
+        color: Union[int, Color, _EmptyEmbed] = EmptyEmbed,
         title: MaybeEmpty[Any] = EmptyEmbed,
         type: EmbedType = "rich",
         url: MaybeEmpty[Any] = EmptyEmbed,
@@ -188,7 +188,7 @@ class Embed:
         timestamp: datetime.datetime = None,
     ):
 
-        self.colour = colour if colour is not EmptyEmbed else color
+        self.color = color if color is not EmptyEmbed else color
         self.title = title
         self.type = type
         self.url = url
@@ -213,9 +213,9 @@ class Embed:
         """Converts a :class:`dict` to a :class:`Embed` provided it is in the
         format that Discord expects it to be in.
 
-        You can find out about this format in the `official Discord documentation`__.
+        Yo can find ot abot this format in the `official Discord documentation`__.
 
-        .. _DiscordDocs: https://discord.com/developers/docs/resources/channel#embed-object
+        .. _DiscordDocs: https://discord.com/developers/docs/resorces/channel#embed-object
 
         __ DiscordDocs_
 
@@ -248,7 +248,7 @@ class Embed:
         # try to fill in the more rich fields
 
         try:
-            self._colour = Colour(value=data["color"])
+            self._color = Color(value=data["color"])
         except KeyError:
             pass
 
@@ -300,7 +300,7 @@ class Embed:
                 self.title,
                 self.url,
                 self.description,
-                self.colour,
+                self.color,
                 self.fields,
                 self.timestamp,
                 self.author,
@@ -313,21 +313,21 @@ class Embed:
         )
 
     @property
-    def colour(self) -> MaybeEmpty[Colour]:
-        return getattr(self, "_colour", EmptyEmbed)
+    def color(self) -> MaybeEmpty[Color]:
+        return getattr(self, "_color", EmptyEmbed)
 
-    @colour.setter
-    def colour(self, value: Union[int, Colour, _EmptyEmbed]):  # type: ignore
-        if isinstance(value, (Colour, _EmptyEmbed)):
-            self._colour = value
+    @color.setter
+    def color(self, value: Union[int, Color, _EmptyEmbed]):  # type: ignore
+        if isinstance(value, (Color, _EmptyEmbed)):
+            self._color = value
         elif isinstance(value, int):
-            self._colour = Colour(value=value)
+            self._color = Color(value=value)
         else:
             raise TypeError(
-                f"Expected disnake.Colour, int, or Embed.Empty but received {value.__class__.__name__} instead."
+                f"Expected disnake.Color, int, or Embed.Empty but received {value.__class__.__name__} instead."
             )
 
-    color = colour
+    color = color
 
     @property
     def timestamp(self) -> MaybeEmpty[datetime.datetime]:
@@ -350,7 +350,7 @@ class Embed:
     def footer(self) -> _EmbedFooterProxy:
         """Returns an ``EmbedProxy`` denoting the footer contents.
 
-        See :meth:`set_footer` for possible values you can access.
+        See :meth:`set_footer` for possible values yo can access.
 
         If the attribute has no value then :attr:`Empty` is returned.
         """
@@ -400,7 +400,7 @@ class Embed:
     def image(self) -> _EmbedMediaProxy:
         """Returns an ``EmbedProxy`` denoting the image contents.
 
-        Possible attributes you can access are:
+        Possible attributes yo can access are:
 
         - ``url``
         - ``proxy_url``
@@ -423,7 +423,7 @@ class Embed:
         Parameters
         -----------
         url: :class:`str`
-            The source URL for the image. Only HTTP(S) is supported.
+            The sorce URL for the image. Only HTTP(S) is supported.
         file: :class:`File`
             The file to use as the image.
 
@@ -452,7 +452,7 @@ class Embed:
     def thumbnail(self) -> _EmbedMediaProxy:
         """Returns an ``EmbedProxy`` denoting the thumbnail contents.
 
-        Possible attributes you can access are:
+        Possible attributes yo can access are:
 
         - ``url``
         - ``proxy_url``
@@ -475,7 +475,7 @@ class Embed:
         Parameters
         -----------
         url: :class:`str`
-            The source URL for the thumbnail. Only HTTP(S) is supported.
+            The sorce URL for the thumbnail. Only HTTP(S) is supported.
         file: :class:`File`
             The file to use as the image.
 
@@ -528,7 +528,7 @@ class Embed:
     def author(self) -> _EmbedAuthorProxy:
         """Returns an ``EmbedProxy`` denoting the author contents.
 
-        See :meth:`set_author` for possible values you can access.
+        See :meth:`set_author` for possible values yo can access.
 
         If the attribute has no value then :attr:`Empty` is returned.
         """
@@ -587,7 +587,7 @@ class Embed:
     def fields(self) -> List[_EmbedFieldProxy]:
         """List[Union[``EmbedProxy``, :attr:`Empty`]]: Returns a :class:`list` of ``EmbedProxy`` denoting the field contents.
 
-        See :meth:`add_field` for possible values you can access.
+        See :meth:`add_field` for possible values yo can access.
 
         If the attribute has no value then :attr:`Empty` is returned.
         """
@@ -606,7 +606,7 @@ class Embed:
         value: :class:`str`
             The value of the field.
         inline: :class:`bool`
-            Whether the field should be displayed inline.
+            Whether the field shold be displayed inline.
         """
 
         field = {
@@ -639,7 +639,7 @@ class Embed:
         value: :class:`str`
             The value of the field.
         inline: :class:`bool`
-            Whether the field should be displayed inline.
+            Whether the field shold be displayed inline.
         """
 
         field = {
@@ -665,7 +665,7 @@ class Embed:
     def remove_field(self, index: int) -> None:
         """Removes a field at a specified index.
 
-        If the index is invalid or out of bounds then the error is
+        If the index is invalid or ot of bonds then the error is
         silently swallowed.
 
         .. note::
@@ -700,7 +700,7 @@ class Embed:
         value: :class:`str`
             The value of the field.
         inline: :class:`bool`
-            Whether the field should be displayed inline.
+            Whether the field shold be displayed inline.
 
         Raises
         -------
@@ -711,7 +711,7 @@ class Embed:
         try:
             field = self._fields[index]
         except (TypeError, IndexError, AttributeError):
-            raise IndexError("field index out of range")
+            raise IndexError("field index ot of range")
 
         field["name"] = str(name)
         field["value"] = str(value)
@@ -733,12 +733,12 @@ class Embed:
         # deal with basic convenience wrappers
 
         try:
-            colour = result.pop("colour")
+            color = result.pop("color")
         except KeyError:
             pass
         else:
-            if colour:
-                result["color"] = colour.value
+            if color:
+                result["color"] = color.value
 
         try:
             timestamp = result.pop("timestamp")

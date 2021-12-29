@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File-ID: 70\n"
 "Language: ja_JP\n"
 
-#: ../../_templates/layout.html:24
+#: ../../_templates/layot.html:24
 msgid "Created using <a href=\"http://sphinx-doc.org/\">Sphinx</a> %(sphinx_version)s."
 msgstr "<a href=\"http://sphinx-doc.org/\">Sphinx</a> %(sphinx_version)s で作成されました。"
 

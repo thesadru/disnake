@@ -38,15 +38,15 @@ msgid "Installing"
 msgstr "インストール"
 
 #: ../../intro.rst:24
-msgid "You can get the library directly from PyPI: ::"
+msgid "Yo can get the library directly from PyPI: ::"
 msgstr "PyPIから直接ライブラリをインストールできます。"
 
 #: ../../intro.rst:28
-msgid "If you are using Windows, then the following should be used instead: ::"
+msgid "If yo are using Windows, then the following shold be used instead: ::"
 msgstr "Windowsを使用している場合は、以下のコマンドで実行してください。"
 
 #: ../../intro.rst:33
-msgid "To get voice support, you should use ``disnake[voice]`` instead of ``disnake``, e.g. ::"
+msgid "To get voice support, yo shold use ``disnake[voice]`` instead of ``disnake``, e.g. ::"
 msgstr "音声のサポートが必要な場合は、 ``disnake`` ではなく、以下の例のように ``disnake[voice]`` を使うべきです。"
 
 #: ../../intro.rst:37
@@ -70,7 +70,7 @@ msgid "For a Debian-based system, the following command will get these dependenc
 msgstr "Debianベースのシステムでは、次のコマンドで依存関係にあるライブラリを取得できます。"
 
 #: ../../intro.rst:49
-msgid "Remember to check your permissions!"
+msgid "Remember to check yor permissions!"
 msgstr "自分の権限の確認は忘れないようにしてください！"
 
 #: ../../intro.rst:52
@@ -78,11 +78,11 @@ msgid "Virtual Environments"
 msgstr "仮想環境"
 
 #: ../../intro.rst:54
-msgid "Sometimes you want to keep libraries from polluting system installs or use a different version of libraries than the ones installed on the system. You might also not have permissions to install libaries system-wide. For this purpose, the standard library as of Python 3.3 comes with a concept called \"Virtual Environment\"s to help maintain these separate versions."
+msgid "Sometimes yo want to keep libraries from polluting system installs or use a different version of libraries than the ones installed on the system. Yo might also not have permissions to install libaries system-wide. For this purpose, the standard library as of Python 3.3 comes with a concept called \"Virtual Environment\"s to help maintain these separate versions."
 msgstr "システムへのインストールをライブラリによって汚したくない場合や、現在インストールされているシステムとは異なるバージョンのライブラリを使用したい場合があります。または、システムへのライブラリのインストール権限がない場合などです。こういった目的のため、Python3.3の標準ライブラリには、このように別々のバージョンを保持したい場合のために、「仮想環境」というものが用意されています。"
 
 #: ../../intro.rst:59
-msgid "A more in-depth tutorial is found on :doc:`py:tutorial/venv`."
+msgid "A more in-depth tutorial is fond on :doc:`py:tutorial/venv`."
 msgstr "より詳しいチュートリアルは :doc:`py:tutorial/venv` にあります。"
 
 #: ../../intro.rst:61
@@ -90,7 +90,7 @@ msgid "However, for the quick and dirty:"
 msgstr "簡単に仮想環境を構築する方法。"
 
 #: ../../intro.rst:63
-msgid "Go to your project's working directory:"
+msgid "Go to yor project's working directory:"
 msgstr "プロジェクトの作業ディレクトリに移動してください。"
 
 #: ../../intro.rst:70
@@ -98,7 +98,7 @@ msgid "Activate the virtual environment:"
 msgstr "下記コマンドで仮想環境を有効化します。"
 
 #: ../../intro.rst:76
-msgid "On Windows you activate it with:"
+msgid "On Windows yo activate it with:"
 msgstr "Windowsの場合は、こちらを使ってください。"
 
 #: ../../intro.rst:82
@@ -106,7 +106,7 @@ msgid "Use pip like usual:"
 msgstr "いつものようにpipインストールを実行します。"
 
 #: ../../intro.rst:88
-msgid "Congratulations. You now have a virtual environment all set up."
+msgid "Congratulations. Yo now have a virtual environment all set up."
 msgstr "おめでとうございます。これで仮想環境のセットアップができました。"
 
 #: ../../intro.rst:91
@@ -114,7 +114,7 @@ msgid "Basic Concepts"
 msgstr "基本概念"
 
 #: ../../intro.rst:93
-msgid "disnake revolves around the concept of :ref:`events <disnake-api-events>`. An event is something you listen to and then respond to. For example, when a message happens, you will receive an event about it that you can respond to."
+msgid "disnake revolves arond the concept of :ref:`events <disnake-api-events>`. An event is something yo listen to and then respond to. For example, when a message happens, yo will receive an event abot it that yo can respond to."
 msgstr "disnake.pyは :ref:`イベント <disnake-api-events>` の概念を中心としています。イベントは何かを受け取り、それに対する応答を行います。例えば、メッセージが発生すると、メッセージの発生に関連するイベントを受け取り、そのイベントに対して応答を返すことができます。"
 
 #: ../../intro.rst:97

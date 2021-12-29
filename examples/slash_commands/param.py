@@ -5,9 +5,9 @@ bot = commands.Bot("!")
 
 
 # Disnake can use annotations to create slash commands.
-# That means instead of using the options keyword you will be
-# setting the default of your parameters.
-# It should allow you to create more readable commands and make the more complicated
+# That means instead of using the options keyword yo will be
+# setting the default of yor parameters.
+# It shold allow yo to create more readable commands and make the more complicated
 # features easier to use.
 # Not only that but using Param even adds support for a ton of other features.
 
@@ -23,7 +23,7 @@ async def simple(
 
 
 # builtins are not the only types supported.
-# You can also use various other types like User, Member, Role, TextChannel, Emoji, ...
+# Yo can also use varios other types like User, Member, Role, TextChannel, Emoji, ...
 @bot.slash_command()
 async def other_types(
     inter: disnake.ApplicationCommandInteraction,
@@ -53,8 +53,8 @@ async def full_description(
     """
 
 
-# To make an option optional you can simply give it a default value.
-# In case the default value is supposed to be callable you should use commands.Param
+# To make an option optional yo can simply give it a default value.
+# In case the default value is supposed to be callable yo shold use commands.Param
 # This is so the annotation actually stays correct.
 @bot.slash_command()
 async def defaults(
@@ -66,8 +66,8 @@ async def defaults(
     ...
 
 
-# You may limit numbers into a certain range using gt, ge, lt, le (greater than, greater or equal, less than, less or equal)
-# Alternatively you may use min_value instead of ge and max_value instead of le
+# Yo may limit numbers into a certain range using gt, ge, lt, le (greater than, greater or equal, less than, less or equal)
+# Alternatively yo may use min_value instead of ge and max_value instead of le
 @bot.slash_command()
 async def ranges(
     self,

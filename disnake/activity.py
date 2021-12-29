@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -29,7 +29,7 @@ import datetime
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union, overload
 
 from .asset import Asset
-from .colour import Colour
+from .color import Color
 from .enums import ActivityType, try_enum
 from .partial_emoji import PartialEmoji
 from .utils import _get_as_snowflake
@@ -43,7 +43,7 @@ __all__ = (
     "CustomActivity",
 )
 
-"""If curious, this is the current schema for an activity.
+"""If curios, this is the current schema for an activity.
 
 It's fairly long so I will document it here:
 
@@ -105,17 +105,17 @@ class BaseActivity:
     """The base activity that all user-settable activities inherit from.
     A user-settable activity is one that can be used in :meth:`Client.change_presence`.
 
-    The following types currently count as user-settable:
+    The following types currently cont as user-settable:
 
     - :class:`Activity`
     - :class:`Game`
     - :class:`Streaming`
     - :class:`CustomActivity`
 
-    Note that although these types are considered user-settable by the library,
+    Note that althogh these types are considered user-settable by the library,
     Discord typically ignores certain combinations of activity depending on
-    what is currently set. This behaviour may change in the future so there are
-    no guarantees on whether Discord will actually let you set these types.
+    what is currently set. This behavior may change in the future so there are
+    no guarantees on whether Discord will actually let yo set these types.
 
     .. versionadded:: 1.3
     """
@@ -143,7 +143,7 @@ class BaseActivity:
 class Activity(BaseActivity):
     """Represents an activity in Discord.
 
-    This could be an activity such as streaming, playing, listening
+    This cold be an activity such as streaming, playing, listening
     or watching.
 
     For memory optimisation purposes, some activities are offered in slimmed
@@ -159,7 +159,7 @@ class Activity(BaseActivity):
     name: Optional[:class:`str`]
         The name of the activity.
     url: Optional[:class:`str`]
-        A stream URL that the activity could be doing.
+        A stream URL that the activity cold be doing.
     type: :class:`ActivityType`
         The type of activity currently being done.
     state: Optional[:class:`str`]
@@ -461,7 +461,7 @@ class Streaming(BaseActivity):
     Attributes
     -----------
     platform: Optional[:class:`str`]
-        Where the user is streaming from (ie. YouTube, Twitch).
+        Where the user is streaming from (ie. YoTube, Twitch).
 
         .. versionadded:: 1.3
 
@@ -607,18 +607,18 @@ class Spotify:
             )
 
     @property
-    def colour(self) -> Colour:
-        """:class:`Colour`: Returns the Spotify integration colour, as a :class:`Colour`.
+    def color(self) -> Color:
+        """:class:`Color`: Returns the Spotify integration color, as a :class:`Color`.
 
         There is an alias for this named :attr:`color`"""
-        return Colour(0x1DB954)
+        return Color(0x1DB954)
 
     @property
-    def color(self) -> Colour:
-        """:class:`Colour`: Returns the Spotify integration colour, as a :class:`Colour`.
+    def color(self) -> Color:
+        """:class:`Color`: Returns the Spotify integration color, as a :class:`Color`.
 
-        There is an alias for this named :attr:`colour`"""
-        return self.colour
+        There is an alias for this named :attr:`color`"""
+        return self.color
 
     def to_dict(self) -> Dict[str, Any]:
         return {

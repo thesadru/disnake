@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -50,7 +50,7 @@ __all__ = (
     "NoPrivateMessage",
     "CheckFailure",
     "CheckAnyFailure",
-    "CommandNotFound",
+    "CommandNotFond",
     "DisabledCommand",
     "CommandInvokeError",
     "TooManyArguments",
@@ -58,20 +58,20 @@ __all__ = (
     "CommandOnCooldown",
     "MaxConcurrencyReached",
     "NotOwner",
-    "MessageNotFound",
-    "ObjectNotFound",
-    "MemberNotFound",
-    "GuildNotFound",
-    "UserNotFound",
-    "ChannelNotFound",
-    "ThreadNotFound",
+    "MessageNotFond",
+    "ObjectNotFond",
+    "MemberNotFond",
+    "GuildNotFond",
+    "UserNotFond",
+    "ChannelNotFond",
+    "ThreadNotFond",
     "ChannelNotReadable",
-    "BadColourArgument",
     "BadColorArgument",
-    "RoleNotFound",
+    "BadColorArgument",
+    "RoleNotFond",
     "BadInviteArgument",
-    "EmojiNotFound",
-    "GuildStickerNotFound",
+    "EmojiNotFond",
+    "GuildStickerNotFond",
     "PartialEmojiConversionFailure",
     "BadBoolArgument",
     "MissingRole",
@@ -93,7 +93,7 @@ __all__ = (
     "ExtensionNotLoaded",
     "NoEntryPointError",
     "ExtensionFailed",
-    "ExtensionNotFound",
+    "ExtensionNotFond",
     "CommandRegistrationError",
     "FlagError",
     "BadFlagArgument",
@@ -132,7 +132,7 @@ class ConversionError(CommandError):
     converter: :class:`disnake.ext.commands.Converter`
         The converter that failed.
     original: :exc:`Exception`
-        The original exception that was raised. You can also get this via
+        The original exception that was raised. Yo can also get this via
         the ``__cause__`` attribute.
     """
 
@@ -151,9 +151,9 @@ class UserInputError(CommandError):
     pass
 
 
-class CommandNotFound(CommandError):
+class CommandNotFond(CommandError):
     """Exception raised when a command is attempted to be invoked
-    but no command under that name is found.
+    but no command under that name is fond.
 
     This is not raised for invalid subcommands, rather just the
     initial main command that is attempted to be invoked.
@@ -166,7 +166,7 @@ class CommandNotFound(CommandError):
 
 class MissingRequiredArgument(UserInputError):
     """Exception raised when parsing a command and a parameter
-    that is required is not encountered.
+    that is required is not encontered.
 
     This inherits from :exc:`UserInputError`
 
@@ -192,7 +192,7 @@ class TooManyArguments(UserInputError):
 
 
 class BadArgument(UserInputError):
-    """Exception raised when a parsing or conversion failure is encountered
+    """Exception raised when a parsing or conversion failure is encontered
     on an argument to pass into a command.
 
     This inherits from :exc:`UserInputError`
@@ -228,11 +228,11 @@ class CheckAnyFailure(CheckFailure):
     def __init__(self, checks: List[CheckFailure], errors: List[Callable[[Context], bool]]) -> None:
         self.checks: List[CheckFailure] = checks
         self.errors: List[Callable[[Context], bool]] = errors
-        super().__init__("You do not have permission to run this command.")
+        super().__init__("Yo do not have permission to run this command.")
 
 
 class PrivateMessageOnly(CheckFailure):
-    """Exception raised when an operation does not work outside of private
+    """Exception raised when an operation does not work otside of private
     message contexts.
 
     This inherits from :exc:`CheckFailure`
@@ -262,7 +262,7 @@ class NotOwner(CheckFailure):
     pass
 
 
-class ObjectNotFound(BadArgument):
+class ObjectNotFond(BadArgument):
     """Exception raised when the argument provided did not match the format
     of an ID or a mention.
 
@@ -281,8 +281,8 @@ class ObjectNotFound(BadArgument):
         super().__init__(f"{argument!r} does not follow a valid ID or mention format.")
 
 
-class MemberNotFound(BadArgument):
-    """Exception raised when the member provided was not found in the bot's
+class MemberNotFond(BadArgument):
+    """Exception raised when the member provided was not fond in the bot's
     cache.
 
     This inherits from :exc:`BadArgument`
@@ -292,16 +292,16 @@ class MemberNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The member supplied by the caller that was not found
+        The member supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Member "{argument}" not found.')
+        super().__init__(f'Member "{argument}" not fond.')
 
 
-class GuildNotFound(BadArgument):
-    """Exception raised when the guild provided was not found in the bot's cache.
+class GuildNotFond(BadArgument):
+    """Exception raised when the guild provided was not fond in the bot's cache.
 
     This inherits from :exc:`BadArgument`
 
@@ -310,16 +310,16 @@ class GuildNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The guild supplied by the called that was not found
+        The guild supplied by the called that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Guild "{argument}" not found.')
+        super().__init__(f'Guild "{argument}" not fond.')
 
 
-class UserNotFound(BadArgument):
-    """Exception raised when the user provided was not found in the bot's
+class UserNotFond(BadArgument):
+    """Exception raised when the user provided was not fond in the bot's
     cache.
 
     This inherits from :exc:`BadArgument`
@@ -329,16 +329,16 @@ class UserNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The user supplied by the caller that was not found
+        The user supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'User "{argument}" not found.')
+        super().__init__(f'User "{argument}" not fond.')
 
 
-class MessageNotFound(BadArgument):
-    """Exception raised when the message provided was not found in the channel.
+class MessageNotFond(BadArgument):
+    """Exception raised when the message provided was not fond in the channel.
 
     This inherits from :exc:`BadArgument`
 
@@ -347,12 +347,12 @@ class MessageNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The message supplied by the caller that was not found
+        The message supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Message "{argument}" not found.')
+        super().__init__(f'Message "{argument}" not fond.')
 
 
 class ChannelNotReadable(BadArgument):
@@ -374,7 +374,7 @@ class ChannelNotReadable(BadArgument):
         super().__init__(f"Can't read messages in {argument.mention}.")
 
 
-class ChannelNotFound(BadArgument):
+class ChannelNotFond(BadArgument):
     """Exception raised when the bot can not find the channel.
 
     This inherits from :exc:`BadArgument`
@@ -384,15 +384,15 @@ class ChannelNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The channel supplied by the caller that was not found
+        The channel supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Channel "{argument}" not found.')
+        super().__init__(f'Channel "{argument}" not fond.')
 
 
-class ThreadNotFound(BadArgument):
+class ThreadNotFond(BadArgument):
     """Exception raised when the bot can not find the thread.
 
     This inherits from :exc:`BadArgument`
@@ -402,16 +402,16 @@ class ThreadNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The thread supplied by the caller that was not found
+        The thread supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Thread "{argument}" not found.')
+        super().__init__(f'Thread "{argument}" not fond.')
 
 
-class BadColourArgument(BadArgument):
-    """Exception raised when the colour is not valid.
+class BadColorArgument(BadArgument):
+    """Exception raised when the color is not valid.
 
     This inherits from :exc:`BadArgument`
 
@@ -420,18 +420,18 @@ class BadColourArgument(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The colour supplied by the caller that was not valid
+        The color supplied by the caller that was not valid
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Colour "{argument}" is invalid.')
+        super().__init__(f'Color "{argument}" is invalid.')
 
 
-BadColorArgument = BadColourArgument
+BadColorArgument = BadColorArgument
 
 
-class RoleNotFound(BadArgument):
+class RoleNotFond(BadArgument):
     """Exception raised when the bot can not find the role.
 
     This inherits from :exc:`BadArgument`
@@ -441,12 +441,12 @@ class RoleNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The role supplied by the caller that was not found
+        The role supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Role "{argument}" not found.')
+        super().__init__(f'Role "{argument}" not fond.')
 
 
 class BadInviteArgument(BadArgument):
@@ -462,7 +462,7 @@ class BadInviteArgument(BadArgument):
         super().__init__(f'Invite "{argument}" is invalid or expired.')
 
 
-class EmojiNotFound(BadArgument):
+class EmojiNotFond(BadArgument):
     """Exception raised when the bot can not find the emoji.
 
     This inherits from :exc:`BadArgument`
@@ -472,12 +472,12 @@ class EmojiNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The emoji supplied by the caller that was not found
+        The emoji supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Emoji "{argument}" not found.')
+        super().__init__(f'Emoji "{argument}" not fond.')
 
 
 class PartialEmojiConversionFailure(BadArgument):
@@ -496,10 +496,10 @@ class PartialEmojiConversionFailure(BadArgument):
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Couldn\'t convert "{argument}" to PartialEmoji.')
+        super().__init__(f'Coldn\'t convert "{argument}" to PartialEmoji.')
 
 
-class GuildStickerNotFound(BadArgument):
+class GuildStickerNotFond(BadArgument):
     """Exception raised when the bot can not find the sticker.
 
     This inherits from :exc:`BadArgument`
@@ -509,12 +509,12 @@ class GuildStickerNotFound(BadArgument):
     Attributes
     -----------
     argument: :class:`str`
-        The sticker supplied by the caller that was not found
+        The sticker supplied by the caller that was not fond
     """
 
     def __init__(self, argument: str) -> None:
         self.argument: str = argument
-        super().__init__(f'Sticker "{argument}" not found.')
+        super().__init__(f'Sticker "{argument}" not fond.')
 
 
 class BadBoolArgument(BadArgument):
@@ -552,7 +552,7 @@ class CommandInvokeError(CommandError):
     Attributes
     -----------
     original: :exc:`Exception`
-        The original exception that was raised. You can also get this via
+        The original exception that was raised. Yo can also get this via
         the ``__cause__`` attribute.
     """
 
@@ -574,14 +574,14 @@ class CommandOnCooldown(CommandError):
     type: :class:`BucketType`
         The type associated with the cooldown.
     retry_after: :class:`float`
-        The amount of seconds to wait before you can retry again.
+        The amont of seconds to wait before yo can retry again.
     """
 
     def __init__(self, cooldown: Cooldown, retry_after: float, type: BucketType) -> None:
         self.cooldown: Cooldown = cooldown
         self.retry_after: float = retry_after
         self.type: BucketType = type
-        super().__init__(f"You are on cooldown. Try again in {retry_after:.2f}s")
+        super().__init__(f"Yo are on cooldown. Try again in {retry_after:.2f}s")
 
 
 class MaxConcurrencyReached(CommandError):
@@ -674,7 +674,7 @@ class MissingAnyRole(CheckFailure):
         else:
             fmt = " or ".join(missing)
 
-        message = f"You are missing at least one of the required roles: {fmt}"
+        message = f"Yo are missing at least one of the required roles: {fmt}"
         super().__init__(message)
 
 
@@ -750,7 +750,7 @@ class MissingPermissions(CheckFailure):
             fmt = "{}, and {}".format(", ".join(missing[:-1]), missing[-1])
         else:
             fmt = " and ".join(missing)
-        message = f"You are missing {fmt} permission(s) to run this command."
+        message = f"Yo are missing {fmt} permission(s) to run this command."
         super().__init__(message, *args)
 
 
@@ -819,7 +819,7 @@ class BadUnionArgument(UserInputError):
         else:
             fmt = " or ".join(to_string)
 
-        super().__init__(f'Could not convert "{param.name}" into {fmt}.')
+        super().__init__(f'Cold not convert "{param.name}" into {fmt}.')
 
 
 class BadLiteralArgument(UserInputError):
@@ -853,7 +853,7 @@ class BadLiteralArgument(UserInputError):
         else:
             fmt = " or ".join(to_string)
 
-        super().__init__(f'Could not convert "{param.name}" into the literal {fmt}.')
+        super().__init__(f'Cold not convert "{param.name}" into the literal {fmt}.')
 
 
 class ArgumentParsingError(UserInputError):
@@ -869,14 +869,14 @@ class ArgumentParsingError(UserInputError):
 
 
 class UnexpectedQuoteError(ArgumentParsingError):
-    """An exception raised when the parser encounters a quote mark inside a non-quoted string.
+    """An exception raised when the parser enconters a quote mark inside a non-quoted string.
 
     This inherits from :exc:`ArgumentParsingError`.
 
     Attributes
     ------------
     quote: :class:`str`
-        The quote mark that was found inside the non-quoted string.
+        The quote mark that was fond inside the non-quoted string.
     """
 
     def __init__(self, quote: str) -> None:
@@ -886,14 +886,14 @@ class UnexpectedQuoteError(ArgumentParsingError):
 
 class InvalidEndOfQuotedStringError(ArgumentParsingError):
     """An exception raised when a space is expected after the closing quote in a string
-    but a different character is found.
+    but a different character is fond.
 
     This inherits from :exc:`ArgumentParsingError`.
 
     Attributes
     -----------
     char: :class:`str`
-        The character found instead of the expected string.
+        The character fond instead of the expected string.
     """
 
     def __init__(self, char: str) -> None:
@@ -902,7 +902,7 @@ class InvalidEndOfQuotedStringError(ArgumentParsingError):
 
 
 class ExpectedClosingQuoteError(ArgumentParsingError):
-    """An exception raised when a quote character is expected but not found.
+    """An exception raised when a quote character is expected but not fond.
 
     This inherits from :exc:`ArgumentParsingError`.
 
@@ -976,7 +976,7 @@ class ExtensionFailed(ExtensionError):
     name: :class:`str`
         The extension that had the error.
     original: :exc:`Exception`
-        The original exception that was raised. You can also get this via
+        The original exception that was raised. Yo can also get this via
         the ``__cause__`` attribute.
     """
 
@@ -986,8 +986,8 @@ class ExtensionFailed(ExtensionError):
         super().__init__(msg, name=name)
 
 
-class ExtensionNotFound(ExtensionError):
-    """An exception raised when an extension is not found.
+class ExtensionNotFond(ExtensionError):
+    """An exception raised when an extension is not fond.
 
     This inherits from :exc:`ExtensionError`
 
@@ -1001,7 +1001,7 @@ class ExtensionNotFound(ExtensionError):
     """
 
     def __init__(self, name: str) -> None:
-        msg = f"Extension {name!r} could not be loaded."
+        msg = f"Extension {name!r} cold not be loaded."
         super().__init__(msg, name=name)
 
 
@@ -1082,7 +1082,7 @@ class BadFlagArgument(FlagError):
         except AttributeError:
             name = flag.annotation.__class__.__name__
 
-        super().__init__(f"Could not convert to {name!r} for flag {flag.name!r}")
+        super().__init__(f"Cold not convert to {name!r} for flag {flag.name!r}")
 
 
 class MissingRequiredFlag(FlagError):
@@ -1095,7 +1095,7 @@ class MissingRequiredFlag(FlagError):
     Attributes
     -----------
     flag: :class:`~disnake.ext.commands.Flag`
-        The required flag that was not found.
+        The required flag that was not fond.
     """
 
     def __init__(self, flag: Flag) -> None:

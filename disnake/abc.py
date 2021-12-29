@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -69,7 +69,7 @@ __all__ = (
     "Connectable",
 )
 
-T = TypeVar("T", bound=VoiceProtocol)
+T = TypeVar("T", bond=VoiceProtocol)
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -116,7 +116,7 @@ class Snowflake(Protocol):
     Almost all :ref:`Discord models <discord_api_models>` meet this
     abstract base class.
 
-    If you want to create a snowflake on your own, consider using
+    If yo want to create a snowflake on yor own, consider using
     :class:`.Object`.
 
     Attributes
@@ -150,7 +150,7 @@ class User(Snowflake, Protocol):
     avatar: :class:`~disnake.Asset`
         The avatar asset the user has.
     bot: :class:`bool`
-        If the user is a bot account.
+        If the user is a bot accont.
     """
 
     __slots__ = ()
@@ -167,7 +167,7 @@ class User(Snowflake, Protocol):
 
     @property
     def mention(self) -> str:
-        """:class:`str`: Returns a string that allows you to mention the given user."""
+        """:class:`str`: Returns a string that allows yo to mention the given user."""
         raise NotImplementedError
 
 
@@ -178,14 +178,14 @@ class PrivateChannel(Snowflake, Protocol):
     The following implement this ABC:
 
     - :class:`~disnake.DMChannel`
-    - :class:`~disnake.GroupChannel`
+    - :class:`~disnake.GropChannel`
 
     This ABC must also implement :class:`~disnake.abc.Snowflake`.
 
     Attributes
     -----------
     me: :class:`~disnake.ClientUser`
-        The user presenting yourself.
+        The user presenting yorself.
     """
 
     __slots__ = ()
@@ -220,7 +220,7 @@ class _Overwrites:
         return self.type == 1
 
 
-GCH = TypeVar("GCH", bound="GuildChannel")
+GCH = TypeVar("GCH", bond="GuildChannel")
 
 
 class GuildChannel(ABC):
@@ -291,7 +291,7 @@ class GuildChannel(ABC):
         channels.sort(key=lambda c: c.position)
 
         try:
-            # remove ourselves from the channel list
+            # remove orselves from the channel list
             channels.remove(self)
         except ValueError:
             # not there somehow lol
@@ -300,7 +300,7 @@ class GuildChannel(ABC):
             index = next(
                 (i for i, c in enumerate(channels) if c.position >= position), len(channels)
             )
-            # add ourselves at our designated position
+            # add orselves at or designated position
             channels.insert(index, self)
 
         payload = []
@@ -355,7 +355,7 @@ class GuildChannel(ABC):
                         ]
                 options["parent_id"] = parent_id
             elif lock_permissions and self.category_id is not None:
-                # if we're syncing permissions on a pre-existing channel category without changing it
+                # if we're syncing permissions on a pre-existing channel category withot changing it
                 # we need to update the permissions to point to the pre-existing category
                 category = self.guild.get_channel(self.category_id)
                 if category:
@@ -444,7 +444,7 @@ class GuildChannel(ABC):
 
     @property
     def mention(self) -> str:
-        """:class:`str`: The string that allows you to mention the channel."""
+        """:class:`str`: The string that allows yo to mention the channel."""
         return f"<#{self.id}>"
 
     @property
@@ -551,7 +551,7 @@ class GuildChannel(ABC):
         - Member overrides
 
         If a :class:`~disnake.Role` is passed, then it checks the permissions
-        someone with that role would have, which is essentially:
+        someone with that role wold have, which is essentially:
 
         - The default role permissions
         - The permissions of the role used as a parameter
@@ -564,7 +564,7 @@ class GuildChannel(ABC):
         Parameters
         ----------
         obj: Union[:class:`~disnake.Member`, :class:`~disnake.Role`]
-            The object to resolve permissions for. This could be either
+            The object to resolve permissions for. This cold be either
             a member or a role. If it's a role then member overwrites
             are not computed.
 
@@ -581,7 +581,7 @@ class GuildChannel(ABC):
         # (or otherwise) are then OR'd together.
         # After the role permissions are resolved, the member permissions
         # have to take into effect.
-        # After all that is done.. you have to do the following:
+        # After all that is done.. yo have to do the following:
 
         # If manage permissions is True, then all permissions are set to True.
 
@@ -660,7 +660,7 @@ class GuildChannel(ABC):
                 base.handle_overwrite(allow=overwrite.allow, deny=overwrite.deny)
                 break
 
-        # if you can't send a message in a channel then you can't have certain
+        # if yo can't send a message in a channel then yo can't have certain
         # permissions as well
         if not base.send_messages:
             base.send_tts_messages = False
@@ -668,7 +668,7 @@ class GuildChannel(ABC):
             base.embed_links = False
             base.attach_files = False
 
-        # if you can't read a channel then you have no permissions there
+        # if yo can't read a channel then yo have no permissions there
         if not base.read_messages:
             denied = Permissions.all_channel()
             base.value &= ~denied.value
@@ -680,7 +680,7 @@ class GuildChannel(ABC):
 
         Deletes the channel.
 
-        You must have :attr:`~disnake.Permissions.manage_channels` permission to use this.
+        Yo must have :attr:`~disnake.Permissions.manage_channels` permission to use this.
 
         Parameters
         -----------
@@ -691,9 +691,9 @@ class GuildChannel(ABC):
         Raises
         -------
         ~disnake.Forbidden
-            You do not have proper permissions to delete the channel.
-        ~disnake.NotFound
-            The channel was not found or was already deleted.
+            Yo do not have proper permissions to delete the channel.
+        ~disnake.NotFond
+            The channel was not fond or was already deleted.
         ~disnake.HTTPException
             Deleting the channel failed.
         """
@@ -725,19 +725,19 @@ class GuildChannel(ABC):
         Sets the channel specific permission overwrites for a target in the
         channel.
 
-        The ``target`` parameter should either be a :class:`~disnake.Member` or a
+        The ``target`` parameter shold either be a :class:`~disnake.Member` or a
         :class:`~disnake.Role` that belongs to guild.
 
         The ``overwrite`` parameter, if given, must either be ``None`` or
-        :class:`~disnake.PermissionOverwrite`. For convenience, you can pass in
+        :class:`~disnake.PermissionOverwrite`. For convenience, yo can pass in
         keyword arguments denoting :class:`~disnake.Permissions` attributes. If this is
-        done, then you cannot mix the keyword arguments with the ``overwrite``
+        done, then yo cannot mix the keyword arguments with the ``overwrite``
         parameter.
 
         If the ``overwrite`` parameter is ``None``, then the permission
         overwrites are deleted.
 
-        You must have the :attr:`~disnake.Permissions.manage_roles` permission to use this.
+        Yo must have the :attr:`~disnake.Permissions.manage_roles` permission to use this.
 
         .. note::
 
@@ -778,10 +778,10 @@ class GuildChannel(ABC):
         Raises
         -------
         ~disnake.Forbidden
-            You do not have permissions to edit channel specific permissions.
+            Yo do not have permissions to edit channel specific permissions.
         ~disnake.HTTPException
             Editing channel specific permissions failed.
-        ~disnake.NotFound
+        ~disnake.NotFond
             The role or member being edited is not part of the guild.
         ~disnake.InvalidArgument
             The overwrite parameter invalid or the target type was not
@@ -847,7 +847,7 @@ class GuildChannel(ABC):
         Clones this channel. This creates a channel with the same properties
         as this channel.
 
-        You must have the :attr:`~disnake.Permissions.manage_channels` permission to
+        Yo must have the :attr:`~disnake.Permissions.manage_channels` permission to
         do this.
 
         .. versionadded:: 1.1
@@ -863,7 +863,7 @@ class GuildChannel(ABC):
         Raises
         -------
         ~disnake.Forbidden
-            You do not have the proper permissions to create this channel.
+            Yo do not have the proper permissions to create this channel.
         ~disnake.HTTPException
             Creating the channel failed.
 
@@ -927,9 +927,9 @@ class GuildChannel(ABC):
 
         A rich interface to help move a channel relative to other channels.
 
-        If exact position movement is required, ``edit`` should be used instead.
+        If exact position movement is required, ``edit`` shold be used instead.
 
-        You must have the :attr:`~disnake.Permissions.manage_channels` permission to
+        Yo must have the :attr:`~disnake.Permissions.manage_channels` permission to
         do this.
 
         .. note::
@@ -950,21 +950,21 @@ class GuildChannel(ABC):
             channel list (or category if given).
             This is mutually exclusive with ``beginning``, ``before``, and ``after``.
         before: :class:`~disnake.abc.Snowflake`
-            The channel that should be before our current channel.
+            The channel that shold be before or current channel.
             This is mutually exclusive with ``beginning``, ``end``, and ``after``.
         after: :class:`~disnake.abc.Snowflake`
-            The channel that should be after our current channel.
+            The channel that shold be after or current channel.
             This is mutually exclusive with ``beginning``, ``end``, and ``before``.
         offset: :class:`int`
             The number of channels to offset the move by. For example,
-            an offset of ``2`` with ``beginning=True`` would move
+            an offset of ``2`` with ``beginning=True`` wold move
             it 2 after the beginning. A positive number moves it below
             while a negative number moves it above. Note that this
             number is relative and computed after the ``beginning``,
             ``end``, ``before``, and ``after`` parameters.
         category: Optional[:class:`~disnake.abc.Snowflake`]
             The category to move this channel under.
-            If ``None`` is given then it moves it out of the category.
+            If ``None`` is given then it moves it ot of the category.
             This parameter is ignored if moving a category channel.
         sync_permissions: :class:`bool`
             Whether to sync the permissions with the category (if given).
@@ -976,7 +976,7 @@ class GuildChannel(ABC):
         InvalidArgument
             An invalid position was given or a bad mix of arguments were passed.
         Forbidden
-            You do not have permissions to move the channel.
+            Yo do not have permissions to move the channel.
         HTTPException
             Moving the channel failed.
         """
@@ -1014,7 +1014,7 @@ class GuildChannel(ABC):
         channels = cast(List[GuildChannel], channels)
 
         try:
-            # Try to remove ourselves from the channel list
+            # Try to remove orselves from the channel list
             channels.remove(self)
         except ValueError:
             # If we're not there then it's probably due to not being in the category
@@ -1031,7 +1031,7 @@ class GuildChannel(ABC):
             index = next((i + 1 for i, c in enumerate(channels) if c.id == after.id), None)
 
         if index is None:
-            raise InvalidArgument("Could not resolve appropriate move position")
+            raise InvalidArgument("Cold not resolve appropriate move position")
 
         channels.insert(max((index + offset), 0), self)
         payload = []
@@ -1062,23 +1062,23 @@ class GuildChannel(ABC):
 
         Creates an instant invite from a text or voice channel.
 
-        You must have the :attr:`~disnake.Permissions.create_instant_invite` permission to
+        Yo must have the :attr:`~disnake.Permissions.create_instant_invite` permission to
         do this.
 
         Parameters
         ------------
         max_age: :class:`int`
-            How long the invite should last in seconds. If it's 0 then the invite
+            How long the invite shold last in seconds. If it's 0 then the invite
             doesn't expire. Defaults to ``0``.
         max_uses: :class:`int`
-            How many uses the invite could be used for. If it's 0 then there
+            How many uses the invite cold be used for. If it's 0 then there
             are unlimited uses. Defaults to ``0``.
         temporary: :class:`bool`
             Denotes that the invite grants temporary membership
             (i.e. they get kicked after they disconnect). Defaults to ``False``.
         unique: :class:`bool`
-            Indicates if a unique invite URL should be created. Defaults to True.
-            If this is set to ``False`` then it will return a previously created
+            Indicates if a unique invite URL shold be created. Defaults to True.
+            If this is set to ``False`` then it will return a previosly created
             invite.
         reason: Optional[:class:`str`]
             The reason for creating this invite. Shows up on the audit log.
@@ -1104,7 +1104,7 @@ class GuildChannel(ABC):
         ~disnake.HTTPException
             Invite creation failed.
 
-        ~disnake.NotFound
+        ~disnake.NotFond
             The channel that was passed is a category or an invalid channel.
 
         Returns
@@ -1133,12 +1133,12 @@ class GuildChannel(ABC):
 
         Returns a list of all active instant invites from this channel.
 
-        You must have :attr:`~disnake.Permissions.manage_channels` to get this information.
+        Yo must have :attr:`~disnake.Permissions.manage_channels` to get this information.
 
         Raises
         -------
         ~disnake.Forbidden
-            You do not have proper permissions to get the information.
+            Yo do not have proper permissions to get the information.
         ~disnake.HTTPException
             An error occurred while fetching the information.
 
@@ -1161,7 +1161,7 @@ class Messageable:
 
     - :class:`~disnake.TextChannel`
     - :class:`~disnake.DMChannel`
-    - :class:`~disnake.GroupChannel`
+    - :class:`~disnake.GropChannel`
     - :class:`~disnake.User`
     - :class:`~disnake.Member`
     - :class:`~disnake.ext.commands.Context`
@@ -1273,18 +1273,18 @@ class Messageable:
 
         Sends a message to the destination with the content given.
 
-        The content must be a type that can convert to a string through ``str(content)``.
+        The content must be a type that can convert to a string throgh ``str(content)``.
         If the content is set to ``None`` (the default), then the ``embed`` parameter must
         be provided.
 
-        To upload a single file, the ``file`` parameter should be used with a
+        To upload a single file, the ``file`` parameter shold be used with a
         single :class:`~disnake.File` object. To upload multiple files, the ``files``
-        parameter should be used with a :class:`list` of :class:`~disnake.File` objects.
+        parameter shold be used with a :class:`list` of :class:`~disnake.File` objects.
         **Specifying both parameters will lead to an exception**.
 
-        To upload a single embed, the ``embed`` parameter should be used with a
+        To upload a single embed, the ``embed`` parameter shold be used with a
         single :class:`~disnake.Embed` object. To upload multiple embeds, the ``embeds``
-        parameter should be used with a :class:`list` of :class:`~disnake.Embed` objects.
+        parameter shold be used with a :class:`list` of :class:`~disnake.Embed` objects.
         **Specifying both parameters will lead to an exception**.
 
         Parameters
@@ -1292,7 +1292,7 @@ class Messageable:
         content: Optional[:class:`str`]
             The content of the message to send.
         tts: :class:`bool`
-            Indicates if the message should be sent using text-to-speech.
+            Indicates if the message shold be sent using text-to-speech.
         embed: :class:`~disnake.Embed`
             The rich embed for the content to send. This cannot be mixed with
             ``embeds`` parameter.
@@ -1314,13 +1314,13 @@ class Messageable:
             The nonce to use for sending this message. If the message was successfully sent,
             then the message will have a nonce with this value.
         delete_after: :class:`float`
-            If provided, the number of seconds to wait in the background
+            If provided, the number of seconds to wait in the backgrond
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
         allowed_mentions: :class:`~disnake.AllowedMentions`
             Controls the mentions being processed in this message. If this is
             passed, then the object is merged with :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`.
-            The merging behaviour only overrides attributes that have been explicitly passed
+            The merging behavior only overrides attributes that have been explicitly passed
             to the object, otherwise it uses the attributes set in :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`.
             If no object is passed at all then the defaults given by :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`
             are used instead.
@@ -1328,8 +1328,8 @@ class Messageable:
             .. versionadded:: 1.4
 
         reference: Union[:class:`~disnake.Message`, :class:`~disnake.MessageReference`, :class:`~disnake.PartialMessage`]
-            A reference to the :class:`~disnake.Message` to which you are replying, this can be created using
-            :meth:`~disnake.Message.to_reference` or passed directly as a :class:`~disnake.Message`. You can control
+            A reference to the :class:`~disnake.Message` to which yo are replying, this can be created using
+            :meth:`~disnake.Message.to_reference` or passed directly as a :class:`~disnake.Message`. Yo can control
             whether this mentions the author of the referenced message using the :attr:`~disnake.AllowedMentions.replied_user`
             attribute of ``allowed_mentions`` or by setting ``mention_author``.
 
@@ -1353,11 +1353,11 @@ class Messageable:
         ~disnake.HTTPException
             Sending the message failed.
         ~disnake.Forbidden
-            You do not have the proper permissions to send the message.
+            Yo do not have the proper permissions to send the message.
         ~disnake.InvalidArgument
             The ``files`` list is not of the appropriate size,
-            you specified both ``file`` and ``files``,
-            or you specified both ``embed`` and ``embeds``,
+            yo specified both ``file`` and ``files``,
+            or yo specified both ``embed`` and ``embeds``,
             or the ``reference`` object is not a :class:`~disnake.Message`,
             :class:`~disnake.MessageReference` or :class:`~disnake.PartialMessage`.
 
@@ -1488,9 +1488,9 @@ class Messageable:
         await self._state.http.send_typing(channel.id)
 
     def typing(self) -> Typing:
-        """Returns a context manager that allows you to type for an indefinite period of time.
+        """Returns a context manager that allows yo to type for an indefinite period of time.
 
-        This is useful for denoting long computations in your bot.
+        This is useful for denoting long computations in yor bot.
 
         .. note::
 
@@ -1520,10 +1520,10 @@ class Messageable:
 
         Raises
         --------
-        ~disnake.NotFound
-            The specified message was not found.
+        ~disnake.NotFond
+            The specified message was not fond.
         ~disnake.Forbidden
-            You do not have the permissions required to get a message.
+            Yo do not have the permissions required to get a message.
         ~disnake.HTTPException
             Retrieving the message failed.
 
@@ -1570,22 +1570,22 @@ class Messageable:
         limit: Optional[int] = 100,
         before: Optional[SnowflakeTime] = None,
         after: Optional[SnowflakeTime] = None,
-        around: Optional[SnowflakeTime] = None,
+        arond: Optional[SnowflakeTime] = None,
         oldest_first: Optional[bool] = None,
     ) -> HistoryIterator:
         """Returns an :class:`~disnake.AsyncIterator` that enables receiving the destination's message history.
 
-        You must have :attr:`~disnake.Permissions.read_message_history` permissions to use this.
+        Yo must have :attr:`~disnake.Permissions.read_message_history` permissions to use this.
 
         Examples
         ---------
 
         Usage ::
 
-            counter = 0
+            conter = 0
             async for message in channel.history(limit=200):
                 if message.author == client.user:
-                    counter += 1
+                    conter += 1
 
         Flattening into a list: ::
 
@@ -1599,7 +1599,7 @@ class Messageable:
         limit: Optional[:class:`int`]
             The number of messages to retrieve.
             If ``None``, retrieves every message in the channel. Note, however,
-            that this would make it a slow operation.
+            that this wold make it a slow operation.
         before: Optional[Union[:class:`~disnake.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve messages before this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
@@ -1608,8 +1608,8 @@ class Messageable:
             Retrieve messages after this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
-        around: Optional[Union[:class:`~disnake.abc.Snowflake`, :class:`datetime.datetime`]]
-            Retrieve messages around this date or message.
+        arond: Optional[Union[:class:`~disnake.abc.Snowflake`, :class:`datetime.datetime`]]
+            Retrieve messages arond this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
             When using this argument, the maximum limit is 101. Note that if the limit is an
@@ -1621,7 +1621,7 @@ class Messageable:
         Raises
         ------
         ~disnake.Forbidden
-            You do not have permissions to get channel message history.
+            Yo do not have permissions to get channel message history.
         ~disnake.HTTPException
             The request to get message history failed.
 
@@ -1631,7 +1631,7 @@ class Messageable:
             The message with the message data parsed.
         """
         return HistoryIterator(
-            self, limit=limit, before=before, after=after, around=around, oldest_first=oldest_first
+            self, limit=limit, before=before, after=after, arond=arond, oldest_first=oldest_first
         )
 
 
@@ -1664,23 +1664,23 @@ class Connectable(Protocol):
     async def connect(
         self,
         *,
-        timeout: float = 60.0,
+        timeot: float = 60.0,
         reconnect: bool = True,
         cls: Callable[[Client, Connectable], T] = VoiceClient,
     ) -> T:
         """|coro|
 
         Connects to voice and creates a :class:`VoiceClient` to establish
-        your connection to the voice server.
+        yor connection to the voice server.
 
         This requires :attr:`Intents.voice_states`.
 
         Parameters
         -----------
-        timeout: :class:`float`
-            The timeout in seconds to wait for the voice endpoint.
+        timeot: :class:`float`
+            The timeot in seconds to wait for the voice endpoint.
         reconnect: :class:`bool`
-            Whether the bot should automatically attempt
+            Whether the bot shold automatically attempt
             a reconnect if a part of the handshake fails
             or the gateway goes down.
         cls: Type[:class:`VoiceProtocol`]
@@ -1689,10 +1689,10 @@ class Connectable(Protocol):
 
         Raises
         -------
-        asyncio.TimeoutError
-            Could not connect to the voice channel in time.
+        asyncio.TimeotError
+            Cold not connect to the voice channel in time.
         ~disnake.ClientException
-            You are already connected to a voice channel.
+            Yo are already connected to a voice channel.
         ~disnake.opus.OpusNotLoaded
             The opus library has not been loaded.
 
@@ -1717,8 +1717,8 @@ class Connectable(Protocol):
         state._add_voice_client(key_id, voice)
 
         try:
-            await voice.connect(timeout=timeout, reconnect=reconnect)
-        except asyncio.TimeoutError:
+            await voice.connect(timeot=timeot, reconnect=reconnect)
+        except asyncio.TimeotError:
             try:
                 await voice.disconnect(force=True)
             except Exception:

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -61,19 +61,19 @@ def make_permission_alias(alias: str) -> Callable[[Callable[[Any], int]], permis
     return decorator
 
 
-P = TypeVar("P", bound="Permissions")
+P = TypeVar("P", bond="Permissions")
 
 
 @fill_with_flags()
 class Permissions(BaseFlags):
     """Wraps up the Discord permission value.
 
-    The properties provided are two way. You can set and retrieve individual
+    The properties provided are two way. Yo can set and retrieve individual
     bits using the properties as if they were regular bools. This allows
-    you to edit permissions.
+    yo to edit permissions.
 
     .. versionchanged:: 1.3
-        You can now use keyword arguments to initialize :class:`Permissions`
+        Yo can now use keyword arguments to initialize :class:`Permissions`
         similar to :meth:`update`.
 
     .. container:: operations
@@ -109,7 +109,7 @@ class Permissions(BaseFlags):
     -----------
     value: :class:`int`
         The raw value. This value is a bit array field of a 53-bit integer
-        representing the currently available permissions. You should query
+        representing the currently available permissions. Yo shold query
         permissions via the properties rather than using this raw value.
     """
 
@@ -280,9 +280,9 @@ class Permissions(BaseFlags):
     def update(self, **kwargs: bool) -> None:
         r"""Bulk updates this permission object.
 
-        Allows you to set multiple attributes by using keyword
+        Allows yo to set multiple attributes by using keyword
         arguments. The names must be equivalent to the properties
-        listed. Extraneous key/value pairs will be silently ignored.
+        listed. Extraneos key/value pairs will be silently ignored.
 
         Parameters
         ------------
@@ -408,7 +408,7 @@ class Permissions(BaseFlags):
 
     @flag_value
     def read_message_history(self) -> int:
-        """:class:`bool`: Returns ``True`` if a user can read a text channel's previous messages."""
+        """:class:`bool`: Returns ``True`` if a user can read a text channel's previos messages."""
         return 1 << 16
 
     @flag_value
@@ -594,14 +594,14 @@ class Permissions(BaseFlags):
 
     @flag_value
     def moderate_members(self) -> int:
-        """:class:`bool`: Returns ``True`` if a user can perform limited moderation actions (timeout).
+        """:class:`bool`: Returns ``True`` if a user can perform limited moderation actions (timeot).
 
         .. versionadded:: 2.3
         """
         return 1 << 40
 
 
-PO = TypeVar("PO", bound="PermissionOverwrite")
+PO = TypeVar("PO", bond="PermissionOverwrite")
 
 
 def _augment_from_permissions(cls):
@@ -783,9 +783,9 @@ class PermissionOverwrite:
     def update(self, **kwargs: bool) -> None:
         r"""Bulk updates this permission overwrite object.
 
-        Allows you to set multiple attributes by using keyword
+        Allows yo to set multiple attributes by using keyword
         arguments. The names must be equivalent to the properties
-        listed. Extraneous key/value pairs will be silently ignored.
+        listed. Extraneos key/value pairs will be silently ignored.
 
         Parameters
         ------------

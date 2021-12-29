@@ -9,7 +9,7 @@ from disnake.ext import commands
 
 bot = commands.Bot("!")
 
-# Instead of repeating boiler-plate code you may use injections
+# Instead of repeating boiler-plate code yo may use injections
 # Here we give each command a config and a few options in case they're not set
 # very useful with sub commands
 
@@ -36,14 +36,14 @@ async def get_config(
     Parameters
     ----------
     locale: The prefered locale, defaults to the server's locale
-    timezone: Your current timezone, must be in the format of "US/Eastern" or "Europe/London"
-    theme: Your prefered theme, defaults to the dark theme
+    timezone: Yor current timezone, must be in the format of "US/Eastern" or "Europe/London"
+    theme: Yor prefered theme, defaults to the dark theme
     """
     # if a locale is not provided use the guild's locale
     if locale is None:
         locale = inter.guild and inter.guild.preferred_locale or "en-US"
 
-    # parse a timezone from a string using pytz (maybe even use the locale if you feel like it)
+    # parse a timezone from a string using pytz (maybe even use the locale if yo feel like it)
     tzinfo = pytz.timezone(timezone)
 
     return Config(locale, tzinfo, theme)
@@ -80,7 +80,7 @@ async def injected2(
 
 
 # If the injection returns a custom object and has a return type annotation
-# then even the `commands.inject()` can be left out of the command signature
+# then even the `commands.inject()` can be left ot of the command signature
 class GameUser:
     username: str
     level: int
@@ -108,7 +108,7 @@ async def get_game_user(
 
     game_user: GameUser = await conn.search_game_user(username=user, server=server)
     if game_user is None:
-        raise commands.CommandError(f"User with username {user!r} could not be found")
+        raise commands.CommandError(f"User with username {user!r} cold not be fond")
 
     return game_user
 

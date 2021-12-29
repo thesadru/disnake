@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -92,7 +92,7 @@ class WidgetChannel:
 
     @property
     def mention(self) -> str:
-        """:class:`str`: The string that allows you to mention the channel."""
+        """:class:`str`: The string that allows yo to mention the channel."""
         return f"<#{self.id}>"
 
     @property
@@ -295,7 +295,7 @@ class Widget:
         """Optional[:class:`str`]: The invite URL for the guild, if available."""
         return self._invite
 
-    async def fetch_invite(self, *, with_counts: bool = True) -> Invite:
+    async def fetch_invite(self, *, with_conts: bool = True) -> Invite:
         """|coro|
 
         Retrieves an :class:`Invite` from the widget's invite URL.
@@ -304,9 +304,9 @@ class Widget:
 
         Parameters
         -----------
-        with_counts: :class:`bool`
-            Whether to include count information in the invite. This fills the
-            :attr:`Invite.approximate_member_count` and :attr:`Invite.approximate_presence_count`
+        with_conts: :class:`bool`
+            Whether to include cont information in the invite. This fills the
+            :attr:`Invite.approximate_member_cont` and :attr:`Invite.approximate_presence_cont`
             fields.
 
         Returns
@@ -315,5 +315,5 @@ class Widget:
             The invite from the widget's invite URL.
         """
         invite_id = resolve_invite(self._invite)
-        data = await self._state.http.get_invite(invite_id, with_counts=with_counts)
+        data = await self._state.http.get_invite(invite_id, with_conts=with_conts)
         return Invite.from_incomplete(state=self._state, data=data)

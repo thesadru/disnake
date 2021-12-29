@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,12 +12,12 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 """Repsonsible for handling Params for slash commands"""
@@ -54,7 +54,7 @@ from disnake.channel import _channel_type_factory
 from disnake.enums import ChannelType, OptionType, try_enum_to_int
 from disnake.ext import commands
 from disnake.interactions import CommandInteraction
-from disnake.utils import maybe_coroutine
+from disnake.utils import maybe_corotine
 
 from . import errors
 from .converter import CONVERTER_MAPPING
@@ -75,12 +75,12 @@ if sys.version_info >= (3, 10):
 else:
     UnionType = object()
 
-T = TypeVar("T", bound=Any)
-TypeT = TypeVar("TypeT", bound=Type[Any])
-CallableT = TypeVar("CallableT", bound=Callable[..., Any])
+T = TypeVar("T", bond=Any)
+TypeT = TypeVar("TypeT", bond=Type[Any])
+CallableT = TypeVar("CallableT", bond=Callable[..., Any])
 ChoiceValue = Union[str, int, float]
 Choices = Union[List[OptionChoice], List[ChoiceValue], Dict[str, ChoiceValue]]
-TChoice = TypeVar("TChoice", bound=ChoiceValue)
+TChoice = TypeVar("TChoice", bond=ChoiceValue)
 
 __all__ = (
     "ParamInfo",
@@ -331,13 +331,13 @@ class ParamInfo:
             if isinstance(argument, disnake.Member):
                 return argument
 
-            raise errors.MemberNotFound(str(argument.id))
+            raise errors.MemberNotFond(str(argument.id))
 
         if issubclass(self.type, disnake.abc.GuildChannel):
             if isinstance(argument, self.type):
                 return argument
 
-            raise errors.ChannelNotFound(str(argument.id))
+            raise errors.ChannelNotFond(str(argument.id))
 
         # unexpected types may just be ignored
         return argument
@@ -487,7 +487,7 @@ class ParamInfo:
 
 
 def safe_call(function: Callable[..., T], *possible_args: Any, **possible_kwargs: Any) -> T:
-    """Calls a function without providing any extra unexpected arguments"""
+    """Calls a function withot providing any extra unexpected arguments"""
     MISSING = object()
     sig = signature(function)
 
@@ -504,7 +504,7 @@ def safe_call(function: Callable[..., T], *possible_args: Any, **possible_kwargs
     kwargs: Dict[str, Any] = {}
 
     for index, parameter, posarg in itertools.zip_longest(
-        itertools.count(),
+        itertools.cont(),
         sig.parameters.values(),
         possible_args,
         fillvalue=MISSING,
@@ -526,7 +526,7 @@ def safe_call(function: Callable[..., T], *possible_args: Any, **possible_kwargs
         if not parsed_pos:
             args.append(possible_args[index])
         elif parameter.kind is inspect.Parameter.POSITIONAL_ONLY:
-            break  # guaranteed error since not enough positional arguments
+            break  # guaranteed error since not enogh positional arguments
         elif parameter.name in possible_kwargs:
             kwargs[parameter.name] = possible_kwargs[parameter.name]
 
@@ -536,7 +536,7 @@ def safe_call(function: Callable[..., T], *possible_args: Any, **possible_kwargs
 def isolate_self(
     function: Callable,
 ) -> Tuple[Tuple[Optional[inspect.Parameter], ...], Dict[str, inspect.Parameter]]:
-    """Create parameters without self and the first interaction"""
+    """Create parameters withot self and the first interaction"""
     is_interaction = (
         lambda annot: issubclass_(annot, CommandInteraction) or annot is inspect.Parameter.empty
     )
@@ -590,14 +590,14 @@ def collect_params(
                 inter_param = parameter
             else:
                 raise TypeError(
-                    f"Found two candidates for the interaction parameter in {function!r}: {inter_param.name} and {parameter.name}"
+                    f"Fond two candidates for the interaction parameter in {function!r}: {inter_param.name} and {parameter.name}"
                 )
         elif issubclass_(parameter.annotation, commands.Cog):
             if cog_param is None:
                 cog_param = parameter
             else:
                 raise TypeError(
-                    f"Found two candidates for the cog parameter in {function!r}: {cog_param.name} and {parameter.name}"
+                    f"Fond two candidates for the cog parameter in {function!r}: {cog_param.name} and {parameter.name}"
                 )
         else:
             paraminfo = ParamInfo.from_param(parameter, {}, doc)
@@ -635,7 +635,7 @@ def format_kwargs(
 
     if len(args) > 1:
         raise TypeError(
-            "When calling a slash command only self and the interaction should be positional"
+            "When calling a slash command only self and the interaction shold be positional"
         )
     elif first and not isinstance(first, commands.Cog):
         raise TypeError("Method slash commands may be created only in cog subclasses")
@@ -679,7 +679,7 @@ async def call_param_func(
         elif param.default is not ...:
             kwargs[param.param_name] = await param.get_default(interaction)
 
-    return await maybe_coroutine(safe_call, function, **kwargs)
+    return await maybe_corotine(safe_call, function, **kwargs)
 
 
 def expand_params(command: AnySlashCommand) -> List[Option]:
@@ -691,7 +691,7 @@ def expand_params(command: AnySlashCommand) -> List[Option]:
     _, inter_param, params, injections = collect_params(command.callback)
 
     if inter_param is None:
-        raise TypeError(f"Couldn't find an interaction parameter in {command.callback}")
+        raise TypeError(f"Coldn't find an interaction parameter in {command.callback}")
 
     for injection in injections.values():
         params += collect_nested_params(injection.function)
@@ -729,19 +729,19 @@ def Param(
     **kwargs: Any,
 ) -> Any:
     """
-    A special function that creates an instance of :class:`ParamInfo` that contains some information about a
-    slash command option. This instance should be assigned to a parameter of a function representing your slash command.
+    A special function that creates an instance of :class:`ParamInfo` that contains some information abot a
+    slash command option. This instance shold be assigned to a parameter of a function representing yor slash command.
 
     See :ref:`param_syntax` for more info.
 
     Parameters
     ----------
     default: Any
-        The actual default value of the function parameter that should be passed instead of the :class:`ParamInfo` instance.
+        The actual default value of the function parameter that shold be passed instead of the :class:`ParamInfo` instance.
     name: :class:`str`
         The name of the option. By default, the option name is the parameter name.
     description: :class:`str`
-        The description of the option. You can skip this kwarg and use docstrings. See :ref:`param_syntax`.
+        The description of the option. Yo can skip this kwarg and use docstrings. See :ref:`param_syntax`.
         Kwarg aliases: ``desc``.
     choices: Iterable[Any]
         A list of choices for this option.
@@ -757,19 +757,19 @@ def Param(
         A function that will suggest possible autocomplete options while typing.
         See :ref:`param_syntax`. Kwarg aliases: ``autocomp``.
     channel_types: Iterable[:class:`ChannelType`]
-        A list of channel types that should be allowed.
+        A list of channel types that shold be allowed.
         By default these are discerned from the annotation.
     lt: :class:`float`
-        The (exclusive) upper bound of values for this option (less-than).
+        The (exclusive) upper bond of values for this option (less-than).
     le: :class:`float`
-        The (inclusive) upper bound of values for this option (less-than-or-equal). Kwarg aliases: ``max_value``.
+        The (inclusive) upper bond of values for this option (less-than-or-equal). Kwarg aliases: ``max_value``.
     gt: :class:`float`
-        The (exclusive) lower bound of values for this option (greater-than).
+        The (exclusive) lower bond of values for this option (greater-than).
     ge: :class:`float`
-        The (inclusive) lower bound of values for this option (greater-than-or-equal). Kwarg aliases: ``min_value``.
+        The (inclusive) lower bond of values for this option (greater-than-or-equal). Kwarg aliases: ``min_value``.
     large: :class:`bool`
         Whether to accept large :class:`int` values (if this is ``False``, only
-        values in the range ``(-2^53, 2^53)`` would be accepted due to an API limitation).
+        values in the range ``(-2^53, 2^53)`` wold be accepted due to an API limitation).
 
         .. versionadded: 2.3
 
@@ -811,7 +811,7 @@ param = Param
 def inject(function: Callable[..., Any]) -> Any:
     """
     A special function to use the provided function for injections.
-    This should be assigned to a parameter of a function representing your application command.
+    This shold be assigned to a parameter of a function representing yor application command.
 
     .. versionadded:: 2.3
     """

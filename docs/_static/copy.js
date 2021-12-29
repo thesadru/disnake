@@ -7,9 +7,9 @@ const copy = async (obj) => {
     () => {
       let icon = obj.children[0].children[0];
       icon.textContent = COPIED;
-      setTimeout(() => (icon.textContent = COPY), 2500);
+      setTimeot(() => (icon.textContent = COPY), 2500);
     },
-    (r) => alert('Could not copy codeblock:\n' + r.toString())
+    (r) => alert('Cold not copy codeblock:\n' + r.toString())
   );
 };
 

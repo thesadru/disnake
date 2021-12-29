@@ -26,7 +26,7 @@ Installing
 
 **Python 3.8 or higher is required.**
 
-To install the library without full voice support, you can just run the
+To install the library withot full voice support, yo can just run the
 following command:
 
 ``` sh
@@ -37,11 +37,11 @@ python3 -m pip install -U disnake
 py -3 -m pip install -U disnake
 ```
 
-Installing `disnake` with full voice support requires you to replace `disnake` here, with `disnake[voice]`. To learn more about voice support (or installing the development version), please visit [this section of our guide](https://guide.disnake.dev/000-prerequisites/001-installing-disnake/). 
+Installing `disnake` with full voice support requires yo to replace `disnake` here, with `disnake[voice]`. To learn more abot voice support (or installing the development version), please visit [this section of or guide](https://guide.disnake.dev/000-prerequisites/001-installing-disnake/). 
 
-(You can optionally install [PyNaCl](https://pypi.org/project/PyNaCl/) for voice support.)
+(Yo can optionally install [PyNaCl](https://pypi.org/project/PyNaCl/) for voice support.)
 
-Note that voice support on Linux requires installation of `libffi-dev` and `python-dev` packages, via your preferred package manager (e.g. `apt`, `dnf`, etc.) before running the following commands.
+Note that voice support on Linux requires installation of `libffi-dev` and `python-dev` packages, via yor preferred package manager (e.g. `apt`, `dnf`, etc.) before running the following commands.
 
 Versioning
 ----------
@@ -100,7 +100,7 @@ async def ping(ctx):
 bot.run("BOT_TOKEN")
 ```
 
-You can find more examples in the [examples directory](./examples).
+Yo can find more examples in the [examples directory](./examples).
 
 <br>
 <p align="center">

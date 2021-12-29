@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -29,7 +29,7 @@ import sys
 from pathlib import Path
 
 import aiohttp
-import pkg_resources
+import pkg_resorces
 
 import disnake
 
@@ -43,9 +43,9 @@ def show_version():
     version_info = disnake.version_info
     entries.append("- disnake v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}".format(version_info))
     if version_info.releaselevel != "final":
-        pkg = pkg_resources.get_distribution("disnake")
+        pkg = pkg_resorces.get_distribution("disnake")
         if pkg:
-            entries.append(f"    - disnake pkg_resources: v{pkg.version}")
+            entries.append(f"    - disnake pkg_resorces: v{pkg.version}")
 
     entries.append(f"- aiohttp v{aiohttp.__version__}")
     uname = platform.uname()
@@ -71,7 +71,7 @@ class Bot(commands.{base}):
             try:
                 self.load_extension(cog)
             except Exception as exc:
-                print(f'Could not load extension {{cog}} due to {{exc.__class__.__name__}}: {{exc}}')
+                print(f'Cold not load extension {{cog}} due to {{exc.__class__.__name__}}: {{exc}}')
 
     async def on_ready(self):
         print(f'Logged on as {{self.user}} (ID: {{self.user.id}})')
@@ -110,7 +110,7 @@ var/
 .installed.cfg
 *.egg
 
-# Our configuration files
+# or configuration files
 config.py
 """
 
@@ -161,7 +161,7 @@ _cog_extras = """
 
 # certain file names and directory names are forbidden
 # see: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx
-# although some of this doesn't apply to Linux, we might as well be consistent
+# althogh some of this doesn't apply to Linux, we might as well be consistent
 _ascii_table = dict.fromkeys('<>:"|?*', "-")
 
 # NUL (0) and 1-31 are disallowed
@@ -217,36 +217,36 @@ def newbot(parser, args):
     try:
         new_directory.mkdir(exist_ok=True, parents=True)
     except OSError as exc:
-        parser.error(f"could not create our bot directory ({exc})")
+        parser.error(f"cold not create or bot directory ({exc})")
 
     cogs = new_directory / "cogs"
 
     try:
         cogs.mkdir(exist_ok=True)
         init = cogs / "__init__.py"
-        init.touch()
+        init.toch()
     except OSError as exc:
-        print(f"warning: could not create cogs directory ({exc})")
+        print(f"warning: cold not create cogs directory ({exc})")
 
     try:
         with open(str(new_directory / "config.py"), "w", encoding="utf-8") as fp:
-            fp.write('token = "place your token here"\ncogs = []\n')
+            fp.write('token = "place yor token here"\ncogs = []\n')
     except OSError as exc:
-        parser.error(f"could not create config file ({exc})")
+        parser.error(f"cold not create config file ({exc})")
 
     try:
         with open(str(new_directory / "bot.py"), "w", encoding="utf-8") as fp:
             base = "Bot" if not args.sharded else "AutoShardedBot"
             fp.write(_bot_template.format(base=base, prefix=args.prefix))
     except OSError as exc:
-        parser.error(f"could not create bot file ({exc})")
+        parser.error(f"cold not create bot file ({exc})")
 
     if not args.no_git:
         try:
             with open(str(new_directory / ".gitignore"), "w", encoding="utf-8") as fp:
                 fp.write(_gitignore_template)
         except OSError as exc:
-            print(f"warning: could not create .gitignore file ({exc})")
+            print(f"warning: cold not create .gitignore file ({exc})")
 
     print("successfully made bot at", new_directory)
 
@@ -256,7 +256,7 @@ def newcog(parser, args):
     try:
         cog_dir.mkdir(exist_ok=True)
     except OSError as exc:
-        print(f"warning: could not create cogs directory ({exc})")
+        print(f"warning: cold not create cogs directory ({exc})")
 
     directory = cog_dir / to_path(parser, args.name)
     directory = directory.with_suffix(".py")
@@ -280,7 +280,7 @@ def newcog(parser, args):
                 attrs += ", command_attrs=dict(hidden=True)"
             fp.write(_cog_template.format(name=name, extra=extra, attrs=attrs))
     except OSError as exc:
-        parser.error(f"could not create cog file ({exc})")
+        parser.error(f"cold not create cog file ({exc})")
     else:
         print("successfully made cog at", directory)
 

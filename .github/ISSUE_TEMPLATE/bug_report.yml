@@ -1,25 +1,25 @@
 name: Bug Report
-description: Report broken or incorrect behaviour
+description: Report broken or incorrect behavior
 labels: ["unconfirmed bug"]
 body:
   - type: markdown
     attributes:
       value: >
-        Thanks for taking the time to fill out a bug.
-        If you want real-time support, consider joining our [Discord server](https://discord.gg/gJDbCw8aQy) instead.
+        Thanks for taking the time to fill ot a bug.
+        If yo want real-time support, consider joining or [Discord server](https://discord.gg/gJDbCw8aQy) instead.
 
         Please note that this form is for bugs only!
   - type: input
     attributes:
       label: Summary
-      description: A simple summary of your bug report
+      description: A simple summary of yor bug report
     validations:
       required: true
   - type: textarea
     attributes:
       label: Reproduction Steps
       description: >
-         What you did to make it happen.
+         What yo did to make it happen.
     validations:
       required: true
   - type: textarea
@@ -32,7 +32,7 @@ body:
     attributes:
       label: Expected Results
       description: >
-        What did you expect to happen?
+        What did yo expect to happen?
     validations:
       required: true
   - type: textarea
@@ -46,25 +46,25 @@ body:
     attributes:
       label: Intents
       description: >
-        What intents are you using for your bot?
-        This is the `disnake.Intents` class you pass to the client.
+        What intents are yo using for yor bot?
+        This is the `disnake.Intents` class yo pass to the client.
     validations:
       required: true
   - type: textarea
     attributes:
       label: System Information
       description: >
-        Run `python -m disnake -v` and paste the output below.
+        Run `python -m disnake -v` and paste the otput below.
 
-        If you are unable to run this command, show some basic information involving
-        your system such as operating system and Python version.
+        If yo are unable to run this command, show some basic information involving
+        yor system such as operating system and Python version.
     validations:
       required: true
   - type: checkboxes
     attributes:
       label: Checklist
       description: >
-        Let's make sure you've properly done due diligence when reporting this issue!
+        Let's make sure yo've properly done due diligence when reporting this issue!
       options:
         - label: I have searched the open issues for duplicates.
           required: true

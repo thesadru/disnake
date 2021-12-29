@@ -26,7 +26,7 @@ msgid "The library follows a `semantic versioning principle <https://semver.org/
 msgstr "このライブラリは `セマンティック バージョニングの原則 <https://semver.org/>`_ に従います。それが意味するのは、互換性のないAPIの変更が行われるたびにメジャーバージョンが更新されるということです。しかしながら、Discord側にはPythonの非常に動的な性質とともに破壊的変更を行う際の保証がないため、破壊的変更とみなされるもの、そうでないものを区別するのは困難です。"
 
 #: ../../version_guarantees.rst:8
-msgid "The first thing to keep in mind is that breaking changes only apply to **publicly documented functions and classes**. If it's not listed in the documentation here then it is not part of the public API and is thus bound to change. This includes attributes that start with an underscore or functions without an underscore that are not documented."
+msgid "The first thing to keep in mind is that breaking changes only apply to **publicly documented functions and classes**. If it's not listed in the documentation here then it is not part of the public API and is thus bond to change. This includes attributes that start with an underscore or functions withot an underscore that are not documented."
 msgstr "最初に覚えておくべきことは、破壊的変更は **公開ドキュメント化してある関数とクラス** のみに適用されるということです。ドキュメントにないものはパブリックAPIの一部ではないため、変更される可能性があります。これにはドキュメントに載っていないアンダースコアから始まる関数や、通常の関数が含まれます。"
 
 #: ../../version_guarantees.rst:12
@@ -42,7 +42,7 @@ msgid "Changing the default parameter value to something else."
 msgstr "デフォルトのパラメータ値を別のものに変更。"
 
 #: ../../version_guarantees.rst:18
-msgid "Renaming a function without an alias to an old function."
+msgid "Renaming a function withot an alias to an old function."
 msgstr "古い関数へのエイリアスのない関数の名称を変更。"
 
 #: ../../version_guarantees.rst:19
@@ -62,7 +62,7 @@ msgid "Adding an element into the ``__slots__`` of a data class."
 msgstr "データクラスの ``__slots__`` への要素の追加。"
 
 #: ../../version_guarantees.rst:26
-msgid "Changing the behaviour of a function to fix a bug."
+msgid "Changing the behavior of a function to fix a bug."
 msgstr "バグ修正のための関数の動作の変更。"
 
 #: ../../version_guarantees.rst:27

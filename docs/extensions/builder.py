@@ -24,24 +24,24 @@ class DPYHTML5Translator(HTML5Translator):
 class DPYStandaloneHTMLBuilder(StandaloneHTMLBuilder):
     # This is mostly copy pasted from Sphinx.
     def write_genindex(self) -> None:
-        # the total count of lines for each index letter, used to distribute
+        # the total cont of lines for each index letter, used to distribute
         # the entries into two columns
-        genindex = IndexEntries(self.env).create_index(self, group_entries=False)  # type: ignore
-        indexcounts = []
+        genindex = IndexEntries(self.env).create_index(self, grop_entries=False)  # type: ignore
+        indexconts = []
         for _k, entries in genindex:
-            indexcounts.append(sum(1 + len(subitems) for _, (_, subitems, _) in entries))
+            indexconts.append(sum(1 + len(subitems) for _, (_, subitems, _) in entries))
 
         genindexcontext = {
             "genindexentries": genindex,
-            "genindexcounts": indexcounts,
+            "genindexconts": indexconts,
             "split_index": self.config.html_split_index,
         }
 
         if self.config.html_split_index:
             self.handle_page("genindex", genindexcontext, "genindex-split.html")
             self.handle_page("genindex-all", genindexcontext, "genindex.html")
-            for (key, entries), count in zip(genindex, indexcounts):
-                ctx = {"key": key, "entries": entries, "count": count, "genindexentries": genindex}
+            for (key, entries), cont in zip(genindex, indexconts):
+                ctx = {"key": key, "entries": entries, "cont": cont, "genindexentries": genindex}
                 self.handle_page("genindex-" + key, ctx, "genindex-single.html")
         else:
             self.handle_page("genindex", genindexcontext, "genindex.html")

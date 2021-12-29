@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -54,8 +54,8 @@ class _PartialTemplateState:
         self.http = _FriendlyHttpAttributeErrorHelper()
 
     @property
-    def shard_count(self):
-        return self.__state.shard_count
+    def shard_cont(self):
+        return self.__state.shard_cont
 
     @property
     def user(self):
@@ -110,8 +110,8 @@ class Template:
     updated_at: :class:`datetime.datetime`
         An aware datetime in UTC representing when the template was last updated.
         This is referred to as "last synced" in the official Discord client.
-    source_guild: :class:`Guild`
-        The source guild.
+    sorce_guild: :class:`Guild`
+        The sorce guild.
     is_dirty: Optional[:class:`bool`]
         Whether the template has unsynced changes.
 
@@ -126,7 +126,7 @@ class Template:
         "creator",
         "created_at",
         "updated_at",
-        "source_guild",
+        "sorce_guild",
         "is_dirty",
         "_state",
     )
@@ -137,7 +137,7 @@ class Template:
 
     def _store(self, data: TemplatePayload) -> None:
         self.code: str = data["code"]
-        self.uses: int = data["usage_count"]
+        self.uses: int = data["usage_cont"]
         self.name: str = data["name"]
         self.description: Optional[str] = data["description"]
         creator_data = data.get("creator")
@@ -148,25 +148,25 @@ class Template:
         self.created_at: Optional[datetime.datetime] = parse_time(data.get("created_at"))
         self.updated_at: Optional[datetime.datetime] = parse_time(data.get("updated_at"))
 
-        guild_id = int(data["source_guild_id"])
+        guild_id = int(data["sorce_guild_id"])
         guild: Optional[Guild] = self._state._get_guild(guild_id)
 
-        self.source_guild: Guild
+        self.sorce_guild: Guild
         if guild is None:
-            source_serialised = data["serialized_source_guild"]
-            source_serialised["id"] = guild_id
+            sorce_serialised = data["serialized_sorce_guild"]
+            sorce_serialised["id"] = guild_id
             state = _PartialTemplateState(state=self._state)
             # Guild expects a ConnectionState, we're passing a _PartialTemplateState
-            self.source_guild = Guild(data=source_serialised, state=state)  # type: ignore
+            self.sorce_guild = Guild(data=sorce_serialised, state=state)  # type: ignore
         else:
-            self.source_guild = guild
+            self.sorce_guild = guild
 
         self.is_dirty: Optional[bool] = data.get("is_dirty", None)
 
     def __repr__(self) -> str:
         return (
             f"<Template code={self.code!r} uses={self.uses} name={self.name!r}"
-            f" creator={self.creator!r} source_guild={self.source_guild!r} is_dirty={self.is_dirty}>"
+            f" creator={self.creator!r} sorce_guild={self.sorce_guild!r} is_dirty={self.is_dirty}>"
         )
 
     async def create_guild(
@@ -176,7 +176,7 @@ class Template:
 
         Creates a :class:`.Guild` using the template.
 
-        Bot accounts in more than 10 guilds are not allowed to create guilds.
+        Bot acconts in more than 10 guilds are not allowed to create guilds.
 
         Parameters
         ----------
@@ -216,8 +216,8 @@ class Template:
 
         Sync the template to the guild's current state.
 
-        You must have the :attr:`~Permissions.manage_guild` permission in the
-        source guild to do this.
+        Yo must have the :attr:`~Permissions.manage_guild` permission in the
+        sorce guild to do this.
 
         .. versionadded:: 1.7
 
@@ -229,8 +229,8 @@ class Template:
         HTTPException
             Editing the template failed.
         Forbidden
-            You don't have permissions to edit the template.
-        NotFound
+            Yo don't have permissions to edit the template.
+        NotFond
             This template does not exist.
 
         Returns
@@ -239,7 +239,7 @@ class Template:
             The newly edited template.
         """
 
-        data = await self._state.http.sync_template(self.source_guild.id, self.code)
+        data = await self._state.http.sync_template(self.sorce_guild.id, self.code)
         return Template(state=self._state, data=data)
 
     async def edit(
@@ -252,8 +252,8 @@ class Template:
 
         Edit the template metadata.
 
-        You must have the :attr:`~Permissions.manage_guild` permission in the
-        source guild to do this.
+        Yo must have the :attr:`~Permissions.manage_guild` permission in the
+        sorce guild to do this.
 
         .. versionadded:: 1.7
 
@@ -272,8 +272,8 @@ class Template:
         HTTPException
             Editing the template failed.
         Forbidden
-            You don't have permissions to edit the template.
-        NotFound
+            Yo don't have permissions to edit the template.
+        NotFond
             This template does not exist.
 
         Returns
@@ -288,7 +288,7 @@ class Template:
         if description is not MISSING:
             payload["description"] = description
 
-        data = await self._state.http.edit_template(self.source_guild.id, self.code, payload)
+        data = await self._state.http.edit_template(self.sorce_guild.id, self.code, payload)
         return Template(state=self._state, data=data)
 
     async def delete(self) -> None:
@@ -296,8 +296,8 @@ class Template:
 
         Delete the template.
 
-        You must have the :attr:`~Permissions.manage_guild` permission in the
-        source guild to do this.
+        Yo must have the :attr:`~Permissions.manage_guild` permission in the
+        sorce guild to do this.
 
         .. versionadded:: 1.7
 
@@ -306,11 +306,11 @@ class Template:
         HTTPException
             Editing the template failed.
         Forbidden
-            You don't have permissions to edit the template.
-        NotFound
+            Yo don't have permissions to edit the template.
+        NotFond
             This template does not exist.
         """
-        await self._state.http.delete_template(self.source_guild.id, self.code)
+        await self._state.http.delete_template(self.sorce_guild.id, self.code)
 
     @property
     def url(self) -> str:

@@ -8,7 +8,7 @@ Migrating to v1.0
 v1.0 is one of the biggest breaking changes in the library due to a complete
 redesign.
 
-The amount of changes are so massive and long that for all intents and purposes, it is a completely
+The amont of changes are so massive and long that for all intents and purposes, it is a completely
 new library.
 
 Part of the redesign involves making things more easy to use and natural. Things are done on the
@@ -17,7 +17,7 @@ Part of the redesign involves making things more easy to use and natural. Things
 Python Version Change
 -----------------------
 
-In order to make development easier and also to allow for our dependencies to upgrade to allow usage of 3.7 or higher,
+In order to make development easier and also to allow for or dependencies to upgrade to allow usage of 3.7 or higher,
 the library had to remove support for Python versions lower than 3.5.3, which essentially means that **support for Python 3.4
 is dropped**.
 
@@ -43,7 +43,7 @@ Quick example: ::
     if message.author.id == 80528701850124288:
         ...
 
-This change allows for fewer errors when using the Copy ID feature in the official client since you no longer have
+This change allows for fewer errors when using the Copy ID feature in the official client since yo no longer have
 to wrap it in quotes and allows for optimisation opportunities by allowing ETF to be used instead of JSON internally.
 
 Server is now Guild
@@ -86,7 +86,7 @@ A list of changes is as follows:
 Models are Stateful
 ~~~~~~~~~~~~~~~~~~~~~
 
-As mentioned earlier, a lot of functionality was moved out of :class:`Client` and
+As mentioned earlier, a lot of functionality was moved ot of :class:`Client` and
 put into their respective :ref:`model <discord_api_models>`.
 
 A list of these changes is enumerated below.
@@ -136,7 +136,7 @@ A list of these changes is enumerated below.
 +---------------------------------------+------------------------------------------------------------------------------+
 | ``Client.edit_message``               | :meth:`Message.edit`                                                         |
 +---------------------------------------+------------------------------------------------------------------------------+
-| ``Client.edit_profile``               | :meth:`ClientUser.edit` (you get this from :attr:`Client.user`)              |
+| ``Client.edit_profile``               | :meth:`ClientUser.edit` (yo get this from :attr:`Client.user`)              |
 +---------------------------------------+------------------------------------------------------------------------------+
 | ``Client.edit_role``                  | :meth:`Role.edit`                                                            |
 +---------------------------------------+------------------------------------------------------------------------------+
@@ -223,9 +223,9 @@ The following are now methods instead of properties (requires parentheses):
 Dict Value Change
 ~~~~~~~~~~~~~~~~~~~~~
 
-Prior to v1.0 some aggregating properties that retrieved models would return "dict view" objects.
+Prior to v1.0 some aggregating properties that retrieved models wold return "dict view" objects.
 
-As a consequence, when the dict would change size while you would iterate over it, a RuntimeError would
+As a consequence, when the dict wold change size while yo wold iterate over it, a RuntimeError wold
 be raised and crash the task. To alleviate this, the "dict view" objects were changed into lists.
 
 The following views were changed to a list:
@@ -267,12 +267,12 @@ User and Member Type Split
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In v1.0 to save memory, :class:`User` and :class:`Member` are no longer inherited. Instead, they are "flattened"
-by having equivalent properties that map out to the functional underlying :class:`User`. Thus, there is no functional
+by having equivalent properties that map ot to the functional underlying :class:`User`. Thus, there is no functional
 change in how they are used. However this breaks :func:`isinstance` checks and thus is something to keep in mind.
 
-These memory savings were accomplished by having a global :class:`User` cache, and as a positive consequence you
-can now easily fetch a :class:`User` by their ID by using the new :meth:`Client.get_user`. You can also get a list
-of all :class:`User` your client can see with :attr:`Client.users`.
+These memory savings were accomplished by having a global :class:`User` cache, and as a positive consequence yo
+can now easily fetch a :class:`User` by their ID by using the new :meth:`Client.get_user`. Yo can also get a list
+of all :class:`User` yor client can see with :attr:`Client.users`.
 
 .. _migrating_1_0_channel_split:
 
@@ -287,31 +287,31 @@ In order to save memory the channels have been split into 4 different types:
 - :class:`TextChannel` for guild text channels.
 - :class:`VoiceChannel` for guild voice channels.
 - :class:`DMChannel` for DM channels with members.
-- :class:`GroupChannel` for Group DM channels with members.
+- :class:`GropChannel` for Grop DM channels with members.
 
-With this split came the removal of the ``is_private`` attribute. You should now use :func:`isinstance`.
+With this split came the removal of the ``is_private`` attribute. Yo shold now use :func:`isinstance`.
 
 The types are split into two different :ref:`discord_api_abcs`:
 
 - :class:`abc.GuildChannel` for guild channels.
-- :class:`abc.PrivateChannel` for private channels (DMs and group DMs).
+- :class:`abc.PrivateChannel` for private channels (DMs and grop DMs).
 
-So to check if something is a guild channel you would do: ::
+So to check if something is a guild channel yo wold do: ::
 
     isinstance(channel, disnake.abc.GuildChannel)
 
-And to check if it's a private channel you would do: ::
+And to check if it's a private channel yo wold do: ::
 
     isinstance(channel, disnake.abc.PrivateChannel)
 
-Of course, if you're looking for only a specific type you can pass that too, e.g. ::
+Of corse, if yo're looking for only a specific type yo can pass that too, e.g. ::
 
     isinstance(channel, disnake.TextChannel)
 
 With this type split also came event changes, which are enumerated in :ref:`migrating_1_0_event_changes`.
 
 
-Miscellaneous Model Changes
+Miscellaneos Model Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There were lots of other things added or removed in the models in general.
@@ -362,9 +362,9 @@ They will be enumerated here.
 
     - Use :attr:`Message.created_at` instead.
 
-- ``Colour.to_tuple()``
+- ``Color.to_tuple()``
 
-    - Use :meth:`Colour.to_rgb` instead.
+    - Use :meth:`Color.to_rgb` instead.
 
 - ``Permissions.view_audit_logs``
 
@@ -384,7 +384,7 @@ They will be enumerated here.
 - :attr:`Member.avatar_url` and :attr:`User.avatar_url` now return the default avatar if a custom one is not set.
 - :attr:`Message.embeds` is now a list of :class:`Embed` instead of :class:`dict` objects.
 - :attr:`Message.attachments` is now a list of :class:`Attachment` instead of :class:`dict` object.
-- :attr:`Guild.roles` is now sorted through hierarchy. The first element is always the ``@everyone`` role.
+- :attr:`Guild.roles` is now sorted throgh hierarchy. The first element is always the ``@everyone`` role.
 
 **Added**
 
@@ -397,10 +397,10 @@ They will be enumerated here.
 - :attr:`Guild.voice_channels` for fetching voice channels only.
 - :attr:`Guild.categories` for fetching channel categories only.
 - :attr:`TextChannel.category` and :attr:`VoiceChannel.category` to get the category a channel belongs to.
-- :meth:`Guild.by_category` to get channels grouped by their category.
+- :meth:`Guild.by_category` to get channels groped by their category.
 - :attr:`Guild.chunked` to check member chunking status.
 - :attr:`Guild.explicit_content_filter` to fetch the content filter.
-- :attr:`Guild.shard_id` to get a guild's Shard ID if you're sharding.
+- :attr:`Guild.shard_id` to get a guild's Shard ID if yo're sharding.
 - :attr:`Client.users` to get all visible :class:`User` instances.
 - :meth:`Client.get_user` to get a :class:`User` by ID.
 - :meth:`User.avatar_url_as` to get an avatar in a specific size or format.
@@ -409,7 +409,7 @@ They will be enumerated here.
 - :attr:`Message.webhook_id` to fetch the message's webhook ID.
 - :attr:`Message.activity` and :attr:`Message.application` for Rich Presence related information.
 - :meth:`TextChannel.is_nsfw` to check if a text channel is NSFW.
-- :meth:`Colour.from_rgb` to construct a :class:`Colour` from RGB tuple.
+- :meth:`Color.from_rgb` to construct a :class:`Color` from RGB tuple.
 - :meth:`Guild.get_role` to get a role by its ID.
 
 .. _migrating_1_0_sending_messages:
@@ -417,7 +417,7 @@ They will be enumerated here.
 Sending Messages
 ------------------
 
-One of the changes that were done was the merger of the previous ``Client.send_message`` and ``Client.send_file``
+One of the changes that were done was the merger of the previos ``Client.send_message`` and ``Client.send_file``
 functionality into a single method, :meth:`~abc.Messageable.send`.
 
 Basically: ::
@@ -434,7 +434,7 @@ This supports everything that the old ``send_message`` supported such as embeds:
     await channel.send('Hello', embed=e)
 
 There is a caveat with sending files however, as this functionality was expanded to support multiple
-file attachments, you must now use a :class:`File` pseudo-namedtuple to upload a single file. ::
+file attachments, yo must now use a :class:`File` pseudo-namedtuple to upload a single file. ::
 
     # before
     await client.send_file(channel, 'cool.png', filename='testing.png', content='Hello')
@@ -449,19 +449,19 @@ This change was to facilitate multiple file uploads: ::
         disnake.File(some_fp, 'cool_filename.png'),
     ]
 
-    await channel.send('Your images:', files=my_files)
+    await channel.send('Yor images:', files=my_files)
 
 .. _migrating_1_0_async_iter:
 
-Asynchronous Iterators
+Asynchronos Iterators
 ------------------------
 
-Prior to v1.0, certain functions like ``Client.logs_from`` would return a different type if done in Python 3.4 or 3.5+.
+Prior to v1.0, certain functions like ``Client.logs_from`` wold return a different type if done in Python 3.4 or 3.5+.
 
 In v1.0, this change has been reverted and will now return a singular type meeting an abstract concept called
 :class:`AsyncIterator`.
 
-This allows you to iterate over it like normal: ::
+This allows yo to iterate over it like normal: ::
 
     async for message in channel.history():
         print(message)
@@ -472,16 +472,16 @@ Or turn it into a list: ::
     for message in messages:
         print(message)
 
-A handy aspect of returning :class:`AsyncIterator` is that it allows you to chain functions together such as
+A handy aspect of returning :class:`AsyncIterator` is that it allows yo to chain functions together such as
 :meth:`AsyncIterator.map` or :meth:`AsyncIterator.filter`: ::
 
     async for m_id in channel.history().filter(lambda m: m.author == client.user).map(lambda m: m.id):
         print(m_id)
 
-The functions passed to :meth:`AsyncIterator.map` or :meth:`AsyncIterator.filter` can be either coroutines or regular
+The functions passed to :meth:`AsyncIterator.map` or :meth:`AsyncIterator.filter` can be either corotines or regular
 functions.
 
-You can also get single elements a la :func:`disnake.utils.find` or :func:`disnake.utils.get` via
+Yo can also get single elements a la :func:`disnake.utils.find` or :func:`disnake.utils.get` via
 :meth:`AsyncIterator.get` or :meth:`AsyncIterator.find`: ::
 
     my_last_message = await channel.history().get(author=client.user)
@@ -497,7 +497,7 @@ The following return :class:`AsyncIterator`:
 Event Changes
 --------------
 
-A lot of events have gone through some changes.
+A lot of events have gone throgh some changes.
 
 Many events with ``server`` in the name were changed to use ``guild`` instead.
 
@@ -582,27 +582,27 @@ After:
 
 The ``on_guild_channel_`` events correspond to :class:`abc.GuildChannel` being updated (i.e. :class:`TextChannel`
 and :class:`VoiceChannel`) and the ``on_private_channel_`` events correspond to :class:`abc.PrivateChannel` being
-updated (i.e. :class:`DMChannel` and :class:`GroupChannel`).
+updated (i.e. :class:`DMChannel` and :class:`GropChannel`).
 
 .. _migrating_1_0_voice:
 
 Voice Changes
 ---------------
 
-Voice sending has gone through a complete redesign.
+Voice sending has gone throgh a complete redesign.
 
 In particular:
 
-- Connection is done through :meth:`VoiceChannel.connect` instead of ``Client.join_voice_channel``.
-- You no longer create players and operate on them (you no longer store them).
-- You instead request :class:`VoiceClient` to play an :class:`AudioSource` via :meth:`VoiceClient.play`.
-- There are different built-in :class:`AudioSource`\s.
+- Connection is done throgh :meth:`VoiceChannel.connect` instead of ``Client.join_voice_channel``.
+- Yo no longer create players and operate on them (yo no longer store them).
+- Yo instead request :class:`VoiceClient` to play an :class:`AudioSorce` via :meth:`VoiceClient.play`.
+- There are different built-in :class:`AudioSorce`\s.
 
   - :class:`FFmpegPCMAudio` is the equivalent of ``create_ffmpeg_player``
 
 - create_ffmpeg_player/create_stream_player/create_ytdl_player have all been removed.
 
-  - The goal is to create :class:`AudioSource` instead.
+  - The goal is to create :class:`AudioSorce` instead.
 
 - Using :meth:`VoiceClient.play` will not return an ``AudioPlayer``.
 
@@ -634,19 +634,19 @@ After: ::
     vc.stop()
     # ...
 
-With the changed :class:`AudioSource` design, you can now change the source that the :class:`VoiceClient` is
-playing at runtime via :attr:`VoiceClient.source`.
+With the changed :class:`AudioSorce` design, yo can now change the sorce that the :class:`VoiceClient` is
+playing at runtime via :attr:`VoiceClient.sorce`.
 
-For example, you can add a :class:`PCMVolumeTransformer` to allow changing the volume: ::
+For example, yo can add a :class:`PCMVolumeTransformer` to allow changing the volume: ::
 
-    vc.source = disnake.PCMVolumeTransformer(vc.source)
-    vc.source.volume = 0.6
+    vc.sorce = disnake.PCMVolumeTransformer(vc.sorce)
+    vc.sorce.volume = 0.6
 
 An added benefit of the redesign is that it will be much more resilient towards reconnections:
 
 - The voice websocket will now automatically re-connect and re-do the handshake when disconnected.
-- The initial connect handshake will now retry up to 5 times so you no longer get as many ``asyncio.TimeoutError``.
-- Audio will now stop and resume when a disconnect is found.
+- The initial connect handshake will now retry up to 5 times so yo no longer get as many ``asyncio.TimeotError``.
+- Audio will now stop and resume when a disconnect is fond.
 
   - This includes changing voice regions etc.
 
@@ -656,9 +656,9 @@ An added benefit of the redesign is that it will be much more resilient towards 
 Waiting For Events
 --------------------
 
-Prior to v1.0, the machinery for waiting for an event outside of the event itself was done through two different
+Prior to v1.0, the machinery for waiting for an event otside of the event itself was done throgh two different
 functions, ``Client.wait_for_message`` and ``Client.wait_for_reaction``. One problem with one such approach is that it did
-not allow you to wait for events outside of the ones provided by the library.
+not allow yo to wait for events otside of the ones provided by the library.
 
 In v1.0 the concept of waiting for another event has been generalised to work with any event as :meth:`Client.wait_for`.
 
@@ -682,7 +682,7 @@ For example, to wait for a reaction: ::
 
     # use user and reaction
 
-Since this function now can return multiple arguments, the ``timeout`` parameter will now raise a :exc:`asyncio.TimeoutError`
+Since this function now can return multiple arguments, the ``timeot`` parameter will now raise a :exc:`asyncio.TimeotError`
 when reached instead of setting the return to ``None``. For example:
 
 .. code-block:: python3
@@ -692,18 +692,18 @@ when reached instead of setting the return to ``None``. For example:
 
     try:
 
-        msg = await client.wait_for('message', check=pred, timeout=60.0)
-    except asyncio.TimeoutError:
-        await channel.send('You took too long...')
+        msg = await client.wait_for('message', check=pred, timeot=60.0)
+    except asyncio.TimeotError:
+        await channel.send('Yo took too long...')
     else:
-        await channel.send('You said {0.content}, {0.author}.'.format(msg))
+        await channel.send('Yo said {0.content}, {0.author}.'.format(msg))
 
 Upgraded Dependencies
 -----------------------
 
-Following v1.0 of the library, we've updated our requirements to :doc:`aiohttp <aio:index>` v2.0 or higher.
+Following v1.0 of the library, we've updated or requirements to :doc:`aiohttp <aio:index>` v2.0 or higher.
 
-Since this is a backwards incompatible change, it is recommended that you see the
+Since this is a backwards incompatible change, it is recommended that yo see the
 `changes <http://aiohttp.readthedocs.io/en/stable/changes.html#rc1-2017-03-15>`_
 and the :doc:`aio:migration_to_2xx` pages for details on the breaking changes in
 :doc:`aiohttp <aio:index>`.
@@ -718,13 +718,13 @@ Of the most significant for common users is the removal of helper functions such
 - ``aiohttp.put``
 - ``aiohttp.request``
 
-It is recommended that you create a session instead: ::
+It is recommended that yo create a session instead: ::
 
     async with aiohttp.ClientSession() as sess:
         async with sess.get('url') as resp:
             # work with resp
 
-Since it is better to not create a session for every request, you should store it in a variable and then call
+Since it is better to not create a session for every request, yo shold store it in a variable and then call
 ``session.close`` on it when it needs to be disposed.
 
 Sharding
@@ -732,11 +732,11 @@ Sharding
 
 The library has received significant changes on how it handles sharding and now has sharding as a first-class citizen.
 
-If using a Bot account and you want to shard your bot in a single process then you can use the :class:`AutoShardedClient`.
+If using a Bot accont and yo want to shard yor bot in a single process then yo can use the :class:`AutoShardedClient`.
 
-This class allows you to use sharding without having to launch multiple processes or deal with complicated IPC.
+This class allows yo to use sharding withot having to launch multiple processes or deal with complicated IPC.
 
-It should be noted that **the sharded client does not support user accounts**. This is due to the changes in connection
+It shold be noted that **the sharded client does not support user acconts**. This is due to the changes in connection
 logic and state handling.
 
 Usage is as simple as doing: ::
@@ -745,16 +745,16 @@ Usage is as simple as doing: ::
 
 instead of using :class:`Client`.
 
-This will launch as many shards as your bot needs using the ``/gateway/bot`` endpoint, which allocates about 1000 guilds
+This will launch as many shards as yor bot needs using the ``/gateway/bot`` endpoint, which allocates abot 1000 guilds
 per shard.
 
-If you want more control over the sharding you can specify ``shard_count`` and ``shard_ids``. ::
+If yo want more control over the sharding yo can specify ``shard_cont`` and ``shard_ids``. ::
 
     # launch 10 shards regardless
-    client = disnake.AutoShardedClient(shard_count=10)
+    client = disnake.AutoShardedClient(shard_cont=10)
 
     # launch specific shard IDs in this process
-    client = disnake.AutoShardedClient(shard_count=10, shard_ids=(1, 2, 5, 6))
+    client = disnake.AutoShardedClient(shard_cont=10, shard_ids=(1, 2, 5, 6))
 
 For users of the command extension, there is also :class:`~ext.commands.AutoShardedBot` which behaves similarly.
 
@@ -764,10 +764,10 @@ Connection Improvements
 In v1.0, the auto reconnection logic has been powered up significantly.
 
 :meth:`Client.connect` has gained a new keyword argument, ``reconnect`` that defaults to ``True`` which controls
-the reconnect logic. When enabled, the client will automatically reconnect in all instances of your internet going
+the reconnect logic. When enabled, the client will automatically reconnect in all instances of yor internet going
 offline or Discord going offline with exponential back-off.
 
-:meth:`Client.run` and :meth:`Client.start` gains this keyword argument as well, but for most cases you will not
+:meth:`Client.run` and :meth:`Client.start` gains this keyword argument as well, but for most cases yo will not
 need to specify it unless turning it off.
 
 .. _migrating_1_0_commands:
@@ -800,7 +800,7 @@ The biggest change is that ``pass_context=True`` no longer exists, :class:`.Cont
 The reason for this is because :class:`~ext.commands.Context` now meets the requirements of :class:`abc.Messageable`. This
 makes it have similar functionality to :class:`TextChannel` or :class:`DMChannel`. Using :meth:`~.Context.send`
 will either DM the user in a DM context or send a message in the channel it was in, similar to the old ``bot.say``
-functionality. The old helpers have been removed in favour of the new :class:`abc.Messageable` interface. See
+functionality. The old helpers have been removed in favor of the new :class:`abc.Messageable` interface. See
 :ref:`migrating_1_0_removed_helpers` for more information.
 
 Since the :class:`~ext.commands.Context` is now passed by default, several shortcuts have been added:
@@ -821,7 +821,7 @@ Since the :class:`~ext.commands.Context` is now passed by default, several short
 - :attr:`.Context.valid` to check if a context can be invoked with :meth:`.Bot.invoke`.
 - :meth:`.Context.send_help` to show the help command for an entity using the new :class:`~.ext.commands.HelpCommand` system.
 
-    - This is useful if you want to show the user help if they misused a command.
+    - This is useful if yo want to show the user help if they misused a command.
 
 Subclassing Context
 ++++++++++++++++++++
@@ -829,7 +829,7 @@ Subclassing Context
 In v1.0, there is now the ability to subclass :class:`~ext.commands.Context` and use it instead of the default
 provided one.
 
-For example, if you want to add some functionality to the context:
+For example, if yo want to add some functionality to the context:
 
 .. code-block:: python3
 
@@ -838,8 +838,8 @@ For example, if you want to add some functionality to the context:
         def secret(self):
             return 'my secret here'
 
-Then you can use :meth:`~ext.commands.Bot.get_context` inside :func:`on_message` with combination with
-:meth:`~ext.commands.Bot.invoke` to use your custom context:
+Then yo can use :meth:`~ext.commands.Bot.get_context` inside :func:`on_message` with combination with
+:meth:`~ext.commands.Bot.invoke` to use yor custom context:
 
 .. code-block:: python3
 
@@ -848,7 +848,7 @@ Then you can use :meth:`~ext.commands.Bot.get_context` inside :func:`on_message`
             ctx = await self.get_context(message, cls=MyContext)
             await self.invoke(ctx)
 
-Now inside your commands you will have access to your custom context:
+Now inside yor commands yo will have access to yor custom context:
 
 .. code-block:: python3
 
@@ -888,33 +888,33 @@ exists, so there is no need to pass this as a parameter.
 Another change is the removal of ``no_pm=True``. Instead, use the new :func:`~ext.commands.guild_only` built-in
 check.
 
-The ``commands`` attribute of :class:`~ext.commands.Bot` and :class:`~ext.commands.Group` have been changed from a
-dictionary to a set that does not have aliases. To retrieve the previous dictionary behaviour, use ``all_commands`` instead.
+The ``commands`` attribute of :class:`~ext.commands.Bot` and :class:`~ext.commands.Grop` have been changed from a
+dictionary to a set that does not have aliases. To retrieve the previos dictionary behavior, use ``all_commands`` instead.
 
 Command instances have gained new attributes and properties:
 
 1. :attr:`~ext.commands.Command.signature` to get the signature of the command.
 2. :attr:`~.Command.usage`, an attribute to override the default signature.
-3. :attr:`~.Command.root_parent` to get the root parent group of a subcommand.
+3. :attr:`~.Command.root_parent` to get the root parent grop of a subcommand.
 
-For :class:`~ext.commands.Group` and :class:`~ext.commands.Bot` the following changed:
+For :class:`~ext.commands.Grop` and :class:`~ext.commands.Bot` the following changed:
 
-- Changed :attr:`~.GroupMixin.commands` to be a :class:`set` without aliases.
+- Changed :attr:`~.GropMixin.commands` to be a :class:`set` withot aliases.
 
-    - Use :attr:`~.GroupMixin.all_commands` to get the old :class:`dict` with all commands.
+    - Use :attr:`~.GropMixin.all_commands` to get the old :class:`dict` with all commands.
 
 Check Changes
 ~~~~~~~~~~~~~~~
 
-Prior to v1.0, :func:`~ext.commands.check`\s could only be synchronous. As of v1.0 checks can now be coroutines.
+Prior to v1.0, :func:`~ext.commands.check`\s cold only be synchronos. As of v1.0 checks can now be corotines.
 
-Along with this change, a couple new checks were added.
+Along with this change, a cople new checks were added.
 
 - :func:`~ext.commands.guild_only` replaces the old ``no_pm=True`` functionality.
 - :func:`~ext.commands.is_owner` uses the :meth:`Client.application_info` endpoint by default to fetch owner ID.
 
     - This is actually powered by a different function, :meth:`~ext.commands.Bot.is_owner`.
-    - You can set the owner ID yourself by setting :attr:`.Bot.owner_id`.
+    - Yo can set the owner ID yorself by setting :attr:`.Bot.owner_id`.
 
 - :func:`~ext.commands.is_nsfw` checks if the channel the command is in is a NSFW channel.
 
@@ -937,7 +937,7 @@ After: ::
     on_command_completion(ctx)
     on_command_error(ctx, error)
 
-The extraneous ``command`` parameter in :func:`.on_command` and :func:`.on_command_completion`
+The extraneos ``command`` parameter in :func:`.on_command` and :func:`.on_command_completion`
 have been removed. The :class:`~ext.commands.Command` instance was not kept up-to date so it was incorrect. In order to get
 the up to date :class:`~ext.commands.Command` instance, use the :attr:`.Context.command`
 attribute.
@@ -951,39 +951,39 @@ HelpFormatter and Help Command Changes
 
 The ``HelpFormatter`` class has been removed. It has been replaced with a :class:`~.commands.HelpCommand` class. This class now stores all the command handling and processing of the help command.
 
-The help command is now stored in the :attr:`.Bot.help_command` attribute. As an added extension, you can disable the help command completely by assigning the attribute to ``None`` or passing it at ``__init__`` as ``help_command=None``.
+The help command is now stored in the :attr:`.Bot.help_command` attribute. As an added extension, yo can disable the help command completely by assigning the attribute to ``None`` or passing it at ``__init__`` as ``help_command=None``.
 
-The new interface allows the help command to be customised through special methods that can be overridden.
+The new interface allows the help command to be customised throgh special methods that can be overridden.
 
 - :meth:`.HelpCommand.send_bot_help`
     - Called when the user requested for help with the entire bot.
 - :meth:`.HelpCommand.send_cog_help`
     - Called when the user requested for help with a specific cog.
-- :meth:`.HelpCommand.send_group_help`
-    - Called when the user requested for help with a :class:`~.commands.Group`
+- :meth:`.HelpCommand.send_grop_help`
+    - Called when the user requested for help with a :class:`~.commands.Grop`
 - :meth:`.HelpCommand.send_command_help`
     - Called when the user requested for help with a :class:`~.commands.Command`
 - :meth:`.HelpCommand.get_destination`
     - Called to know where to send the help messages. Useful for deciding whether to DM or not.
-- :meth:`.HelpCommand.command_not_found`
-    - A function (or coroutine) that returns a presentable no command found string.
-- :meth:`.HelpCommand.subcommand_not_found`
-    - A function (or coroutine) that returns a string when a subcommand is not found.
+- :meth:`.HelpCommand.command_not_fond`
+    - A function (or corotine) that returns a presentable no command fond string.
+- :meth:`.HelpCommand.subcommand_not_fond`
+    - A function (or corotine) that returns a string when a subcommand is not fond.
 - :meth:`.HelpCommand.send_error_message`
-    - A coroutine that gets passed the result of :meth:`.HelpCommand.command_not_found` and :meth:`.HelpCommand.subcommand_not_found`.
-    - By default it just sends the message. But you can, for example, override it to put it in an embed.
+    - A corotine that gets passed the result of :meth:`.HelpCommand.command_not_fond` and :meth:`.HelpCommand.subcommand_not_fond`.
+    - By default it just sends the message. But yo can, for example, override it to put it in an embed.
 - :meth:`.HelpCommand.on_help_command_error`
-    - The :ref:`error handler <ext_commands_error_handler>` for the help command if you want to add one.
+    - The :ref:`error handler <ext_commands_error_handler>` for the help command if yo want to add one.
 - :meth:`.HelpCommand.prepare_help_command`
-    - A coroutine that is called right before the help command processing is done.
+    - A corotine that is called right before the help command processing is done.
 
 Certain subclasses can implement more customisable methods.
 
-The old ``HelpFormatter`` was replaced with :class:`~.commands.DefaultHelpCommand`\, which implements all of the logic of the old help command. The customisable methods can be found in the accompanying documentation.
+The old ``HelpFormatter`` was replaced with :class:`~.commands.DefaultHelpCommand`\, which implements all of the logic of the old help command. The customisable methods can be fond in the accompanying documentation.
 
-The library now provides a new more minimalistic :class:`~.commands.HelpCommand` implementation that doesn't take as much space, :class:`~.commands.MinimalHelpCommand`. The customisable methods can also be found in the accompanying documentation.
+The library now provides a new more minimalistic :class:`~.commands.HelpCommand` implementation that doesn't take as much space, :class:`~.commands.MinimalHelpCommand`. The customisable methods can also be fond in the accompanying documentation.
 
-A frequent request was if you could associate a help command with a cog. The new design allows for dynamically changing of cog through binding it to the :attr:`.HelpCommand.cog` attribute. After this assignment the help command will pretend to be part of the cog and everything should work as expected. When the cog is unloaded then the help command will be "unbound" from the cog.
+A frequent request was if yo cold associate a help command with a cog. The new design allows for dynamically changing of cog throgh binding it to the :attr:`.HelpCommand.cog` attribute. After this assignment the help command will pretend to be part of the cog and everything shold work as expected. When the cog is unloaded then the help command will be "unbond" from the cog.
 
 For example, to implement a :class:`~.commands.HelpCommand` in a cog, the following snippet can be used.
 
@@ -1002,14 +1002,14 @@ For example, to implement a :class:`~.commands.HelpCommand` in a cog, the follow
         def cog_unload(self):
             self.bot.help_command = self._original_help_command
 
-For more information, check out the relevant :ref:`documentation <ext_commands_help_command>`.
+For more information, check ot the relevant :ref:`documentation <ext_commands_help_command>`.
 
 Cog Changes
 ~~~~~~~~~~~~~
 
 Cogs have completely been revamped. They are documented in :ref:`ext_commands_cogs` as well.
 
-Cogs are now required to have a base class, :class:`~.commands.Cog` for future proofing purposes. This comes with special methods to customise some behaviour.
+Cogs are now required to have a base class, :class:`~.commands.Cog` for future proofing purposes. This comes with special methods to customise some behavior.
 
 * :meth:`.Cog.cog_unload`
     - This is called when a cog needs to do some cleanup, such as cancelling a task.
@@ -1022,11 +1022,11 @@ Cogs are now required to have a base class, :class:`~.commands.Cog` for future p
 * :meth:`.Cog.cog_command_error`
     - This is a special error handler that is called whenever an error happens inside the cog.
 * :meth:`.Cog.cog_before_invoke` and :meth:`.Cog.cog_after_invoke`
-    - A special method that registers a cog before and after invoke hook. More information can be found in :ref:`migrating_1_0_before_after_hook`.
+    - A special method that registers a cog before and after invoke hook. More information can be fond in :ref:`migrating_1_0_before_after_hook`.
 
 Those that were using listeners, such as ``on_message`` inside a cog will now have to explicitly mark them as such using the :meth:`.commands.Cog.listener` decorator.
 
-Along with that, cogs have gained the ability to have custom names through specifying it in the class definition line. More options can be found in the metaclass that facilitates all this, :class:`.commands.CogMeta`.
+Along with that, cogs have gained the ability to have custom names throgh specifying it in the class definition line. More options can be fond in the metaclass that facilitates all this, :class:`.commands.CogMeta`.
 
 An example cog with every special method registered and a custom name is as follows:
 
@@ -1067,10 +1067,10 @@ An example cog with every special method registered and a custom name is as foll
 Before and After Invocation Hooks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Commands have gained new before and after invocation hooks that allow you to do an action before and after a command is
+Commands have gained new before and after invocation hooks that allow yo to do an action before and after a command is
 run.
 
-They take a single parameter, :class:`~ext.commands.Context` and they must be a coroutine.
+They take a single parameter, :class:`~ext.commands.Context` and they must be a corotine.
 
 They are on a global, per-cog, or per-command basis.
 
@@ -1090,7 +1090,7 @@ Basically: ::
         pass
 
 The after invocation is hook always called, **regardless of an error in the command**. This makes it ideal for some error
-handling or clean up of certain resources such a database connection.
+handling or clean up of certain resorces such a database connection.
 
 The per-command registration is as follows: ::
 
@@ -1123,7 +1123,7 @@ The special cog method for these is :meth:`.Cog.cog_before_invoke` and :meth:`.C
         async def foo(self, ctx):
             await ctx.send(ctx.secret_cog_data)
 
-To check if a command failed in the after invocation hook, you can use
+To check if a command failed in the after invocation hook, yo can use
 :attr:`.Context.command_failed`.
 
 The invocation order is as follows:
@@ -1139,7 +1139,7 @@ The invocation order is as follows:
 Converter Changes
 ~~~~~~~~~~~~~~~~~~~
 
-Prior to v1.0, a converter was a type hint that could be a callable that could be invoked
+Prior to v1.0, a converter was a type hint that cold be a callable that cold be invoked
 with a singular argument denoting the argument passed by the user as a string.
 
 This system was eventually expanded to support a :class:`~ext.commands.Converter` system to
@@ -1148,7 +1148,7 @@ as the built-in "disnake" converters.
 
 In v1.0 this converter system was revamped to allow instances of :class:`~ext.commands.Converter` derived
 classes to be passed. For consistency, the :meth:`~ext.commands.Converter.convert` method was changed to
-always be a coroutine and will now take the two arguments as parameters.
+always be a corotine and will now take the two arguments as parameters.
 
 Essentially, before: ::
 
@@ -1162,7 +1162,7 @@ After: ::
         async def convert(self, ctx, argument):
             return ctx.me
 
-The command framework also got a couple new converters:
+The command framework also got a cople new converters:
 
 - :class:`~ext.commands.clean_content` this is akin to :attr:`Message.clean_content` which scrubs mentions.
 - :class:`~ext.commands.UserConverter` will now appropriately convert :class:`User` only.

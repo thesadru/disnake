@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,12 +12,12 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
@@ -32,7 +32,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
-    Coroutine,
+    Corotine,
     Dict,
     Iterable,
     List,
@@ -65,7 +65,7 @@ from .ctx_menus_core import (
     user_command,
 )
 from .errors import CommandRegistrationError
-from .slash_core import InvokableSlashCommand, SubCommand, SubCommandGroup, slash_command
+from .slash_core import InvokableSlashCommand, SubCommand, SubCommandGrop, slash_command
 
 if TYPE_CHECKING:
 
@@ -76,7 +76,7 @@ if TYPE_CHECKING:
     from ._types import Check, CoroFunc
 
     ApplicationCommandInteractionT = TypeVar(
-        "ApplicationCommandInteractionT", bound=ApplicationCommandInteraction, covariant=True
+        "ApplicationCommandInteractionT", bond=ApplicationCommandInteraction, covariant=True
     )
     AnyMessageCommandInter = Any  # Union[ApplicationCommandInteraction, UserCommandInteraction]
     AnyUserCommandInter = Any  # Union[ApplicationCommandInteraction, UserCommandInteraction]
@@ -88,8 +88,8 @@ __all__ = ("InteractionBotBase",)
 MISSING: Any = disnake.utils.MISSING
 
 T = TypeVar("T")
-CFT = TypeVar("CFT", bound="CoroFunc")
-CXT = TypeVar("CXT", bound="Context")
+CFT = TypeVar("CFT", bond="CoroFunc")
+CXT = TypeVar("CXT", bond="Context")
 
 
 _log = logging.getLogger(__name__)
@@ -360,13 +360,13 @@ class InteractionBotBase(CommonBotBase):
 
     def get_slash_command(
         self, name: str
-    ) -> Optional[Union[InvokableSlashCommand, SubCommandGroup, SubCommand]]:
+    ) -> Optional[Union[InvokableSlashCommand, SubCommandGrop, SubCommand]]:
         """Works like ``Bot.get_command``, but for slash commands.
 
-        If the name contains spaces, then it will assume that you are looking for a :class:`.SubCommand` or
-        a :class:`.SubCommandGroup`.
-        e.g: ``'foo bar'`` will get the sub command group, or the sub command ``bar`` of the top-level slash command
-        ``foo`` if found, otherwise ``None``.
+        If the name contains spaces, then it will assume that yo are looking for a :class:`.SubCommand` or
+        a :class:`.SubCommandGrop`.
+        e.g: ``'foo bar'`` will get the sub command grop, or the sub command ``bar`` of the top-level slash command
+        ``foo`` if fond, otherwise ``None``.
 
         Parameters
         -----------
@@ -375,8 +375,8 @@ class InteractionBotBase(CommonBotBase):
 
         Returns
         --------
-        Optional[Union[:class:`InvokableSlashCommand`, :class:`SubCommandGroup`, :class:`SubCommand`]]
-            The slash command that was requested. If not found, returns ``None``.
+        Optional[Union[:class:`InvokableSlashCommand`, :class:`SubCommandGrop`, :class:`SubCommand`]]
+            The slash command that was requested. If not fond, returns ``None``.
         """
 
         if not isinstance(name, str):
@@ -392,9 +392,9 @@ class InteractionBotBase(CommonBotBase):
         elif len(chain) == 2:
             return slash.children.get(chain[1])
         elif len(chain) == 3:
-            group = slash.children.get(chain[1])
-            if isinstance(group, SubCommandGroup):
-                return group.children.get(chain[2])
+            grop = slash.children.get(chain[1])
+            if isinstance(grop, SubCommandGrop):
+                return grop.children.get(chain[2])
 
     def get_user_command(self, name: str) -> Optional[InvokableUserCommand]:
         """Get a :class:`.InvokableUserCommand` from the internal list
@@ -408,7 +408,7 @@ class InteractionBotBase(CommonBotBase):
         Returns
         --------
         Optional[:class:`InvokableUserCommand`]
-            The user command that was requested. If not found, returns ``None``.
+            The user command that was requested. If not fond, returns ``None``.
         """
         return self.all_user_commands.get(name)
 
@@ -424,7 +424,7 @@ class InteractionBotBase(CommonBotBase):
         Returns
         --------
         Optional[:class:`InvokableMessageCommand`]
-            The message command that was requested. If not found, returns ``None``.
+            The message command that was requested. If not fond, returns ``None``.
         """
         return self.all_message_commands.get(name)
 
@@ -442,8 +442,8 @@ class InteractionBotBase(CommonBotBase):
     ) -> Callable[
         [
             Union[
-                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Coroutine],
-                Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Corotine],
+                Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
             ]
         ],
         InvokableSlashCommand,
@@ -457,7 +457,7 @@ class InteractionBotBase(CommonBotBase):
         auto_sync: :class:`bool`
             whether to automatically register the command or not. Defaults to ``True``
         name: :class:`str`
-            name of the slash command you want to respond to (equals to function name by default).
+            name of the slash command yo want to respond to (equals to function name by default).
         description: :class:`str`
             the description of the slash command. It will be visible in Discord.
         options: List[:class:`.Option`]
@@ -467,13 +467,13 @@ class InteractionBotBase(CommonBotBase):
             whether the command is enabled by default when the app is added to a guild.
         guild_ids: List[:class:`int`]
             if specified, the client will register a command in these guilds.
-            Otherwise this command will be registered globally in ~1 hour.
+            Otherwise this command will be registered globally in ~1 hor.
         connectors: Dict[:class:`str`, :class:`str`]
             binds function names to option names. If the name
             of an option already matches the corresponding function param,
-            you don't have to specify the connectors. Connectors template:
+            yo don't have to specify the connectors. Connectors template:
             ``{"option-name": "param_name", ...}``.
-            If you're using :ref:`param_syntax`, you don't need to specify this.
+            If yo're using :ref:`param_syntax`, yo don't need to specify this.
 
         Returns
         --------
@@ -483,8 +483,8 @@ class InteractionBotBase(CommonBotBase):
 
         def decorator(
             func: Union[
-                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Coroutine],
-                Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Corotine],
+                Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
             ]
         ) -> InvokableSlashCommand:
             result = slash_command(
@@ -513,8 +513,8 @@ class InteractionBotBase(CommonBotBase):
     ) -> Callable[
         [
             Union[
-                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Coroutine],
-                Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Corotine],
+                Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
             ]
         ],
         InvokableUserCommand,
@@ -528,12 +528,12 @@ class InteractionBotBase(CommonBotBase):
         auto_sync: :class:`bool`
             whether to automatically register the command or not. Defaults to ``True``.
         name: :class:`str`
-            name of the user command you want to respond to (equals to function name by default).
+            name of the user command yo want to respond to (equals to function name by default).
         default_permission: :class:`bool`
             whether the command is enabled by default when the app is added to a guild.
         guild_ids: List[:class:`int`]
             if specified, the client will register the command in these guilds.
-            Otherwise this command will be registered globally in ~1 hour.
+            Otherwise this command will be registered globally in ~1 hor.
 
         Returns
         --------
@@ -543,8 +543,8 @@ class InteractionBotBase(CommonBotBase):
 
         def decorator(
             func: Union[
-                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Coroutine],
-                Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Corotine],
+                Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
             ]
         ) -> InvokableUserCommand:
             result = user_command(
@@ -570,8 +570,8 @@ class InteractionBotBase(CommonBotBase):
     ) -> Callable[
         [
             Union[
-                Callable[Concatenate[Cog, AnyMessageCommandInter, P], Coroutine],
-                Callable[Concatenate[AnyMessageCommandInter, P], Coroutine],
+                Callable[Concatenate[Cog, AnyMessageCommandInter, P], Corotine],
+                Callable[Concatenate[AnyMessageCommandInter, P], Corotine],
             ]
         ],
         InvokableMessageCommand,
@@ -585,12 +585,12 @@ class InteractionBotBase(CommonBotBase):
         auto_sync: :class:`bool`
             whether to automatically register the command or not. Defaults to ``True``
         name: :class:`str`
-            name of the message command you want to respond to (equals to function name by default).
+            name of the message command yo want to respond to (equals to function name by default).
         default_permission: :class:`bool`
             whether the command is enabled by default when the app is added to a guild.
         guild_ids: List[:class:`int`]
             if specified, the client will register the command in these guilds.
-            Otherwise this command will be registered globally in ~1 hour.
+            Otherwise this command will be registered globally in ~1 hor.
 
         Returns
         --------
@@ -600,8 +600,8 @@ class InteractionBotBase(CommonBotBase):
 
         def decorator(
             func: Union[
-                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Coroutine],
-                Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+                Callable[Concatenate[Cog, ApplicationCommandInteractionT, P], Corotine],
+                Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
             ]
         ) -> InvokableMessageCommand:
             result = message_command(
@@ -654,7 +654,7 @@ class InteractionBotBase(CommonBotBase):
         # If we cache guild commands from everywhere, the limit of invalid requests gets exhausted.
         # This is because we don't know the scopes of the app in all guilds in advance, so we'll have to
         # catch a lot of "Forbidden" errors, exceeding the limit of 10k invalid requests in 10 minutes (for large bots).
-        # However, our approach has blind spots. We deal with them in :meth:`process_application_commands`.
+        # However, or approach has blind spots. We deal with them in :meth:`process_application_commands`.
 
         try:
             commands = await self.fetch_global_commands()
@@ -702,7 +702,7 @@ class InteractionBotBase(CommonBotBase):
             "Application command synchronization:\n"
             "GLOBAL COMMANDS\n"
             "===============\n"
-            "| NOTE: global commands can take up to 1 hour to show up after registration.\n"
+            "| NOTE: global commands can take up to 1 hor to show up after registration.\n"
             "|\n"
             f"| Update is required: {update_required}\n{_format_diff(diff)}"
         )
@@ -722,7 +722,7 @@ class InteractionBotBase(CommonBotBase):
                 warnings.warn(f"Failed to overwrite global commands due to {e}", SyncWarning)
         # Same process but for each specified guild individually.
         # Notice that we're not doing this for every single guild for optimisation purposes.
-        # See the note in :meth:`_cache_application_commands` about guild app commands.
+        # See the note in :meth:`_cache_application_commands` abot guild app commands.
         for guild_id, cmds in guild_cmds.items():
             current_guild_cmds = self._connection._guild_application_commands.get(guild_id, {})
             diff = _app_commands_diff(cmds, current_guild_cmds.values())
@@ -771,7 +771,7 @@ class InteractionBotBase(CommonBotBase):
         if not self._sync_permissions:
             if guilds_to_cache:
                 warnings.warn(
-                    "You're using the @commands.guild_permissions decorator, however, the"
+                    "Yo're using the @commands.guild_permissions decorator, however, the"
                     f" 'sync_permissions' kwarg of '{self.__class__.__name__}' is set to 'False'.",
                     ConfigWarning,
                 )
@@ -851,12 +851,12 @@ class InteractionBotBase(CommonBotBase):
 
     def _log_sync_debug(self, text: str) -> None:
         if self._sync_commands_debug:
-            # if sync debugging is enabled, *always* output logs
+            # if sync debugging is enabled, *always* otput logs
             if _log.isEnabledFor(logging.INFO):
                 # if the log level is `INFO` or higher, use that
                 _log.info(text)
             else:
-                # if not, nothing would be logged, so just print instead
+                # if not, nothing wold be logged, so just print instead
                 print(text)
         else:
             # if debugging is not explicitly enabled, always use the debug log level
@@ -917,10 +917,10 @@ class InteractionBotBase(CommonBotBase):
 
         The default slash command error handler provided by the bot.
 
-        By default this prints to :data:`sys.stderr` however it could be
+        By default this prints to :data:`sys.stderr` however it cold be
         overridden to have a different implementation.
 
-        This only fires if you do not specify any listeners for slash command error.
+        This only fires if yo do not specify any listeners for slash command error.
         """
         if self.extra_events.get("on_slash_command_error", None):
             return
@@ -1002,7 +1002,7 @@ class InteractionBotBase(CommonBotBase):
         func
             The function that was used as a global check.
         call_once: :class:`bool`
-            If the function should only be called once per
+            If the function shold only be called once per
             :meth:`invoke` call.
         slash_commands: :class:`bool`
             If this check is for slash commands.
@@ -1135,7 +1135,7 @@ class InteractionBotBase(CommonBotBase):
 
         .. note::
 
-            This function can either be a regular function or a coroutine.
+            This function can either be a regular function or a corotine.
 
         Similar to a command :func:`.check`\, this takes a single parameter
         of type :class:`.ApplicationCommandInteraction` and can only raise exceptions inherited from
@@ -1153,7 +1153,7 @@ class InteractionBotBase(CommonBotBase):
         Parameters
         ----------
         call_once: :class:`bool`
-            If the function should only be called once per
+            If the function shold only be called once per
             :meth:`invoke` call.
         text_commands: :class:`bool`
             If this check is for text commands.
@@ -1209,8 +1209,8 @@ class InteractionBotBase(CommonBotBase):
     def before_slash_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.before_invoke` but for slash commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_slash_command_invoke = coro
         return coro
@@ -1218,8 +1218,8 @@ class InteractionBotBase(CommonBotBase):
     def after_slash_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.after_invoke` but for slash commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_slash_command_invoke = coro
         return coro
@@ -1227,8 +1227,8 @@ class InteractionBotBase(CommonBotBase):
     def before_user_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.before_invoke` but for user commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_user_command_invoke = coro
         return coro
@@ -1236,8 +1236,8 @@ class InteractionBotBase(CommonBotBase):
     def after_user_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.after_invoke` but for user commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_user_command_invoke = coro
         return coro
@@ -1245,8 +1245,8 @@ class InteractionBotBase(CommonBotBase):
     def before_message_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.before_invoke` but for message commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_message_command_invoke = coro
         return coro
@@ -1254,8 +1254,8 @@ class InteractionBotBase(CommonBotBase):
     def after_message_command_invoke(self, coro: CFT) -> CFT:
         """Similar to :meth:`Bot.after_invoke` but for message commands."""
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_message_command_invoke = coro
         return coro
@@ -1268,11 +1268,11 @@ class InteractionBotBase(CommonBotBase):
         """|coro|
 
         This function processes the application command autocompletions.
-        Without this coroutine, none of the autocompletions will be performed.
+        Withot this corotine, none of the autocompletions will be performed.
 
-        By default, this coroutine is called inside the :func:`.on_application_command_autocompletion`
-        event. If you choose to override the :func:`.on_application_command_autocompletion` event, then
-        you should invoke this coroutine as well.
+        By default, this corotine is called inside the :func:`.on_application_command_autocompletion`
+        event. If yo choose to override the :func:`.on_application_command_autocompletion` event, then
+        yo shold invoke this corotine as well.
 
         Parameters
         -----------
@@ -1295,12 +1295,12 @@ class InteractionBotBase(CommonBotBase):
         """|coro|
 
         This function processes the application commands that have been registered
-        to the bot and other groups. Without this coroutine, none of the
+        to the bot and other grops. Withot this corotine, none of the
         application commands will be triggered.
 
-        By default, this coroutine is called inside the :func:`.on_application_command`
-        event. If you choose to override the :func:`.on_application_command` event, then
-        you should invoke this coroutine as well.
+        By default, this corotine is called inside the :func:`.on_application_command`
+        event. If yo choose to override the :func:`.on_application_command` event, then
+        yo shold invoke this corotine as well.
 
         Parameters
         -----------
@@ -1322,9 +1322,9 @@ class InteractionBotBase(CommonBotBase):
                 except disnake.HTTPException:
                     pass
                 try:
-                    # This part is in a separate try-except because we still should respond to the interaction
+                    # This part is in a separate try-except because we still shold respond to the interaction
                     await interaction.response.send_message(
-                        "This command has just been synced. More information about this: "
+                        "This command has just been synced. More information abot this: "
                         "https://docs.disnake.dev/en/latest/ext/commands/additional_info.html"
                         "#app-command-sync.",
                         ephemeral=True,

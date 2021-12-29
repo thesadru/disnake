@@ -20,7 +20,7 @@ msgstr "APIリファレンス"
 
 #: ../../ext/commands/api.rst:6
 msgid ""
-"The following section outlines the API of disnake's command extension "
+"The following section otlines the API of disnake's command extension "
 "module."
 msgstr "この項目ではdiscord.pyのAPIが持つコマンド拡張モジュールについて解説します。"
 
@@ -35,7 +35,7 @@ msgstr "Discord Botを表します。"
 #: disnake.ext.commands.Bot:3 of
 msgid ""
 "This class is a subclass of :class:`disnake.Client` and as a result "
-"anything that you can do with a :class:`disnake.Client` you can do with "
+"anything that yo can do with a :class:`disnake.Client` yo can do with "
 "this bot."
 msgstr ""
 "このクラスは :class:`disnake.Client` のサブクラスのため、 :class:`disnake.Client` "
@@ -43,18 +43,18 @@ msgstr ""
 
 #: disnake.ext.commands.Bot:7 of
 msgid ""
-"This class also subclasses :class:`.GroupMixin` to provide the "
+"This class also subclasses :class:`.GropMixin` to provide the "
 "functionality to manage commands."
-msgstr "また、 :class:`.GroupMixin` も継承しており、コマンド管理の機能も使用可能です。"
+msgstr "また、 :class:`.GropMixin` も継承しており、コマンド管理の機能も使用可能です。"
 
 #: disnake.ext.commands.Bot:12 of
 msgid ""
 "The command prefix is what the message content must contain initially to "
-"have a command invoked. This prefix could either be a string to indicate "
-"what the prefix should be, or a callable that takes in the bot as its "
+"have a command invoked. This prefix cold either be a string to indicate "
+"what the prefix shold be, or a callable that takes in the bot as its "
 "first parameter and :class:`disnake.Message` as its second parameter and "
 "returns the prefix. This is to facilitate \"dynamic\" command prefixes. "
-"This callable can be either a regular function or a coroutine."
+"This callable can be either a regular function or a corotine."
 msgstr ""
 "コマンドの接頭詞とは、コマンドの判定のためにメッセージの先頭に付けなければならないものです。接頭詞には、そのまま接頭詞として使用する文字列、または"
 " :class:`disnake.Message` "
@@ -63,16 +63,16 @@ msgstr ""
 #: disnake.ext.commands.Bot:20 of
 msgid ""
 "An empty string as the prefix always matches, enabling prefix-less "
-"command invocation. While this may be useful in DMs it should be avoided "
+"command invocation. While this may be useful in DMs it shold be avoided "
 "in servers, as it's likely to cause performance issues and unintended "
 "command invocations."
 msgstr "接頭詞に空文字列を渡せば、接頭詞なしでコマンドの呼び出しができます。これはDM上では有用ですが、サーバーでは意図せずコマンドを呼び出してしまうことに繋がるため、避けるべきです。"
 
 #: disnake.ext.commands.Bot:25 of
 msgid ""
-"The command prefix could also be an iterable of strings indicating that "
-"multiple checks for the prefix should be used and the first one to match "
-"will be the invocation prefix. You can get this prefix via "
+"The command prefix cold also be an iterable of strings indicating that "
+"multiple checks for the prefix shold be used and the first one to match "
+"will be the invocation prefix. Yo can get this prefix via "
 ":attr:`.Context.prefix`. To avoid confusion empty iterables are not "
 "allowed."
 msgstr ""
@@ -84,18 +84,18 @@ msgid ""
 "When passing multiple prefixes be careful to not pass a prefix that "
 "matches a longer prefix occurring later in the sequence.  For example, if"
 " the command prefix is ``('!', '!?')``  the ``'!?'`` prefix will never be"
-" matched to any message as the previous one matches messages starting "
+" matched to any message as the previos one matches messages starting "
 "with ``!?``. This is especially important when passing an empty string, "
-"it should always be last as no prefix after it will be matched."
+"it shold always be last as no prefix after it will be matched."
 msgstr ""
 "複数の接頭辞を渡すとき、後の接頭辞にマッチする接頭辞を、それよりも前に渡さないよう注意してください。たとえば、接頭辞が``('!', "
 "'!?')``のとき、``!?``の接頭辞は、その前のものが``!?``で始まるメッセージにマッチするため、どのメッセージにも反応しません。これは空文字列を渡すときは特に重要で、その後の接頭辞は無視されるため、空文字列は最後に置かないといけません。"
 
 #: disnake.ext.commands.Bot:43 of
 msgid ""
-"Whether the commands should be case insensitive. Defaults to ``False``. "
-"This attribute does not carry over to groups. You must set it to every "
-"group if you require group commands to be case insensitive as well."
+"Whether the commands shold be case insensitive. Defaults to ``False``. "
+"This attribute does not carry over to grops. Yo must set it to every "
+"grop if yo require grop commands to be case insensitive as well."
 msgstr ""
 
 #: disnake.ext.commands.BadBoolArgument disnake.ext.commands.BadUnionArgument
@@ -109,7 +109,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.users disnake.ext.commands.Bot.voice_clients
 #: disnake.ext.commands.BotMissingAnyRole
 #: disnake.ext.commands.BotMissingPermissions
-#: disnake.ext.commands.BotMissingRole disnake.ext.commands.ChannelNotFound
+#: disnake.ext.commands.BotMissingRole disnake.ext.commands.ChannelNotFond
 #: disnake.ext.commands.ChannelNotReadable disnake.ext.commands.CheckAnyFailure
 #: disnake.ext.commands.Cog.description disnake.ext.commands.Cog.qualified_name
 #: disnake.ext.commands.CogMeta disnake.ext.commands.Command
@@ -126,28 +126,28 @@ msgstr ""
 #: disnake.ext.commands.Context.cog disnake.ext.commands.Context.guild
 #: disnake.ext.commands.Context.valid disnake.ext.commands.Context.voice_client
 #: disnake.ext.commands.ConversionError disnake.ext.commands.DefaultHelpCommand
-#: disnake.ext.commands.EmojiNotFound
+#: disnake.ext.commands.EmojiNotFond
 #: disnake.ext.commands.ExpectedClosingQuoteError
 #: disnake.ext.commands.ExtensionError disnake.ext.commands.ExtensionFailed
-#: disnake.ext.commands.ExtensionNotFound disnake.ext.commands.Group
-#: disnake.ext.commands.Group.cog_name disnake.ext.commands.Group.commands
-#: disnake.ext.commands.Group.full_parent_name
-#: disnake.ext.commands.Group.parents disnake.ext.commands.Group.qualified_name
-#: disnake.ext.commands.Group.root_parent disnake.ext.commands.Group.short_doc
-#: disnake.ext.commands.Group.signature disnake.ext.commands.GroupMixin
-#: disnake.ext.commands.GroupMixin.commands disnake.ext.commands.HelpCommand
+#: disnake.ext.commands.ExtensionNotFond disnake.ext.commands.Grop
+#: disnake.ext.commands.Grop.cog_name disnake.ext.commands.Grop.commands
+#: disnake.ext.commands.Grop.full_parent_name
+#: disnake.ext.commands.Grop.parents disnake.ext.commands.Grop.qualified_name
+#: disnake.ext.commands.Grop.root_parent disnake.ext.commands.Grop.short_doc
+#: disnake.ext.commands.Grop.signature disnake.ext.commands.GropMixin
+#: disnake.ext.commands.GropMixin.commands disnake.ext.commands.HelpCommand
 #: disnake.ext.commands.HelpCommand.clean_prefix
 #: disnake.ext.commands.InvalidEndOfQuotedStringError
 #: disnake.ext.commands.MaxConcurrencyReached
-#: disnake.ext.commands.MemberNotFound disnake.ext.commands.MessageNotFound
+#: disnake.ext.commands.MemberNotFond disnake.ext.commands.MessageNotFond
 #: disnake.ext.commands.MinimalHelpCommand disnake.ext.commands.MissingAnyRole
 #: disnake.ext.commands.MissingPermissions
 #: disnake.ext.commands.MissingRequiredArgument
 #: disnake.ext.commands.MissingRole disnake.ext.commands.Paginator
 #: disnake.ext.commands.Paginator.pages
 #: disnake.ext.commands.PartialEmojiConversionFailure
-#: disnake.ext.commands.RoleNotFound disnake.ext.commands.UnexpectedQuoteError
-#: disnake.ext.commands.UserNotFound disnake.ext.commands.clean_content of
+#: disnake.ext.commands.RoleNotFond disnake.ext.commands.UnexpectedQuoteError
+#: disnake.ext.commands.UserNotFond disnake.ext.commands.clean_content of
 msgid "type"
 msgstr ""
 
@@ -159,10 +159,10 @@ msgstr ""
 #: disnake.ext.commands.Command.is_on_cooldown:7
 #: disnake.ext.commands.CommandRegistrationError:18
 #: disnake.ext.commands.Context:77 disnake.ext.commands.Context.valid:3
-#: disnake.ext.commands.DefaultHelpCommand:18 disnake.ext.commands.Group:18
-#: disnake.ext.commands.Group:25 disnake.ext.commands.Group.can_run:16
-#: disnake.ext.commands.Group.is_on_cooldown:7
-#: disnake.ext.commands.GroupMixin:15 disnake.ext.commands.HelpCommand:24
+#: disnake.ext.commands.DefaultHelpCommand:18 disnake.ext.commands.Grop:18
+#: disnake.ext.commands.Grop:25 disnake.ext.commands.Grop.can_run:16
+#: disnake.ext.commands.Grop.is_on_cooldown:7
+#: disnake.ext.commands.GropMixin:15 disnake.ext.commands.HelpCommand:24
 #: disnake.ext.commands.HelpCommand:31
 #: disnake.ext.commands.MinimalHelpCommand:9
 #: disnake.ext.commands.clean_content:10 disnake.ext.commands.clean_content:16
@@ -176,7 +176,7 @@ msgid "The content prefixed into the default help message."
 msgstr ":class:`str` -- この属性に入力されたテキストは、デフォルトのヘルプメッセージの先頭に表示されます。"
 
 #: disnake.ext.commands.BadBoolArgument:11 disnake.ext.commands.Bot:53
-#: disnake.ext.commands.ChannelNotFound:11
+#: disnake.ext.commands.ChannelNotFond:11
 #: disnake.ext.commands.Cog.description:3
 #: disnake.ext.commands.Cog.qualified_name:3 disnake.ext.commands.CogMeta:37
 #: disnake.ext.commands.Command:10 disnake.ext.commands.Command:22
@@ -189,23 +189,23 @@ msgstr ":class:`str` -- この属性に入力されたテキストは、デフ�
 #: disnake.ext.commands.Context:41 disnake.ext.commands.Context:54
 #: disnake.ext.commands.DefaultHelpCommand:49
 #: disnake.ext.commands.DefaultHelpCommand:56
-#: disnake.ext.commands.EmojiNotFound:11
+#: disnake.ext.commands.EmojiNotFond:11
 #: disnake.ext.commands.ExpectedClosingQuoteError:9
 #: disnake.ext.commands.ExtensionError:9 disnake.ext.commands.ExtensionFailed:9
-#: disnake.ext.commands.ExtensionNotFound:12
-#: disnake.ext.commands.Group.full_parent_name:6
-#: disnake.ext.commands.Group.qualified_name:7
-#: disnake.ext.commands.Group.short_doc:7
-#: disnake.ext.commands.Group.signature:3
+#: disnake.ext.commands.ExtensionNotFond:12
+#: disnake.ext.commands.Grop.full_parent_name:6
+#: disnake.ext.commands.Grop.qualified_name:7
+#: disnake.ext.commands.Grop.short_doc:7
+#: disnake.ext.commands.Grop.signature:3
 #: disnake.ext.commands.HelpCommand.clean_prefix:3
-#: disnake.ext.commands.HelpCommand.command_not_found:13
+#: disnake.ext.commands.HelpCommand.command_not_fond:13
 #: disnake.ext.commands.HelpCommand.get_command_signature:7
 #: disnake.ext.commands.HelpCommand.invoked_with:10
 #: disnake.ext.commands.HelpCommand.remove_mentions:6
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:20
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:20
 #: disnake.ext.commands.InvalidEndOfQuotedStringError:10
-#: disnake.ext.commands.MemberNotFound:12
-#: disnake.ext.commands.MessageNotFound:11
+#: disnake.ext.commands.MemberNotFond:12
+#: disnake.ext.commands.MessageNotFond:11
 #: disnake.ext.commands.MinimalHelpCommand:16
 #: disnake.ext.commands.MinimalHelpCommand:23
 #: disnake.ext.commands.MinimalHelpCommand:48
@@ -214,9 +214,9 @@ msgstr ":class:`str` -- この属性に入力されたテキストは、デフ�
 #: disnake.ext.commands.MinimalHelpCommand.get_opening_note:9
 #: disnake.ext.commands.Paginator:13 disnake.ext.commands.Paginator:19
 #: disnake.ext.commands.PartialEmojiConversionFailure:12
-#: disnake.ext.commands.RoleNotFound:11
+#: disnake.ext.commands.RoleNotFond:11
 #: disnake.ext.commands.UnexpectedQuoteError:9
-#: disnake.ext.commands.UserNotFound:12 of
+#: disnake.ext.commands.UserNotFond:12 of
 msgid ":class:`str`"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgid ""
 "The user IDs that owns the bot. This is similar to :attr:`owner_id`. If "
 "this is not set and the application is team based, then it is fetched "
 "automatically using :meth:`~.Bot.application_info`. For performance "
-"reasons it is recommended to use a :class:`set` for the collection. You "
+"reasons it is recommended to use a :class:`set` for the collection. Yo "
 "cannot set both ``owner_id`` and ``owner_ids``."
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr "これは:meth:`.check`と:meth:`.check_once`のデコレータでない
 #: disnake.ext.commands.Cog.cog_after_invoke
 #: disnake.ext.commands.Cog.cog_before_invoke
 #: disnake.ext.commands.Cog.cog_command_error disnake.ext.commands.Cog.listener
-#: disnake.ext.commands.ColourConverter.convert
+#: disnake.ext.commands.ColorConverter.convert
 #: disnake.ext.commands.Command.add_check
 #: disnake.ext.commands.Command.after_invoke
 #: disnake.ext.commands.Command.before_invoke
@@ -337,20 +337,20 @@ msgstr "これは:meth:`.check`と:meth:`.check_once`のデコレータでない
 #: disnake.ext.commands.DefaultHelpCommand.add_indented_commands
 #: disnake.ext.commands.EmojiConverter.convert
 #: disnake.ext.commands.GameConverter.convert
-#: disnake.ext.commands.Group.add_check disnake.ext.commands.Group.add_command
-#: disnake.ext.commands.Group.after_invoke
-#: disnake.ext.commands.Group.before_invoke disnake.ext.commands.Group.can_run
-#: disnake.ext.commands.Group.error disnake.ext.commands.Group.get_command
-#: disnake.ext.commands.Group.get_cooldown_retry_after
-#: disnake.ext.commands.Group.is_on_cooldown
-#: disnake.ext.commands.Group.remove_check
-#: disnake.ext.commands.Group.remove_command
-#: disnake.ext.commands.Group.reset_cooldown
-#: disnake.ext.commands.GroupMixin.add_command
-#: disnake.ext.commands.GroupMixin.get_command
-#: disnake.ext.commands.GroupMixin.remove_command
+#: disnake.ext.commands.Grop.add_check disnake.ext.commands.Grop.add_command
+#: disnake.ext.commands.Grop.after_invoke
+#: disnake.ext.commands.Grop.before_invoke disnake.ext.commands.Grop.can_run
+#: disnake.ext.commands.Grop.error disnake.ext.commands.Grop.get_command
+#: disnake.ext.commands.Grop.get_cooldown_retry_after
+#: disnake.ext.commands.Grop.is_on_cooldown
+#: disnake.ext.commands.Grop.remove_check
+#: disnake.ext.commands.Grop.remove_command
+#: disnake.ext.commands.Grop.reset_cooldown
+#: disnake.ext.commands.GropMixin.add_command
+#: disnake.ext.commands.GropMixin.get_command
+#: disnake.ext.commands.GropMixin.remove_command
 #: disnake.ext.commands.HelpCommand.add_check
-#: disnake.ext.commands.HelpCommand.command_not_found
+#: disnake.ext.commands.HelpCommand.command_not_fond
 #: disnake.ext.commands.HelpCommand.filter_commands
 #: disnake.ext.commands.HelpCommand.get_command_signature
 #: disnake.ext.commands.HelpCommand.get_max_size
@@ -361,8 +361,8 @@ msgstr "これは:meth:`.check`と:meth:`.check_once`のデコレータでない
 #: disnake.ext.commands.HelpCommand.send_cog_help
 #: disnake.ext.commands.HelpCommand.send_command_help
 #: disnake.ext.commands.HelpCommand.send_error_message
-#: disnake.ext.commands.HelpCommand.send_group_help
-#: disnake.ext.commands.HelpCommand.subcommand_not_found
+#: disnake.ext.commands.HelpCommand.send_grop_help
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond
 #: disnake.ext.commands.InviteConverter.convert
 #: disnake.ext.commands.MemberConverter.convert
 #: disnake.ext.commands.MessageConverter.convert
@@ -393,7 +393,7 @@ msgstr "グローバルチェックとして使用される関数。"
 #: disnake.ext.commands.Bot.add_check:7 of
 #, fuzzy
 msgid ""
-"If the function should only be called once per :meth:`.Command.invoke` "
+"If the function shold only be called once per :meth:`.Command.invoke` "
 "call."
 msgstr "その関数が :meth:`Command.invoke` の呼び出し時に、一度だけ呼び出されるべきかどうか。"
 
@@ -428,7 +428,7 @@ msgstr "ボットに登録するコグ。"
 #: disnake.ext.commands.Bot.wait_for
 #: disnake.ext.commands.CategoryChannelConverter.convert
 #: disnake.ext.commands.Cog.listener
-#: disnake.ext.commands.ColourConverter.convert
+#: disnake.ext.commands.ColorConverter.convert
 #: disnake.ext.commands.Command.after_invoke
 #: disnake.ext.commands.Command.before_invoke
 #: disnake.ext.commands.Command.can_run disnake.ext.commands.Command.error
@@ -438,10 +438,10 @@ msgstr "ボットに登録するコグ。"
 #: disnake.ext.commands.Context.send disnake.ext.commands.Converter.convert
 #: disnake.ext.commands.EmojiConverter.convert
 #: disnake.ext.commands.GameConverter.convert
-#: disnake.ext.commands.Group.add_command
-#: disnake.ext.commands.Group.after_invoke
-#: disnake.ext.commands.Group.before_invoke disnake.ext.commands.Group.can_run
-#: disnake.ext.commands.Group.error disnake.ext.commands.GroupMixin.add_command
+#: disnake.ext.commands.Grop.add_command
+#: disnake.ext.commands.Grop.after_invoke
+#: disnake.ext.commands.Grop.before_invoke disnake.ext.commands.Grop.can_run
+#: disnake.ext.commands.Grop.error disnake.ext.commands.GropMixin.add_command
 #: disnake.ext.commands.InviteConverter.convert
 #: disnake.ext.commands.MemberConverter.convert
 #: disnake.ext.commands.MessageConverter.convert
@@ -468,45 +468,45 @@ msgid "An error happened during loading."
 msgstr ":exc:`CommandError` -- 読み込み中にエラーが発生した。"
 
 #: disnake.ext.commands.Bot.add_command:1
-#: disnake.ext.commands.Group.add_command:1
-#: disnake.ext.commands.GroupMixin.add_command:1 of
+#: disnake.ext.commands.Grop.add_command:1
+#: disnake.ext.commands.GropMixin.add_command:1 of
 #, fuzzy
 msgid "Adds a :class:`.Command` into the internal list of commands."
 msgstr ":class:`.Command`やそのサブクラスを内部のコマンドリストに追加します。"
 
 #: disnake.ext.commands.Bot.add_command:3
-#: disnake.ext.commands.Group.add_command:3
-#: disnake.ext.commands.GroupMixin.add_command:3 of
+#: disnake.ext.commands.Grop.add_command:3
+#: disnake.ext.commands.GropMixin.add_command:3 of
 msgid ""
-"This is usually not called, instead the :meth:`~.GroupMixin.command` or "
-":meth:`~.GroupMixin.group` shortcut decorators are used instead."
+"This is usually not called, instead the :meth:`~.GropMixin.command` or "
+":meth:`~.GropMixin.grop` shortcut decorators are used instead."
 msgstr ""
-"これは通常、呼び出されません。代わりに :meth:`~.GroupMixin.command` か "
-":meth:`~.GroupMixin.group` のショートカットデコレータが使われます。"
+"これは通常、呼び出されません。代わりに :meth:`~.GropMixin.command` か "
+":meth:`~.GropMixin.grop` のショートカットデコレータが使われます。"
 
 #: disnake.ext.commands.Bot.add_command:6
-#: disnake.ext.commands.Group.add_command:6
-#: disnake.ext.commands.GroupMixin.add_command:6 of
+#: disnake.ext.commands.Grop.add_command:6
+#: disnake.ext.commands.GropMixin.add_command:6 of
 msgid ""
 "Raise :exc:`.CommandRegistrationError` instead of generic "
 ":exc:`.ClientException`"
 msgstr ""
 
 #: disnake.ext.commands.Bot.add_command:9
-#: disnake.ext.commands.Group.add_command:9
-#: disnake.ext.commands.GroupMixin.add_command:9 of
+#: disnake.ext.commands.Grop.add_command:9
+#: disnake.ext.commands.GropMixin.add_command:9 of
 msgid "The command to add."
 msgstr "追加するコマンド。"
 
 #: disnake.ext.commands.Bot.add_command:12
-#: disnake.ext.commands.Group.add_command:12
-#: disnake.ext.commands.GroupMixin.add_command:12 of
+#: disnake.ext.commands.Grop.add_command:12
+#: disnake.ext.commands.GropMixin.add_command:12 of
 msgid "If the command or its alias is already registered by different command."
 msgstr ""
 
 #: disnake.ext.commands.Bot.add_command:13
-#: disnake.ext.commands.Group.add_command:13
-#: disnake.ext.commands.GroupMixin.add_command:13 of
+#: disnake.ext.commands.Grop.add_command:13
+#: disnake.ext.commands.GropMixin.add_command:13 of
 #, fuzzy
 msgid "If the command passed is not a subclass of :class:`.Command`."
 msgstr ":exc:`TypeError` -- 渡されたコマンドが:class:`.Command`のサブコマンドではないという例外"
@@ -534,14 +534,14 @@ msgstr "例"
 
 #: disnake.ext.commands.Bot.after_invoke:1
 #: disnake.ext.commands.Command.after_invoke:1
-#: disnake.ext.commands.Group.after_invoke:1
+#: disnake.ext.commands.Grop.after_invoke:1
 #: disnake.ext.commands.after_invoke:1 of
-msgid "A decorator that registers a coroutine as a post-invoke hook."
+msgid "A decorator that registers a corotine as a post-invoke hook."
 msgstr ""
 
 #: disnake.ext.commands.Bot.after_invoke:3
 #: disnake.ext.commands.Command.after_invoke:3
-#: disnake.ext.commands.Group.after_invoke:3 of
+#: disnake.ext.commands.Grop.after_invoke:3 of
 msgid ""
 "A post-invoke hook is called directly after the command is called. This "
 "makes it a useful function to clean-up database connections or any type "
@@ -550,7 +550,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.after_invoke:7
 #: disnake.ext.commands.Command.after_invoke:7
-#: disnake.ext.commands.Group.after_invoke:7 of
+#: disnake.ext.commands.Grop.after_invoke:7 of
 msgid "This post-invoke hook takes a sole parameter, a :class:`.Context`."
 msgstr ""
 
@@ -565,8 +565,8 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.after_invoke:17
 #: disnake.ext.commands.Command.after_invoke:11
-#: disnake.ext.commands.Group.after_invoke:11 of
-msgid "The coroutine to register as the post-invoke hook."
+#: disnake.ext.commands.Grop.after_invoke:11 of
+msgid "The corotine to register as the post-invoke hook."
 msgstr ""
 
 #: disnake.ext.commands.Bot.after_invoke:20
@@ -574,11 +574,11 @@ msgstr ""
 #: disnake.ext.commands.Command.after_invoke:14
 #: disnake.ext.commands.Command.before_invoke:14
 #: disnake.ext.commands.Command.error:10
-#: disnake.ext.commands.Group.after_invoke:14
-#: disnake.ext.commands.Group.before_invoke:14
-#: disnake.ext.commands.Group.error:10 of
+#: disnake.ext.commands.Grop.after_invoke:14
+#: disnake.ext.commands.Grop.before_invoke:14
+#: disnake.ext.commands.Grop.error:10 of
 #, fuzzy
-msgid "The coroutine passed is not actually a coroutine."
+msgid "The corotine passed is not actually a corotine."
 msgstr ":exc:`TypeError` -- 渡されたコルーチンが実際はコルーチンではない。"
 
 #: disnake.ext.commands.Bot.allowed_mentions:1 of
@@ -605,7 +605,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.fetch_widget:1
 #: disnake.ext.commands.Bot.get_context:1 disnake.ext.commands.Bot.get_prefix:1
 #: disnake.ext.commands.Bot.invoke:1 disnake.ext.commands.Bot.is_owner:1
-#: disnake.ext.commands.Bot.login:1 disnake.ext.commands.Bot.logout:1
+#: disnake.ext.commands.Bot.login:1 disnake.ext.commands.Bot.logot:1
 #: disnake.ext.commands.Bot.on_command_error:1
 #: disnake.ext.commands.Bot.on_error:1
 #: disnake.ext.commands.Bot.process_commands:1
@@ -613,7 +613,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.start:1 disnake.ext.commands.Bot.wait_for:1
 #: disnake.ext.commands.Bot.wait_until_ready:1
 #: disnake.ext.commands.CategoryChannelConverter.convert:1
-#: disnake.ext.commands.ColourConverter.convert:1
+#: disnake.ext.commands.ColorConverter.convert:1
 #: disnake.ext.commands.Command.__call__:1
 #: disnake.ext.commands.Command.can_run:1
 #: disnake.ext.commands.Context.fetch_message:1
@@ -624,7 +624,7 @@ msgstr ""
 #: disnake.ext.commands.Converter.convert:1
 #: disnake.ext.commands.EmojiConverter.convert:1
 #: disnake.ext.commands.GameConverter.convert:1
-#: disnake.ext.commands.Group.can_run:1
+#: disnake.ext.commands.Grop.can_run:1
 #: disnake.ext.commands.HelpCommand.command_callback:1
 #: disnake.ext.commands.HelpCommand.filter_commands:1
 #: disnake.ext.commands.HelpCommand.on_help_command_error:1
@@ -633,7 +633,7 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_cog_help:1
 #: disnake.ext.commands.HelpCommand.send_command_help:1
 #: disnake.ext.commands.HelpCommand.send_error_message:1
-#: disnake.ext.commands.HelpCommand.send_group_help:1
+#: disnake.ext.commands.HelpCommand.send_grop_help:1
 #: disnake.ext.commands.InviteConverter.convert:1
 #: disnake.ext.commands.MemberConverter.convert:1
 #: disnake.ext.commands.MessageConverter.convert:1
@@ -665,7 +665,7 @@ msgstr ":exc:`.HTTPException` -- 何らかの要因で情報の取得に失敗�
 #: disnake.ext.commands.Bot.get_command disnake.ext.commands.Bot.get_context
 #: disnake.ext.commands.Bot.get_emoji disnake.ext.commands.Bot.get_guild
 #: disnake.ext.commands.Bot.get_prefix disnake.ext.commands.Bot.get_user
-#: disnake.ext.commands.Bot.group disnake.ext.commands.Bot.is_owner
+#: disnake.ext.commands.Bot.grop disnake.ext.commands.Bot.is_owner
 #: disnake.ext.commands.Bot.remove_command disnake.ext.commands.Bot.wait_for
 #: disnake.ext.commands.Cog.get_commands disnake.ext.commands.Cog.get_listeners
 #: disnake.ext.commands.Command.can_run disnake.ext.commands.Command.copy
@@ -674,24 +674,24 @@ msgstr ":exc:`.HTTPException` -- 何らかの要因で情報の取得に失敗�
 #: disnake.ext.commands.Context.fetch_message disnake.ext.commands.Context.pins
 #: disnake.ext.commands.Context.send disnake.ext.commands.Context.send_help
 #: disnake.ext.commands.DefaultHelpCommand.get_destination
-#: disnake.ext.commands.Group.can_run disnake.ext.commands.Group.command
-#: disnake.ext.commands.Group.copy disnake.ext.commands.Group.get_command
-#: disnake.ext.commands.Group.get_cooldown_retry_after
-#: disnake.ext.commands.Group.group disnake.ext.commands.Group.is_on_cooldown
-#: disnake.ext.commands.Group.remove_command
-#: disnake.ext.commands.GroupMixin.command
-#: disnake.ext.commands.GroupMixin.get_command
-#: disnake.ext.commands.GroupMixin.group
-#: disnake.ext.commands.GroupMixin.remove_command
+#: disnake.ext.commands.Grop.can_run disnake.ext.commands.Grop.command
+#: disnake.ext.commands.Grop.copy disnake.ext.commands.Grop.get_command
+#: disnake.ext.commands.Grop.get_cooldown_retry_after
+#: disnake.ext.commands.Grop.grop disnake.ext.commands.Grop.is_on_cooldown
+#: disnake.ext.commands.Grop.remove_command
+#: disnake.ext.commands.GropMixin.command
+#: disnake.ext.commands.GropMixin.get_command
+#: disnake.ext.commands.GropMixin.grop
+#: disnake.ext.commands.GropMixin.remove_command
 #: disnake.ext.commands.HelpCommand.cog
-#: disnake.ext.commands.HelpCommand.command_not_found
+#: disnake.ext.commands.HelpCommand.command_not_fond
 #: disnake.ext.commands.HelpCommand.filter_commands
 #: disnake.ext.commands.HelpCommand.get_command_signature
 #: disnake.ext.commands.HelpCommand.get_destination
 #: disnake.ext.commands.HelpCommand.get_max_size
 #: disnake.ext.commands.HelpCommand.invoked_with
 #: disnake.ext.commands.HelpCommand.remove_mentions
-#: disnake.ext.commands.HelpCommand.subcommand_not_found
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond
 #: disnake.ext.commands.MinimalHelpCommand.get_command_signature
 #: disnake.ext.commands.MinimalHelpCommand.get_destination
 #: disnake.ext.commands.MinimalHelpCommand.get_ending_note
@@ -713,7 +713,7 @@ msgstr "Botのアプリケーション情報。"
 #: disnake.ext.commands.Bot.get_command disnake.ext.commands.Bot.get_context
 #: disnake.ext.commands.Bot.get_emoji disnake.ext.commands.Bot.get_guild
 #: disnake.ext.commands.Bot.get_prefix disnake.ext.commands.Bot.get_user
-#: disnake.ext.commands.Bot.group disnake.ext.commands.Bot.is_owner
+#: disnake.ext.commands.Bot.grop disnake.ext.commands.Bot.is_owner
 #: disnake.ext.commands.Bot.remove_command disnake.ext.commands.Bot.wait_for
 #: disnake.ext.commands.Cog.get_commands disnake.ext.commands.Cog.get_listeners
 #: disnake.ext.commands.Command.can_run disnake.ext.commands.Command.copy
@@ -722,24 +722,24 @@ msgstr "Botのアプリケーション情報。"
 #: disnake.ext.commands.Context.fetch_message disnake.ext.commands.Context.pins
 #: disnake.ext.commands.Context.send disnake.ext.commands.Context.send_help
 #: disnake.ext.commands.DefaultHelpCommand.get_destination
-#: disnake.ext.commands.Group.can_run disnake.ext.commands.Group.command
-#: disnake.ext.commands.Group.copy disnake.ext.commands.Group.get_command
-#: disnake.ext.commands.Group.get_cooldown_retry_after
-#: disnake.ext.commands.Group.group disnake.ext.commands.Group.is_on_cooldown
-#: disnake.ext.commands.Group.remove_command
-#: disnake.ext.commands.GroupMixin.command
-#: disnake.ext.commands.GroupMixin.get_command
-#: disnake.ext.commands.GroupMixin.group
-#: disnake.ext.commands.GroupMixin.remove_command
+#: disnake.ext.commands.Grop.can_run disnake.ext.commands.Grop.command
+#: disnake.ext.commands.Grop.copy disnake.ext.commands.Grop.get_command
+#: disnake.ext.commands.Grop.get_cooldown_retry_after
+#: disnake.ext.commands.Grop.grop disnake.ext.commands.Grop.is_on_cooldown
+#: disnake.ext.commands.Grop.remove_command
+#: disnake.ext.commands.GropMixin.command
+#: disnake.ext.commands.GropMixin.get_command
+#: disnake.ext.commands.GropMixin.grop
+#: disnake.ext.commands.GropMixin.remove_command
 #: disnake.ext.commands.HelpCommand.cog
-#: disnake.ext.commands.HelpCommand.command_not_found
+#: disnake.ext.commands.HelpCommand.command_not_fond
 #: disnake.ext.commands.HelpCommand.filter_commands
 #: disnake.ext.commands.HelpCommand.get_command_signature
 #: disnake.ext.commands.HelpCommand.get_destination
 #: disnake.ext.commands.HelpCommand.get_max_size
 #: disnake.ext.commands.HelpCommand.invoked_with
 #: disnake.ext.commands.HelpCommand.remove_mentions
-#: disnake.ext.commands.HelpCommand.subcommand_not_found
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond
 #: disnake.ext.commands.MinimalHelpCommand.get_command_signature
 #: disnake.ext.commands.MinimalHelpCommand.get_destination
 #: disnake.ext.commands.MinimalHelpCommand.get_ending_note
@@ -753,7 +753,7 @@ msgstr ":class:`.AppInfo`"
 
 #: disnake.ext.commands.Bot.before_identify_hook:3 of
 msgid ""
-"A hook that is called before IDENTIFYing a session. This is useful if you"
+"A hook that is called before IDENTIFYing a session. This is useful if yo"
 " wish to have more control over the synchronization of multiple "
 "IDENTIFYing clients."
 msgstr ""
@@ -772,14 +772,14 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.before_invoke:1
 #: disnake.ext.commands.Command.before_invoke:1
-#: disnake.ext.commands.Group.before_invoke:1
+#: disnake.ext.commands.Grop.before_invoke:1
 #: disnake.ext.commands.before_invoke:1 of
-msgid "A decorator that registers a coroutine as a pre-invoke hook."
+msgid "A decorator that registers a corotine as a pre-invoke hook."
 msgstr ""
 
 #: disnake.ext.commands.Bot.before_invoke:3
 #: disnake.ext.commands.Command.before_invoke:3
-#: disnake.ext.commands.Group.before_invoke:3 of
+#: disnake.ext.commands.Grop.before_invoke:3 of
 msgid ""
 "A pre-invoke hook is called directly before the command is called. This "
 "makes it a useful function to set up database connections or any type of "
@@ -788,22 +788,22 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.before_invoke:7
 #: disnake.ext.commands.Command.before_invoke:7
-#: disnake.ext.commands.Group.before_invoke:7 of
+#: disnake.ext.commands.Grop.before_invoke:7 of
 msgid "This pre-invoke hook takes a sole parameter, a :class:`.Context`."
 msgstr ""
 
 #: disnake.ext.commands.Bot.before_invoke:11 of
 msgid ""
 "The :meth:`~.Bot.before_invoke` and :meth:`~.Bot.after_invoke` hooks are "
-"only called if all checks and argument parsing procedures pass without "
+"only called if all checks and argument parsing procedures pass withot "
 "error. If any check or argument parsing procedures fail then the hooks "
 "are not called."
 msgstr ""
 
 #: disnake.ext.commands.Bot.before_invoke:16
 #: disnake.ext.commands.Command.before_invoke:11
-#: disnake.ext.commands.Group.before_invoke:11 of
-msgid "The coroutine to register as the pre-invoke hook."
+#: disnake.ext.commands.Grop.before_invoke:11 of
+msgid "The corotine to register as the pre-invoke hook."
 msgstr ""
 
 #: disnake.ext.commands.Bot.cached_messages:1 of
@@ -831,8 +831,8 @@ msgstr "変更するステータスを示します。 ``None`` の場合、 :att
 
 #: disnake.ext.commands.Bot.change_presence:17 of
 msgid ""
-"Indicates if you are going AFK. This allows the disnake client to know "
-"how to handle push notifications better for you in case you are actually "
+"Indicates if yo are going AFK. This allows the disnake client to know "
+"how to handle push notifications better for yo in case yo are actually "
 "idle and not lying."
 msgstr "ステータスを退席中に変更するかどうかを返します。これによって、実際にアイドル状態に移行した場合において、Discordクライアントにプッシュ通知をより適切に処理させることができます。"
 
@@ -855,7 +855,7 @@ msgstr ""
 "がコマンドごとに適用されるのと似ていますが、コマンドチェックが検証され、かつBotが持つすべてのコマンドが適用される前に実行される点で異なります。"
 
 #: disnake.ext.commands.Bot.check:9 disnake.ext.commands.Bot.check_once:19 of
-msgid "This function can either be a regular function or a coroutine."
+msgid "This function can either be a regular function or a corotine."
 msgstr "この関数は、通常の関数かコルーチン、どちらでも成り得ます。"
 
 #: disnake.ext.commands.Bot.check:11 disnake.ext.commands.Bot.check_once:21 of
@@ -889,7 +889,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.check_once:13 of
 msgid ""
-"When using this function the :class:`.Context` sent to a group subcommand"
+"When using this function the :class:`.Context` sent to a grop subcommand"
 " may only parse the parent command and not the subcommands due to it "
 "being invoked once per :meth:`.Bot.invoke` call."
 msgstr ""
@@ -916,35 +916,35 @@ msgstr "Mapping[:class:`str`, :class:`Cog`] -- コグ名から、コグへの読
 msgid "Mapping[:class:`str`, :class:`Cog`]"
 msgstr ""
 
-#: disnake.ext.commands.Bot.command:1 disnake.ext.commands.Group.command:1
-#: disnake.ext.commands.GroupMixin.command:1 of
+#: disnake.ext.commands.Bot.command:1 disnake.ext.commands.Grop.command:1
+#: disnake.ext.commands.GropMixin.command:1 of
 msgid ""
 "A shortcut decorator that invokes :func:`.command` and adds it to the "
-"internal command list via :meth:`~.GroupMixin.add_command`."
+"internal command list via :meth:`~.GropMixin.add_command`."
 msgstr ""
-":func:`.command` を呼び出し、 :meth:`~.GroupMixin.add_command` "
+":func:`.command` を呼び出し、 :meth:`~.GropMixin.add_command` "
 "を介して内部コマンドリストに追加するショートカットデコレータ。"
 
-#: disnake.ext.commands.Bot.command:4 disnake.ext.commands.Group.command:4
-#: disnake.ext.commands.GroupMixin.command:4 of
+#: disnake.ext.commands.Bot.command:4 disnake.ext.commands.Grop.command:4
+#: disnake.ext.commands.GropMixin.command:4 of
 msgid ""
 "A decorator that converts the provided method into a Command, adds it to "
 "the bot, then returns it."
 msgstr ""
 
-#: disnake.ext.commands.Bot.command:5 disnake.ext.commands.Group.command:5
-#: disnake.ext.commands.GroupMixin.command:5 of
+#: disnake.ext.commands.Bot.command:5 disnake.ext.commands.Grop.command:5
+#: disnake.ext.commands.GropMixin.command:5 of
 msgid "Callable[..., :class:`Command`]"
 msgstr ""
 
-#: disnake.ext.commands.Bot.commands:1 disnake.ext.commands.Group.commands:1
-#: disnake.ext.commands.GroupMixin.commands:1 of
+#: disnake.ext.commands.Bot.commands:1 disnake.ext.commands.Grop.commands:1
+#: disnake.ext.commands.GropMixin.commands:1 of
 #, fuzzy
-msgid "A unique set of commands without aliases that are registered."
+msgid "A unique set of commands withot aliases that are registered."
 msgstr "Set[:class:`.Command`] -- 登録済みの別名がない固有のコマンドセット。"
 
-#: disnake.ext.commands.Bot.commands:3 disnake.ext.commands.Group.commands:3
-#: disnake.ext.commands.GroupMixin.commands:3 of
+#: disnake.ext.commands.Bot.commands:3 disnake.ext.commands.Grop.commands:3
+#: disnake.ext.commands.GropMixin.commands:3 of
 #, fuzzy
 msgid "Set[:class:`.Command`]"
 msgstr ":class:`Command` またはサブクラス"
@@ -953,13 +953,13 @@ msgstr ":class:`Command` またはサブクラス"
 msgid ""
 "Creates a websocket connection and lets the websocket listen to messages "
 "from Discord. This is a loop that runs the entire event system and "
-"miscellaneous aspects of the library. Control is not resumed until the "
+"miscellaneos aspects of the library. Control is not resumed until the "
 "WebSocket connection is terminated."
 msgstr "WebSocket接続を作成し、Discordからのメッセージをリッスンできるようにします。これはイベントシステム全体とライブラリの様々な機能を実行するループです。WebSocket接続が終了するまで、プログラムは再開されません。"
 
 #: disnake.ext.commands.Bot.connect:8 of
 msgid ""
-"If we should attempt reconnecting, either due to internet failure or a "
+"If we shold attempt reconnecting, either due to internet failure or a "
 "specific failure on Discord's part. Certain disconnects that lead to bad "
 "state will not be handled (such as invalid sharding payloads or bad "
 "tokens)."
@@ -970,10 +970,10 @@ msgstr ""
 #: disnake.ext.commands.Bot.connect:14 of
 #, fuzzy
 msgid ""
-"If the gateway to connect to Discord is not found. Usually if this     is"
-" thrown then there is a Discord API outage."
+"If the gateway to connect to Discord is not fond. Usually if this     is"
+" thrown then there is a Discord API otage."
 msgstr ""
-":exc:`.GatewayNotFound` -- "
+":exc:`.GatewayNotFond` -- "
 "Discordに接続するためのゲートウェイが見つからない。通常、これが発生した場合はDiscordAPIのエラーが考えられます。"
 
 #: disnake.ext.commands.Bot.connect:15 of
@@ -986,7 +986,7 @@ msgid "Creates a :class:`.Guild`."
 msgstr ":class:`.Guild` を作成します。"
 
 #: disnake.ext.commands.Bot.create_guild:5 of
-msgid "Bot accounts in more than 10 guilds are not allowed to create guilds."
+msgid "Bot acconts in more than 10 guilds are not allowed to create guilds."
 msgstr "10以上のギルドに参加しているBotアカウントは、ギルドの作成ができません。"
 
 #: disnake.ext.commands.Bot.create_guild:7 of
@@ -1037,7 +1037,7 @@ msgstr ":class:`.Invite` や、招待のURL、IDを削除します。"
 
 #: disnake.ext.commands.Bot.delete_invite:5 of
 msgid ""
-"You must have the :attr:`~.Permissions.manage_channels` permission in the"
+"Yo must have the :attr:`~.Permissions.manage_channels` permission in the"
 " associated guild to do this."
 msgstr "これを行うには、関連付けられたGuildにて、 :attr:`~.Permissions.manage_channels` 権限が必要です。"
 
@@ -1047,13 +1047,13 @@ msgstr "取り消す招待。"
 
 #: disnake.ext.commands.Bot.delete_invite:11 of
 #, fuzzy
-msgid "You do not have permissions to revoke invites."
+msgid "Yo do not have permissions to revoke invites."
 msgstr ":exc:`.Forbidden` -- 招待を取り消す権限が無い。"
 
 #: disnake.ext.commands.Bot.delete_invite:12 of
 #, fuzzy
 msgid "The invite is invalid or expired."
-msgstr ":exc:`.NotFound` -- 招待が無効、あるいは期限切れになっている。"
+msgstr ":exc:`.NotFond` -- 招待が無効、あるいは期限切れになっている。"
 
 #: disnake.ext.commands.Bot.delete_invite:13 of
 #, fuzzy
@@ -1076,15 +1076,15 @@ msgstr "リッスンするイベントを登録するデコレータ。"
 
 #: disnake.ext.commands.Bot.event:3 of
 msgid ""
-"You can find more info about the events on the :ref:`documentation below "
+"Yo can find more info abot the events on the :ref:`documentation below "
 "<disnake-api-events>`."
 msgstr "イベントの詳細については :ref:`以下のドキュメント <disnake-api-events>` を参照してください。"
 
 #: disnake.ext.commands.Bot.event:5 of
 msgid ""
-"The events must be a :ref:`coroutine <coroutine>`, if not, "
+"The events must be a :ref:`corotine <corotine>`, if not, "
 ":exc:`TypeError` is raised."
-msgstr "イベントは :ref:`コルーチン <coroutine>` でなければいけません。違う場合は :exc:`TypeError` が発生します。"
+msgstr "イベントは :ref:`コルーチン <corotine>` でなければいけません。違う場合は :exc:`TypeError` が発生します。"
 
 #: disnake.ext.commands.Bot.extensions:1 of
 msgid "A read-only mapping of extension name to extension."
@@ -1121,7 +1121,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_channel:14 of
 #, fuzzy
-msgid "You do not have permission to fetch this channel."
+msgid "Yo do not have permission to fetch this channel."
 msgstr ":exc:`.Forbidden` -- 指定のチャンネルを取得する権限がない。"
 
 #: disnake.ext.commands.Bot.fetch_channel:16 of
@@ -1139,7 +1139,7 @@ msgstr "IDから :class:`.Guild` を取得します。"
 #: disnake.ext.commands.Bot.fetch_guild:7 of
 #, fuzzy
 msgid ""
-"Using this, you will **not** receive :attr:`.Guild.channels`, "
+"Using this, yo will **not** receive :attr:`.Guild.channels`, "
 ":attr:`.Guild.members`, :attr:`.Member.activity` and "
 ":attr:`.Member.voice` per :class:`.Member`."
 msgstr ""
@@ -1159,7 +1159,7 @@ msgstr "取得したいギルドのID。"
 
 #: disnake.ext.commands.Bot.fetch_guild:17 of
 #, fuzzy
-msgid "You do not have access to the guild."
+msgid "Yo do not have access to the guild."
 msgstr ":exc:`.Forbidden` -- ギルドにアクセスできない。"
 
 #: disnake.ext.commands.Bot.fetch_guild:18 of
@@ -1172,12 +1172,12 @@ msgid "The guild from the ID."
 msgstr "IDから取得したギルド。"
 
 #: disnake.ext.commands.Bot.fetch_guilds:3 of
-msgid "Retrieves an :class:`.AsyncIterator` that enables receiving your guilds."
+msgid "Retrieves an :class:`.AsyncIterator` that enables receiving yor guilds."
 msgstr "Botが所属するGuildを取得できる、 :class:`AsyncIterator` を取得します。"
 
 #: disnake.ext.commands.Bot.fetch_guilds:7 of
 msgid ""
-"Using this, you will only receive :attr:`.Guild.owner`, "
+"Using this, yo will only receive :attr:`.Guild.owner`, "
 ":attr:`.Guild.icon`, :attr:`.Guild.id`, and :attr:`.Guild.name` per "
 ":class:`.Guild`."
 msgstr ""
@@ -1214,7 +1214,7 @@ msgstr "すべてのパラメータがオプションです。"
 #, fuzzy
 msgid ""
 "The number of guilds to retrieve. If ``None``, it retrieves every guild "
-"you have access to. Note, however, that this would make it a slow "
+"yo have access to. Note, however, that this wold make it a slow "
 "operation. Defaults to ``100``."
 msgstr ""
 "取得するギルドの数。 ``None`` "
@@ -1246,8 +1246,8 @@ msgstr ":exc:`.HTTPException` -- ギルドの取得に失敗した。"
 #: disnake.ext.commands.Bot.get_all_members
 #: disnake.ext.commands.Bot.walk_commands
 #: disnake.ext.commands.Cog.walk_commands disnake.ext.commands.Context.history
-#: disnake.ext.commands.Group.walk_commands
-#: disnake.ext.commands.GroupMixin.walk_commands of
+#: disnake.ext.commands.Grop.walk_commands
+#: disnake.ext.commands.GropMixin.walk_commands of
 msgid "Yields"
 msgstr "Yieldする値"
 
@@ -1261,7 +1261,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_invite:7 of
 msgid ""
-"If the invite is for a guild you have not joined, the guild and channel "
+"If the invite is for a guild yo have not joined, the guild and channel "
 "attributes of the returned :class:`.Invite` will be "
 ":class:`.PartialInviteGuild` and :class:`.PartialInviteChannel` "
 "respectively."
@@ -1273,9 +1273,9 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_invite:13 of
 msgid ""
-"Whether to include count information in the invite. This fills the "
-":attr:`.Invite.approximate_member_count` and "
-":attr:`.Invite.approximate_presence_count` fields."
+"Whether to include cont information in the invite. This fills the "
+":attr:`.Invite.approximate_member_cont` and "
+":attr:`.Invite.approximate_presence_cont` fields."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_invite:18 of
@@ -1324,8 +1324,8 @@ msgstr ":class:`.Guild`"
 #: disnake.ext.commands.Bot.fetch_user:3 of
 msgid ""
 "Retrieves a :class:`~disnake.User` based on their ID. This can only be "
-"used by bot accounts. You do not have to share any guilds with the user "
-"to get this information, however many operations do require that you do."
+"used by bot acconts. Yo do not have to share any guilds with the user "
+"to get this information, however many operations do require that yo do."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_user:10 of
@@ -1347,7 +1347,7 @@ msgid "Fetching the user failed."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_user:18 of
-msgid "The user you requested."
+msgid "The user yo requested."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_user:19 of
@@ -1359,7 +1359,7 @@ msgid "Gets an arbitrary user's profile."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_user_profile:7 of
-msgid "This can only be used by non-bot accounts."
+msgid "This can only be used by non-bot acconts."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_user_profile:9 of
@@ -1396,11 +1396,11 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_webhook:7 of
 #, fuzzy
-msgid "You do not have permission to fetch this webhook."
+msgid "Yo do not have permission to fetch this webhook."
 msgstr ":exc:`.Forbidden` -- 指定のチャンネルを取得する権限がない。"
 
 #: disnake.ext.commands.Bot.fetch_webhook:9 of
-msgid "The webhook you requested."
+msgid "The webhook yo requested."
 msgstr ""
 
 #: disnake.ext.commands.Bot.fetch_webhook:10 of
@@ -1448,9 +1448,9 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.get_all_channels:11 of
 msgid ""
-"Just because you receive a :class:`.abc.GuildChannel` does not mean that "
-"you can communicate in said channel. "
-":meth:`.abc.GuildChannel.permissions_for` should be used for that."
+"Just because yo receive a :class:`.abc.GuildChannel` does not mean that "
+"yo can communicate in said channel. "
+":meth:`.abc.GuildChannel.permissions_for` shold be used for that."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_all_channels:15 of
@@ -1476,7 +1476,7 @@ msgid "The ID to search for."
 msgstr "取得したいギルドのID。"
 
 #: disnake.ext.commands.Bot.get_channel:6 of
-msgid "The returned channel or ``None`` if not found."
+msgid "The returned channel or ``None`` if not fond."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_channel:7 of
@@ -1489,18 +1489,18 @@ msgid "Gets the cog instance requested."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_cog:3 of
-msgid "If the cog is not found, ``None`` is returned instead."
+msgid "If the cog is not fond, ``None`` is returned instead."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_cog:5 of
 msgid ""
-"The name of the cog you are requesting. This is equivalent to the name "
+"The name of the cog yo are requesting. This is equivalent to the name "
 "passed via keyword argument in class creation or the class name if "
 "unspecified."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_cog:10 of
-msgid "The cog that was requested. If not found, returns ``None``."
+msgid "The cog that was requested. If not fond, returns ``None``."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_cog:11 disnake.ext.commands.Command:62
@@ -1509,44 +1509,44 @@ msgid "Optional[:class:`Cog`]"
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_command:1
-#: disnake.ext.commands.Group.get_command:1
-#: disnake.ext.commands.GroupMixin.get_command:1 of
+#: disnake.ext.commands.Grop.get_command:1
+#: disnake.ext.commands.GropMixin.get_command:1 of
 #, fuzzy
 msgid "Get a :class:`.Command` from the internal list of commands."
 msgstr ":class:`.Command`やそのサブクラスを内部のコマンドリストに追加します。"
 
 #: disnake.ext.commands.Bot.get_command:4
-#: disnake.ext.commands.Group.get_command:4
-#: disnake.ext.commands.GroupMixin.get_command:4 of
-msgid "This could also be used as a way to get aliases."
+#: disnake.ext.commands.Grop.get_command:4
+#: disnake.ext.commands.GropMixin.get_command:4 of
+msgid "This cold also be used as a way to get aliases."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_command:6
-#: disnake.ext.commands.Group.get_command:6
-#: disnake.ext.commands.GroupMixin.get_command:6 of
+#: disnake.ext.commands.Grop.get_command:6
+#: disnake.ext.commands.GropMixin.get_command:6 of
 msgid ""
-"The name could be fully qualified (e.g. ``'foo bar'``) will get the "
-"subcommand ``bar`` of the group command ``foo``. If a subcommand is not "
-"found then ``None`` is returned just as usual."
+"The name cold be fully qualified (e.g. ``'foo bar'``) will get the "
+"subcommand ``bar`` of the grop command ``foo``. If a subcommand is not "
+"fond then ``None`` is returned just as usual."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_command:10
-#: disnake.ext.commands.Group.get_command:10
-#: disnake.ext.commands.GroupMixin.get_command:10 of
+#: disnake.ext.commands.Grop.get_command:10
+#: disnake.ext.commands.GropMixin.get_command:10 of
 msgid "The name of the command to get."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_command:13
-#: disnake.ext.commands.Group.get_command:13
-#: disnake.ext.commands.GroupMixin.get_command:13 of
-msgid "The command that was requested. If not found, returns ``None``."
+#: disnake.ext.commands.Grop.get_command:13
+#: disnake.ext.commands.GropMixin.get_command:13 of
+msgid "The command that was requested. If not fond, returns ``None``."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_command:14 disnake.ext.commands.Command:56
 #: disnake.ext.commands.Command:103 disnake.ext.commands.Command.root_parent:7
-#: disnake.ext.commands.Group.get_command:14
-#: disnake.ext.commands.Group.root_parent:7
-#: disnake.ext.commands.GroupMixin.get_command:14 of
+#: disnake.ext.commands.Grop.get_command:14
+#: disnake.ext.commands.Grop.root_parent:7
+#: disnake.ext.commands.GropMixin.get_command:14 of
 msgid "Optional[:class:`Command`]"
 msgstr ""
 
@@ -1556,7 +1556,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.get_context:5 of
 msgid ""
-"This is a more low-level counter-part for :meth:`.process_commands` to "
+"This is a more low-level conter-part for :meth:`.process_commands` to "
 "allow users more fine grained control over the processing."
 msgstr ""
 
@@ -1575,8 +1575,8 @@ msgstr ""
 #: disnake.ext.commands.Bot.get_context:15 of
 msgid ""
 "The factory class that will be used to create the context. By default, "
-"this is :class:`.Context`. Should a custom class be provided, it must be "
-"similar enough to :class:`.Context`\\'s interface."
+"this is :class:`.Context`. Shold a custom class be provided, it must be "
+"similar enogh to :class:`.Context`\\'s interface."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_context:20 of
@@ -1594,7 +1594,7 @@ msgid "Returns an emoji with the given ID."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_emoji:6 of
-msgid "The custom emoji or ``None`` if not found."
+msgid "The custom emoji or ``None`` if not fond."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_emoji:7 of
@@ -1606,7 +1606,7 @@ msgid "Returns a guild with the given ID."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_guild:6 of
-msgid "The guild or ``None`` if not found."
+msgid "The guild or ``None`` if not fond."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_guild:7 disnake.ext.commands.Context.guild:3 of
@@ -1637,30 +1637,30 @@ msgid "Returns a user with the given ID."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_user:6 of
-msgid "The user or ``None`` if not found."
+msgid "The user or ``None`` if not fond."
 msgstr ""
 
 #: disnake.ext.commands.Bot.get_user:7 of
 msgid "Optional[:class:`~disnake.User`]"
 msgstr ""
 
-#: disnake.ext.commands.Bot.group:1 disnake.ext.commands.Group.group:1
-#: disnake.ext.commands.GroupMixin.group:1 of
+#: disnake.ext.commands.Bot.grop:1 disnake.ext.commands.Grop.grop:1
+#: disnake.ext.commands.GropMixin.grop:1 of
 msgid ""
-"A shortcut decorator that invokes :func:`.group` and adds it to the "
-"internal command list via :meth:`~.GroupMixin.add_command`."
+"A shortcut decorator that invokes :func:`.grop` and adds it to the "
+"internal command list via :meth:`~.GropMixin.add_command`."
 msgstr ""
 
-#: disnake.ext.commands.Bot.group:4 disnake.ext.commands.Group.group:4
-#: disnake.ext.commands.GroupMixin.group:4 of
+#: disnake.ext.commands.Bot.grop:4 disnake.ext.commands.Grop.grop:4
+#: disnake.ext.commands.GropMixin.grop:4 of
 msgid ""
-"A decorator that converts the provided method into a Group, adds it to "
+"A decorator that converts the provided method into a Grop, adds it to "
 "the bot, then returns it."
 msgstr ""
 
-#: disnake.ext.commands.Bot.group:5 disnake.ext.commands.Group.group:5
-#: disnake.ext.commands.GroupMixin.group:5 of
-msgid "Callable[..., :class:`Group`]"
+#: disnake.ext.commands.Bot.grop:5 disnake.ext.commands.Grop.grop:5
+#: disnake.ext.commands.GropMixin.grop:5 of
+msgid "Callable[..., :class:`Grop`]"
 msgstr ""
 
 #: disnake.ext.commands.Bot.guilds:1 of
@@ -1703,7 +1703,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.is_owner:6 of
 msgid ""
-"If an :attr:`owner_id` is not set, it is fetched automatically through "
+"If an :attr:`owner_id` is not set, it is fetched automatically throgh "
 "the use of :meth:`~.Bot.application_info`."
 msgstr ""
 
@@ -1730,13 +1730,13 @@ msgid "Measures latency between a HEARTBEAT and a HEARTBEAT_ACK in seconds."
 msgstr ""
 
 #: disnake.ext.commands.Bot.latency:3 of
-msgid "This could be referred to as the Discord WebSocket protocol latency."
+msgid "This cold be referred to as the Discord WebSocket protocol latency."
 msgstr ""
 
 #: disnake.ext.commands.Bot.latency:5
 #: disnake.ext.commands.Command.get_cooldown_retry_after:10
 #: disnake.ext.commands.CommandOnCooldown:16
-#: disnake.ext.commands.Group.get_cooldown_retry_after:10 of
+#: disnake.ext.commands.Grop.get_cooldown_retry_after:10 of
 #, fuzzy
 msgid ":class:`float`"
 msgstr ":class:`.AppInfo`"
@@ -1744,21 +1744,21 @@ msgstr ":class:`.AppInfo`"
 #: disnake.ext.commands.Bot.listen:1 of
 msgid ""
 "A decorator that registers another function as an external event "
-"listener. Basically this allows you to listen to multiple events from "
+"listener. Basically this allows yo to listen to multiple events from "
 "different places e.g. such as :func:`.on_ready`"
 msgstr ""
 
 #: disnake.ext.commands.Bot.listen:5 of
-msgid "The functions being listened to must be a :ref:`coroutine <coroutine>`."
+msgid "The functions being listened to must be a :ref:`corotine <corotine>`."
 msgstr ""
 
 #: disnake.ext.commands.Bot.listen:21 of
-msgid "Would print one and two in an unspecified order."
+msgid "Wold print one and two in an unspecified order."
 msgstr ""
 
 #: disnake.ext.commands.Bot.listen:23 of
 #, fuzzy
-msgid "The function being listened to is not a coroutine."
+msgid "The function being listened to is not a corotine."
 msgstr ":exc:`TypeError` -- 渡された関数がコルーチンでない。"
 
 #: disnake.ext.commands.Bot.load_extension:1 of
@@ -1781,13 +1781,13 @@ msgstr ""
 #: disnake.ext.commands.Bot.load_extension:10 of
 msgid ""
 "The extension name to load. It must be dot separated like regular Python "
-"imports if accessing a sub-module. e.g. ``foo.test`` if you want to "
+"imports if accessing a sub-module. e.g. ``foo.test`` if yo want to "
 "import ``foo/test.py``."
 msgstr ""
 
 #: disnake.ext.commands.Bot.load_extension:15
 #: disnake.ext.commands.Bot.reload_extension:14 of
-msgid "The extension could not be imported."
+msgid "The extension cold not be imported."
 msgstr ""
 
 #: disnake.ext.commands.Bot.load_extension:16 of
@@ -1815,18 +1815,18 @@ msgstr ""
 msgid ""
 "Logging on with a user token is against the Discord `Terms of Service "
 "<https://support.discord.com/hc/en-us/articles/115002192352>`_ and doing "
-"so might potentially get your account banned. Use this at your own risk."
+"so might potentially get yor accont banned. Use this at yor own risk."
 msgstr ""
 
 #: disnake.ext.commands.Bot.login:14 of
 msgid ""
 "The authentication token. Do not prefix this token with anything as the "
-"library will do it for you."
+"library will do it for yo."
 msgstr ""
 
 #: disnake.ext.commands.Bot.login:17 of
 msgid ""
-"Keyword argument that specifies if the account logging on is a bot token "
+"Keyword argument that specifies if the accont logging on is a bot token "
 "or not."
 msgstr ""
 
@@ -1840,13 +1840,13 @@ msgid ""
 "the known incorrect credentials     passing status code."
 msgstr ""
 
-#: disnake.ext.commands.Bot.logout:3 of
-msgid "Logs out of Discord and closes all connections."
+#: disnake.ext.commands.Bot.logot:3 of
+msgid "Logs ot of Discord and closes all connections."
 msgstr ""
 
-#: disnake.ext.commands.Bot.logout:7 of
+#: disnake.ext.commands.Bot.logot:7 of
 msgid ""
-"This is just an alias to :meth:`close`. If you want to do extraneous "
+"This is just an alias to :meth:`close`. If yo want to do extraneos "
 "cleanup when subclassing, it is suggested to override :meth:`close` "
 "instead."
 msgstr ""
@@ -1857,12 +1857,12 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.on_command_error:5 of
 msgid ""
-"By default this prints to :data:`sys.stderr` however it could be "
+"By default this prints to :data:`sys.stderr` however it cold be "
 "overridden to have a different implementation."
 msgstr ""
 
 #: disnake.ext.commands.Bot.on_command_error:8 of
-msgid "This only fires if you do not specify any listeners for command error."
+msgid "This only fires if yo do not specify any listeners for command error."
 msgstr ""
 
 #: disnake.ext.commands.Bot.on_error:3 of
@@ -1871,7 +1871,7 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.on_error:5 of
 msgid ""
-"By default this prints to :data:`sys.stderr` however it could be "
+"By default this prints to :data:`sys.stderr` however it cold be "
 "overridden to have a different implementation. Check "
 ":func:`~disnake.on_error` for more details."
 msgstr ""
@@ -1893,15 +1893,15 @@ msgstr ""
 #: disnake.ext.commands.Bot.process_commands:3 of
 msgid ""
 "This function processes the commands that have been registered to the bot"
-" and other groups. Without this coroutine, none of the commands will be "
+" and other grops. Withot this corotine, none of the commands will be "
 "triggered."
 msgstr ""
 
 #: disnake.ext.commands.Bot.process_commands:7 of
 msgid ""
-"By default, this coroutine is called inside the :func:`.on_message` "
-"event. If you choose to override the :func:`.on_message` event, then you "
-"should invoke this coroutine as well."
+"By default, this corotine is called inside the :func:`.on_message` "
+"event. If yo choose to override the :func:`.on_message` event, then yo "
+"shold invoke this corotine as well."
 msgstr ""
 
 #: disnake.ext.commands.Bot.process_commands:11 of
@@ -1936,7 +1936,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.reload_extension:8 of
 msgid ""
 "The extension name to reload. It must be dot separated like regular "
-"Python imports if accessing a sub-module. e.g. ``foo.test`` if you want "
+"Python imports if accessing a sub-module. e.g. ``foo.test`` if yo want "
 "to import ``foo/test.py``."
 msgstr ""
 
@@ -1980,7 +1980,7 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_cog:6 of
-msgid "If no cog is found then this method has no effect."
+msgid "If no cog is fond then this method has no effect."
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_cog:8 of
@@ -1988,35 +1988,35 @@ msgid "The name of the cog to remove."
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_command:1
-#: disnake.ext.commands.Group.remove_command:1
-#: disnake.ext.commands.GroupMixin.remove_command:1 of
+#: disnake.ext.commands.Grop.remove_command:1
+#: disnake.ext.commands.GropMixin.remove_command:1 of
 #, fuzzy
 msgid "Remove a :class:`.Command` from the internal list of commands."
 msgstr ":class:`.Command`やそのサブクラスを内部のコマンドリストに追加します。"
 
 #: disnake.ext.commands.Bot.remove_command:4
-#: disnake.ext.commands.Group.remove_command:4
-#: disnake.ext.commands.GroupMixin.remove_command:4 of
-msgid "This could also be used as a way to remove aliases."
+#: disnake.ext.commands.Grop.remove_command:4
+#: disnake.ext.commands.GropMixin.remove_command:4 of
+msgid "This cold also be used as a way to remove aliases."
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_command:6
-#: disnake.ext.commands.Group.remove_command:6
-#: disnake.ext.commands.GroupMixin.remove_command:6 of
+#: disnake.ext.commands.Grop.remove_command:6
+#: disnake.ext.commands.GropMixin.remove_command:6 of
 msgid "The name of the command to remove."
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_command:9
-#: disnake.ext.commands.Group.remove_command:9
-#: disnake.ext.commands.GroupMixin.remove_command:9 of
+#: disnake.ext.commands.Grop.remove_command:9
+#: disnake.ext.commands.GropMixin.remove_command:9 of
 msgid ""
 "The command that was removed. If the name is not valid then ``None`` is "
 "returned instead."
 msgstr ""
 
 #: disnake.ext.commands.Bot.remove_command:11
-#: disnake.ext.commands.Group.remove_command:11
-#: disnake.ext.commands.GroupMixin.remove_command:11 of
+#: disnake.ext.commands.Grop.remove_command:11
+#: disnake.ext.commands.GropMixin.remove_command:11 of
 msgid "Optional[:class:`.Command`]"
 msgstr ""
 
@@ -2034,9 +2034,9 @@ msgstr "削除したいイベントの名前。デフォルトでは ``func.__na
 
 #: disnake.ext.commands.Bot.request_offline_members:3 of
 msgid ""
-"Requests previously offline members from the guild to be filled up into "
+"Requests previosly offline members from the guild to be filled up into "
 "the :attr:`.Guild.members` cache. This function is usually not called. It"
-" should only be used if you have the ``fetch_offline_members`` parameter "
+" shold only be used if yo have the ``fetch_offline_members`` parameter "
 "set to ``False``."
 msgstr ""
 
@@ -2044,7 +2044,7 @@ msgstr ""
 msgid ""
 "When the client logs on and connects to the websocket, Discord does not "
 "provide the library with offline members if the number of members in the "
-"guild is larger than 250. You can check if a guild is large if "
+"guild is larger than 250. Yo can check if a guild is large if "
 ":attr:`.Guild.large` is ``True``."
 msgstr ""
 
@@ -2064,18 +2064,18 @@ msgstr ""
 #: disnake.ext.commands.Bot.run:1 of
 msgid ""
 "A blocking call that abstracts away the event loop initialisation from "
-"you."
+"yo."
 msgstr ""
 
 #: disnake.ext.commands.Bot.run:4 of
 msgid ""
-"If you want more control over the event loop then this function should "
-"not be used. Use :meth:`start` coroutine or :meth:`connect` + "
+"If yo want more control over the event loop then this function shold "
+"not be used. Use :meth:`start` corotine or :meth:`connect` + "
 ":meth:`login`."
 msgstr ""
 
 #: disnake.ext.commands.Bot.run:8 of
-msgid "Roughly Equivalent to: ::"
+msgid "Roghly Equivalent to: ::"
 msgstr ""
 
 #: disnake.ext.commands.Bot.run:20 of
@@ -2086,7 +2086,7 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.Bot.start:3 of
-msgid "A shorthand coroutine for :meth:`login` + :meth:`connect`."
+msgid "A shorthand corotine for :meth:`login` + :meth:`connect`."
 msgstr ""
 
 #: disnake.ext.commands.Bot.start:5 of
@@ -2106,7 +2106,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.unload_extension:6 of
 msgid ""
 "The extension can provide an optional global function, ``teardown``, to "
-"do miscellaneous clean-up if necessary. This function takes a single "
+"do miscellaneos clean-up if necessary. This function takes a single "
 "parameter, the ``bot``, similar to ``setup`` from "
 ":meth:`~.Bot.load_extension`."
 msgstr ""
@@ -2114,7 +2114,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.unload_extension:11 of
 msgid ""
 "The extension name to unload. It must be dot separated like regular "
-"Python imports if accessing a sub-module. e.g. ``foo.test`` if you want "
+"Python imports if accessing a sub-module. e.g. ``foo.test`` if yo want "
 "to import ``foo/test.py``."
 msgstr ""
 
@@ -2152,15 +2152,15 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:5 of
 msgid ""
-"This could be used to wait for a user to reply to a message, or to react "
+"This cold be used to wait for a user to reply to a message, or to react "
 "to a message, or to edit a message in a self-contained way."
 msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:9 of
 msgid ""
-"The ``timeout`` parameter is passed onto :func:`asyncio.wait_for`. By "
-"default, it does not timeout. Note that this does propagate the "
-":exc:`asyncio.TimeoutError` for you in case of timeout and is provided "
+"The ``timeot`` parameter is passed onto :func:`asyncio.wait_for`. By "
+"default, it does not timeot. Note that this does propagate the "
+":exc:`asyncio.TimeotError` for yo in case of timeot and is provided "
 "for ease of use."
 msgstr ""
 
@@ -2187,7 +2187,7 @@ msgstr ""
 #: disnake.ext.commands.Bot.wait_for:55 of
 msgid ""
 "The event name, similar to the :ref:`event reference <disnake-api-"
-"events>`, but without the ``on_`` prefix, to wait for."
+"events>`, but withot the ``on_`` prefix, to wait for."
 msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:58 of
@@ -2198,12 +2198,12 @@ msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:61 of
 msgid ""
-"The number of seconds to wait before timing out and raising "
-":exc:`asyncio.TimeoutError`."
+"The number of seconds to wait before timing ot and raising "
+":exc:`asyncio.TimeotError`."
 msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:65 of
-msgid "If a timeout is provided and it was reached."
+msgid "If a timeot is provided and it was reached."
 msgstr ""
 
 #: disnake.ext.commands.Bot.wait_for:67 of
@@ -2218,23 +2218,23 @@ msgid "Waits until the client's internal cache is all ready."
 msgstr ""
 
 #: disnake.ext.commands.Bot.walk_commands:1
-#: disnake.ext.commands.Group.walk_commands:1
-#: disnake.ext.commands.GroupMixin.walk_commands:1 of
-msgid "An iterator that recursively walks through all commands and subcommands."
+#: disnake.ext.commands.Grop.walk_commands:1
+#: disnake.ext.commands.GropMixin.walk_commands:1 of
+msgid "An iterator that recursively walks throgh all commands and subcommands."
 msgstr ""
 
 #: disnake.ext.commands.Bot.walk_commands:3
-#: disnake.ext.commands.Group.walk_commands:3
-#: disnake.ext.commands.GroupMixin.walk_commands:3 of
+#: disnake.ext.commands.Grop.walk_commands:3
+#: disnake.ext.commands.GropMixin.walk_commands:3 of
 msgid "Duplicates due to aliases are no longer returned"
 msgstr ""
 
 #: disnake.ext.commands.Bot.walk_commands:6
-#: disnake.ext.commands.Group.walk_commands:6
-#: disnake.ext.commands.GroupMixin.walk_commands:6 of
+#: disnake.ext.commands.Grop.walk_commands:6
+#: disnake.ext.commands.GropMixin.walk_commands:6 of
 #, fuzzy
 msgid ""
-"Union[:class:`.Command`, :class:`.Group`] -- A command or group from the "
+"Union[:class:`.Command`, :class:`.Grop`] -- A command or grop from the "
 "internal list of commands."
 msgstr ":class:`.Command`やそのサブクラスを内部のコマンドリストに追加します。"
 
@@ -2262,7 +2262,7 @@ msgstr ""
 #: disnake.ext.commands.when_mentioned_or:13 of
 msgid ""
 "This callable returns another callable, so if this is done inside a "
-"custom callable, you must call the returned callable, for example:"
+"custom callable, yo must call the returned callable, for example:"
 msgstr ""
 
 #: disnake.ext.commands.when_mentioned_or:23 of
@@ -2282,7 +2282,7 @@ msgstr ""
 #: ../../ext/commands/api.rst:34
 msgid ""
 "An error handler that is called when an error is raised inside a command "
-"either through user input error, check failure, or an error in your own "
+"either throgh user input error, check failure, or an error in yor own "
 "code."
 msgstr ""
 
@@ -2305,7 +2305,7 @@ msgstr ""
 
 #: ../../ext/commands/api.rst:47
 msgid ""
-"An event that is called when a command is found and is about to be "
+"An event that is called when a command is fond and is abot to be "
 "invoked."
 msgstr ""
 
@@ -2332,7 +2332,7 @@ msgstr "Command"
 #: disnake.ext.commands.command:1 of
 msgid ""
 "A decorator that transforms a function into a :class:`.Command` or if "
-"called with :func:`.group`, :class:`.Group`."
+"called with :func:`.grop`, :class:`.Grop`."
 msgstr ""
 
 #: disnake.ext.commands.command:4 of
@@ -2346,7 +2346,7 @@ msgstr ""
 #: disnake.ext.commands.command:9 of
 msgid ""
 "All checks added using the :func:`.check` & co. decorators are added into"
-" the function. There is no way to supply your own checks through this "
+" the function. There is no way to supply yor own checks throgh this "
 "decorator."
 msgstr ""
 
@@ -2358,7 +2358,7 @@ msgstr ""
 
 #: disnake.ext.commands.command:16 of
 msgid ""
-"The class to construct with. By default this is :class:`.Command`. You "
+"The class to construct with. By default this is :class:`.Command`. Yo "
 "usually do not change this."
 msgstr ""
 
@@ -2369,20 +2369,20 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.command:21 of
-msgid "If the function is not a coroutine or is already a command."
+msgid "If the function is not a corotine or is already a command."
 msgstr ""
 
-#: disnake.ext.commands.group:1 of
-msgid "A decorator that transforms a function into a :class:`.Group`."
+#: disnake.ext.commands.grop:1 of
+msgid "A decorator that transforms a function into a :class:`.Grop`."
 msgstr ""
 
-#: disnake.ext.commands.group:3 of
+#: disnake.ext.commands.grop:3 of
 msgid ""
 "This is similar to the :func:`.command` decorator but the ``cls`` "
-"parameter is set to :class:`Group` by default."
+"parameter is set to :class:`Grop` by default."
 msgstr ""
 
-#: disnake.ext.commands.group:6 of
+#: disnake.ext.commands.grop:6 of
 msgid "The ``cls`` parameter can now be passed."
 msgstr ""
 
@@ -2403,11 +2403,11 @@ msgstr "ギルドの名前。"
 
 #: disnake.ext.commands.Command:14 of
 #, fuzzy
-msgid "The coroutine that is executed when the command is called."
+msgid "The corotine that is executed when the command is called."
 msgstr "呼び出そうとしたコマンドが無効化されていた際に発生する例外。"
 
 #: disnake.ext.commands.Command:16 of
-msgid ":ref:`coroutine <coroutine>`"
+msgid ":ref:`corotine <corotine>`"
 msgstr ""
 
 #: disnake.ext.commands.Command:20 of
@@ -2419,7 +2419,7 @@ msgid "The short help text for the command."
 msgstr ""
 
 #: disnake.ext.commands.Command:28 disnake.ext.commands.Command.cog_name:3
-#: disnake.ext.commands.Context:70 disnake.ext.commands.Group.cog_name:3 of
+#: disnake.ext.commands.Context:70 disnake.ext.commands.Grop.cog_name:3 of
 msgid "Optional[:class:`str`]"
 msgstr ""
 
@@ -2454,10 +2454,10 @@ msgstr ""
 
 #: disnake.ext.commands.Command:66 of
 msgid ""
-"A list of predicates that verifies if the command could be executed with "
+"A list of predicates that verifies if the command cold be executed with "
 "the given :class:`.Context` as the sole parameter. If an exception is "
 "necessary to be thrown to signal failure, then one inherited from "
-":exc:`.CommandError` should be used. Note that if the checks fail then "
+":exc:`.CommandError` shold be used. Note that if the checks fail then "
 ":exc:`.CheckFailure` exception is raised to the :func:`.on_command_error`"
 " event."
 msgstr ""
@@ -2474,7 +2474,7 @@ msgstr ":class:`str` -- この属性に入力されたテキストは、デフ�
 #: disnake.ext.commands.Command:83 of
 msgid ""
 "If ``True``\\, the default help command does not show this in the help "
-"output."
+"otput."
 msgstr ""
 
 #: disnake.ext.commands.Command:90 of
@@ -2499,7 +2499,7 @@ msgstr ""
 
 #: disnake.ext.commands.Command:116 of
 msgid ""
-"If ``True``\\, ignores extraneous strings passed to a command if all its "
+"If ``True``\\, ignores extraneos strings passed to a command if all its "
 "requirements are met (e.g. ``?foo a b c`` when only expecting ``a`` and "
 "``b``). Otherwise :func:`.on_command_error` and local error handlers are "
 "called with :exc:`.TooManyArguments`. Defaults to ``True``."
@@ -2513,31 +2513,31 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.Command.add_check:1
-#: disnake.ext.commands.Group.add_check:1 of
+#: disnake.ext.commands.Grop.add_check:1 of
 #, fuzzy
 msgid "Adds a check to the command."
 msgstr "ボットにグローバルチェックを追加します。"
 
 #: disnake.ext.commands.Command.add_check:3
-#: disnake.ext.commands.Group.add_check:3 of
+#: disnake.ext.commands.Grop.add_check:3 of
 #, fuzzy
 msgid "This is the non-decorator interface to :func:`.check`."
 msgstr "これは:meth:`.check`と:meth:`.check_once`のデコレータでない実装です。"
 
 #: disnake.ext.commands.Command.add_check:7
-#: disnake.ext.commands.Group.add_check:7
+#: disnake.ext.commands.Grop.add_check:7
 #: disnake.ext.commands.HelpCommand.add_check:5 of
 #, fuzzy
 msgid "The function that will be used as a check."
 msgstr "グローバルチェックとして使用される関数。"
 
 #: disnake.ext.commands.Command.remove_check:1
-#: disnake.ext.commands.Group.remove_check:1 of
+#: disnake.ext.commands.Grop.remove_check:1 of
 msgid "Removes a check from the command."
 msgstr ""
 
 #: disnake.ext.commands.Command.remove_check:3
-#: disnake.ext.commands.Group.remove_check:3
+#: disnake.ext.commands.Grop.remove_check:3
 #: disnake.ext.commands.HelpCommand.remove_check:3 of
 msgid ""
 "This function is idempotent and will not raise an exception if the "
@@ -2545,16 +2545,16 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.Command.remove_check:8
-#: disnake.ext.commands.Group.remove_check:8
+#: disnake.ext.commands.Grop.remove_check:8
 #: disnake.ext.commands.HelpCommand.remove_check:8 of
 msgid "The function to remove from the checks."
 msgstr ""
 
-#: disnake.ext.commands.Command.update:1 disnake.ext.commands.Group.update:1 of
+#: disnake.ext.commands.Command.update:1 disnake.ext.commands.Grop.update:1 of
 msgid "Updates :class:`Command` instance with updated attributes."
 msgstr ""
 
-#: disnake.ext.commands.Command.update:3 disnake.ext.commands.Group.update:3 of
+#: disnake.ext.commands.Command.update:3 disnake.ext.commands.Grop.update:3 of
 msgid ""
 "This works similarly to the :func:`.command` decorator in terms of "
 "parameters in that they are passed to the :class:`Command` or subclass "
@@ -2568,7 +2568,7 @@ msgstr ""
 #: disnake.ext.commands.Command.__call__:7 of
 msgid ""
 "This bypasses all mechanisms -- including checks, converters, invoke "
-"hooks, cooldowns, etc. You must take care to pass the proper arguments "
+"hooks, cooldowns, etc. Yo must take care to pass the proper arguments "
 "and types to this function."
 msgstr ""
 
@@ -2587,155 +2587,155 @@ msgid ":class:`Command`"
 msgstr ":class:`Command` またはサブクラス"
 
 #: disnake.ext.commands.Command.clean_params:1
-#: disnake.ext.commands.Group.clean_params:1 of
+#: disnake.ext.commands.Grop.clean_params:1 of
 msgid ""
 "OrderedDict[:class:`str`, :class:`inspect.Parameter`]: Retrieves the "
-"parameter OrderedDict without the context or self parameters."
+"parameter OrderedDict withot the context or self parameters."
 msgstr ""
 
 #: disnake.ext.commands.Command.clean_params:4
-#: disnake.ext.commands.Group.clean_params:4 of
+#: disnake.ext.commands.Grop.clean_params:4 of
 msgid "Useful for inspecting signature."
 msgstr ""
 
 #: disnake.ext.commands.Command.full_parent_name:1
-#: disnake.ext.commands.Group.full_parent_name:1 of
+#: disnake.ext.commands.Grop.full_parent_name:1 of
 msgid "Retrieves the fully qualified parent command name."
 msgstr ""
 
 #: disnake.ext.commands.Command.full_parent_name:3
-#: disnake.ext.commands.Group.full_parent_name:3 of
+#: disnake.ext.commands.Grop.full_parent_name:3 of
 msgid ""
 "This the base command name required to execute it. For example, in ``?one"
-" two three`` the parent name would be ``one two``."
+" two three`` the parent name wold be ``one two``."
 msgstr ""
 
-#: disnake.ext.commands.Command.parents:1 disnake.ext.commands.Group.parents:1
+#: disnake.ext.commands.Command.parents:1 disnake.ext.commands.Grop.parents:1
 #: of
 msgid "Retrieves the parents of this command."
 msgstr ""
 
-#: disnake.ext.commands.Command.parents:3 disnake.ext.commands.Group.parents:3
+#: disnake.ext.commands.Command.parents:3 disnake.ext.commands.Grop.parents:3
 #: of
 msgid "If the command has no parents then it returns an empty :class:`list`."
 msgstr ""
 
-#: disnake.ext.commands.Command.parents:5 disnake.ext.commands.Group.parents:5
+#: disnake.ext.commands.Command.parents:5 disnake.ext.commands.Grop.parents:5
 #: of
 msgid "For example in commands ``?a b c test``, the parents are ``[c, b, a]``."
 msgstr ""
 
-#: disnake.ext.commands.Command.parents:9 disnake.ext.commands.Group.parents:9
+#: disnake.ext.commands.Command.parents:9 disnake.ext.commands.Grop.parents:9
 #: disnake.ext.commands.HelpCommand.filter_commands:18 of
 msgid "List[:class:`Command`]"
 msgstr ""
 
 #: disnake.ext.commands.Command.root_parent:1
-#: disnake.ext.commands.Group.root_parent:1 of
+#: disnake.ext.commands.Grop.root_parent:1 of
 msgid "Retrieves the root parent of this command."
 msgstr ""
 
 #: disnake.ext.commands.Command.root_parent:3
-#: disnake.ext.commands.Group.root_parent:3 of
+#: disnake.ext.commands.Grop.root_parent:3 of
 msgid "If the command has no parents then it returns ``None``."
 msgstr ""
 
 #: disnake.ext.commands.Command.root_parent:5
-#: disnake.ext.commands.Group.root_parent:5 of
+#: disnake.ext.commands.Grop.root_parent:5 of
 msgid "For example in commands ``?a b c test``, the root parent is ``a``."
 msgstr ""
 
 #: disnake.ext.commands.Command.qualified_name:1
-#: disnake.ext.commands.Group.qualified_name:1 of
+#: disnake.ext.commands.Grop.qualified_name:1 of
 msgid "Retrieves the fully qualified command name."
 msgstr ""
 
 #: disnake.ext.commands.Command.qualified_name:3
-#: disnake.ext.commands.Group.qualified_name:3 of
+#: disnake.ext.commands.Grop.qualified_name:3 of
 msgid ""
 "This is the full parent name with the command name as well. For example, "
-"in ``?one two three`` the qualified name would be ``one two three``."
+"in ``?one two three`` the qualified name wold be ``one two three``."
 msgstr ""
 
 #: disnake.ext.commands.Command.is_on_cooldown:1
-#: disnake.ext.commands.Group.is_on_cooldown:1 of
+#: disnake.ext.commands.Grop.is_on_cooldown:1 of
 msgid "Checks whether the command is currently on cooldown."
 msgstr ""
 
 #: disnake.ext.commands.Command.is_on_cooldown:3
-#: disnake.ext.commands.Group.is_on_cooldown:3 of
+#: disnake.ext.commands.Grop.is_on_cooldown:3 of
 msgid "The invocation context to use when checking the commands cooldown status."
 msgstr ""
 
 #: disnake.ext.commands.Command.is_on_cooldown:6
-#: disnake.ext.commands.Group.is_on_cooldown:6 of
+#: disnake.ext.commands.Grop.is_on_cooldown:6 of
 msgid "A boolean indicating if the command is on cooldown."
 msgstr ""
 
 #: disnake.ext.commands.Command.reset_cooldown:1
-#: disnake.ext.commands.Group.reset_cooldown:1 of
+#: disnake.ext.commands.Grop.reset_cooldown:1 of
 msgid "Resets the cooldown on this command."
 msgstr ""
 
 #: disnake.ext.commands.Command.reset_cooldown:3
-#: disnake.ext.commands.Group.reset_cooldown:3 of
+#: disnake.ext.commands.Grop.reset_cooldown:3 of
 msgid "The invocation context to reset the cooldown under."
 msgstr ""
 
 #: disnake.ext.commands.Command.get_cooldown_retry_after:1
-#: disnake.ext.commands.Group.get_cooldown_retry_after:1 of
-msgid "Retrieves the amount of seconds before this command can be tried again."
+#: disnake.ext.commands.Grop.get_cooldown_retry_after:1 of
+msgid "Retrieves the amont of seconds before this command can be tried again."
 msgstr ""
 
 #: disnake.ext.commands.Command.get_cooldown_retry_after:5
-#: disnake.ext.commands.Group.get_cooldown_retry_after:5 of
+#: disnake.ext.commands.Grop.get_cooldown_retry_after:5 of
 msgid "The invocation context to retrieve the cooldown from."
 msgstr ""
 
 #: disnake.ext.commands.Command.get_cooldown_retry_after:8
-#: disnake.ext.commands.Group.get_cooldown_retry_after:8 of
+#: disnake.ext.commands.Grop.get_cooldown_retry_after:8 of
 msgid ""
-"The amount of time left on this command's cooldown in seconds. If this is"
+"The amont of time left on this command's cooldown in seconds. If this is"
 " ``0.0`` then the command isn't on cooldown."
 msgstr ""
 
-#: disnake.ext.commands.Command.error:1 disnake.ext.commands.Group.error:1 of
-msgid "A decorator that registers a coroutine as a local error handler."
+#: disnake.ext.commands.Command.error:1 disnake.ext.commands.Grop.error:1 of
+msgid "A decorator that registers a corotine as a local error handler."
 msgstr ""
 
-#: disnake.ext.commands.Command.error:3 disnake.ext.commands.Group.error:3 of
+#: disnake.ext.commands.Command.error:3 disnake.ext.commands.Grop.error:3 of
 msgid ""
 "A local error handler is an :func:`.on_command_error` event limited to a "
 "single command. However, the :func:`.on_command_error` is still invoked "
 "afterwards as the catch-all."
 msgstr ""
 
-#: disnake.ext.commands.Command.error:7 disnake.ext.commands.Group.error:7 of
-msgid "The coroutine to register as the local error handler."
+#: disnake.ext.commands.Command.error:7 disnake.ext.commands.Grop.error:7 of
+msgid "The corotine to register as the local error handler."
 msgstr ""
 
 #: disnake.ext.commands.Command.before_invoke:9
-#: disnake.ext.commands.Group.before_invoke:9 of
+#: disnake.ext.commands.Grop.before_invoke:9 of
 msgid "See :meth:`.Bot.before_invoke` for more info."
 msgstr ""
 
 #: disnake.ext.commands.Command.after_invoke:9
-#: disnake.ext.commands.Group.after_invoke:9 of
+#: disnake.ext.commands.Grop.after_invoke:9 of
 msgid "See :meth:`.Bot.after_invoke` for more info."
 msgstr ""
 
 #: disnake.ext.commands.Command.cog_name:1
-#: disnake.ext.commands.Group.cog_name:1 of
+#: disnake.ext.commands.Grop.cog_name:1 of
 msgid "The name of the cog this command belongs to, if any."
 msgstr ""
 
 #: disnake.ext.commands.Command.short_doc:1
-#: disnake.ext.commands.Group.short_doc:1 of
+#: disnake.ext.commands.Grop.short_doc:1 of
 msgid "Gets the \"short\" documentation of a command."
 msgstr ""
 
 #: disnake.ext.commands.Command.short_doc:3
-#: disnake.ext.commands.Group.short_doc:3 of
+#: disnake.ext.commands.Grop.short_doc:3 of
 msgid ""
 "By default, this is the :attr:`brief` attribute. If that lookup leads to "
 "an empty string then the first line of the :attr:`help` attribute is used"
@@ -2743,11 +2743,11 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.Command.signature:1
-#: disnake.ext.commands.Group.signature:1 of
-msgid "Returns a POSIX-like signature useful for help command output."
+#: disnake.ext.commands.Grop.signature:1 of
+msgid "Returns a POSIX-like signature useful for help command otput."
 msgstr ""
 
-#: disnake.ext.commands.Command.can_run:3 disnake.ext.commands.Group.can_run:3
+#: disnake.ext.commands.Command.can_run:3 disnake.ext.commands.Grop.can_run:3
 #: of
 msgid ""
 "Checks if the command can be executed by checking all the predicates "
@@ -2755,88 +2755,88 @@ msgid ""
 " is disabled."
 msgstr ""
 
-#: disnake.ext.commands.Command.can_run:7 disnake.ext.commands.Group.can_run:7
+#: disnake.ext.commands.Command.can_run:7 disnake.ext.commands.Grop.can_run:7
 #: of
 msgid "Checks whether the command is disabled or not"
 msgstr ""
 
 #: disnake.ext.commands.Command.can_run:10
-#: disnake.ext.commands.Group.can_run:10 of
+#: disnake.ext.commands.Grop.can_run:10 of
 msgid "The ctx of the command currently being invoked."
 msgstr ""
 
 #: disnake.ext.commands.Command.can_run:13
-#: disnake.ext.commands.Group.can_run:13 of
+#: disnake.ext.commands.Grop.can_run:13 of
 msgid ""
 "Any command error that was raised during a check call will be propagated"
 "     by this function."
 msgstr ""
 
 #: disnake.ext.commands.Command.can_run:15
-#: disnake.ext.commands.Group.can_run:15 of
+#: disnake.ext.commands.Grop.can_run:15 of
 msgid "A boolean indicating if the command can be invoked."
 msgstr ""
 
-#: disnake.ext.commands.Group:1 of
+#: disnake.ext.commands.Grop:1 of
 msgid ""
-"A class that implements a grouping protocol for commands to be executed "
+"A class that implements a groping protocol for commands to be executed "
 "as subcommands."
 msgstr ""
 
-#: disnake.ext.commands.Group:4 of
+#: disnake.ext.commands.Grop:4 of
 msgid ""
 "This class is a subclass of :class:`.Command` and thus all options valid "
 "in :class:`.Command` are valid in here as well."
 msgstr ""
 
-#: disnake.ext.commands.Group:9 of
+#: disnake.ext.commands.Grop:9 of
 msgid ""
-"Indicates if the group callback should begin parsing and invocation only "
-"if no subcommand was found. Useful for making it an error handling "
-"function to tell the user that no subcommand was found or to have "
-"different functionality in case no subcommand was found. If this is "
-"``False``, then the group callback will always be invoked first. This "
+"Indicates if the grop callback shold begin parsing and invocation only "
+"if no subcommand was fond. Useful for making it an error handling "
+"function to tell the user that no subcommand was fond or to have "
+"different functionality in case no subcommand was fond. If this is "
+"``False``, then the grop callback will always be invoked first. This "
 "means that the checks and the parsing dictated by its parameters will be "
 "executed. Defaults to ``False``."
 msgstr ""
 
-#: disnake.ext.commands.Group:22 of
+#: disnake.ext.commands.Grop:22 of
 msgid ""
-"Indicates if the group's commands should be case insensitive. Defaults to"
+"Indicates if the grop's commands shold be case insensitive. Defaults to"
 " ``False``."
 msgstr ""
 
-#: disnake.ext.commands.Group.copy:1 of
-msgid "Creates a copy of this :class:`Group`."
+#: disnake.ext.commands.Grop.copy:1 of
+msgid "Creates a copy of this :class:`Grop`."
 msgstr ""
 
-#: disnake.ext.commands.Group.copy:3 of
-msgid "A new instance of this group."
+#: disnake.ext.commands.Grop.copy:3 of
+msgid "A new instance of this grop."
 msgstr ""
 
-#: disnake.ext.commands.Group.copy:4 of
+#: disnake.ext.commands.Grop.copy:4 of
 #, fuzzy
-msgid ":class:`Group`"
+msgid ":class:`Grop`"
 msgstr ":class:`.Guild`"
 
-#: disnake.ext.commands.GroupMixin:1 of
+#: disnake.ext.commands.GropMixin:1 of
 msgid ""
 "A mixin that implements common functionality for classes that behave "
-"similar to :class:`.Group` and are allowed to register commands."
+"similar to :class:`.Grop` and are allowed to register commands."
 msgstr ""
 
-#: disnake.ext.commands.GroupMixin:6 of
+#: disnake.ext.commands.GropMixin:6 of
 msgid "A mapping of command name to :class:`.Command` objects."
 msgstr ""
 
 #: disnake.ext.commands.CogMeta:57 disnake.ext.commands.Context:35
-#: disnake.ext.commands.GroupMixin:9 disnake.ext.commands.HelpCommand:40 of
+#: disnake.ext.commands.GropMixin:9 disnake.ext.commands.HelpCommand:40 of
 #, fuzzy
 msgid ":class:`dict`"
 msgstr ":class:`.Guild`"
 
-#: disnake.ext.commands.GroupMixin:13 of
-msgid "Whether the commands should be case insensitive. Defaults to ``False``."
+#: disnake.ext.commands.GropMixin:13 of
+msgid "Whether the commands shold be case insensitive. Defaults to ``False``."
 msgstr ""
 
 #: ../../ext/commands/api.rst:88
@@ -2850,7 +2850,7 @@ msgstr ""
 #: disnake.ext.commands.Cog:3 of
 msgid ""
 "A cog is a collection of commands, listeners, and optional state to help "
-"group commands together. More information on them can be found on the "
+"grop commands together. More information on them can be fond on the "
 ":ref:`ext_commands_cogs` page."
 msgstr ""
 
@@ -2888,13 +2888,13 @@ msgstr ""
 
 #: disnake.ext.commands.Cog.walk_commands:1 of
 msgid ""
-"An iterator that recursively walks through this cog's commands and "
+"An iterator that recursively walks throgh this cog's commands and "
 "subcommands."
 msgstr ""
 
 #: disnake.ext.commands.Cog.walk_commands:3 of
 msgid ""
-"Union[:class:`.Command`, :class:`.Group`] -- A command or group from the "
+"Union[:class:`.Command`, :class:`.Grop`] -- A command or grop from the "
 "cog."
 msgstr ""
 
@@ -2909,7 +2909,7 @@ msgid "The listeners defined in this cog."
 msgstr ""
 
 #: disnake.ext.commands.Cog.get_listeners:4 of
-msgid "List[Tuple[:class:`str`, :ref:`coroutine <coroutine>`]]"
+msgid "List[Tuple[:class:`str`, :ref:`corotine <corotine>`]]"
 msgstr ""
 
 #: disnake.ext.commands.Cog.listener:1 of
@@ -2928,7 +2928,7 @@ msgstr ""
 
 #: disnake.ext.commands.Cog.listener:9 of
 msgid ""
-"The function is not a coroutine function or a string was not passed as"
+"The function is not a corotine function or a string was not passed as"
 "     the name."
 msgstr ""
 
@@ -2937,11 +2937,11 @@ msgid "A special method that is called when the cog gets removed."
 msgstr ""
 
 #: disnake.ext.commands.Cog.cog_unload:3 of
-msgid "This function **cannot** be a coroutine. It must be a regular function."
+msgid "This function **cannot** be a corotine. It must be a regular function."
 msgstr ""
 
 #: disnake.ext.commands.Cog.cog_unload:6 of
-msgid "Subclasses must replace this if they want special unloading behaviour."
+msgid "Subclasses must replace this if they want special unloading behavior."
 msgstr ""
 
 #: disnake.ext.commands.Cog.bot_check_once:1 of
@@ -2952,7 +2952,7 @@ msgstr ""
 #: disnake.ext.commands.Cog.bot_check_once:4
 #: disnake.ext.commands.Cog.cog_check:4 of
 msgid ""
-"This function **can** be a coroutine and must take a sole parameter, "
+"This function **can** be a corotine and must take a sole parameter, "
 "``ctx``, to represent the :class:`.Context`."
 msgstr ""
 
@@ -2981,7 +2981,7 @@ msgstr ""
 #: disnake.ext.commands.Cog.cog_after_invoke:5
 #: disnake.ext.commands.Cog.cog_before_invoke:5
 #: disnake.ext.commands.Cog.cog_command_error:7 of
-msgid "This **must** be a coroutine."
+msgid "This **must** be a corotine."
 msgstr ""
 
 #: disnake.ext.commands.Cog.cog_command_error:9 of
@@ -3014,7 +3014,7 @@ msgstr ""
 
 #: disnake.ext.commands.CogMeta:3 of
 msgid ""
-"Note that you should probably not use this directly. It is exposed purely"
+"Note that yo shold probably not use this directly. It is exposed purely"
 " for documentation purposes along with making custom metaclasses to "
 "intermix with other metaclasses such as the :class:`abc.ABCMeta` "
 "metaclass."
@@ -3022,14 +3022,14 @@ msgstr ""
 
 #: disnake.ext.commands.CogMeta:7 of
 msgid ""
-"For example, to create an abstract cog mixin class, the following would "
+"For example, to create an abstract cog mixin class, the following wold "
 "be done."
 msgstr ""
 
 #: disnake.ext.commands.CogMeta:24 of
 msgid ""
 "When passing an attribute of a metaclass that is documented below, note "
-"that you must pass it as a keyword-only argument to the class creation "
+"that yo must pass it as a keyword-only argument to the class creation "
 "like the following example:"
 msgstr ""
 
@@ -3043,7 +3043,7 @@ msgstr ""
 msgid ""
 "A list of attributes to apply to every command inside this cog. The "
 "dictionary is passed into the :class:`Command` options at ``__init__``. "
-"If you specify attributes inside the command attribute in the class, it "
+"If yo specify attributes inside the command attribute in the class, it "
 "will override the one specified inside this attribute. For example:"
 msgstr ""
 
@@ -3065,7 +3065,7 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand:9 of
 msgid ""
 "This means that relying on the state of this class to be the same between"
-" command invocations would not work as expected."
+" command invocations wold not work as expected."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand:14 of
@@ -3080,20 +3080,20 @@ msgstr ""
 
 #: disnake.ext.commands.HelpCommand:21 of
 msgid ""
-"Specifies if hidden commands should be shown in the output. Defaults to "
+"Specifies if hidden commands shold be shown in the otput. Defaults to "
 "``False``."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand:28 of
 msgid ""
-"Specifies if commands should have their :attr:`.Command.checks` called "
+"Specifies if commands shold have their :attr:`.Command.checks` called "
 "and verified. Defaults to ``True``."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand:35 of
 msgid ""
 "A dictionary of options to pass in for the construction of the help "
-"command. This allows you to change the command behaviour without actually"
+"command. This allows yo to change the command behavior withot actually"
 " changing the implementation of the command. The attributes will be the "
 "same as the ones passed in the :class:`.Command` constructor."
 msgstr ""
@@ -3174,77 +3174,77 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.cog:7 of
-msgid "To unbind the cog from the help command, you can set it to ``None``."
+msgid "To unbind the cog from the help command, yo can set it to ``None``."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.cog:9 of
 msgid "The cog that is currently set for the help command."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.command_not_found:1
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:1 of
+#: disnake.ext.commands.HelpCommand.command_not_fond:1
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:1 of
 msgid "|maybecoro|"
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.command_not_found:3 of
+#: disnake.ext.commands.HelpCommand.command_not_fond:3 of
 msgid ""
-"A method called when a command is not found in the help command. This is "
+"A method called when a command is not fond in the help command. This is "
 "useful to override for i18n."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.command_not_found:6 of
-msgid "Defaults to ``No command called {0} found.``"
+#: disnake.ext.commands.HelpCommand.command_not_fond:6 of
+msgid "Defaults to ``No command called {0} fond.``"
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.command_not_found:8 of
+#: disnake.ext.commands.HelpCommand.command_not_fond:8 of
 msgid ""
 "The string that contains the invalid command. Note that this has had "
 "mentions removed to prevent abuse."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.command_not_found:12 of
-msgid "The string to use when a command has not been found."
+#: disnake.ext.commands.HelpCommand.command_not_fond:12 of
+msgid "The string to use when a command has not been fond."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:3 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:3 of
 msgid ""
 "A method called when a command did not have a subcommand requested in the"
 " help command. This is useful to override for i18n."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:6 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:6 of
 msgid "Defaults to either:"
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:8 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:8 of
 msgid "``'Command \"{command.qualified_name}\" has no subcommands.'``"
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:9 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:9 of
 msgid "If there is no subcommand in the ``command`` parameter."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:11 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:11 of
 msgid ""
 "``'Command \"{command.qualified_name}\" has no subcommand named "
 "{string}'``"
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:11 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:11 of
 msgid "If the ``command`` parameter has subcommands but not one named ``string``."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:13 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:13 of
 msgid "The command that did not have the subcommand requested."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:15 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:15 of
 msgid ""
 "The string that contains the invalid subcommand. Note that this has had "
 "mentions removed to prevent abuse."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.subcommand_not_found:19 of
+#: disnake.ext.commands.HelpCommand.subcommand_not_fond:19 of
 msgid "The string to use when the command did not have the subcommand requested."
 msgstr ""
 
@@ -3254,7 +3254,7 @@ msgstr ""
 
 #: disnake.ext.commands.HelpCommand.filter_commands:5 of
 msgid ""
-"This takes into account the :attr:`verify_checks` and :attr:`show_hidden`"
+"This takes into accont the :attr:`verify_checks` and :attr:`show_hidden`"
 " attributes."
 msgstr ""
 
@@ -3302,7 +3302,7 @@ msgstr ""
 #: disnake.ext.commands.MinimalHelpCommand.get_destination:1 of
 msgid ""
 "Returns the :class:`~disnake.abc.Messageable` where the help command will"
-" be output."
+" be otput."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.get_destination:3
@@ -3311,9 +3311,9 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_cog_help:11
 #: disnake.ext.commands.HelpCommand.send_command_help:10
 #: disnake.ext.commands.HelpCommand.send_error_message:7
-#: disnake.ext.commands.HelpCommand.send_group_help:11
+#: disnake.ext.commands.HelpCommand.send_grop_help:11
 #: disnake.ext.commands.MinimalHelpCommand.get_destination:3 of
-msgid "You can override this method to customise the behaviour."
+msgid "Yo can override this method to customise the behavior."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.get_destination:5
@@ -3325,7 +3325,7 @@ msgstr ""
 #: disnake.ext.commands.DefaultHelpCommand.get_destination:7
 #: disnake.ext.commands.HelpCommand.get_destination:7
 #: disnake.ext.commands.MinimalHelpCommand.get_destination:7 of
-msgid "The destination where the help command will be output."
+msgid "The destination where the help command will be otput."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.get_destination:8
@@ -3337,8 +3337,8 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_error_message:3 of
 msgid ""
 "Handles the implementation when an error happens in the help command. For"
-" example, the result of :meth:`command_not_found` or "
-":meth:`command_has_no_subcommand_found` will be passed here."
+" example, the result of :meth:`command_not_fond` or "
+":meth:`command_has_no_subcommand_fond` will be passed here."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_error_message:9 of
@@ -3351,8 +3351,8 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_cog_help:15
 #: disnake.ext.commands.HelpCommand.send_command_help:14
 #: disnake.ext.commands.HelpCommand.send_error_message:14
-#: disnake.ext.commands.HelpCommand.send_group_help:15 of
-msgid "You can access the invocation context with :attr:`HelpCommand.context`."
+#: disnake.ext.commands.HelpCommand.send_grop_help:15 of
+msgid "Yo can access the invocation context with :attr:`HelpCommand.context`."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_error_message:16 of
@@ -3369,7 +3369,7 @@ msgstr ""
 
 #: disnake.ext.commands.HelpCommand.on_help_command_error:5 of
 msgid ""
-"Useful to override if you need some specific behaviour when the error "
+"Useful to override if yo need some specific behavior when the error "
 "handler is called."
 msgstr ""
 
@@ -3389,18 +3389,18 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_bot_help:6
 #: disnake.ext.commands.HelpCommand.send_cog_help:6
 #: disnake.ext.commands.HelpCommand.send_command_help:5
-#: disnake.ext.commands.HelpCommand.send_group_help:6 of
+#: disnake.ext.commands.HelpCommand.send_grop_help:6 of
 msgid ""
-"It should be noted that this method does not return anything -- rather "
-"the actual message sending should be done inside this method. Well "
-"behaved subclasses should use :meth:`get_destination` to know where to "
+"It shold be noted that this method does not return anything -- rather "
+"the actual message sending shold be done inside this method. Well "
+"behaved subclasses shold use :meth:`get_destination` to know where to "
 "send, as this is a customisation point for other users."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_bot_help:17 of
 msgid ""
 "Also, the commands in the mapping are not filtered. To do the filtering "
-"you will have to call :meth:`filter_commands` yourself."
+"yo will have to call :meth:`filter_commands` yorself."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_bot_help:20 of
@@ -3421,30 +3421,30 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.send_cog_help:17 of
 msgid ""
 "To get the commands that belong to this cog see :meth:`Cog.get_commands`."
-" The commands returned not filtered. To do the filtering you will have to"
-" call :meth:`filter_commands` yourself."
+" The commands returned not filtered. To do the filtering yo will have to"
+" call :meth:`filter_commands` yorself."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_cog_help:21 of
 msgid "The cog that was requested for help."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.send_group_help:3 of
+#: disnake.ext.commands.HelpCommand.send_grop_help:3 of
 msgid ""
-"Handles the implementation of the group page in the help command. This "
-"function is called when the help command is called with a group as the "
+"Handles the implementation of the grop page in the help command. This "
+"function is called when the help command is called with a grop as the "
 "argument."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.send_group_help:17 of
+#: disnake.ext.commands.HelpCommand.send_grop_help:17 of
 msgid ""
-"To get the commands that belong to this group without aliases see "
-":attr:`Group.commands`. The commands returned not filtered. To do the "
-"filtering you will have to call :meth:`filter_commands` yourself."
+"To get the commands that belong to this grop withot aliases see "
+":attr:`Grop.commands`. The commands returned not filtered. To do the "
+"filtering yo will have to call :meth:`filter_commands` yorself."
 msgstr ""
 
-#: disnake.ext.commands.HelpCommand.send_group_help:21 of
-msgid "The group that was requested for help."
+#: disnake.ext.commands.HelpCommand.send_grop_help:21 of
+msgid "The grop that was requested for help."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_command_help:3 of
@@ -3483,8 +3483,8 @@ msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_command_help:28 of
 msgid ""
-"There are more than just these attributes but feel free to play around "
-"with these to help you get started to get the output that you want."
+"There are more than just these attributes but feel free to play arond "
+"with these to help yo get started to get the otput that yo want."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.send_command_help:31 of
@@ -3494,8 +3494,8 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.prepare_help_command:3 of
 msgid ""
 "A low level method that can be used to prepare the help command before it"
-" does anything. For example, if you need to prepare some state in your "
-"subclass before the command does its processing then this would be the "
+" does anything. For example, if yo need to prepare some state in yor "
+"subclass before the command does its processing then this wold be the "
 "place to do it."
 msgstr ""
 
@@ -3521,7 +3521,7 @@ msgstr ""
 #: disnake.ext.commands.HelpCommand.command_callback:5 of
 msgid ""
 "It is not recommended to override this method and instead change the "
-"behaviour through the methods that actually get dispatched."
+"behavior throgh the methods that actually get dispatched."
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:8 of
@@ -3533,7 +3533,7 @@ msgid ":meth:`send_cog_help`"
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:10 of
-msgid ":meth:`send_group_help`"
+msgid ":meth:`send_grop_help`"
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:11 of
@@ -3545,11 +3545,11 @@ msgid ":meth:`get_destination`"
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:13 of
-msgid ":meth:`command_not_found`"
+msgid ":meth:`command_not_fond`"
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:14 of
-msgid ":meth:`subcommand_not_found`"
+msgid ":meth:`subcommand_not_fond`"
 msgstr ""
 
 #: disnake.ext.commands.HelpCommand.command_callback:15 of
@@ -3584,17 +3584,17 @@ msgstr ""
 #: disnake.ext.commands.DefaultHelpCommand:16
 #: disnake.ext.commands.MinimalHelpCommand:7 of
 msgid ""
-"Whether to sort the commands in the output alphabetically. Defaults to "
+"Whether to sort the commands in the otput alphabetically. Defaults to "
 "``True``."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand:22
 #: disnake.ext.commands.MinimalHelpCommand:27 of
 msgid ""
-"A tribool that indicates if the help command should DM the user instead "
+"A tribool that indicates if the help command shold DM the user instead "
 "of sending it to the channel it received it from. If the boolean is set "
-"to ``True``, then all help output is DM'd. If ``False``, none of the help"
-" output is DM'd. If ``None``, then the bot will only DM when the help "
+"to ``True``, then all help otput is DM'd. If ``False``, none of the help"
+" otput is DM'd. If ``None``, then the bot will only DM when the help "
 "message becomes too long (dictated by more than :attr:`dm_help_threshold`"
 " characters). Defaults to ``False``."
 msgstr ""
@@ -3630,7 +3630,7 @@ msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand:60
 #: disnake.ext.commands.MinimalHelpCommand:52 of
-msgid "The paginator used to paginate the help command output."
+msgid "The paginator used to paginate the help command otput."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand:62
@@ -3668,12 +3668,12 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.add_indented_commands:10 of
-msgid "A list of commands to indent for output."
+msgid "A list of commands to indent for otput."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.add_indented_commands:12 of
 msgid ""
-"The heading to add to the output. This is only added if the list of "
+"The heading to add to the otput. This is only added if the list of "
 "commands is greater than 0."
 msgstr ""
 
@@ -3686,14 +3686,14 @@ msgstr ""
 #: disnake.ext.commands.DefaultHelpCommand.send_pages:1
 #: disnake.ext.commands.MinimalHelpCommand.send_pages:1 of
 msgid ""
-"A helper utility to send the page output from :attr:`paginator` to the "
+"A helper utility to send the page otput from :attr:`paginator` to the "
 "destination."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.add_command_formatting:1 of
 msgid ""
 "A utility function to format the non-indented block of commands and "
-"groups."
+"grops."
 msgstr ""
 
 #: disnake.ext.commands.DefaultHelpCommand.add_command_formatting:3
@@ -3702,7 +3702,7 @@ msgid "The command to format."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand:1 of
-msgid "An implementation of a help command with minimal output."
+msgid "An implementation of a help command with minimal otput."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand:13 of
@@ -3742,13 +3742,13 @@ msgid "The help command ending note."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand.add_bot_commands_formatting:1 of
-msgid "Adds the minified bot heading with commands to the output."
+msgid "Adds the minified bot heading with commands to the otput."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand.add_aliases_formatting:3
 #: disnake.ext.commands.MinimalHelpCommand.add_bot_commands_formatting:3
 #: disnake.ext.commands.MinimalHelpCommand.add_subcommand_formatting:3 of
-msgid "The formatting should be added to the :attr:`paginator`."
+msgid "The formatting shold be added to the :attr:`paginator`."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand.add_bot_commands_formatting:5 of
@@ -3799,7 +3799,7 @@ msgid "A list of aliases to format."
 msgstr ""
 
 #: disnake.ext.commands.MinimalHelpCommand.add_command_formatting:1 of
-msgid "A utility function to format commands and groups."
+msgid "A utility function to format commands and grops."
 msgstr ""
 
 #: disnake.ext.commands.Paginator:1 of
@@ -3819,7 +3819,7 @@ msgid "The suffix appended at the end of every page. e.g. three backticks."
 msgstr ""
 
 #: disnake.ext.commands.Paginator:23 of
-msgid "The maximum amount of codepoints allowed in a page."
+msgid "The maximum amont of codepoints allowed in a page."
 msgstr ""
 
 #: disnake.ext.commands.Paginator.clear:1 of
@@ -3839,7 +3839,7 @@ msgid "The line to add."
 msgstr ""
 
 #: disnake.ext.commands.Paginator.add_line:8 of
-msgid "Indicates if another empty line should be added."
+msgid "Indicates if another empty line shold be added."
 msgstr ""
 
 #: disnake.ext.commands.Paginator.add_line:11 of
@@ -3901,12 +3901,12 @@ msgstr ""
 #: disnake.ext.commands.check:1 of
 msgid ""
 "A decorator that adds a check to the :class:`.Command` or its subclasses."
-" These checks could be accessed via :attr:`.Command.checks`."
+" These checks cold be accessed via :attr:`.Command.checks`."
 msgstr ""
 
 #: disnake.ext.commands.check:4 of
 msgid ""
-"These checks should be predicates that take in a single parameter taking "
+"These checks shold be predicates that take in a single parameter taking "
 "a :class:`.Context`. If the check returns a ``False``\\-like value then "
 "during invocation a :exc:`.CheckFailure` exception is raised and sent to "
 "the :func:`.on_command_error` event."
@@ -3914,7 +3914,7 @@ msgstr ""
 
 #: disnake.ext.commands.check:9 of
 msgid ""
-"If an exception should be thrown in the predicate then it should be a "
+"If an exception shold be thrown in the predicate then it shold be a "
 "subclass of :exc:`.CommandError`. Any exception not subclassed from it "
 "will be propagated while those subclassed will be sent to "
 ":func:`.on_command_error`."
@@ -3922,15 +3922,15 @@ msgstr ""
 
 #: disnake.ext.commands.check:14 of
 msgid ""
-"A special attribute named ``predicate`` is bound to the value returned by"
+"A special attribute named ``predicate`` is bond to the value returned by"
 " this decorator to retrieve the predicate passed to the decorator. This "
 "allows the following introspection and chaining to be done:"
 msgstr ""
 
 #: disnake.ext.commands.check:30 of
 msgid ""
-"The function returned by ``predicate`` is **always** a coroutine, even if"
-" the original function was not a coroutine."
+"The function returned by ``predicate`` is **always** a corotine, even if"
+" the original function was not a corotine."
 msgstr ""
 
 #: disnake.ext.commands.check:33 of
@@ -3938,7 +3938,7 @@ msgid "The ``predicate`` attribute was added."
 msgstr ""
 
 #: disnake.ext.commands.check:38 of
-msgid "Creating a basic check to see if the command invoker is you."
+msgid "Creating a basic check to see if the command invoker is yo."
 msgstr ""
 
 #: disnake.ext.commands.check:50 of
@@ -3946,7 +3946,7 @@ msgid "Transforming common checks into its own decorator:"
 msgstr ""
 
 #: disnake.ext.commands.check:64 of
-msgid "The predicate to check if the command should be invoked."
+msgid "The predicate to check if the command shold be invoked."
 msgstr ""
 
 #: disnake.ext.commands.check_any:1 of
@@ -3962,7 +3962,7 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.check_any:9 of
-msgid "The ``predicate`` attribute for this function **is** a coroutine."
+msgid "The ``predicate`` attribute for this function **is** a corotine."
 msgstr ""
 
 #: disnake.ext.commands.check_any:13 of
@@ -3989,13 +3989,13 @@ msgstr ""
 
 #: disnake.ext.commands.has_role:4 of
 msgid ""
-"If a string is specified, you must give the exact name of the role, "
+"If a string is specified, yo must give the exact name of the role, "
 "including caps and spelling."
 msgstr ""
 
 #: disnake.ext.commands.has_role:7 of
 msgid ""
-"If an integer is specified, you must give the exact snowflake ID of the "
+"If an integer is specified, yo must give the exact snowflake ID of the "
 "role."
 msgstr ""
 
@@ -4066,7 +4066,7 @@ msgstr ""
 msgid ""
 "A :func:`.check` that is added that checks if the member invoking the "
 "command has **any** of the roles specified. This means that if they have "
-"one out of the three roles specified, then this check will return `True`."
+"one ot of the three roles specified, then this check will return `True`."
 msgstr ""
 
 #: disnake.ext.commands.has_any_role:5 of
@@ -4152,7 +4152,7 @@ msgstr "Botにグローバルチェックを追加するデコレーター"
 
 #: disnake.ext.commands.cooldown:3 of
 msgid ""
-"A cooldown allows a command to only be used a specific amount of times in"
+"A cooldown allows a command to only be used a specific amont of times in"
 " a specific time frame. These cooldowns can be based either on a per-"
 "guild, per-channel, per-user, per-role or global basis. Denoted by the "
 "third argument of ``type`` which must be of enum type "
@@ -4174,7 +4174,7 @@ msgid "The number of times a command can be used before triggering a cooldown."
 msgstr ""
 
 #: disnake.ext.commands.cooldown:16 of
-msgid "The amount of seconds to wait for a cooldown when it's been triggered."
+msgid "The amont of seconds to wait for a cooldown when it's been triggered."
 msgstr ""
 
 #: disnake.ext.commands.cooldown:18 of
@@ -4189,7 +4189,7 @@ msgstr ""
 
 #: disnake.ext.commands.max_concurrency:3 of
 msgid ""
-"This enables you to only allow a certain number of command invocations at"
+"This enables yo to only allow a certain number of command invocations at"
 " the same time, for example if a command takes too long or if only one "
 "user can use it at a time. This differs from a cooldown in that there is "
 "no set waiting period or token bucket -- only a set number of people can "
@@ -4205,12 +4205,12 @@ msgstr ""
 #: disnake.ext.commands.max_concurrency:12 of
 msgid ""
 "The bucket that this concurrency is based on, e.g. ``BucketType.guild`` "
-"would allow it to be used up to ``number`` times per guild."
+"wold allow it to be used up to ``number`` times per guild."
 msgstr ""
 
 #: disnake.ext.commands.max_concurrency:15 of
 msgid ""
-"Whether the command should wait for the queue to be over. If this is set "
+"Whether the command shold wait for the queue to be over. If this is set "
 "to ``False`` then instead of waiting until the command can run again, the"
 " command raises :exc:`.MaxConcurrencyReached` to its error handler. If "
 "this is set to ``True`` then the command waits until it can be executed."
@@ -4218,13 +4218,13 @@ msgstr ""
 
 #: disnake.ext.commands.before_invoke:3 of
 msgid ""
-"This allows you to refer to one before invoke hook for several commands "
+"This allows yo to refer to one before invoke hook for several commands "
 "that do not have to be within the same cog."
 msgstr ""
 
 #: disnake.ext.commands.after_invoke:3 of
 msgid ""
-"This allows you to refer to one after invoke hook for several commands "
+"This allows yo to refer to one after invoke hook for several commands "
 "that do not have to be within the same cog."
 msgstr ""
 
@@ -4295,9 +4295,9 @@ msgstr ""
 
 #: disnake.ext.commands.Context:3 of
 msgid ""
-"This class contains a lot of meta data to help you understand more about "
+"This class contains a lot of meta data to help yo understand more abot "
 "the invocation context. This class is not created manually and is instead"
-" passed around to commands as the first parameter."
+" passed arond to commands as the first parameter."
 msgstr ""
 
 #: disnake.ext.commands.Context:7 of
@@ -4326,7 +4326,7 @@ msgstr ":class:`.AppInfo`"
 msgid ""
 "The list of transformed arguments that were passed into the command. If "
 "this is accessed during the :func:`on_command_error` event then this list"
-" could be incomplete."
+" cold be incomplete."
 msgstr ""
 
 #: disnake.ext.commands.BotMissingPermissions:10
@@ -4340,7 +4340,7 @@ msgstr ":class:`.Guild`"
 msgid ""
 "A dictionary of transformed arguments that were passed into the command. "
 "Similar to :attr:`args`\\, if this is accessed in the "
-":func:`on_command_error` event then this dict could be incomplete."
+":func:`on_command_error` event then this dict cold be incomplete."
 msgstr ""
 
 #: disnake.ext.commands.Context:39 of
@@ -4353,7 +4353,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context:51 of
 msgid ""
-"The command name that triggered this invocation. Useful for finding out "
+"The command name that triggered this invocation. Useful for finding ot "
 "which alias called the command."
 msgstr ""
 
@@ -4366,7 +4366,7 @@ msgstr ""
 #: disnake.ext.commands.Context:65 of
 msgid ""
 "The string that was attempted to call a subcommand. This does not have to"
-" point to a valid registered subcommand and could just point to a "
+" point to a valid registered subcommand and cold just point to a "
 "nonsense string. If nothing was passed to attempt a call to a subcommand "
 "then this is set to ``None``."
 msgstr ""
@@ -4386,7 +4386,7 @@ msgstr ""
 #: disnake.ext.commands.Context.history:3 of
 #, fuzzy
 msgid ""
-"You must have :attr:`~Permissions.read_message_history` permissions to "
+"Yo must have :attr:`~Permissions.read_message_history` permissions to "
 "use this."
 msgstr "これを行うには、関連付けられたGuildにて、 :attr:`~.Permissions.manage_channels` 権限が必要です。"
 
@@ -4397,7 +4397,7 @@ msgstr ""
 #: disnake.ext.commands.Context.history:21 of
 msgid ""
 "The number of messages to retrieve. If ``None``, retrieves every message "
-"in the channel. Note, however, that this would make it a slow operation."
+"in the channel. Note, however, that this wold make it a slow operation."
 msgstr ""
 
 #: disnake.ext.commands.Context.history:25 of
@@ -4414,7 +4414,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.history:31 of
 msgid ""
-"Retrieve messages around this date or message. If a date is provided it "
+"Retrieve messages arond this date or message. If a date is provided it "
 "must be a timezone-naive datetime representing UTC time. When using this "
 "argument, the maximum limit is 101. Note that if the limit is an even "
 "number then this will return at most limit + 1 messages."
@@ -4428,7 +4428,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.history:40 of
 #, fuzzy
-msgid "You do not have permissions to get channel message history."
+msgid "Yo do not have permissions to get channel message history."
 msgstr ":exc:`.Forbidden` -- 指定のチャンネルを取得する権限がない。"
 
 #: disnake.ext.commands.Context.history:41 of
@@ -4441,12 +4441,12 @@ msgstr ""
 
 #: disnake.ext.commands.Context.typing:1 of
 msgid ""
-"Returns a context manager that allows you to type for an indefinite "
+"Returns a context manager that allows yo to type for an indefinite "
 "period of time."
 msgstr ""
 
 #: disnake.ext.commands.Context.typing:3 of
-msgid "This is useful for denoting long computations in your bot."
+msgid "This is useful for denoting long computations in yor bot."
 msgstr ""
 
 #: disnake.ext.commands.Context.typing:7 of
@@ -4465,7 +4465,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.invoke:5 of
 msgid ""
-"This is useful if you want to just call the callback that a "
+"This is useful if yo want to just call the callback that a "
 ":class:`.Command` holds internally."
 msgstr ""
 
@@ -4478,7 +4478,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.invoke:14 of
 msgid ""
-"You must take care in passing the proper arguments when using this "
+"Yo must take care in passing the proper arguments when using this "
 "function."
 msgstr ""
 
@@ -4514,7 +4514,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.reinvoke:10 of
 msgid ""
-"If you want to bypass :exc:`.UserInputError` derived exceptions, it is "
+"If yo want to bypass :exc:`.UserInputError` derived exceptions, it is "
 "recommended to use the regular :meth:`~.Context.invoke` as it will work "
 "more naturally. After all, this will end up using the old arguments the "
 "user has used and will thus just fail again."
@@ -4603,7 +4603,7 @@ msgstr ""
 #: disnake.ext.commands.Context.send_help:14 of
 msgid ""
 "Due to the way this function works, instead of returning something "
-"similar to :meth:`~.commands.HelpCommand.command_not_found` this returns "
+"similar to :meth:`~.commands.HelpCommand.command_not_fond` this returns "
 ":class:`None` on bad input or no help command."
 msgstr ""
 
@@ -4620,7 +4620,7 @@ msgid "Retrieves a single :class:`~disnake.Message` from the destination."
 msgstr ""
 
 #: disnake.ext.commands.Context.fetch_message:5 of
-msgid "This can only be used by bot accounts."
+msgid "This can only be used by bot acconts."
 msgstr ""
 
 #: disnake.ext.commands.Context.fetch_message:7 of
@@ -4628,11 +4628,11 @@ msgid "The message ID to look for."
 msgstr ""
 
 #: disnake.ext.commands.Context.fetch_message:10 of
-msgid "The specified message was not found."
+msgid "The specified message was not fond."
 msgstr ""
 
 #: disnake.ext.commands.Context.fetch_message:11 of
-msgid "You do not have the permissions required to get a message."
+msgid "Yo do not have the permissions required to get a message."
 msgstr ""
 
 #: disnake.ext.commands.Context.fetch_message:12 of
@@ -4677,16 +4677,16 @@ msgstr ""
 
 #: disnake.ext.commands.Context.send:5 of
 msgid ""
-"The content must be a type that can convert to a string through "
+"The content must be a type that can convert to a string throgh "
 "``str(content)``. If the content is set to ``None`` (the default), then "
 "the ``embed`` parameter must be provided."
 msgstr ""
 
 #: disnake.ext.commands.Context.send:9 of
 msgid ""
-"To upload a single file, the ``file`` parameter should be used with a "
+"To upload a single file, the ``file`` parameter shold be used with a "
 "single :class:`~disnake.File` object. To upload multiple files, the "
-"``files`` parameter should be used with a :class:`list` of "
+"``files`` parameter shold be used with a :class:`list` of "
 ":class:`~disnake.File` objects. **Specifying both parameters will lead to"
 " an exception**."
 msgstr ""
@@ -4702,7 +4702,7 @@ msgid "The content of the message to send."
 msgstr ""
 
 #: disnake.ext.commands.Context.send:19 of
-msgid "Indicates if the message should be sent using text-to-speech."
+msgid "Indicates if the message shold be sent using text-to-speech."
 msgstr ""
 
 #: disnake.ext.commands.Context.send:21 of
@@ -4725,7 +4725,7 @@ msgstr ""
 
 #: disnake.ext.commands.Context.send:30 of
 msgid ""
-"If provided, the number of seconds to wait in the background before "
+"If provided, the number of seconds to wait in the backgrond before "
 "deleting the message we just sent. If the deletion fails, then it is "
 "silently ignored."
 msgstr ""
@@ -4734,7 +4734,7 @@ msgstr ""
 msgid ""
 "Controls the mentions being processed in this message. If this is passed,"
 " then the object is merged with :attr:`~disnake.Client.allowed_mentions`."
-" The merging behaviour only overrides attributes that have been "
+" The merging behavior only overrides attributes that have been "
 "explicitly passed to the object, otherwise it uses the attributes set in "
 ":attr:`~disnake.Client.allowed_mentions`. If no object is passed at all "
 "then the defaults given by :attr:`~disnake.Client.allowed_mentions` are "
@@ -4745,7 +4745,7 @@ msgstr ""
 msgid ""
 "Controls the mentions being processed in this message. If this is passed,"
 " then the object is merged with :attr:`~disnake.Client.allowed_mentions`."
-" The merging behaviour only overrides attributes that have been "
+" The merging behavior only overrides attributes that have been "
 "explicitly passed to the object, otherwise it uses the attributes set in "
 ":attr:`~disnake.Client.allowed_mentions`. If no object is passed at all "
 "then the defaults given by :attr:`~disnake.Client.allowed_mentions` are "
@@ -4757,12 +4757,12 @@ msgid "Sending the message failed."
 msgstr ""
 
 #: disnake.ext.commands.Context.send:45 of
-msgid "You do not have the proper permissions to send the message."
+msgid "Yo do not have the proper permissions to send the message."
 msgstr ""
 
 #: disnake.ext.commands.Context.send:46 of
 msgid ""
-"The ``files`` list is not of the appropriate size or     you specified "
+"The ``files`` list is not of the appropriate size or     yo specified "
 "both ``file`` and ``files``."
 msgstr ""
 
@@ -4792,19 +4792,19 @@ msgstr ""
 
 #: disnake.ext.commands.Converter:4 of
 msgid ""
-"This allows you to implement converters that function similar to the "
+"This allows yo to implement converters that function similar to the "
 "special cased ``disnake`` classes."
 msgstr ""
 
 #: disnake.ext.commands.Converter:7 of
 msgid ""
-"Classes that derive from this should override the "
+"Classes that derive from this shold override the "
 ":meth:`~.Converter.convert` method to do its conversion logic. This "
-"method must be a :ref:`coroutine <coroutine>`."
+"method must be a :ref:`corotine <corotine>`."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:3
-#: disnake.ext.commands.ColourConverter.convert:3
+#: disnake.ext.commands.ColorConverter.convert:3
 #: disnake.ext.commands.Converter.convert:3
 #: disnake.ext.commands.EmojiConverter.convert:3
 #: disnake.ext.commands.GameConverter.convert:3
@@ -4821,7 +4821,7 @@ msgid "The method to override to do conversion logic."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:5
-#: disnake.ext.commands.ColourConverter.convert:5
+#: disnake.ext.commands.ColorConverter.convert:5
 #: disnake.ext.commands.Converter.convert:5
 #: disnake.ext.commands.EmojiConverter.convert:5
 #: disnake.ext.commands.GameConverter.convert:5
@@ -4835,13 +4835,13 @@ msgstr ""
 #: disnake.ext.commands.VoiceChannelConverter.convert:5
 #: disnake.ext.commands.clean_content.convert:5 of
 msgid ""
-"If an error is found while converting, it is recommended to raise a "
+"If an error is fond while converting, it is recommended to raise a "
 ":exc:`.CommandError` derived exception as it will properly propagate to "
 "the error handlers."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:9
-#: disnake.ext.commands.ColourConverter.convert:9
+#: disnake.ext.commands.ColorConverter.convert:9
 #: disnake.ext.commands.Converter.convert:9
 #: disnake.ext.commands.EmojiConverter.convert:9
 #: disnake.ext.commands.GameConverter.convert:9
@@ -4858,7 +4858,7 @@ msgid "The invocation context that the argument is being used in."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:11
-#: disnake.ext.commands.ColourConverter.convert:11
+#: disnake.ext.commands.ColorConverter.convert:11
 #: disnake.ext.commands.Converter.convert:11
 #: disnake.ext.commands.EmojiConverter.convert:11
 #: disnake.ext.commands.GameConverter.convert:11
@@ -4875,7 +4875,7 @@ msgid "The argument that is being converted."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:14
-#: disnake.ext.commands.ColourConverter.convert:14
+#: disnake.ext.commands.ColorConverter.convert:14
 #: disnake.ext.commands.Converter.convert:14
 #: disnake.ext.commands.EmojiConverter.convert:14
 #: disnake.ext.commands.GameConverter.convert:14
@@ -4892,7 +4892,7 @@ msgid "A generic exception occurred when converting the argument."
 msgstr ""
 
 #: disnake.ext.commands.CategoryChannelConverter.convert:15
-#: disnake.ext.commands.ColourConverter.convert:15
+#: disnake.ext.commands.ColorConverter.convert:15
 #: disnake.ext.commands.Converter.convert:15
 #: disnake.ext.commands.EmojiConverter.convert:15
 #: disnake.ext.commands.GameConverter.convert:15
@@ -4967,7 +4967,7 @@ msgid "Lookup by nickname"
 msgstr ""
 
 #: disnake.ext.commands.MemberConverter:14 of
-msgid "Raise :exc:`.MemberNotFound` instead of generic :exc:`.BadArgument`"
+msgid "Raise :exc:`.MemberNotFond` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.MemberConverter:17 of
@@ -4986,7 +4986,7 @@ msgid "All lookups are via the global user cache."
 msgstr ""
 
 #: disnake.ext.commands.UserConverter:12 of
-msgid "Raise :exc:`.UserNotFound` instead of generic :exc:`.BadArgument`"
+msgid "Raise :exc:`.UserNotFond` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.MessageConverter:1 of
@@ -5009,7 +5009,7 @@ msgstr ""
 
 #: disnake.ext.commands.MessageConverter:11 of
 msgid ""
-"Raise :exc:`.ChannelNotFound`, `MessageNotFound` or `ChannelNotReadable` "
+"Raise :exc:`.ChannelNotFond`, `MessageNotFond` or `ChannelNotReadable` "
 "instead of generic :exc:`.BadArgument`"
 msgstr ""
 
@@ -5020,7 +5020,7 @@ msgstr ""
 #: disnake.ext.commands.CategoryChannelConverter:12
 #: disnake.ext.commands.TextChannelConverter:12
 #: disnake.ext.commands.VoiceChannelConverter:12 of
-msgid "Raise :exc:`.ChannelNotFound` instead of generic :exc:`.BadArgument`"
+msgid "Raise :exc:`.ChannelNotFond` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.VoiceChannelConverter:1 of
@@ -5048,47 +5048,47 @@ msgid "Converts to a :class:`~disnake.Role`."
 msgstr ""
 
 #: disnake.ext.commands.RoleConverter:12 of
-msgid "Raise :exc:`.RoleNotFound` instead of generic :exc:`.BadArgument`"
+msgid "Raise :exc:`.RoleNotFond` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.GameConverter:1 of
 msgid "Converts to :class:`~disnake.Game`."
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:1 of
-msgid "Converts to a :class:`~disnake.Colour`."
+#: disnake.ext.commands.ColorConverter:1 of
+msgid "Converts to a :class:`~disnake.Color`."
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:3 of
+#: disnake.ext.commands.ColorConverter:3 of
 msgid "Add an alias named ColorConverter"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:6 of
+#: disnake.ext.commands.ColorConverter:6 of
 msgid "The following formats are accepted:"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:8 of
+#: disnake.ext.commands.ColorConverter:8 of
 msgid "``0x<hex>``"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:9 of
+#: disnake.ext.commands.ColorConverter:9 of
 msgid "``#<hex>``"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:10 of
+#: disnake.ext.commands.ColorConverter:10 of
 msgid "``0x#<hex>``"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:11 of
-msgid "Any of the ``classmethod`` in :class:`Colour`"
+#: disnake.ext.commands.ColorConverter:11 of
+msgid "Any of the ``classmethod`` in :class:`Color`"
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:13 of
+#: disnake.ext.commands.ColorConverter:13 of
 msgid "The ``_`` in the name can be optionally replaced with spaces."
 msgstr ""
 
-#: disnake.ext.commands.ColourConverter:15 of
-msgid "Raise :exc:`.BadColourArgument` instead of generic :exc:`.BadArgument`"
+#: disnake.ext.commands.ColorConverter:15 of
+msgid "Raise :exc:`.BadColorArgument` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.EmojiConverter:1 of
@@ -5106,7 +5106,7 @@ msgid "Lookup by extracting ID from the emoji."
 msgstr ""
 
 #: disnake.ext.commands.EmojiConverter:12 of
-msgid "Raise :exc:`.EmojiNotFound` instead of generic :exc:`.BadArgument`"
+msgid "Raise :exc:`.EmojiNotFond` instead of generic :exc:`.BadArgument`"
 msgstr ""
 
 #: disnake.ext.commands.PartialEmojiConverter:1 of
@@ -5146,14 +5146,14 @@ msgstr ""
 #: ../../ext/commands/api.rst:253
 msgid ""
 "A special converter that greedily consumes arguments until it can't. As a"
-" consequence of this behaviour, most input errors are silently discarded,"
+" consequence of this behavior, most input errors are silently discarded,"
 " since it is used as an indicator of when to stop parsing."
 msgstr ""
 
 #: ../../ext/commands/api.rst:257
 msgid ""
 "When a parser error is met the greedy converter stops converting, undoes "
-"the internal string parsing routine, and continues parsing regularly."
+"the internal string parsing rotine, and continues parsing regularly."
 msgstr ""
 
 #: ../../ext/commands/api.rst:260
@@ -5162,7 +5162,7 @@ msgstr ""
 
 #: ../../ext/commands/api.rst:268
 msgid ""
-"An invocation of ``[p]test 1 2 3 4 5 6 hello`` would pass ``numbers`` "
+"An invocation of ``[p]test 1 2 3 4 5 6 hello`` wold pass ``numbers`` "
 "with ``[1, 2, 3, 4, 5, 6]`` and ``reason`` with ``hello``\\."
 msgstr ""
 
@@ -5193,7 +5193,7 @@ msgstr ""
 msgid "Exception raised when a Converter class raises non-CommandError."
 msgstr "Converter クラスで、CommandErrorではない例外が発生した際に、発生する例外。"
 
-#: disnake.ext.commands.CommandNotFound:7
+#: disnake.ext.commands.CommandNotFond:7
 #: disnake.ext.commands.ConversionError:3
 #: disnake.ext.commands.MaxConcurrencyReached:3
 #: disnake.ext.commands.UserInputError:4 of
@@ -5212,7 +5212,7 @@ msgstr ""
 #: disnake.ext.commands.ConversionError:13
 #: disnake.ext.commands.ExtensionFailed:13 of
 msgid ""
-"The original exception that was raised. You can also get this via the "
+"The original exception that was raised. Yo can also get this via the "
 "``__cause__`` attribute."
 msgstr "Converter内で発生した元の例外。 ``__cause__`` からも取得できます。"
 
@@ -5225,7 +5225,7 @@ msgstr ""
 #: disnake.ext.commands.MissingRequiredArgument:1 of
 msgid ""
 "Exception raised when parsing a command and a parameter that is required "
-"is not encountered."
+"is not encontered."
 msgstr "コマンドのパラメータ解析の際、要求されたパラメータに値が渡されていない場合に発生します。"
 
 #: disnake.ext.commands.BadArgument:4 disnake.ext.commands.BadUnionArgument:4
@@ -5259,7 +5259,7 @@ msgstr ""
 
 #: disnake.ext.commands.UnexpectedQuoteError:1 of
 msgid ""
-"An exception raised when the parser encounters a quote mark inside a non-"
+"An exception raised when the parser enconters a quote mark inside a non-"
 "quoted string."
 msgstr ""
 
@@ -5270,21 +5270,21 @@ msgid "This inherits from :exc:`ArgumentParsingError`."
 msgstr ""
 
 #: disnake.ext.commands.UnexpectedQuoteError:7 of
-msgid "The quote mark that was found inside the non-quoted string."
+msgid "The quote mark that was fond inside the non-quoted string."
 msgstr ""
 
 #: disnake.ext.commands.InvalidEndOfQuotedStringError:1 of
 msgid ""
 "An exception raised when a space is expected after the closing quote in a"
-" string but a different character is found."
+" string but a different character is fond."
 msgstr ""
 
 #: disnake.ext.commands.InvalidEndOfQuotedStringError:8 of
-msgid "The character found instead of the expected string."
+msgid "The character fond instead of the expected string."
 msgstr ""
 
 #: disnake.ext.commands.ExpectedClosingQuoteError:1 of
-msgid "An exception raised when a quote character is expected but not found."
+msgid "An exception raised when a quote character is expected but not fond."
 msgstr ""
 
 #: disnake.ext.commands.ExpectedClosingQuoteError:7 of
@@ -5293,7 +5293,7 @@ msgstr ""
 
 #: disnake.ext.commands.BadArgument:1 of
 msgid ""
-"Exception raised when a parsing or conversion failure is encountered on "
+"Exception raised when a parsing or conversion failure is encontered on "
 "an argument to pass into a command."
 msgstr "コマンドの引数に渡された値の解析、または変換に失敗した場合に発生する例外。"
 
@@ -5325,7 +5325,7 @@ msgstr ""
 
 #: disnake.ext.commands.PrivateMessageOnly:1 of
 msgid ""
-"Exception raised when an operation does not work outside of private "
+"Exception raised when an operation does not work otside of private "
 "message contexts."
 msgstr ""
 
@@ -5382,13 +5382,13 @@ msgstr ""
 msgid "List[Callable[[:class:`Context`], :class:`bool`]]"
 msgstr ""
 
-#: disnake.ext.commands.CommandNotFound:1 of
+#: disnake.ext.commands.CommandNotFond:1 of
 msgid ""
 "Exception raised when a command is attempted to be invoked but no command"
-" under that name is found."
+" under that name is fond."
 msgstr "コマンドを呼び出す際に、指定された名前を持つコマンドが存在していなかった場合に発生する例外。"
 
-#: disnake.ext.commands.CommandNotFound:4 of
+#: disnake.ext.commands.CommandNotFond:4 of
 msgid ""
 "This is not raised for invalid subcommands, rather just the initial main "
 "command that is attempted to be invoked."
@@ -5429,7 +5429,7 @@ msgid "Cooldown"
 msgstr ""
 
 #: disnake.ext.commands.CommandOnCooldown:14 of
-msgid "The amount of seconds to wait before you can retry again."
+msgid "The amont of seconds to wait before yo can retry again."
 msgstr ""
 
 #: disnake.ext.commands.MaxConcurrencyReached:1 of
@@ -5456,50 +5456,50 @@ msgstr ":class:`.Guild`"
 msgid "Exception raised when the message author is not the owner of the bot."
 msgstr ""
 
-#: disnake.ext.commands.MessageNotFound:1 of
-msgid "Exception raised when the message provided was not found in the channel."
+#: disnake.ext.commands.MessageNotFond:1 of
+msgid "Exception raised when the message provided was not fond in the channel."
 msgstr ""
 
 #: disnake.ext.commands.BadBoolArgument:3
-#: disnake.ext.commands.ChannelNotFound:3
+#: disnake.ext.commands.ChannelNotFond:3
 #: disnake.ext.commands.ChannelNotReadable:4
-#: disnake.ext.commands.EmojiNotFound:3 disnake.ext.commands.MemberNotFound:4
-#: disnake.ext.commands.MessageNotFound:3
+#: disnake.ext.commands.EmojiNotFond:3 disnake.ext.commands.MemberNotFond:4
+#: disnake.ext.commands.MessageNotFond:3
 #: disnake.ext.commands.PartialEmojiConversionFailure:4
-#: disnake.ext.commands.RoleNotFound:3 disnake.ext.commands.UserNotFound:4 of
+#: disnake.ext.commands.RoleNotFond:3 disnake.ext.commands.UserNotFond:4 of
 #, fuzzy
 msgid "This inherits from :exc:`BadArgument`"
 msgstr "これは :exc:`disnake.DiscordException` を継承しています。"
 
-#: disnake.ext.commands.MessageNotFound:9 of
-msgid "The message supplied by the caller that was not found"
+#: disnake.ext.commands.MessageNotFond:9 of
+msgid "The message supplied by the caller that was not fond"
 msgstr ""
 
-#: disnake.ext.commands.MemberNotFound:1 of
+#: disnake.ext.commands.MemberNotFond:1 of
 msgid ""
-"Exception raised when the member provided was not found in the bot's "
+"Exception raised when the member provided was not fond in the bot's "
 "cache."
 msgstr ""
 
-#: disnake.ext.commands.MemberNotFound:10 of
-msgid "The member supplied by the caller that was not found"
+#: disnake.ext.commands.MemberNotFond:10 of
+msgid "The member supplied by the caller that was not fond"
 msgstr ""
 
-#: disnake.ext.commands.UserNotFound:1 of
-msgid "Exception raised when the user provided was not found in the bot's cache."
+#: disnake.ext.commands.UserNotFond:1 of
+msgid "Exception raised when the user provided was not fond in the bot's cache."
 msgstr ""
 
-#: disnake.ext.commands.UserNotFound:10 of
-msgid "The user supplied by the caller that was not found"
+#: disnake.ext.commands.UserNotFond:10 of
+msgid "The user supplied by the caller that was not fond"
 msgstr ""
 
-#: disnake.ext.commands.ChannelNotFound:1 of
+#: disnake.ext.commands.ChannelNotFond:1 of
 #, fuzzy
 msgid "Exception raised when the bot can not find the channel."
 msgstr "呼び出そうとしたコマンドが無効化されていた際に発生する例外。"
 
-#: disnake.ext.commands.ChannelNotFound:9 of
-msgid "The channel supplied by the caller that was not found"
+#: disnake.ext.commands.ChannelNotFond:9 of
+msgid "The channel supplied by the caller that was not fond"
 msgstr ""
 
 #: disnake.ext.commands.ChannelNotReadable:1 of
@@ -5518,21 +5518,21 @@ msgstr ""
 msgid ":class:`.abc.GuildChannel`"
 msgstr ":class:`.Guild`"
 
-#: disnake.ext.commands.RoleNotFound:1 of
+#: disnake.ext.commands.RoleNotFond:1 of
 #, fuzzy
 msgid "Exception raised when the bot can not find the role."
 msgstr "呼び出そうとしたコマンドが無効化されていた際に発生する例外。"
 
-#: disnake.ext.commands.RoleNotFound:9 of
-msgid "The role supplied by the caller that was not found"
+#: disnake.ext.commands.RoleNotFond:9 of
+msgid "The role supplied by the caller that was not fond"
 msgstr ""
 
-#: disnake.ext.commands.EmojiNotFound:1 of
+#: disnake.ext.commands.EmojiNotFond:1 of
 msgid "Exception raised when the bot can not find the emoji."
 msgstr ""
 
-#: disnake.ext.commands.EmojiNotFound:9 of
-msgid "The emoji supplied by the caller that was not found"
+#: disnake.ext.commands.EmojiNotFond:9 of
+msgid "The emoji supplied by the caller that was not fond"
 msgstr ""
 
 #: disnake.ext.commands.PartialEmojiConversionFailure:1 of
@@ -5644,7 +5644,7 @@ msgstr ""
 
 #: disnake.ext.commands.ExtensionAlreadyLoaded:3
 #: disnake.ext.commands.ExtensionFailed:3
-#: disnake.ext.commands.ExtensionNotFound:3
+#: disnake.ext.commands.ExtensionNotFond:3
 #: disnake.ext.commands.ExtensionNotLoaded:3
 #: disnake.ext.commands.NoEntryPointError:3 of
 msgid "This inherits from :exc:`ExtensionError`"
@@ -5667,24 +5667,24 @@ msgid ""
 msgstr ""
 
 #: disnake.ext.commands.ExtensionFailed:7
-#: disnake.ext.commands.ExtensionNotFound:10 of
+#: disnake.ext.commands.ExtensionNotFond:10 of
 msgid "The extension that had the error."
 msgstr ""
 
-#: disnake.ext.commands.ExtensionNotFound:1 of
+#: disnake.ext.commands.ExtensionNotFond:1 of
 #, fuzzy
-msgid "An exception raised when an extension is not found."
+msgid "An exception raised when an extension is not fond."
 msgstr "プライベートメッセージコンテキストで、要求された処理が実行できない場合に発生する例外。"
 
-#: disnake.ext.commands.ExtensionNotFound:5 of
+#: disnake.ext.commands.ExtensionNotFond:5 of
 msgid "Made the ``original`` attribute always None."
 msgstr ""
 
-#: disnake.ext.commands.ExtensionNotFound:16 of
+#: disnake.ext.commands.ExtensionNotFond:16 of
 msgid "Always ``None`` for backwards compatibility."
 msgstr ""
 
-#: disnake.ext.commands.ExtensionNotFound:18 of
+#: disnake.ext.commands.ExtensionNotFond:18 of
 msgid ":class:`NoneType`"
 msgstr ""
 
@@ -5740,19 +5740,19 @@ msgid ":exc:`~.commands.BadArgument`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:423
-msgid ":exc:`~.commands.MessageNotFound`"
+msgid ":exc:`~.commands.MessageNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:424
-msgid ":exc:`~.commands.MemberNotFound`"
+msgid ":exc:`~.commands.MemberNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:425
-msgid ":exc:`~.commands.UserNotFound`"
+msgid ":exc:`~.commands.UserNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:426
-msgid ":exc:`~.commands.ChannelNotFound`"
+msgid ":exc:`~.commands.ChannelNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:427
@@ -5760,11 +5760,11 @@ msgid ":exc:`~.commands.ChannelNotReadable`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:428
-msgid ":exc:`~.commands.BadColourArgument`"
+msgid ":exc:`~.commands.BadColorArgument`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:429
-msgid ":exc:`~.commands.RoleNotFound`"
+msgid ":exc:`~.commands.RoleNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:430
@@ -5772,7 +5772,7 @@ msgid ":exc:`~.commands.BadInviteArgument`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:431
-msgid ":exc:`~.commands.EmojiNotFound`"
+msgid ":exc:`~.commands.EmojiNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:432
@@ -5804,7 +5804,7 @@ msgid ":exc:`~.commands.ExpectedClosingQuoteError`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:439
-msgid ":exc:`~.commands.CommandNotFound`"
+msgid ":exc:`~.commands.CommandNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:450
@@ -5892,7 +5892,7 @@ msgid ":exc:`~.commands.ExtensionFailed`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:461
-msgid ":exc:`~.commands.ExtensionNotFound`"
+msgid ":exc:`~.commands.ExtensionNotFond`"
 msgstr ""
 
 #: ../../ext/commands/api.rst:462
@@ -5905,11 +5905,11 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- Whether the commands "
-#~ "should be case insensitive. Defaults to"
+#~ "shold be case insensitive. Defaults to"
 #~ " ``False``. This attribute does not "
-#~ "carry over to groups. You must set"
-#~ " it to every group if you "
-#~ "require group commands to be case "
+#~ "carry over to grops. Yo must set"
+#~ " it to every grop if yo "
+#~ "require grop commands to be case "
 #~ "insensitive as well."
 #~ msgstr ""
 #~ ":class:`bool` -- コマンドを大文字と小文字を区別するかどうか。デフォルトでは "
@@ -5931,7 +5931,7 @@ msgstr ""
 #~ "The activity parameter is a "
 #~ ":class:`.Activity` object (not a string) "
 #~ "that represents the activity being done"
-#~ " currently. This could also be the"
+#~ " currently. This cold also be the"
 #~ " slimmed down versions, :class:`.Game` and"
 #~ " :class:`.Streaming`."
 #~ msgstr ""
@@ -5956,25 +5956,25 @@ msgstr ""
 #~ "type was received from Discord."
 #~ msgstr ""
 
-#~ msgid ":exc:`.NotFound` -- Invalid Channel ID."
-#~ msgstr ":exc:`.NotFound` -- チャンネルのIDが無効。"
+#~ msgid ":exc:`.NotFond` -- Invalid Channel ID."
+#~ msgstr ":exc:`.NotFond` -- チャンネルのIDが無効。"
 
 #~ msgid ""
 #~ "If the invite is for a guild "
-#~ "you have not joined, the guild and"
+#~ "yo have not joined, the guild and"
 #~ " channel attributes of the returned "
 #~ ":class:`.Invite` will be "
 #~ ":class:`.PartialInviteGuild` and "
 #~ ":class:`PartialInviteChannel` respectively."
 #~ msgstr ""
 
-#~ msgid ":exc:`.NotFound` -- The invite has expired or is invalid."
+#~ msgid ":exc:`.NotFond` -- The invite has expired or is invalid."
 #~ msgstr ""
 
 #~ msgid ":exc:`.HTTPException` -- Getting the invite failed."
 #~ msgstr ""
 
-#~ msgid ":exc:`.NotFound` -- A user with this ID does not exist."
+#~ msgid ":exc:`.NotFond` -- A user with this ID does not exist."
 #~ msgstr ""
 
 #~ msgid ":exc:`.HTTPException` -- Fetching the user failed."
@@ -5983,7 +5983,7 @@ msgstr ""
 #~ msgid ""
 #~ "Gets an arbitrary user's profile. This"
 #~ " can only be used by non-bot"
-#~ " accounts."
+#~ " acconts."
 #~ msgstr ""
 
 #~ msgid ":exc:`.Forbidden` -- Not allowed to fetch profiles."
@@ -5995,10 +5995,10 @@ msgstr ""
 #~ msgid ":exc:`.HTTPException` -- Retrieving the webhook failed."
 #~ msgstr ""
 
-#~ msgid ":exc:`.NotFound` -- Invalid webhook ID."
+#~ msgid ":exc:`.NotFond` -- Invalid webhook ID."
 #~ msgstr ""
 
-#~ msgid ":exc:`.Forbidden` -- You do not have permission to fetch this webhook."
+#~ msgid ":exc:`.Forbidden` -- Yo do not have permission to fetch this webhook."
 #~ msgstr ""
 
 #~ msgid ":exc:`.Forbidden` -- The widget for this guild is disabled."
@@ -6013,7 +6013,7 @@ msgstr ""
 #~ " with the given ID."
 #~ msgstr ""
 
-#~ msgid "If not found, returns ``None``."
+#~ msgid "If not fond, returns ``None``."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6048,7 +6048,7 @@ msgstr ""
 #~ "seconds."
 #~ msgstr ""
 
-#~ msgid ":exc:`ExtensionNotFound` -- The extension could not be imported."
+#~ msgid ":exc:`ExtensionNotFond` -- The extension cold not be imported."
 #~ msgstr ""
 
 #~ msgid ":exc:`ExtensionAlreadyLoaded` -- The extension is already loaded."
@@ -6069,8 +6069,8 @@ msgstr ""
 #~ " against the Discord `Terms of "
 #~ "Service <https://support.discordapp.com/hc/en-"
 #~ "us/articles/115002192352>`_ and doing so might"
-#~ " potentially get your account banned. "
-#~ "Use this at your own risk."
+#~ " potentially get yor accont banned. "
+#~ "Use this at yor own risk."
 #~ msgstr ""
 
 #~ msgid ":exc:`.LoginFailure` -- The wrong credentials are passed."
@@ -6131,13 +6131,13 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":exc:`asyncio.TimeoutError` -- If a timeout"
+#~ ":exc:`asyncio.TimeotError` -- If a timeot"
 #~ " is provided and it was reached."
 #~ msgstr ""
 
 #~ msgid ""
 #~ ":exc:`TypeError` -- If the function is"
-#~ " not a coroutine or is already "
+#~ " not a corotine or is already "
 #~ "a command."
 #~ msgstr ""
 
@@ -6145,7 +6145,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":ref:`coroutine <coroutine>` -- The coroutine"
+#~ ":ref:`corotine <corotine>` -- The corotine"
 #~ " that is executed when the command"
 #~ " is called."
 #~ msgstr ""
@@ -6186,12 +6186,12 @@ msgstr ""
 #~ msgid ""
 #~ "List[Callable[..., :class:`bool`]] -- A list"
 #~ " of predicates that verifies if the"
-#~ " command could be executed with the"
+#~ " command cold be executed with the"
 #~ " given :class:`.Context` as the sole "
 #~ "parameter. If an exception is necessary"
 #~ " to be thrown to signal failure, "
 #~ "then one inherited from :exc:`.CommandError`"
-#~ " should be used. Note that if "
+#~ " shold be used. Note that if "
 #~ "the checks fail then :exc:`.CheckFailure` "
 #~ "exception is raised to the "
 #~ ":func:`.on_command_error` event."
@@ -6203,7 +6203,7 @@ msgstr ""
 #~ msgid ""
 #~ ":class:`bool` -- If ``True``\\, the "
 #~ "default help command does not show "
-#~ "this in the help output."
+#~ "this in the help otput."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6226,7 +6226,7 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- If ``True``\\, ignores "
-#~ "extraneous strings passed to a command"
+#~ "extraneos strings passed to a command"
 #~ " if all its requirements are met "
 #~ "(e.g. ``?foo a b c`` when only "
 #~ "expecting ``a`` and ``b``). Otherwise "
@@ -6246,7 +6246,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Retrieves the parameter OrderedDict without"
+#~ "Retrieves the parameter OrderedDict withot"
 #~ " the context or self parameters."
 #~ msgstr ""
 
@@ -6271,7 +6271,7 @@ msgstr ""
 #~ msgid ""
 #~ ":class:`str` -- Returns a POSIX-like "
 #~ "signature useful for help command "
-#~ "output."
+#~ "otput."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6289,15 +6289,15 @@ msgstr ""
 
 #~ msgid ""
 #~ "Optional[:class:`bool`] -- Indicates if the"
-#~ " group callback should begin parsing "
+#~ " grop callback shold begin parsing "
 #~ "and invocation only if no subcommand "
-#~ "was found. Useful for making it an"
+#~ "was fond. Useful for making it an"
 #~ " error handling function to tell the"
-#~ " user that no subcommand was found"
+#~ " user that no subcommand was fond"
 #~ " or to have different functionality "
-#~ "in case no subcommand was found. "
+#~ "in case no subcommand was fond. "
 #~ "If this is ``False``, then the "
-#~ "group callback will always be invoked"
+#~ "grop callback will always be invoked"
 #~ " first. This means that the checks"
 #~ " and the parsing dictated by its "
 #~ "parameters will be executed. Defaults to"
@@ -6306,7 +6306,7 @@ msgstr ""
 
 #~ msgid ""
 #~ "Optional[:class:`bool`] -- Indicates if the"
-#~ " group's commands should be case "
+#~ " grop's commands shold be case "
 #~ "insensitive. Defaults to ``False``."
 #~ msgstr ""
 
@@ -6318,7 +6318,7 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- Whether the commands "
-#~ "should be case insensitive. Defaults to"
+#~ "shold be case insensitive. Defaults to"
 #~ " ``False``."
 #~ msgstr ""
 
@@ -6338,11 +6338,11 @@ msgstr ""
 
 #~ msgid ""
 #~ ":exc:`TypeError` -- The function is not"
-#~ " a coroutine function or a string "
+#~ " a corotine function or a string "
 #~ "was not passed as the name."
 #~ msgstr ""
 
-#~ msgid "This function **can** be a coroutine."
+#~ msgid "This function **can** be a corotine."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6357,7 +6357,7 @@ msgstr ""
 #~ "this cog. The dictionary is passed "
 #~ "into the :class:`Command` (or its "
 #~ "subclass) options at ``__init__``. If "
-#~ "you specify attributes inside the "
+#~ "yo specify attributes inside the "
 #~ "command attribute in the class, it "
 #~ "will override the one specified inside"
 #~ " this attribute. For example:"
@@ -6373,13 +6373,13 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- Specifies if hidden "
-#~ "commands should be shown in the "
-#~ "output. Defaults to ``False``."
+#~ "commands shold be shown in the "
+#~ "otput. Defaults to ``False``."
 #~ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- Specifies if commands "
-#~ "should have their :attr:`.Command.checks` "
+#~ "shold have their :attr:`.Command.checks` "
 #~ "called and verified. Defaults to "
 #~ "``True``."
 #~ msgstr ""
@@ -6388,8 +6388,8 @@ msgstr ""
 #~ ":class:`dict` -- A dictionary of options"
 #~ " to pass in for the construction "
 #~ "of the help command. This allows "
-#~ "you to change the command behaviour "
-#~ "without actually changing the implementation"
+#~ "yo to change the command behavior "
+#~ "withot actually changing the implementation"
 #~ " of the command. The attributes will"
 #~ " be the same as the ones passed"
 #~ " in the :class:`.Command` constructor."
@@ -6403,19 +6403,19 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`bool` -- Whether to sort the "
-#~ "commands in the output alphabetically. "
+#~ "commands in the otput alphabetically. "
 #~ "Defaults to ``True``."
 #~ msgstr ""
 
 #~ msgid ""
 #~ "Optional[:class:`bool`] -- A tribool that "
-#~ "indicates if the help command should "
+#~ "indicates if the help command shold "
 #~ "DM the user instead of sending it"
 #~ " to the channel it received it "
 #~ "from. If the boolean is set to "
-#~ "``True``, then all help output is "
+#~ "``True``, then all help otput is "
 #~ "DM'd. If ``False``, none of the "
-#~ "help output is DM'd. If ``None``, "
+#~ "help otput is DM'd. If ``None``, "
 #~ "then the bot will only DM when "
 #~ "the help message becomes too long "
 #~ "(dictated by more than "
@@ -6455,7 +6455,7 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`Paginator` -- The paginator used "
-#~ "to paginate the help command output."
+#~ "to paginate the help command otput."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6484,7 +6484,7 @@ msgstr ""
 #~ " three backticks."
 #~ msgstr ""
 
-#~ msgid ":class:`int` -- The maximum amount of codepoints allowed in a page."
+#~ msgid ":class:`int` -- The maximum amont of codepoints allowed in a page."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6492,7 +6492,7 @@ msgstr ""
 #~ " big for the current :attr:`max_size`."
 #~ msgstr ""
 
-#~ msgid "These functions can either be regular functions or coroutines."
+#~ msgid "These functions can either be regular functions or corotines."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6503,14 +6503,14 @@ msgstr ""
 
 #~ msgid ""
 #~ "A cooldown allows a command to "
-#~ "only be used a specific amount of"
+#~ "only be used a specific amont of"
 #~ " times in a specific time frame. "
 #~ "These cooldowns can be based either "
 #~ "on a per-guild, per-channel, "
 #~ "per-user, or global basis. Denoted by"
 #~ " the third argument of ``type`` which"
 #~ " must be of enum type ``BucketType``"
-#~ " which could be either:"
+#~ " which cold be either:"
 #~ msgstr ""
 
 #~ msgid "``BucketType.default`` for a global basis."
@@ -6544,7 +6544,7 @@ msgstr ""
 #~ " arguments that were passed into the"
 #~ " command. If this is accessed during"
 #~ " the :func:`on_command_error` event then "
-#~ "this list could be incomplete."
+#~ "this list cold be incomplete."
 #~ msgstr ""
 
 #~ msgid ""
@@ -6553,7 +6553,7 @@ msgstr ""
 #~ "into the command. Similar to "
 #~ ":attr:`args`\\, if this is accessed in"
 #~ " the :func:`on_command_error` event then "
-#~ "this dict could be incomplete."
+#~ "this dict cold be incomplete."
 #~ msgstr ""
 
 #~ msgid ":class:`str` -- The prefix that was used to invoke the command."
@@ -6568,7 +6568,7 @@ msgstr ""
 #~ msgid ""
 #~ ":class:`str` -- The command name that"
 #~ " triggered this invocation. Useful for "
-#~ "finding out which alias called the "
+#~ "finding ot which alias called the "
 #~ "command."
 #~ msgstr ""
 
@@ -6583,7 +6583,7 @@ msgstr ""
 #~ "Optional[:class:`str`] -- The string that "
 #~ "was attempted to call a subcommand. "
 #~ "This does not have to point to "
-#~ "a valid registered subcommand and could"
+#~ "a valid registered subcommand and cold"
 #~ " just point to a nonsense string. "
 #~ "If nothing was passed to attempt a"
 #~ " call to a subcommand then this "
@@ -6597,13 +6597,13 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "You must have "
+#~ "Yo must have "
 #~ ":attr:`~.Permissions.read_message_history` permissions to"
 #~ " use this."
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":exc:`~disnake.Forbidden` -- You do not "
+#~ ":exc:`~disnake.Forbidden` -- Yo do not "
 #~ "have permissions to get channel message"
 #~ " history."
 #~ msgstr ""
@@ -6625,11 +6625,11 @@ msgstr ""
 #~ ":attr:`.Message.author`"
 #~ msgstr ""
 
-#~ msgid ":exc:`~disnake.NotFound` -- The specified message was not found."
+#~ msgid ":exc:`~disnake.NotFond` -- The specified message was not fond."
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":exc:`~disnake.Forbidden` -- You do not "
+#~ ":exc:`~disnake.Forbidden` -- Yo do not "
 #~ "have the permissions required to get "
 #~ "a message."
 #~ msgstr ""
@@ -6647,7 +6647,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":exc:`~disnake.Forbidden` -- You do not "
+#~ ":exc:`~disnake.Forbidden` -- Yo do not "
 #~ "have the proper permissions to send "
 #~ "the message."
 #~ msgstr ""
@@ -6655,7 +6655,7 @@ msgstr ""
 #~ msgid ""
 #~ ":exc:`~disnake.InvalidArgument` -- The ``files`` "
 #~ "list is not of the appropriate "
-#~ "size or you specified both ``file`` "
+#~ "size or yo specified both ``file`` "
 #~ "and ``files``."
 #~ msgstr ""
 
@@ -6687,11 +6687,11 @@ msgstr ""
 
 #~ msgid ""
 #~ ":class:`str` -- The quote mark that "
-#~ "was found inside the non-quoted "
+#~ "was fond inside the non-quoted "
 #~ "string."
 #~ msgstr ""
 
-#~ msgid ":class:`str` -- The character found instead of the expected string."
+#~ msgid ":class:`str` -- The character fond instead of the expected string."
 #~ msgstr ""
 
 #~ msgid ":class:`str` -- The quote character expected."
@@ -6721,8 +6721,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ ":class:`float` -- The amount of seconds"
-#~ " to wait before you can retry "
+#~ ":class:`float` -- The amont of seconds"
+#~ " to wait before yo can retry "
 #~ "again."
 #~ msgstr ""
 
@@ -6764,7 +6764,7 @@ msgstr ""
 
 #~ msgid ""
 #~ ":exc:`Exception` -- The original exception "
-#~ "that was raised. You can also get"
+#~ "that was raised. Yo can also get"
 #~ " this via the ``__cause__`` attribute."
 #~ msgstr ""
 
@@ -6773,7 +6773,7 @@ msgstr ""
 
 #~ msgid ""
 #~ ":exc:`ImportError` -- The original exception"
-#~ " that was raised. You can also "
+#~ " that was raised. Yo can also "
 #~ "get this via the ``__cause__`` "
 #~ "attribute."
 #~ msgstr ""

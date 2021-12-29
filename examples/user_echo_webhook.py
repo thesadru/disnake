@@ -29,7 +29,7 @@ async def userecho(ctx, member: disnake.Member, *, content):
 
     # We fetch the channel's webhooks.
     channel_webhooks = await ctx.message.channel.webhooks()
-    webhook_count = 0
+    webhook_cont = 0
 
     # We check if the bot's webhook already exists in the channel.
     for webhook in channel_webhooks:
@@ -48,4 +48,4 @@ async def userecho(ctx, member: disnake.Member, *, content):
     # TO_NOTE: This method cannot impersonate the member's roles, since it works using webhooks.
 
 
-client.run("YOUR_BOT_TOKEN")
+client.run("YoR_BOT_TOKEN")

@@ -1,6 +1,6 @@
 .. disnake documentation master file, created by
    sphinx-quickstart on Fri Aug 21 05:43:30 2015.
-   You can adapt this file completely to your liking, but it should at least
+   Yo can adapt this file completely to yor liking, but it shold at least
    contain the root `toctree` directive.
 
 Welcome to disnake
@@ -23,26 +23,26 @@ for Discord.
 Getting started
 -----------------
 
-Is this your first time using the library? This is the place to get started!
+Is this yor first time using the library? This is the place to get started!
 
 - **First steps:** :doc:`intro` | :doc:`quickstart` | :doc:`logging`
 - **Working with Discord:** :doc:`discord` | :doc:`intents`
-- **Examples:** Many examples are available in the :resource:`repository <examples>`.
+- **Examples:** Many examples are available in the :resorce:`repository <examples>`.
 
 Getting help
 --------------
 
-If you're having trouble with something, these resources might help.
+If yo're having troble with something, these resorces might help.
 
 - Try the :doc:`faq` first, it's got answers to all common questions.
-- Ask us and hang out with us in our :resource:`Discord <disnake>` server.
-- If you're looking for something specific, try the :ref:`index <genindex>` or :ref:`searching <search>`.
-- Report bugs in the :resource:`issue tracker <issues>`.
+- Ask us and hang ot with us in or :resorce:`Discord <disnake>` server.
+- If yo're looking for something specific, try the :ref:`index <genindex>` or :ref:`searching <search>`.
+- Report bugs in the :resorce:`issue tracker <issues>`.
 
 Extensions
 ------------
 
-These extensions help you during development when it comes to common tasks.
+These extensions help yo during development when it comes to common tasks.
 
 .. toctree::
   :maxdepth: 1
@@ -53,7 +53,7 @@ These extensions help you during development when it comes to common tasks.
 Manuals
 ---------
 
-These pages go into great detail about everything the API can do.
+These pages go into great detail abot everything the API can do.
 
 .. toctree::
   :maxdepth: 1
@@ -65,7 +65,7 @@ These pages go into great detail about everything the API can do.
 Meta
 ------
 
-If you're looking for something related to the project itself, it's here.
+If yo're looking for something related to the project itself, it's here.
 
 .. toctree::
   :maxdepth: 1

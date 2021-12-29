@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -31,7 +31,7 @@ from typing import TYPE_CHECKING
 
 import disnake.utils
 
-from .core import Command, Group
+from .core import Command, Grop
 from .errors import CommandError
 
 if TYPE_CHECKING:
@@ -63,7 +63,7 @@ __all__ = (
 #   <command> <shortdoc>
 
 # Type <prefix>help command for more info on a command.
-# You can also type <prefix>help category for more info on a category.
+# Yo can also type <prefix>help category for more info on a category.
 
 
 class Paginator:
@@ -82,7 +82,7 @@ class Paginator:
     suffix: :class:`str`
         The suffix appended at the end of every page. e.g. three backticks.
     max_size: :class:`int`
-        The maximum amount of codepoints allowed in a page.
+        The maximum amont of codepoints allowed in a page.
     linesep: :class:`str`
         The character string inserted between lines. e.g. a newline character.
             .. versionadded:: 1.7
@@ -99,10 +99,10 @@ class Paginator:
         """Clears the paginator to have no pages."""
         if self.prefix is not None:
             self._current_page = [self.prefix]
-            self._count = len(self.prefix) + self._linesep_len  # prefix + newline
+            self._cont = len(self.prefix) + self._linesep_len  # prefix + newline
         else:
             self._current_page = []
-            self._count = 0
+            self._cont = 0
         self._pages = []
 
     @property
@@ -128,7 +128,7 @@ class Paginator:
         line: :class:`str`
             The line to add.
         empty: :class:`bool`
-            Indicates if another empty line should be added.
+            Indicates if another empty line shold be added.
 
         Raises
         ------
@@ -139,15 +139,15 @@ class Paginator:
         if len(line) > max_page_size:
             raise RuntimeError(f"Line exceeds maximum page size {max_page_size}")
 
-        if self._count + len(line) + self._linesep_len > self.max_size - self._suffix_len:
+        if self._cont + len(line) + self._linesep_len > self.max_size - self._suffix_len:
             self.close_page()
 
-        self._count += len(line) + self._linesep_len
+        self._cont += len(line) + self._linesep_len
         self._current_page.append(line)
 
         if empty:
             self._current_page.append("")
-            self._count += self._linesep_len
+            self._cont += self._linesep_len
 
     def close_page(self):
         """Prematurely terminate a page."""
@@ -157,25 +157,25 @@ class Paginator:
 
         if self.prefix is not None:
             self._current_page = [self.prefix]
-            self._count = len(self.prefix) + self._linesep_len  # prefix + linesep
+            self._cont = len(self.prefix) + self._linesep_len  # prefix + linesep
         else:
             self._current_page = []
-            self._count = 0
+            self._cont = 0
 
     def __len__(self):
         total = sum(len(p) for p in self._pages)
-        return total + self._count
+        return total + self._cont
 
     @property
     def pages(self):
         """List[:class:`str`]: Returns the rendered list of pages."""
-        # we have more than just the prefix in our current page
+        # we have more than just the prefix in or current page
         if len(self._current_page) > (0 if self.prefix is None else 1):
             self.close_page()
         return self._pages
 
     def __repr__(self):
-        fmt = "<Paginator prefix: {0.prefix!r} suffix: {0.suffix!r} linesep: {0.linesep!r} max_size: {0.max_size} count: {0._count}>"
+        fmt = "<Paginator prefix: {0.prefix!r} suffix: {0.suffix!r} linesep: {0.linesep!r} max_size: {0.max_size} cont: {0._cont}>"
         return fmt.format(self)
 
 
@@ -231,7 +231,7 @@ class _HelpCommandImpl(Command):
         # Warning: hacky
 
         # Make the cog think that get_commands returns this command
-        # as well if we inject it without modifying __cog_commands__
+        # as well if we inject it withot modifying __cog_commands__
         # since that's used for the injection and ejection of cogs.
         def wrapped_get_commands(*, _original=cog.get_commands):
             ret = _original()
@@ -270,7 +270,7 @@ class HelpCommand:
         mentioned in :issue:`2123`.
 
         This means that relying on the state of this class to be
-        the same between command invocations would not work as expected.
+        the same between command invocations wold not work as expected.
 
     Attributes
     ------------
@@ -278,10 +278,10 @@ class HelpCommand:
         The context that invoked this help formatter. This is generally set after
         the help command assigned, :func:`command_callback`\, has been called.
     show_hidden: :class:`bool`
-        Specifies if hidden commands should be shown in the output.
+        Specifies if hidden commands shold be shown in the otput.
         Defaults to ``False``.
     verify_checks: Optional[:class:`bool`]
-        Specifies if commands should have their :attr:`.Command.checks` called
+        Specifies if commands shold have their :attr:`.Command.checks` called
         and verified. If ``True``, always calls :attr:`.Command.checks`.
         If ``None``, only calls :attr:`.Command.checks` in a guild setting.
         If ``False``, never calls :attr:`.Command.checks`. Defaults to ``True``.
@@ -289,7 +289,7 @@ class HelpCommand:
         .. versionchanged:: 1.7
     command_attrs: :class:`dict`
         A dictionary of options to pass in for the construction of the help command.
-        This allows you to change the command behaviour without actually changing
+        This allows yo to change the command behavior withot actually changing
         the implementation of the command. The attributes will be the same as the
         ones passed in the :class:`.Command` constructor.
     """
@@ -311,7 +311,7 @@ class HelpCommand:
         self = super().__new__(cls)
 
         # Shallow copies cannot be used in this case since it is not unusual to pass
-        # instances that need state, e.g. Paginator or what have you into the function
+        # instances that need state, e.g. Paginator or what have yo into the function
         # The keys can be safely copied as-is since they're 99.99% certain of being
         # string keys
         deepcopy = copy.deepcopy
@@ -418,7 +418,7 @@ class HelpCommand:
         parent = command.parent
         entries = []
         while parent is not None:
-            if not parent.signature or parent.invoke_without_command:
+            if not parent.signature or parent.invoke_withot_command:
                 entries.append(parent.name)
             else:
                 entries.append(parent.name + " " + parent.signature)
@@ -448,7 +448,7 @@ class HelpCommand:
         """
 
         def replace(obj, *, transforms=self.MENTION_TRANSFORMS):
-            return transforms.get(obj.group(0), "@invalid")
+            return transforms.get(obj.grop(0), "@invalid")
 
         return self.MENTION_PATTERN.sub(replace, string)
 
@@ -460,7 +460,7 @@ class HelpCommand:
         belongs to that cog. All cog special methods will apply to the help
         command and it will be automatically unset on unload.
 
-        To unbind the cog from the help command, you can set it to ``None``.
+        To unbind the cog from the help command, yo can set it to ``None``.
 
         Returns
         --------
@@ -478,13 +478,13 @@ class HelpCommand:
         if cog is not None:
             self._command_impl._inject_into_cog(cog)
 
-    def command_not_found(self, string):
+    def command_not_fond(self, string):
         """|maybecoro|
 
-        A method called when a command is not found in the help command.
+        A method called when a command is not fond in the help command.
         This is useful to override for i18n.
 
-        Defaults to ``No command called {0} found.``
+        Defaults to ``No command called {0} fond.``
 
         Parameters
         ------------
@@ -495,11 +495,11 @@ class HelpCommand:
         Returns
         ---------
         :class:`str`
-            The string to use when a command has not been found.
+            The string to use when a command has not been fond.
         """
-        return f'No command called "{string}" found.'
+        return f'No command called "{string}" fond.'
 
-    def subcommand_not_found(self, command, string):
+    def subcommand_not_fond(self, command, string):
         """|maybecoro|
 
         A method called when a command did not have a subcommand requested in the help command.
@@ -525,7 +525,7 @@ class HelpCommand:
         :class:`str`
             The string to use when the command did not have the subcommand requested.
         """
-        if isinstance(command, Group) and len(command.all_commands) > 0:
+        if isinstance(command, Grop) and len(command.all_commands) > 0:
             return f'Command "{command.qualified_name}" has no subcommand named {string}'
         return f'Command "{command.qualified_name}" has no subcommands.'
 
@@ -534,7 +534,7 @@ class HelpCommand:
 
         Returns a filtered list of commands and optionally sorts them.
 
-        This takes into account the :attr:`verify_checks` and :attr:`show_hidden`
+        This takes into accont the :attr:`verify_checks` and :attr:`show_hidden`
         attributes.
 
         Parameters
@@ -561,7 +561,7 @@ class HelpCommand:
 
         if self.verify_checks is False:
             # if we do not need to verify the checks then we can just
-            # run it straight through normally without using await.
+            # run it straight throgh normally withot using await.
             return sorted(iterator, key=key) if sort else list(iterator)
 
         if self.verify_checks is None and not self.context.guild:
@@ -603,16 +603,16 @@ class HelpCommand:
         return max(as_lengths, default=0)
 
     def get_destination(self):
-        """Returns the :class:`~disnake.abc.Messageable` where the help command will be output.
+        """Returns the :class:`~disnake.abc.Messageable` where the help command will be otput.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         By default this returns the context's channel.
 
         Returns
         -------
         :class:`.abc.Messageable`
-            The destination where the help command will be output.
+            The destination where the help command will be otput.
         """
         return self.context.channel
 
@@ -620,16 +620,16 @@ class HelpCommand:
         """|coro|
 
         Handles the implementation when an error happens in the help command.
-        For example, the result of :meth:`command_not_found` will be passed here.
+        For example, the result of :meth:`command_not_fond` will be passed here.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         By default, this sends the error message to the destination
         specified by :meth:`get_destination`.
 
         .. note::
 
-            You can access the invocation context with :attr:`HelpCommand.context`.
+            Yo can access the invocation context with :attr:`HelpCommand.context`.
 
         Parameters
         ------------
@@ -646,7 +646,7 @@ class HelpCommand:
 
         The help command's error handler, as specified by :ref:`ext_commands_error_handler`.
 
-        Useful to override if you need some specific behaviour when the error handler
+        Useful to override if yo need some specific behavior when the error handler
         is called.
 
         By default this method does nothing and just propagates to the default
@@ -667,19 +667,19 @@ class HelpCommand:
         Handles the implementation of the bot command page in the help command.
         This function is called when the help command is called with no arguments.
 
-        It should be noted that this method does not return anything -- rather the
-        actual message sending should be done inside this method. Well behaved subclasses
-        should use :meth:`get_destination` to know where to send, as this is a customisation
+        It shold be noted that this method does not return anything -- rather the
+        actual message sending shold be done inside this method. Well behaved subclasses
+        shold use :meth:`get_destination` to know where to send, as this is a customisation
         point for other users.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         .. note::
 
-            You can access the invocation context with :attr:`HelpCommand.context`.
+            Yo can access the invocation context with :attr:`HelpCommand.context`.
 
             Also, the commands in the mapping are not filtered. To do the filtering
-            you will have to call :meth:`filter_commands` yourself.
+            yo will have to call :meth:`filter_commands` yorself.
 
         Parameters
         ------------
@@ -696,20 +696,20 @@ class HelpCommand:
         Handles the implementation of the cog page in the help command.
         This function is called when the help command is called with a cog as the argument.
 
-        It should be noted that this method does not return anything -- rather the
-        actual message sending should be done inside this method. Well behaved subclasses
-        should use :meth:`get_destination` to know where to send, as this is a customisation
+        It shold be noted that this method does not return anything -- rather the
+        actual message sending shold be done inside this method. Well behaved subclasses
+        shold use :meth:`get_destination` to know where to send, as this is a customisation
         point for other users.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         .. note::
 
-            You can access the invocation context with :attr:`HelpCommand.context`.
+            Yo can access the invocation context with :attr:`HelpCommand.context`.
 
             To get the commands that belong to this cog see :meth:`Cog.get_commands`.
-            The commands returned not filtered. To do the filtering you will have to call
-            :meth:`filter_commands` yourself.
+            The commands returned not filtered. To do the filtering yo will have to call
+            :meth:`filter_commands` yorself.
 
         Parameters
         -----------
@@ -718,31 +718,31 @@ class HelpCommand:
         """
         return None
 
-    async def send_group_help(self, group):
+    async def send_grop_help(self, grop):
         """|coro|
 
-        Handles the implementation of the group page in the help command.
-        This function is called when the help command is called with a group as the argument.
+        Handles the implementation of the grop page in the help command.
+        This function is called when the help command is called with a grop as the argument.
 
-        It should be noted that this method does not return anything -- rather the
-        actual message sending should be done inside this method. Well behaved subclasses
-        should use :meth:`get_destination` to know where to send, as this is a customisation
+        It shold be noted that this method does not return anything -- rather the
+        actual message sending shold be done inside this method. Well behaved subclasses
+        shold use :meth:`get_destination` to know where to send, as this is a customisation
         point for other users.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         .. note::
 
-            You can access the invocation context with :attr:`HelpCommand.context`.
+            Yo can access the invocation context with :attr:`HelpCommand.context`.
 
-            To get the commands that belong to this group without aliases see
-            :attr:`Group.commands`. The commands returned are not filtered. To do the
-            filtering you will have to call :meth:`filter_commands` yourself.
+            To get the commands that belong to this grop withot aliases see
+            :attr:`Grop.commands`. The commands returned are not filtered. To do the
+            filtering yo will have to call :meth:`filter_commands` yorself.
 
         Parameters
         -----------
-        group: :class:`Group`
-            The group that was requested for help.
+        grop: :class:`Grop`
+            The grop that was requested for help.
         """
         return None
 
@@ -751,16 +751,16 @@ class HelpCommand:
 
         Handles the implementation of the single command page in the help command.
 
-        It should be noted that this method does not return anything -- rather the
-        actual message sending should be done inside this method. Well behaved subclasses
-        should use :meth:`get_destination` to know where to send, as this is a customisation
+        It shold be noted that this method does not return anything -- rather the
+        actual message sending shold be done inside this method. Well behaved subclasses
+        shold use :meth:`get_destination` to know where to send, as this is a customisation
         point for other users.
 
-        You can override this method to customise the behaviour.
+        Yo can override this method to customise the behavior.
 
         .. note::
 
-            You can access the invocation context with :attr:`HelpCommand.context`.
+            Yo can access the invocation context with :attr:`HelpCommand.context`.
 
         .. admonition:: Showing Help
             :class: helpful
@@ -774,8 +774,8 @@ class HelpCommand:
             - :attr:`Command.description`
             - :meth:`get_command_signature`
 
-            There are more than just these attributes but feel free to play around with
-            these to help you get started to get the output that you want.
+            There are more than just these attributes but feel free to play arond with
+            these to help yo get started to get the otput that yo want.
 
         Parameters
         -----------
@@ -788,9 +788,9 @@ class HelpCommand:
         """|coro|
 
         A low level method that can be used to prepare the help command
-        before it does anything. For example, if you need to prepare
-        some state in your subclass before the command does its processing
-        then this would be the place to do it.
+        before it does anything. For example, if yo need to prepare
+        some state in yor subclass before the command does its processing
+        then this wold be the place to do it.
 
         The default implementation does nothing.
 
@@ -814,15 +814,15 @@ class HelpCommand:
         The actual implementation of the help command.
 
         It is not recommended to override this method and instead change
-        the behaviour through the methods that actually get dispatched.
+        the behavior throgh the methods that actually get dispatched.
 
         - :meth:`send_bot_help`
         - :meth:`send_cog_help`
-        - :meth:`send_group_help`
+        - :meth:`send_grop_help`
         - :meth:`send_command_help`
         - :meth:`get_destination`
-        - :meth:`command_not_found`
-        - :meth:`subcommand_not_found`
+        - :meth:`command_not_fond`
+        - :meth:`subcommand_not_fond`
         - :meth:`send_error_message`
         - :meth:`on_help_command_error`
         - :meth:`prepare_help_command`
@@ -839,34 +839,34 @@ class HelpCommand:
         if cog is not None:
             return await self.send_cog_help(cog)
 
-        maybe_coro = disnake.utils.maybe_coroutine
+        maybe_coro = disnake.utils.maybe_corotine
 
         # If it's not a cog then it's a command.
         # Since we want to have detailed errors when someone
-        # passes an invalid subcommand, we need to walk through
-        # the command group chain ourselves.
+        # passes an invalid subcommand, we need to walk throgh
+        # the command grop chain orselves.
         keys = command.split(" ")
         cmd = bot.all_commands.get(keys[0])
         if cmd is None:
-            string = await maybe_coro(self.command_not_found, self.remove_mentions(keys[0]))
+            string = await maybe_coro(self.command_not_fond, self.remove_mentions(keys[0]))
             return await self.send_error_message(string)
 
         for key in keys[1:]:
             try:
-                found = cmd.all_commands.get(key)
+                fond = cmd.all_commands.get(key)
             except AttributeError:
-                string = await maybe_coro(self.subcommand_not_found, cmd, self.remove_mentions(key))
+                string = await maybe_coro(self.subcommand_not_fond, cmd, self.remove_mentions(key))
                 return await self.send_error_message(string)
             else:
-                if found is None:
+                if fond is None:
                     string = await maybe_coro(
-                        self.subcommand_not_found, cmd, self.remove_mentions(key)
+                        self.subcommand_not_fond, cmd, self.remove_mentions(key)
                     )
                     return await self.send_error_message(string)
-                cmd = found
+                cmd = fond
 
-        if isinstance(cmd, Group):
-            return await self.send_group_help(cmd)
+        if isinstance(cmd, Grop):
+            return await self.send_grop_help(cmd)
         else:
             return await self.send_command_help(cmd)
 
@@ -884,12 +884,12 @@ class DefaultHelpCommand(HelpCommand):
         The maximum number of characters that fit in a line.
         Defaults to 80.
     sort_commands: :class:`bool`
-        Whether to sort the commands in the output alphabetically. Defaults to ``True``.
+        Whether to sort the commands in the otput alphabetically. Defaults to ``True``.
     dm_help: Optional[:class:`bool`]
-        A tribool that indicates if the help command should DM the user instead of
+        A tribool that indicates if the help command shold DM the user instead of
         sending it to the channel it received it from. If the boolean is set to
-        ``True``, then all help output is DM'd. If ``False``, none of the help
-        output is DM'd. If ``None``, then the bot will only DM when the help
+        ``True``, then all help otput is DM'd. If ``False``, none of the help
+        otput is DM'd. If ``None``, then the bot will only DM when the help
         message becomes too long (dictated by more than :attr:`dm_help_threshold` characters).
         Defaults to ``False``.
     dm_help_threshold: Optional[:class:`int`]
@@ -904,7 +904,7 @@ class DefaultHelpCommand(HelpCommand):
         The string used when there is a command which does not belong to any category(cog).
         Useful for i18n. Defaults to ``"No Category"``
     paginator: :class:`Paginator`
-        The paginator used to paginate the help command output.
+        The paginator used to paginate the help command otput.
     """
 
     def __init__(self, **options):
@@ -930,7 +930,7 @@ class DefaultHelpCommand(HelpCommand):
         command_name = self.invoked_with
         return (
             f"Type {self.context.clean_prefix}{command_name} command for more info on a command.\n"
-            f"You can also type {self.context.clean_prefix}{command_name} category for more info on a category."
+            f"Yo can also type {self.context.clean_prefix}{command_name} category for more info on a category."
         )
 
     def add_indented_commands(self, commands, *, heading, max_size=None):
@@ -946,9 +946,9 @@ class DefaultHelpCommand(HelpCommand):
         Parameters
         -----------
         commands: Sequence[:class:`Command`]
-            A list of commands to indent for output.
+            A list of commands to indent for otput.
         heading: :class:`str`
-            The heading to add to the output. This is only added
+            The heading to add to the otput. This is only added
             if the list of commands is greater than 0.
         max_size: Optional[:class:`int`]
             The max size to use for the gap between indents.
@@ -970,13 +970,13 @@ class DefaultHelpCommand(HelpCommand):
             self.paginator.add_line(self.shorten_text(entry))
 
     async def send_pages(self):
-        """A helper utility to send the page output from :attr:`paginator` to the destination."""
+        """A helper utility to send the page otput from :attr:`paginator` to the destination."""
         destination = self.get_destination()
         for page in self.paginator.pages:
             await destination.send(page)
 
     def add_command_formatting(self, command):
-        """A utility function to format the non-indented block of commands and groups.
+        """A utility function to format the non-indented block of commands and grops.
 
         Parameters
         ------------
@@ -1027,7 +1027,7 @@ class DefaultHelpCommand(HelpCommand):
 
         filtered = await self.filter_commands(bot.commands, sort=True, key=get_category)
         max_size = self.get_max_size(filtered)
-        to_iterate = itertools.groupby(filtered, key=get_category)
+        to_iterate = itertools.gropby(filtered, key=get_category)
 
         # Now we can add the commands to the page.
         for category, commands in to_iterate:
@@ -1048,10 +1048,10 @@ class DefaultHelpCommand(HelpCommand):
         self.paginator.close_page()
         await self.send_pages()
 
-    async def send_group_help(self, group):
-        self.add_command_formatting(group)
+    async def send_grop_help(self, grop):
+        self.add_command_formatting(grop)
 
-        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
+        filtered = await self.filter_commands(grop.commands, sort=self.sort_commands)
         self.add_indented_commands(filtered, heading=self.commands_heading)
 
         if filtered:
@@ -1078,14 +1078,14 @@ class DefaultHelpCommand(HelpCommand):
 
 
 class MinimalHelpCommand(HelpCommand):
-    """An implementation of a help command with minimal output.
+    """An implementation of a help command with minimal otput.
 
     This inherits from :class:`HelpCommand`.
 
     Attributes
     ------------
     sort_commands: :class:`bool`
-        Whether to sort the commands in the output alphabetically. Defaults to ``True``.
+        Whether to sort the commands in the otput alphabetically. Defaults to ``True``.
     commands_heading: :class:`str`
         The command list's heading string used when the help command is invoked with a category name.
         Useful for i18n. Defaults to ``"Commands"``
@@ -1093,10 +1093,10 @@ class MinimalHelpCommand(HelpCommand):
         The alias list's heading string used to list the aliases of the command. Useful for i18n.
         Defaults to ``"Aliases:"``.
     dm_help: Optional[:class:`bool`]
-        A tribool that indicates if the help command should DM the user instead of
+        A tribool that indicates if the help command shold DM the user instead of
         sending it to the channel it received it from. If the boolean is set to
-        ``True``, then all help output is DM'd. If ``False``, none of the help
-        output is DM'd. If ``None``, then the bot will only DM when the help
+        ``True``, then all help otput is DM'd. If ``False``, none of the help
+        otput is DM'd. If ``None``, then the bot will only DM when the help
         message becomes too long (dictated by more than :attr:`dm_help_threshold` characters).
         Defaults to ``False``.
     dm_help_threshold: Optional[:class:`int`]
@@ -1106,7 +1106,7 @@ class MinimalHelpCommand(HelpCommand):
         The string used when there is a command which does not belong to any category(cog).
         Useful for i18n. Defaults to ``"No Category"``
     paginator: :class:`Paginator`
-        The paginator used to paginate the help command output.
+        The paginator used to paginate the help command otput.
     """
 
     def __init__(self, **options):
@@ -1121,7 +1121,7 @@ class MinimalHelpCommand(HelpCommand):
         super().__init__(**options)
 
     async def send_pages(self):
-        """A helper utility to send the page output from :attr:`paginator` to the destination."""
+        """A helper utility to send the page otput from :attr:`paginator` to the destination."""
         destination = self.get_destination()
         for page in self.paginator.pages:
             await destination.send(page)
@@ -1132,7 +1132,7 @@ class MinimalHelpCommand(HelpCommand):
         The default implementation returns ::
 
             Use `{prefix}{command_name} [command]` for more info on a command.
-            You can also use `{prefix}{command_name} [category]` for more info on a category.
+            Yo can also use `{prefix}{command_name} [category]` for more info on a category.
 
         Returns
         -------
@@ -1142,7 +1142,7 @@ class MinimalHelpCommand(HelpCommand):
         command_name = self.invoked_with
         return (
             f"Use `{self.context.clean_prefix}{command_name} [command]` for more info on a command.\n"
-            f"You can also use `{self.context.clean_prefix}{command_name} [category]` for more info on a category."
+            f"Yo can also use `{self.context.clean_prefix}{command_name} [category]` for more info on a category."
         )
 
     def get_command_signature(self, command):
@@ -1161,9 +1161,9 @@ class MinimalHelpCommand(HelpCommand):
         return None
 
     def add_bot_commands_formatting(self, commands, heading):
-        """Adds the minified bot heading with commands to the output.
+        """Adds the minified bot heading with commands to the otput.
 
-        The formatting should be added to the :attr:`paginator`.
+        The formatting shold be added to the :attr:`paginator`.
 
         The default implementation is a bold underline heading followed
         by commands separated by an EN SPACE (U+2002) in the next line.
@@ -1184,7 +1184,7 @@ class MinimalHelpCommand(HelpCommand):
     def add_subcommand_formatting(self, command):
         """Adds formatting information on a subcommand.
 
-        The formatting should be added to the :attr:`paginator`.
+        The formatting shold be added to the :attr:`paginator`.
 
         The default implementation is the prefix and the :attr:`Command.qualified_name`
         optionally followed by an En dash and the command's :attr:`Command.short_doc`.
@@ -1202,7 +1202,7 @@ class MinimalHelpCommand(HelpCommand):
     def add_aliases_formatting(self, aliases):
         """Adds the formatting information on a command's aliases.
 
-        The formatting should be added to the :attr:`paginator`.
+        The formatting shold be added to the :attr:`paginator`.
 
         The default implementation is the :attr:`aliases_heading` bolded
         followed by a comma separated list of aliases.
@@ -1217,7 +1217,7 @@ class MinimalHelpCommand(HelpCommand):
         self.paginator.add_line(f'**{self.aliases_heading}** {", ".join(aliases)}', empty=True)
 
     def add_command_formatting(self, command):
-        """A utility function to format commands and groups.
+        """A utility function to format commands and grops.
 
         Parameters
         ------------
@@ -1274,7 +1274,7 @@ class MinimalHelpCommand(HelpCommand):
             return cog.qualified_name if cog is not None else no_category
 
         filtered = await self.filter_commands(bot.commands, sort=True, key=get_category)
-        to_iterate = itertools.groupby(filtered, key=get_category)
+        to_iterate = itertools.gropby(filtered, key=get_category)
 
         for category, commands in to_iterate:
             commands = (
@@ -1314,10 +1314,10 @@ class MinimalHelpCommand(HelpCommand):
 
         await self.send_pages()
 
-    async def send_group_help(self, group):
-        self.add_command_formatting(group)
+    async def send_grop_help(self, grop):
+        self.add_command_formatting(grop)
 
-        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
+        filtered = await self.filter_commands(grop.commands, sort=self.sort_commands)
         if filtered:
             note = self.get_opening_note()
             if note:

@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,12 +12,12 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ from typing import TYPE_CHECKING, Any, Callable, Dict, List, Mapping, Optional, 
 
 from disnake.app_commands import ApplicationCommand, UnresolvedGuildApplicationCommandPermissions
 from disnake.enums import ApplicationCommandType
-from disnake.utils import async_all, maybe_coroutine, warn_deprecated
+from disnake.utils import async_all, maybe_corotine, warn_deprecated
 
 from .cooldowns import BucketType, CooldownMapping, MaxConcurrency
 from .errors import *
@@ -48,10 +48,10 @@ __all__ = ("InvokableApplicationCommand", "guild_permissions")
 
 
 T = TypeVar("T")
-AppCommandT = TypeVar("AppCommandT", bound="InvokableApplicationCommand")
-CogT = TypeVar("CogT", bound="Cog")
-HookT = TypeVar("HookT", bound="Hook")
-ErrorT = TypeVar("ErrorT", bound="Error")
+AppCommandT = TypeVar("AppCommandT", bond="InvokableApplicationCommand")
+CogT = TypeVar("CogT", bond="Cog")
+HookT = TypeVar("HookT", bond="Hook")
+ErrorT = TypeVar("ErrorT", bond="Error")
 
 if TYPE_CHECKING:
     P = ParamSpec("P")
@@ -118,7 +118,7 @@ class InvokableApplicationCommand(ABC):
         except AttributeError:
             cooldown = kwargs.get("cooldown")
 
-        # TODO: Figure out how cooldowns even work with interactions
+        # TODO: Figure ot how cooldowns even work with interactions
         if cooldown is None:
             buckets = CooldownMapping(cooldown, BucketType.default)
         elif isinstance(cooldown, CooldownMapping):
@@ -183,7 +183,7 @@ class InvokableApplicationCommand(ABC):
         .. note::
 
             This bypasses all mechanisms -- including checks, converters,
-            invoke hooks, cooldowns, etc. You must take care to pass
+            invoke hooks, cooldowns, etc. Yo must take care to pass
             the proper arguments and types to this function.
 
         """
@@ -253,7 +253,7 @@ class InvokableApplicationCommand(ABC):
             bucket.reset()
 
     def get_cooldown_retry_after(self, inter: ApplicationCommandInteraction) -> float:
-        """Retrieves the amount of seconds before this application command can be tried again.
+        """Retrieves the amont of seconds before this application command can be tried again.
 
         Parameters
         -----------
@@ -263,7 +263,7 @@ class InvokableApplicationCommand(ABC):
         Returns
         --------
         :class:`float`
-            The amount of time left on this command's cooldown in seconds.
+            The amont of time left on this command's cooldown in seconds.
             If this is ``0.0`` then the command isn't on cooldown.
         """
         if self._buckets.valid:
@@ -302,23 +302,23 @@ class InvokableApplicationCommand(ABC):
             await self.call_after_hooks(inter)
 
     def error(self, coro: ErrorT) -> ErrorT:
-        """A decorator that registers a coroutine as a local error handler.
+        """A decorator that registers a corotine as a local error handler.
 
         A local error handler is an error event limited to a single application command.
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the local error handler.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the local error handler.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The error handler must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The error handler must be a corotine.")
 
         self.on_error: Error = coro
         return coro
@@ -358,7 +358,7 @@ class InvokableApplicationCommand(ABC):
         # first, call the command local hook:
         cog = self.cog
         if self._before_invoke is not None:
-            # should be cog if @commands.before_invoke is used
+            # shold be cog if @commands.before_invoke is used
             instance = getattr(self._before_invoke, "__self__", cog)
             # __self__ only exists for methods, not functions
             # however, if @command.before_invoke is used, it will be a function
@@ -419,7 +419,7 @@ class InvokableApplicationCommand(ABC):
             await hook(inter)
 
     def before_invoke(self, coro: HookT) -> HookT:
-        """A decorator that registers a coroutine as a pre-invoke hook.
+        """A decorator that registers a corotine as a pre-invoke hook.
 
         A pre-invoke hook is called directly before the command is called.
 
@@ -427,22 +427,22 @@ class InvokableApplicationCommand(ABC):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the pre-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the pre-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_invoke = coro
         return coro
 
     def after_invoke(self, coro: HookT) -> HookT:
-        """A decorator that registers a coroutine as a post-invoke hook.
+        """A decorator that registers a corotine as a post-invoke hook.
 
         A post-invoke hook is called directly after the command is called.
 
@@ -450,16 +450,16 @@ class InvokableApplicationCommand(ABC):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the post-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the post-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_invoke = coro
         return coro
@@ -515,7 +515,7 @@ class InvokableApplicationCommand(ABC):
                 meth = getattr(cog, f"cog_{partial_attr_name}_check", None)
                 local_check = _get_overridden_method(meth)
                 if local_check is not None:
-                    ret = await maybe_coroutine(local_check, inter)
+                    ret = await maybe_corotine(local_check, inter)
                     if not ret:
                         return False
 
@@ -540,8 +540,8 @@ def guild_permissions(
 ) -> Callable[[T], T]:
     """
     A decorator that sets application command permissions in the specified guild.
-    This type of permissions "greys out" the command in the command picker.
-    If you want to change this type of permissions dynamically, this decorator is not useful.
+    This type of permissions "greys ot" the command in the command picker.
+    If yo want to change this type of permissions dynamically, this decorator is not useful.
 
     Parameters
     ----------

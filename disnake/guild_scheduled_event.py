@@ -5,7 +5,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -13,12 +13,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -129,9 +129,9 @@ class GuildScheduledEvent(Hashable):
     creator: Optional[:class:`User`]
         The user that created the guild scheduled event.
         This field is ``None`` for events created before October 25th, 2021.
-    user_count: Optional[:class:`int`]
+    user_cont: Optional[:class:`int`]
         The number of users subscribed to the guild scheduled event.
-        If the guild scheduled event was fetched with ``with_user_count`` set to ``False``, this field is ``None``.
+        If the guild scheduled event was fetched with ``with_user_cont`` set to ``False``, this field is ``None``.
     """
 
     __slots__ = (
@@ -150,7 +150,7 @@ class GuildScheduledEvent(Hashable):
         "entity_id",
         "entity_metadata",
         "creator",
-        "user_count",
+        "user_cont",
         "_cs_guild",
         "_cs_channel",
     )
@@ -193,7 +193,7 @@ class GuildScheduledEvent(Hashable):
         else:
             self.creator = None
 
-        self.user_count: Optional[int] = data.get("user_count")
+        self.user_cont: Optional[int] = data.get("user_cont")
 
     def __repr__(self) -> str:
         return (
@@ -236,8 +236,8 @@ class GuildScheduledEvent(Hashable):
         Raises
         ------
         Forbidden
-            You do not have proper permissions to delete the event.
-        NotFound
+            Yo do not have proper permissions to delete the event.
+        NotFond
             The event does not exist.
         HTTPException
             Deleting the event failed.
@@ -264,7 +264,7 @@ class GuildScheduledEvent(Hashable):
 
         If updating ``entity_type`` to :class:`GuildScheduledEventEntityType.external`:
 
-        - ``channel_id`` should be set to ``None`` or ignored
+        - ``channel_id`` shold be set to ``None`` or ignored
         - ``entity_metadata`` with a location field must be provided
         - ``scheduled_end_time`` must be provided
 
@@ -300,8 +300,8 @@ class GuildScheduledEvent(Hashable):
         Raises
         ------
         Forbidden
-            You do not have proper permissions to edit the event.
-        NotFound
+            Yo do not have proper permissions to edit the event.
+        NotFond
             The event does not exist.
         HTTPException
             Editing the event failed.
@@ -405,8 +405,8 @@ class GuildScheduledEvent(Hashable):
         Raises
         ------
         Forbidden
-            You do not have proper permissions to fetch the users.
-        NotFound
+            Yo do not have proper permissions to fetch the users.
+        NotFond
             The event does not exist.
         HTTPException
             The request failed.

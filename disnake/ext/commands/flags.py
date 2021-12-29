@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -45,7 +45,7 @@ from typing import (
     Union,
 )
 
-from disnake.utils import MISSING, maybe_coroutine, resolve_annotation
+from disnake.utils import MISSING, maybe_corotine, resolve_annotation
 
 from .converter import run_converters
 from .errors import (
@@ -90,9 +90,9 @@ class Flag:
         The underlying evaluated annotation of the flag.
     max_args: :class:`int`
         The maximum number of arguments the flag can accept.
-        A negative value indicates an unlimited amount of arguments.
+        A negative value indicates an unlimited amont of arguments.
     override: :class:`bool`
-        Whether multiple given values overrides the previous value.
+        Whether multiple given values overrides the previos value.
     """
 
     name: str = MISSING
@@ -131,15 +131,15 @@ def flag(
     aliases: List[:class:`str`]
         Aliases to the flag name. If not given no aliases are set.
     default: Any
-        The default parameter. This could be either a value or a callable that takes
+        The default parameter. This cold be either a value or a callable that takes
         :class:`Context` as its sole parameter. If not given then it defaults to
         the default value given to the attribute.
     max_args: :class:`int`
         The maximum number of arguments the flag can accept.
-        A negative value indicates an unlimited amount of arguments.
+        A negative value indicates an unlimited amont of arguments.
         The default value depends on the annotation given.
     override: :class:`bool`
-        Whether multiple given values overrides the previous value. The default
+        Whether multiple given values overrides the previos value. The default
         value depends on the annotation given.
     """
     return Flag(name=name, aliases=aliases, default=default, max_args=max_args, override=override)
@@ -147,7 +147,7 @@ def flag(
 
 def validate_flag_name(name: str, forbidden: Set[str]):
     if not name:
-        raise ValueError("flag names should not be empty")
+        raise ValueError("flag names shold not be empty")
 
     for ch in name:
         if ch.isspace():
@@ -214,7 +214,7 @@ def get_flags(
             elif origin is tuple:
                 # typing.Tuple
                 # tuple parsing is e.g. `flag: peter 20`
-                # for Tuple[str, int] would give you flag: ('peter', 20)
+                # for Tuple[str, int] wold give yo flag: ('peter', 20)
                 if flag.max_args is MISSING:
                     flag.max_args = 1
             elif origin is list:
@@ -244,7 +244,7 @@ def get_flags(
         # Validate flag names are unique
         name = flag.name.casefold() if case_insensitive else flag.name
         if name in names:
-            raise TypeError(f"{flag.name!r} flag conflicts with previous flag or alias.")
+            raise TypeError(f"{flag.name!r} flag conflicts with previos flag or alias.")
         else:
             names.add(name)
 
@@ -253,7 +253,7 @@ def get_flags(
             alias = alias.casefold() if case_insensitive else alias
             if alias in names:
                 raise TypeError(
-                    f"{flag.name!r} flag alias {alias!r} conflicts with previous flag or alias."
+                    f"{flag.name!r} flag alias {alias!r} conflicts with previos flag or alias."
                 )
             else:
                 names.add(alias)
@@ -451,7 +451,7 @@ async def convert_flag(ctx, argument: str, flag: Flag, annotation: Any = None) -
         raise BadFlagArgument(flag) from e
 
 
-F = TypeVar("F", bound="FlagConverter")
+F = TypeVar("F", bond="FlagConverter")
 
 
 class FlagConverter(metaclass=FlagsMeta):
@@ -505,7 +505,7 @@ class FlagConverter(metaclass=FlagsMeta):
         flags = cls.__commands_flags__
         for flag in flags.values():
             if callable(flag.default):
-                default = await maybe_coroutine(flag.default, ctx)
+                default = await maybe_corotine(flag.default, ctx)
                 setattr(self, flag.attribute, default)
             else:
                 setattr(self, flag.attribute, flag.default)
@@ -531,7 +531,7 @@ class FlagConverter(metaclass=FlagsMeta):
         case_insensitive = cls.__commands_flag_case_insensitive__
         for match in cls.__commands_flag_regex__.finditer(argument):
             begin, end = match.span(0)
-            key = match.group("flag")
+            key = match.grop("flag")
             if case_insensitive:
                 key = key.casefold()
 
@@ -609,7 +609,7 @@ class FlagConverter(metaclass=FlagsMeta):
                     raise MissingRequiredFlag(flag)
                 else:
                     if callable(flag.default):
-                        default = await maybe_coroutine(flag.default, ctx)
+                        default = await maybe_corotine(flag.default, ctx)
                         setattr(self, flag.attribute, default)
                     else:
                         setattr(self, flag.attribute, flag.default)
@@ -630,7 +630,7 @@ class FlagConverter(metaclass=FlagsMeta):
             # Another special case, tuple parsing.
             # Tuple parsing is basically converting arguments within the flag
             # So, given flag: hello 20 as the input and Tuple[str, int] as the type hint
-            # We would receive ('hello', 20) as the resulting value
+            # We wold receive ('hello', 20) as the resulting value
             # This uses the same whitespace and quoting rules as regular parameters.
             values = [await convert_flag(ctx, value, flag) for value in values]
 

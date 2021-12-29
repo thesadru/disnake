@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -41,14 +41,14 @@ __all__ = ("Object",)
 class Object(Hashable):
     """Represents a generic Discord object.
 
-    The purpose of this class is to allow you to create 'miniature'
-    versions of data classes if you want to pass in just an ID. Most functions
+    The purpose of this class is to allow yo to create 'miniature'
+    versions of data classes if yo want to pass in just an ID. Most functions
     that take in a specific data class with an ID can also take in this class
-    as a substitute instead. Note that even though this is the case, not all
+    as a substitute instead. Note that even thogh this is the case, not all
     objects (if any) actually inherit from this class.
 
     There are also some cases where some websocket events are received
-    in :issue:`strange order <21>` and when such events happened you would
+    in :issue:`strange order <21>` and when such events happened yo wold
     receive this class rather than the actual data class. These cases are
     extremely rare.
 

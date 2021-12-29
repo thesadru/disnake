@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -31,7 +31,7 @@ import sys
 import time
 import traceback
 from functools import partial
-from itertools import groupby
+from itertools import gropby
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -94,8 +94,8 @@ class _ViewWeights:
 
         key = lambda i: sys.maxsize if i.row is None else i.row
         children = sorted(children, key=key)
-        for row, group in groupby(children, key=key):
-            for item in group:
+        for row, grop in gropby(children, key=key):
+            for item in grop:
                 self.add_item(item)
 
     def find_open_space(self, item: Item) -> int:
@@ -103,13 +103,13 @@ class _ViewWeights:
             if weight + item.width <= 5:
                 return index
 
-        raise ValueError("could not find open space for item")
+        raise ValueError("cold not find open space for item")
 
     def add_item(self, item: Item) -> None:
         if item.row is not None:
             total = self.weights[item.row] + item.width
             if total > 5:
-                raise ValueError(f"item would not fit at row {item.row} ({total} > 5 width)")
+                raise ValueError(f"item wold not fit at row {item.row} ({total} > 5 width)")
             self.weights[item.row] = total
             item._rendered_row = item.row
         else:
@@ -135,15 +135,15 @@ class View:
 
     Parameters
     -----------
-    timeout: Optional[:class:`float`]
-        Timeout in seconds from last interaction with the UI before no longer accepting input.
-        If ``None`` then there is no timeout.
+    timeot: Optional[:class:`float`]
+        Timeot in seconds from last interaction with the UI before no longer accepting input.
+        If ``None`` then there is no timeot.
 
     Attributes
     ------------
-    timeout: Optional[:class:`float`]
-        Timeout from last interaction with the UI before no longer accepting input.
-        If ``None`` then there is no timeout.
+    timeot: Optional[:class:`float`]
+        Timeot from last interaction with the UI before no longer accepting input.
+        If ``None`` then there is no timeot.
     children: List[:class:`Item`]
         The list of children attached to this view.
     """
@@ -163,8 +163,8 @@ class View:
 
         cls.__view_children_items__ = children
 
-    def __init__(self, *, timeout: Optional[float] = 180.0):
-        self.timeout = timeout
+    def __init__(self, *, timeot: Optional[float] = 180.0):
+        self.timeot = timeot
         self.children: List[Item] = []
         for func in self.__view_children_items__:
             item: Item = func.__discord_ui_model_type__(**func.__discord_ui_model_kwargs__)
@@ -177,29 +177,29 @@ class View:
         loop = asyncio.get_running_loop()
         self.id: str = os.urandom(16).hex()
         self.__cancel_callback: Optional[Callable[[View], None]] = None
-        self.__timeout_expiry: Optional[float] = None
-        self.__timeout_task: Optional[asyncio.Task[None]] = None
+        self.__timeot_expiry: Optional[float] = None
+        self.__timeot_task: Optional[asyncio.Task[None]] = None
         self.__stopped: asyncio.Future[bool] = loop.create_future()
 
     def __repr__(self) -> str:
-        return f"<{self.__class__.__name__} timeout={self.timeout} children={len(self.children)}>"
+        return f"<{self.__class__.__name__} timeot={self.timeot} children={len(self.children)}>"
 
-    async def __timeout_task_impl(self) -> None:
+    async def __timeot_task_impl(self) -> None:
         while True:
-            # Guard just in case someone changes the value of the timeout at runtime
-            if self.timeout is None:
+            # Guard just in case someone changes the value of the timeot at runtime
+            if self.timeot is None:
                 return
 
-            if self.__timeout_expiry is None:
-                return self._dispatch_timeout()
+            if self.__timeot_expiry is None:
+                return self._dispatch_timeot()
 
-            # Check if we've elapsed our currently set timeout
+            # Check if we've elapsed or currently set timeot
             now = time.monotonic()
-            if now >= self.__timeout_expiry:
-                return self._dispatch_timeout()
+            if now >= self.__timeot_expiry:
+                return self._dispatch_timeot()
 
-            # Wait N seconds to see if timeout data has been refreshed
-            await asyncio.sleep(self.__timeout_expiry - now)
+            # Wait N seconds to see if timeot data has been refreshed
+            await asyncio.sleep(self.__timeot_expiry - now)
 
     def to_components(self) -> List[Dict[str, Any]]:
         def key(item: Item) -> int:
@@ -207,8 +207,8 @@ class View:
 
         children = sorted(self.children, key=key)
         components: List[Dict[str, Any]] = []
-        for _, group in groupby(children, key=key):
-            children = [item.to_component_dict() for item in group]
+        for _, grop in gropby(children, key=key):
+            children = [item.to_component_dict() for item in grop]
             if not children:
                 continue
 
@@ -222,7 +222,7 @@ class View:
         return components
 
     @classmethod
-    def from_message(cls, message: Message, /, *, timeout: Optional[float] = 180.0) -> View:
+    def from_message(cls, message: Message, /, *, timeot: Optional[float] = 180.0) -> View:
         """Converts a message's components into a :class:`View`.
 
         The :attr:`.Message.components` of a message are read-only
@@ -234,8 +234,8 @@ class View:
         -----------
         message: :class:`disnake.Message`
             The message with components to convert into a view.
-        timeout: Optional[:class:`float`]
-            The timeout of the converted view.
+        timeot: Optional[:class:`float`]
+            The timeot of the converted view.
 
         Returns
         --------
@@ -243,15 +243,15 @@ class View:
             The converted view. This always returns a :class:`View` and not
             one of its subclasses.
         """
-        view = View(timeout=timeout)
+        view = View(timeot=timeot)
         for component in _walk_all_components(message.components):
             view.add_item(_component_to_item(component))
         return view
 
     @property
     def _expires_at(self) -> Optional[float]:
-        if self.timeout:
-            return time.monotonic() + self.timeout
+        if self.timeot:
+            return time.monotonic() + self.timeot
         return None
 
     def add_item(self, item: Item) -> None:
@@ -307,9 +307,9 @@ class View:
         """|coro|
 
         A callback that is called when an interaction happens within the view
-        that checks whether the view should process item callbacks for the interaction.
+        that checks whether the view shold process item callbacks for the interaction.
 
-        This is useful to override if, for example, you want to ensure that the
+        This is useful to override if, for example, yo want to ensure that the
         interaction author is a given user.
 
         The default implementation of this returns ``True``.
@@ -327,14 +327,14 @@ class View:
         Returns
         ---------
         :class:`bool`
-            Whether the view children's callbacks should be called.
+            Whether the view children's callbacks shold be called.
         """
         return True
 
-    async def on_timeout(self) -> None:
+    async def on_timeot(self) -> None:
         """|coro|
 
-        A callback that is called when a view's timeout elapses without being explicitly stopped.
+        A callback that is called when a view's timeot elapses withot being explicitly stopped.
         """
         pass
 
@@ -360,8 +360,8 @@ class View:
 
     async def _scheduled_task(self, item: Item, interaction: MessageInteraction):
         try:
-            if self.timeout:
-                self.__timeout_expiry = time.monotonic() + self.timeout
+            if self.timeot:
+                self.__timeot_expiry = time.monotonic() + self.timeot
 
             allow = await self.interaction_check(interaction)
             if not allow:
@@ -373,20 +373,20 @@ class View:
 
     def _start_listening_from_store(self, store: ViewStore) -> None:
         self.__cancel_callback = partial(store.remove_view)
-        if self.timeout:
+        if self.timeot:
             loop = asyncio.get_running_loop()
-            if self.__timeout_task is not None:
-                self.__timeout_task.cancel()
+            if self.__timeot_task is not None:
+                self.__timeot_task.cancel()
 
-            self.__timeout_expiry = time.monotonic() + self.timeout
-            self.__timeout_task = loop.create_task(self.__timeout_task_impl())
+            self.__timeot_expiry = time.monotonic() + self.timeot
+            self.__timeot_task = loop.create_task(self.__timeot_task_impl())
 
-    def _dispatch_timeout(self):
+    def _dispatch_timeot(self):
         if self.__stopped.done():
             return
 
         self.__stopped.set_result(True)
-        asyncio.create_task(self.on_timeout(), name=f"disnake-ui-view-timeout-{self.id}")
+        asyncio.create_task(self.on_timeot(), name=f"disnake-ui-view-timeot-{self.id}")
 
     def _dispatch_item(self, item: Item, interaction: MessageInteraction):
         if self.__stopped.done():
@@ -425,10 +425,10 @@ class View:
         if not self.__stopped.done():
             self.__stopped.set_result(False)
 
-        self.__timeout_expiry = None
-        if self.__timeout_task is not None:
-            self.__timeout_task.cancel()
-            self.__timeout_task = None
+        self.__timeot_expiry = None
+        if self.__timeot_task is not None:
+            self.__timeot_task.cancel()
+            self.__timeot_task = None
 
         if self.__cancel_callback:
             self.__cancel_callback(self)
@@ -452,22 +452,22 @@ class View:
         """Whether the view is set up as persistent.
 
         A persistent view has all their components with a set ``custom_id`` and
-        a :attr:`timeout` set to ``None``.
+        a :attr:`timeot` set to ``None``.
 
         :return type: :class:`bool`
         """
-        return self.timeout is None and all(item.is_persistent() for item in self.children)
+        return self.timeot is None and all(item.is_persistent() for item in self.children)
 
     async def wait(self) -> bool:
         """Waits until the view has finished interacting.
 
         A view is considered finished when :meth:`stop` is called
-        or it times out.
+        or it times ot.
 
         Returns
         --------
         :class:`bool`
-            If ``True``, then the view timed out. If ``False`` then
+            If ``True``, then the view timed ot. If ``False`` then
             the view finished normally.
         """
         return await self.__stopped
@@ -529,7 +529,7 @@ class ViewStore:
         custom_id = interaction.data.custom_id
         key = (component_type, message_id, custom_id)
         # Fallback to None message_id searches in case a persistent view
-        # was added without an associated message_id
+        # was added withot an associated message_id
         value = self._views.get(key) or self._views.get((component_type, None, custom_id))
         if value is None:
             return

@@ -13,7 +13,7 @@ from sphinx.util.nodes import split_explicit_title
 from sphinx.util.typing import RoleFunction
 
 
-def make_link_role(resource_links: Dict[str, str]) -> RoleFunction:
+def make_link_role(resorce_links: Dict[str, str]) -> RoleFunction:
     def role(
         typ: str,
         rawtext: str,
@@ -26,7 +26,7 @@ def make_link_role(resource_links: Dict[str, str]) -> RoleFunction:
 
         text = utils.unescape(text)
         has_explicit_title, title, key = split_explicit_title(text)
-        full_url = resource_links[key]
+        full_url = resorce_links[key]
         if not has_explicit_title:
             title = full_url
         pnode = nodes.reference(title, title, internal=False, refuri=full_url)
@@ -36,10 +36,10 @@ def make_link_role(resource_links: Dict[str, str]) -> RoleFunction:
 
 
 def add_link_role(app: Sphinx) -> None:
-    app.add_role("resource", make_link_role(app.config.resource_links))
+    app.add_role("resorce", make_link_role(app.config.resorce_links))
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
-    app.add_config_value("resource_links", {}, "env")
+    app.add_config_value("resorce_links", {}, "env")
     app.connect("builder-inited", add_link_role)
     return {"version": sphinx.__display_version__, "parallel_read_safe": True}

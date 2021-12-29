@@ -21,7 +21,7 @@ Event Registration
 --------------------
 
 All events before were registered using :meth:`Client.event`. While this is still
-possible, the events must be decorated with ``@asyncio.coroutine``.
+possible, the events must be decorated with ``@asyncio.corotine``.
 
 Before:
 
@@ -36,7 +36,7 @@ After:
 .. code-block:: python3
 
     @client.event
-    @asyncio.coroutine
+    @asyncio.corotine
     def on_message(message):
         pass
 
@@ -58,14 +58,14 @@ for easier registration. For example:
         pass
 
 
-Be aware however, that this is still a coroutine and your other functions that are coroutines must
-be decorated with ``@asyncio.coroutine`` or be ``async def``.
+Be aware however, that this is still a corotine and yor other functions that are corotines must
+be decorated with ``@asyncio.corotine`` or be ``async def``.
 
 Event Changes
 --------------
 
 Some events in v0.9.0 were considered pretty useless due to having no separate states. The main
-events that were changed were the ``_update`` events since previously they had no context on what
+events that were changed were the ``_update`` events since previosly they had no context on what
 was changed.
 
 Before:
@@ -90,16 +90,16 @@ After:
     def on_voice_state_update(before, after): pass
     def on_socket_raw_send(payload): pass
 
-Note that ``on_status`` was removed. If you want its functionality, use :func:`on_member_update`.
+Note that ``on_status`` was removed. If yo want its functionality, use :func:`on_member_update`.
 See :ref:`discord-api-events` for more information. Other removed events include ``on_socket_closed``, ``on_socket_receive``, and ``on_socket_opened``.
 
 
-Coroutines
+Corotines
 -----------
 
-The biggest change that the library went through is that almost every function in :class:`Client`
-was changed to be a :doc:`coroutine <py:library/asyncio-task>`. Functions
-that are marked as a coroutine in the documentation must be awaited from or yielded from in order
+The biggest change that the library went throgh is that almost every function in :class:`Client`
+was changed to be a :doc:`corotine <py:library/asyncio-task>`. Functions
+that are marked as a corotine in the documentation must be awaited from or yielded from in order
 for the computation to be done. For example...
 
 Before:
@@ -117,8 +117,8 @@ After:
     # or in python 3.5+
     await client.send_message(message.channel, 'Hello')
 
-In order for you to ``yield from`` or ``await`` a coroutine then your function must be decorated
-with ``@asyncio.coroutine`` or ``async def``.
+In order for yo to ``yield from`` or ``await`` a corotine then yor function must be decorated
+with ``@asyncio.corotine`` or ``async def``.
 
 Iterables
 ----------
@@ -135,7 +135,7 @@ The affected attributes are as follows:
 - :attr:`Server.channels`
 - :attr:`Server.members`
 
-Some examples of previously valid behaviour that is now invalid
+Some examples of previosly valid behavior that is now invalid
 
 .. code-block:: python3
 
@@ -143,7 +143,7 @@ Some examples of previously valid behaviour that is now invalid
         # do something
 
 Since they are no longer :obj:`list`\s, they no longer support indexing or any operation other than iterating.
-In order to get the old behaviour you should explicitly cast it to a list.
+In order to get the old behavior yo shold explicitly cast it to a list.
 
 .. code-block:: python3
 
@@ -152,7 +152,7 @@ In order to get the old behaviour you should explicitly cast it to a list.
 
 .. warning::
 
-    Due to internal changes of the structure, the order you receive the data in
+    Due to internal changes of the structure, the order yo receive the data in
     is not in a guaranteed order.
 
 Enumerations
@@ -180,7 +180,7 @@ After:
     channel.type == disnake.ChannelType.text
 
 The main reason for this change was to reduce the use of finicky strings in the API as this
-could give users a false sense of power. More information can be found in the :ref:`discord-api-enums` page.
+cold give users a false sense of power. More information can be fond in the :ref:`discord-api-enums` page.
 
 Properties
 -----------
@@ -246,10 +246,10 @@ dropped. So for example, ``can_manage_messages`` has become ``manage_messages``.
 Forced Keyword Arguments
 -------------------------
 
-Since 3.0+ of Python, we can now force questions to take in forced keyword arguments. A keyword argument is when you
+Since 3.0+ of Python, we can now force questions to take in forced keyword arguments. A keyword argument is when yo
 explicitly specify the name of the variable and assign to it, for example: ``foo(name='test')``. Due to this support,
 some functions in the library were changed to force things to take said keyword arguments. This is to reduce errors of
-knowing the argument order and the issues that could arise from them.
+knowing the argument order and the issues that cold arise from them.
 
 The following parameters are now exclusively keyword arguments:
 
@@ -262,7 +262,7 @@ The following parameters are now exclusively keyword arguments:
     - ``allow``
     - ``deny``
 
-In the documentation you can tell if a function parameter is a forced keyword argument if it is after ``\*,``
+In the documentation yo can tell if a function parameter is a forced keyword argument if it is after ``\*,``
 in the function signature.
 
 .. _migrating-running:
@@ -271,8 +271,8 @@ Running the Client
 --------------------
 
 In earlier versions of disnake, ``client.run()`` was a blocking call to the main thread
-that called it. In v0.10.0 it is still a blocking call but it handles the event loop for you.
-However, in order to do that you must pass in your credentials to :meth:`Client.run`.
+that called it. In v0.10.0 it is still a blocking call but it handles the event loop for yo.
+However, in order to do that yo must pass in yor credentials to :meth:`Client.run`.
 
 Basically, before:
 
@@ -294,8 +294,8 @@ After:
     events or doing anything after :meth:`Client.run` will not execute until the function
     returns.
 
-This is a utility function that abstracts the event loop for you. There's no need for
-the run call to be blocking and out of your control. Indeed, if you want control of the
+This is a utility function that abstracts the event loop for yo. There's no need for
+the run call to be blocking and ot of yor control. Indeed, if yo want control of the
 event loop then doing so is quite straightforward:
 
 .. code-block:: python3
@@ -305,7 +305,7 @@ event loop then doing so is quite straightforward:
 
     client = disnake.Client()
 
-    @asyncio.coroutine
+    @asyncio.corotine
     def main_task():
         yield from client.login('token')
         yield from client.connect()
@@ -314,6 +314,6 @@ event loop then doing so is quite straightforward:
     try:
         loop.run_until_complete(main_task())
     except:
-        loop.run_until_complete(client.logout())
+        loop.run_until_complete(client.logot())
     finally:
         loop.close()

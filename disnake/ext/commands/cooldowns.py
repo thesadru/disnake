@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -46,8 +46,8 @@ __all__ = (
     "MaxConcurrency",
 )
 
-C = TypeVar("C", bound="CooldownMapping")
-MC = TypeVar("MC", bound="MaxConcurrency")
+C = TypeVar("C", bond="CooldownMapping")
+MC = TypeVar("MC", bond="MaxConcurrency")
 
 
 class BucketType(Enum):
@@ -74,7 +74,7 @@ class BucketType(Enum):
             # we return the channel id of a private-channel as there are only roles in guilds
             # and that yields the same result as for a guild with only the @everyone role
             # NOTE: PrivateChannel doesn't actually have an id attribute but we assume we are
-            # recieving a DMChannel or GroupChannel which inherit from PrivateChannel and do
+            # recieving a DMChannel or GropChannel which inherit from PrivateChannel and do
             return (msg.channel if isinstance(msg.channel, PrivateChannel) else msg.author.top_role).id  # type: ignore
 
     def __call__(self, msg: Message) -> Any:
@@ -173,7 +173,7 @@ class Cooldown:
         if self._tokens == 0:
             return self.per - (current - self._window)
 
-        # we're not so decrement our tokens
+        # we're not so decrement or tokens
         self._tokens -= 1
 
     def reset(self) -> None:
@@ -231,7 +231,7 @@ class CooldownMapping:
     def _verify_cache_integrity(self, current: Optional[float] = None) -> None:
         # we want to delete all cache objects that haven't been used
         # in a cooldown window. e.g. if we have a  command that has a
-        # cooldown of 60s and it has not been used in 60s then that key should be deleted
+        # cooldown of 60s and it has not been used in 60s then that key shold be deleted
         current = current or time.time()
         dead_keys = [k for k, v in self._cache.items() if current > v._last + v.per]
         for k in dead_keys:
@@ -285,14 +285,14 @@ class DynamicCooldownMapping(CooldownMapping):
 class _Semaphore:
     """This class is a version of a semaphore.
 
-    If you're wondering why asyncio.Semaphore isn't being used,
+    If yo're wondering why asyncio.Semaphore isn't being used,
     it's because it doesn't expose the internal value. This internal
     value is necessary because I need to support both `wait=True` and
     `wait=False`.
 
-    An asyncio.Queue could have been used to do this as well -- but it is
+    An asyncio.Queue cold have been used to do this as well -- but it is
     not as inefficient since internally that uses two queues and is a bit
-    overkill for what is basically a counter.
+    overkill for what is basically a conter.
     """
 
     __slots__ = ("value", "loop", "_waiters")

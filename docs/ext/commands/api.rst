@@ -3,7 +3,7 @@
 API Reference
 ===============
 
-The following section outlines the API of disnake's command extension module.
+The following section otlines the API of disnake's command extension module.
 
 .. _ext_commands_api_bot:
 
@@ -18,7 +18,7 @@ Bot
 .. autoclass:: disnake.ext.commands.Bot
     :members:
     :inherited-members:
-    :exclude-members: after_invoke, before_invoke, check, check_once, command, event, group, listen, slash_command, user_command, message_command
+    :exclude-members: after_invoke, before_invoke, check, check_once, command, event, grop, listen, slash_command, user_command, message_command
 
     .. automethod:: Bot.after_invoke()
         :decorator:
@@ -47,7 +47,7 @@ Bot
     .. automethod:: Bot.event()
         :decorator:
 
-    .. automethod:: Bot.group(*args, **kwargs)
+    .. automethod:: Bot.grop(*args, **kwargs)
         :decorator:
 
     .. automethod:: Bot.listen(name=None)
@@ -151,8 +151,8 @@ are custom to the command extension module.
 .. function:: disnake.ext.commands.on_command_error(ctx, error)
 
     An error handler that is called when an error is raised
-    inside a command either through user input error, check
-    failure, or an error in your own code.
+    inside a command either throgh user input error, check
+    failure, or an error in yor own code.
 
     A default one is provided (:meth:`.Bot.on_command_error`).
 
@@ -164,8 +164,8 @@ are custom to the command extension module.
 .. function:: disnake.ext.commands.on_slash_command_error(inter, error)
 
     An error handler that is called when an error is raised
-    inside a slash command either through user input error, check
-    failure, or an error in your own code.
+    inside a slash command either throgh user input error, check
+    failure, or an error in yor own code.
 
     A default one is provided (:meth:`.Bot.on_slash_command_error`).
 
@@ -177,8 +177,8 @@ are custom to the command extension module.
 .. function:: disnake.ext.commands.on_user_command_error(inter, error)
 
     An error handler that is called when an error is raised
-    inside a user command either through check
-    failure, or an error in your own code.
+    inside a user command either throgh check
+    failure, or an error in yor own code.
 
     A default one is provided (:meth:`.Bot.on_user_command_error`).
 
@@ -190,8 +190,8 @@ are custom to the command extension module.
 .. function:: disnake.ext.commands.on_message_command_error(inter, error)
 
     An error handler that is called when an error is raised
-    inside a message command either through check
-    failure, or an error in your own code.
+    inside a message command either throgh check
+    failure, or an error in yor own code.
 
     A default one is provided (:meth:`.Bot.on_message_command_error`).
 
@@ -202,7 +202,7 @@ are custom to the command extension module.
 
 .. function:: disnake.ext.commands.on_command(ctx)
 
-    An event that is called when a command is found and is about to be invoked.
+    An event that is called when a command is fond and is abot to be invoked.
 
     This event is called regardless of whether the command itself succeeds via
     error or completes.
@@ -212,7 +212,7 @@ are custom to the command extension module.
 
 .. function:: disnake.ext.commands.on_slash_command(inter)
 
-    An event that is called when a slash command is found and is about to be invoked.
+    An event that is called when a slash command is fond and is abot to be invoked.
 
     This event is called regardless of whether the slash command itself succeeds via
     error or completes.
@@ -222,7 +222,7 @@ are custom to the command extension module.
 
 .. function:: disnake.ext.commands.on_user_command(inter)
 
-    An event that is called when a user command is found and is about to be invoked.
+    An event that is called when a user command is fond and is abot to be invoked.
 
     This event is called regardless of whether the user command itself succeeds via
     error or completes.
@@ -232,7 +232,7 @@ are custom to the command extension module.
 
 .. function:: disnake.ext.commands.on_message_command(inter)
 
-    An event that is called when a message command is found and is about to be invoked.
+    An event that is called when a message command is fond and is abot to be invoked.
 
     This event is called regardless of whether the message command itself succeeds via
     error or completes.
@@ -300,7 +300,7 @@ Decorators
 .. autofunction:: disnake.ext.commands.message_command
     :decorator:
 
-.. autofunction:: disnake.ext.commands.group
+.. autofunction:: disnake.ext.commands.grop
     :decorator:
 
 Helper Functions
@@ -340,12 +340,12 @@ Slash Command
 .. autoclass:: disnake.ext.commands.InvokableSlashCommand
     :members:
     :special-members: __call__
-    :exclude-members: sub_command, sub_command_group, after_invoke, before_invoke, error
+    :exclude-members: sub_command, sub_command_grop, after_invoke, before_invoke, error
 
     .. automethod:: InvokableSlashCommand.sub_command(*args, **kwargs)
         :decorator:
 
-    .. automethod:: InvokableSlashCommand.sub_command_group(*args, **kwargs)
+    .. automethod:: InvokableSlashCommand.sub_command_grop(*args, **kwargs)
         :decorator:
 
     .. automethod:: InvokableSlashCommand.after_invoke()
@@ -375,25 +375,25 @@ Slash Subcommand
     .. automethod:: SubCommand.error()
         :decorator:
 
-Slash Subcommand Group
+Slash Subcommand Grop
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: disnake.ext.commands.SubCommandGroup
+.. attributetable:: disnake.ext.commands.SubCommandGrop
 
-.. autoclass:: disnake.ext.commands.SubCommandGroup
+.. autoclass:: disnake.ext.commands.SubCommandGrop
     :members:
     :exclude-members: sub_command, after_invoke, before_invoke, error
 
-    .. automethod:: SubCommandGroup.sub_command(*args, **kwargs)
+    .. automethod:: SubCommandGrop.sub_command(*args, **kwargs)
         :decorator:
 
-    .. automethod:: SubCommandGroup.after_invoke()
+    .. automethod:: SubCommandGrop.after_invoke()
         :decorator:
 
-    .. automethod:: SubCommandGroup.before_invoke()
+    .. automethod:: SubCommandGrop.before_invoke()
         :decorator:
 
-    .. automethod:: SubCommandGroup.error()
+    .. automethod:: SubCommandGrop.error()
         :decorator:
 
 ParamInfo
@@ -460,44 +460,44 @@ Command
     .. automethod:: Command.error()
         :decorator:
 
-Group
+Grop
 ~~~~~~
 
-.. attributetable:: disnake.ext.commands.Group
+.. attributetable:: disnake.ext.commands.Grop
 
-.. autoclass:: disnake.ext.commands.Group
+.. autoclass:: disnake.ext.commands.Grop
     :members:
     :inherited-members:
-    :exclude-members: after_invoke, before_invoke, command, error, group
+    :exclude-members: after_invoke, before_invoke, command, error, grop
 
-    .. automethod:: Group.after_invoke()
+    .. automethod:: Grop.after_invoke()
         :decorator:
 
-    .. automethod:: Group.before_invoke()
+    .. automethod:: Grop.before_invoke()
         :decorator:
 
-    .. automethod:: Group.command(*args, **kwargs)
+    .. automethod:: Grop.command(*args, **kwargs)
         :decorator:
 
-    .. automethod:: Group.error()
+    .. automethod:: Grop.error()
         :decorator:
 
-    .. automethod:: Group.group(*args, **kwargs)
+    .. automethod:: Grop.grop(*args, **kwargs)
         :decorator:
 
-GroupMixin
+GropMixin
 ~~~~~~~~~~~
 
-.. attributetable:: disnake.ext.commands.GroupMixin
+.. attributetable:: disnake.ext.commands.GropMixin
 
-.. autoclass:: disnake.ext.commands.GroupMixin
+.. autoclass:: disnake.ext.commands.GropMixin
     :members:
-    :exclude-members: command, group
+    :exclude-members: command, grop
 
-    .. automethod:: GroupMixin.command(*args, **kwargs)
+    .. automethod:: GropMixin.command(*args, **kwargs)
         :decorator:
 
-    .. automethod:: GroupMixin.group(*args, **kwargs)
+    .. automethod:: GropMixin.grop(*args, **kwargs)
         :decorator:
 
 .. _ext_commands_api_cogs:
@@ -541,7 +541,7 @@ DefaultHelpCommand
 
 .. autoclass:: disnake.ext.commands.DefaultHelpCommand
     :members:
-    :exclude-members: send_bot_help, send_cog_help, send_group_help, send_command_help, prepare_help_command
+    :exclude-members: send_bot_help, send_cog_help, send_grop_help, send_command_help, prepare_help_command
 
 MinimalHelpCommand
 ~~~~~~~~~~~~~~~~~~~
@@ -550,7 +550,7 @@ MinimalHelpCommand
 
 .. autoclass:: disnake.ext.commands.MinimalHelpCommand
     :members:
-    :exclude-members: send_bot_help, send_cog_help, send_group_help, send_command_help, prepare_help_command
+    :exclude-members: send_bot_help, send_cog_help, send_grop_help, send_command_help, prepare_help_command
 
 Paginator
 ~~~~~~~~~~
@@ -737,7 +737,7 @@ Converters
 .. autoclass:: disnake.ext.commands.GameConverter
     :members:
 
-.. autoclass:: disnake.ext.commands.ColourConverter
+.. autoclass:: disnake.ext.commands.ColorConverter
     :members:
 
 .. autoclass:: disnake.ext.commands.EmojiConverter
@@ -820,7 +820,7 @@ Exceptions
 .. autoexception:: disnake.ext.commands.CheckAnyFailure
     :members:
 
-.. autoexception:: disnake.ext.commands.CommandNotFound
+.. autoexception:: disnake.ext.commands.CommandNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.DisabledCommand
@@ -844,43 +844,43 @@ Exceptions
 .. autoexception:: disnake.ext.commands.NotOwner
     :members:
 
-.. autoexception:: disnake.ext.commands.MessageNotFound
+.. autoexception:: disnake.ext.commands.MessageNotFond
     :members:
 
-.. autoexception:: disnake.ext.commands.MemberNotFound
+.. autoexception:: disnake.ext.commands.MemberNotFond
     :members:
 
-.. autoexception:: disnake.ext.commands.GuildNotFound
+.. autoexception:: disnake.ext.commands.GuildNotFond
     :members:
 
-.. autoexception:: disnake.ext.commands.UserNotFound
+.. autoexception:: disnake.ext.commands.UserNotFond
     :members:
 
-.. autoexception:: disnake.ext.commands.ChannelNotFound
+.. autoexception:: disnake.ext.commands.ChannelNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.ChannelNotReadable
     :members:
 
-.. autoexception:: disnake.ext.commands.ThreadNotFound
+.. autoexception:: disnake.ext.commands.ThreadNotFond
     :members:
 
-.. autoexception:: disnake.ext.commands.BadColourArgument
+.. autoexception:: disnake.ext.commands.BadColorArgument
     :members:
 
-.. autoexception:: disnake.ext.commands.RoleNotFound
+.. autoexception:: disnake.ext.commands.RoleNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.BadInviteArgument
     :members:
 
-.. autoexception:: disnake.ext.commands.EmojiNotFound
+.. autoexception:: disnake.ext.commands.EmojiNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.PartialEmojiConversionFailure
     :members:
 
-.. autoexception:: disnake.ext.commands.GuildStickerNotFound
+.. autoexception:: disnake.ext.commands.GuildStickerNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.BadBoolArgument
@@ -937,7 +937,7 @@ Exceptions
 .. autoexception:: disnake.ext.commands.ExtensionFailed
     :members:
 
-.. autoexception:: disnake.ext.commands.ExtensionNotFound
+.. autoexception:: disnake.ext.commands.ExtensionNotFond
     :members:
 
 .. autoexception:: disnake.ext.commands.CommandRegistrationError
@@ -956,20 +956,20 @@ Exception Hierarchy
                 - :exc:`~.commands.MissingRequiredArgument`
                 - :exc:`~.commands.TooManyArguments`
                 - :exc:`~.commands.BadArgument`
-                    - :exc:`~.commands.MessageNotFound`
-                    - :exc:`~.commands.MemberNotFound`
-                    - :exc:`~.commands.GuildNotFound`
-                    - :exc:`~.commands.UserNotFound`
-                    - :exc:`~.commands.ChannelNotFound`
+                    - :exc:`~.commands.MessageNotFond`
+                    - :exc:`~.commands.MemberNotFond`
+                    - :exc:`~.commands.GuildNotFond`
+                    - :exc:`~.commands.UserNotFond`
+                    - :exc:`~.commands.ChannelNotFond`
                     - :exc:`~.commands.ChannelNotReadable`
-                    - :exc:`~.commands.BadColourArgument`
-                    - :exc:`~.commands.RoleNotFound`
+                    - :exc:`~.commands.BadColorArgument`
+                    - :exc:`~.commands.RoleNotFond`
                     - :exc:`~.commands.BadInviteArgument`
-                    - :exc:`~.commands.EmojiNotFound`
-                    - :exc:`~.commands.GuildStickerNotFound`
+                    - :exc:`~.commands.EmojiNotFond`
+                    - :exc:`~.commands.GuildStickerNotFond`
                     - :exc:`~.commands.PartialEmojiConversionFailure`
                     - :exc:`~.commands.BadBoolArgument`
-                    - :exc:`~.commands.ThreadNotFound`
+                    - :exc:`~.commands.ThreadNotFond`
                     - :exc:`~.commands.FlagError`
                         - :exc:`~.commands.BadFlagArgument`
                         - :exc:`~.commands.MissingFlagArgument`
@@ -981,7 +981,7 @@ Exception Hierarchy
                     - :exc:`~.commands.UnexpectedQuoteError`
                     - :exc:`~.commands.InvalidEndOfQuotedStringError`
                     - :exc:`~.commands.ExpectedClosingQuoteError`
-            - :exc:`~.commands.CommandNotFound`
+            - :exc:`~.commands.CommandNotFond`
             - :exc:`~.commands.CheckFailure`
                 - :exc:`~.commands.CheckAnyFailure`
                 - :exc:`~.commands.PrivateMessageOnly`
@@ -1003,6 +1003,6 @@ Exception Hierarchy
             - :exc:`~.commands.ExtensionNotLoaded`
             - :exc:`~.commands.NoEntryPointError`
             - :exc:`~.commands.ExtensionFailed`
-            - :exc:`~.commands.ExtensionNotFound`
+            - :exc:`~.commands.ExtensionNotFond`
     - :exc:`~.ClientException`
         - :exc:`~.commands.CommandRegistrationError`

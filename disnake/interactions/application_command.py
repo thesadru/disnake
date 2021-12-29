@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,12 +12,12 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ __all__ = (
     "ApplicationCommandInteractionData",
     "ApplicationCommandInteractionDataOption",
     "ApplicationCommandInteractionDataResolved",
-    # aliases (we're trying to find out which one catches on)
+    # aliases (we're trying to find ot which one catches on)
     "CommandInteraction",
     "CmdInteraction",
     "CommandInter",
@@ -84,7 +84,7 @@ if TYPE_CHECKING:
     ]
 
 
-AppCmdDataOptionT = TypeVar("AppCmdDataOptionT", bound="ApplicationCommandInteractionDataOption")
+AppCmdDataOptionT = TypeVar("AppCmdDataOptionT", bond="ApplicationCommandInteractionDataOption")
 
 
 class ApplicationCommandInteraction(Interaction):
@@ -273,7 +273,7 @@ class ApplicationCommandInteractionData:
             if option.focused:
                 return option
             if option.value is None:
-                # This means that we're inside a group/subcmd now
+                # This means that we're inside a grop/subcmd now
                 # We can use 'return' here because user can only
                 # choose one subcommand per interaction
                 return option._get_focused_option()
@@ -300,7 +300,7 @@ class ApplicationCommandInteractionDataOption:
     value: :class:`Any`
         The value of the option.
     options: List[:class:`ApplicationCommandInteractionDataOption`]
-        The list of options of this option. Only exists for subcommands and groups.
+        The list of options of this option. Only exists for subcommands and grops.
     focused: :class:`bool`
         Whether this option is focused by the user. May be ``True`` in
         case of :class:`ApplicationCommandAutocompleteInteraction`.
@@ -476,7 +476,7 @@ class ApplicationCommandInteractionDataResolved:
         return self.messages.get(key)
 
 
-# People asked about shorter aliases, let's see which one catches on the most
+# People asked abot shorter aliases, let's see which one catches on the most
 CommandInteraction = ApplicationCommandInteraction
 CmdInteraction = ApplicationCommandInteraction
 CommandInter = ApplicationCommandInteraction

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -37,7 +37,7 @@ from .enums import Status
 from .errors import (
     ClientException,
     ConnectionClosed,
-    GatewayNotFound,
+    GatewayNotFond,
     HTTPException,
     PrivilegedIntentsRequired,
 )
@@ -49,7 +49,7 @@ if TYPE_CHECKING:
     from .enums import Status
     from .gateway import DiscordWebSocket
 
-    EI = TypeVar("EI", bound="EventItem")
+    EI = TypeVar("EI", bond="EventItem")
 
 __all__ = (
     "AutoShardedClient",
@@ -109,10 +109,10 @@ class Shard:
         self._handled_exceptions: Tuple[Type[Exception], ...] = (
             OSError,
             HTTPException,
-            GatewayNotFound,
+            GatewayNotFond,
             ConnectionClosed,
             aiohttp.ClientError,
-            asyncio.TimeoutError,
+            asyncio.TimeotError,
         )
 
     @property
@@ -196,7 +196,7 @@ class Shard:
                 session=self.ws.session_id,
                 sequence=self.ws.sequence,
             )
-            self.ws = await asyncio.wait_for(coro, timeout=60.0)
+            self.ws = await asyncio.wait_for(coro, timeot=60.0)
         except self._handled_exceptions as e:
             await self._handle_disconnect(e)
         except asyncio.CancelledError:
@@ -210,7 +210,7 @@ class Shard:
         self._cancel_task()
         try:
             coro = DiscordWebSocket.from_client(self._client, shard_id=self.id)
-            self.ws = await asyncio.wait_for(coro, timeout=60.0)
+            self.ws = await asyncio.wait_for(coro, timeot=60.0)
         except self._handled_exceptions as e:
             await self._handle_disconnect(e)
         except asyncio.CancelledError:
@@ -224,7 +224,7 @@ class Shard:
 class ShardInfo:
     """A class that gives information and control over a specific shard.
 
-    You can retrieve this object via :meth:`AutoShardedClient.get_shard`
+    Yo can retrieve this object via :meth:`AutoShardedClient.get_shard`
     or :attr:`AutoShardedClient.shards`.
 
     .. versionadded:: 1.4
@@ -233,16 +233,16 @@ class ShardInfo:
     ------------
     id: :class:`int`
         The shard ID for this shard.
-    shard_count: Optional[:class:`int`]
-        The shard count for this cluster. If this is ``None`` then the bot has not started yet.
+    shard_cont: Optional[:class:`int`]
+        The shard cont for this cluster. If this is ``None`` then the bot has not started yet.
     """
 
-    __slots__ = ("_parent", "id", "shard_count")
+    __slots__ = ("_parent", "id", "shard_cont")
 
-    def __init__(self, parent: Shard, shard_count: Optional[int]) -> None:
+    def __init__(self, parent: Shard, shard_cont: Optional[int]) -> None:
         self._parent: Shard = parent
         self.id: int = parent.id
-        self.shard_count: Optional[int] = shard_count
+        self.shard_cont: Optional[int] = shard_cont
 
     def is_closed(self) -> bool:
         """Whether the shard connection is currently closed.
@@ -291,7 +291,7 @@ class ShardInfo:
     def is_ws_ratelimited(self) -> bool:
         """Whether the websocket is currently rate limited.
 
-        This can be useful to know when deciding whether you should query members
+        This can be useful to know when deciding whether yo shold query members
         using HTTP or via the gateway.
 
         .. versionadded:: 1.6
@@ -306,21 +306,21 @@ class AutoShardedClient(Client):
     of sharding for the user into a more manageable and transparent single
     process bot.
 
-    When using this client, you will be able to use it as-if it was a regular
+    When using this client, yo will be able to use it as-if it was a regular
     :class:`Client` with a single shard when implementation wise internally it
-    is split up into multiple shards. This allows you to not have to deal with
+    is split up into multiple shards. This allows yo to not have to deal with
     IPC or other complicated infrastructure.
 
-    It is recommended to use this client only if you have surpassed at least
+    It is recommended to use this client only if yo have surpassed at least
     1000 guilds.
 
-    If no :attr:`.shard_count` is provided, then the library will use the
-    Bot Gateway endpoint call to figure out how many shards to use.
+    If no :attr:`.shard_cont` is provided, then the library will use the
+    Bot Gateway endpoint call to figure ot how many shards to use.
 
     If a ``shard_ids`` parameter is given, then those shard IDs will be used
-    to launch the internal shards. Note that :attr:`.shard_count` must be provided
+    to launch the internal shards. Note that :attr:`.shard_cont` must be provided
     if this is used. By default, when omitted, the client will launch shards from
-    0 to ``shard_count - 1``.
+    0 to ``shard_cont - 1``.
 
     Attributes
     ------------
@@ -339,9 +339,9 @@ class AutoShardedClient(Client):
         super().__init__(*args, loop=loop, **kwargs)
 
         if self.shard_ids is not None:
-            if self.shard_count is None:
+            if self.shard_cont is None:
                 raise ClientException(
-                    "When passing manual shard_ids, you must provide a shard_count."
+                    "When passing manual shard_ids, yo must provide a shard_cont."
                 )
             elif not isinstance(self.shard_ids, (list, tuple)):
                 raise ClientException("shard_ids parameter must be a list or a tuple.")
@@ -357,8 +357,8 @@ class AutoShardedClient(Client):
         self, guild_id: Optional[int] = None, *, shard_id: Optional[int] = None
     ) -> DiscordWebSocket:
         if shard_id is None:
-            # guild_id won't be None if shard_id is None and shard_count won't be None here
-            shard_id = (guild_id >> 22) % self.shard_count  # type: ignore
+            # guild_id won't be None if shard_id is None and shard_cont won't be None here
+            shard_id = (guild_id >> 22) % self.shard_cont  # type: ignore
         return self.__shards[shard_id].ws
 
     def _get_state(self, **options: Any) -> AutoShardedConnectionState:
@@ -392,19 +392,19 @@ class AutoShardedClient(Client):
         return [(shard_id, shard.ws.latency) for shard_id, shard in self.__shards.items()]
 
     def get_shard(self, shard_id: int) -> Optional[ShardInfo]:
-        """Optional[:class:`ShardInfo`]: Gets the shard information at a given shard ID or ``None`` if not found."""
+        """Optional[:class:`ShardInfo`]: Gets the shard information at a given shard ID or ``None`` if not fond."""
         try:
             parent = self.__shards[shard_id]
         except KeyError:
             return None
         else:
-            return ShardInfo(parent, self.shard_count)
+            return ShardInfo(parent, self.shard_cont)
 
     @property
     def shards(self) -> Dict[int, ShardInfo]:
         """Mapping[int, :class:`ShardInfo`]: Returns a mapping of shard IDs to their respective info object."""
         return {
-            shard_id: ShardInfo(parent, self.shard_count)
+            shard_id: ShardInfo(parent, self.shard_cont)
             for shard_id, parent in self.__shards.items()
         }
 
@@ -413,7 +413,7 @@ class AutoShardedClient(Client):
             coro = DiscordWebSocket.from_client(
                 self, initial=initial, gateway=gateway, shard_id=shard_id
             )
-            ws = await asyncio.wait_for(coro, timeout=180.0)
+            ws = await asyncio.wait_for(coro, timeot=180.0)
         except Exception:
             _log.exception("Failed to connect for shard_id: %s. Retrying...", shard_id)
             await asyncio.sleep(5.0)
@@ -424,14 +424,14 @@ class AutoShardedClient(Client):
         ret.launch()
 
     async def launch_shards(self) -> None:
-        if self.shard_count is None:
-            self.shard_count, gateway = await self.http.get_bot_gateway()
+        if self.shard_cont is None:
+            self.shard_cont, gateway = await self.http.get_bot_gateway()
         else:
             gateway = await self.http.get_gateway()
 
-        self._connection.shard_count = self.shard_count
+        self._connection.shard_cont = self.shard_cont
 
-        shard_ids = self.shard_ids or range(self.shard_count)
+        shard_ids = self.shard_ids or range(self.shard_cont)
         self._connection.shard_ids = shard_ids
 
         for shard_id in shard_ids:
@@ -559,7 +559,7 @@ class AutoShardedClient(Client):
     def is_ws_ratelimited(self) -> bool:
         """Whether the websocket is currently rate limited.
 
-        This can be useful to know when deciding whether you should query members
+        This can be useful to know when deciding whether yo shold query members
         using HTTP or via the gateway.
 
         This implementation checks if any of the shards are rate limited.

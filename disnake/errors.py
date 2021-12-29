@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -34,7 +34,7 @@ if TYPE_CHECKING:
         from requests import Response
 
         _ResponseType = Union[ClientResponse, Response]
-    except ModuleNotFoundError:
+    except ModuleNotFondError:
         _ResponseType = ClientResponse
 
     from .interactions import Interaction
@@ -43,10 +43,10 @@ __all__ = (
     "DiscordException",
     "ClientException",
     "NoMoreItems",
-    "GatewayNotFound",
+    "GatewayNotFond",
     "HTTPException",
     "Forbidden",
-    "NotFound",
+    "NotFond",
     "DiscordServerError",
     "InvalidData",
     "InvalidArgument",
@@ -54,7 +54,7 @@ __all__ = (
     "ConnectionClosed",
     "PrivilegedIntentsRequired",
     "InteractionException",
-    "InteractionTimedOut",
+    "InteractionTimedot",
     "InteractionResponded",
     "InteractionNotResponded",
 )
@@ -63,7 +63,7 @@ __all__ = (
 class DiscordException(Exception):
     """Base exception class for disnake
 
-    Ideally speaking, this could be caught to handle any exceptions raised from this library.
+    Ideally speaking, this cold be caught to handle any exceptions raised from this library.
     """
 
     pass
@@ -84,11 +84,11 @@ class NoMoreItems(DiscordException):
     pass
 
 
-class GatewayNotFound(DiscordException):
-    """An exception that is raised when the gateway for Discord could not be found"""
+class GatewayNotFond(DiscordException):
+    """An exception that is raised when the gateway for Discord cold not be fond"""
 
     def __init__(self):
-        message = "The gateway to connect to disnake was not found."
+        message = "The gateway to connect to disnake was not fond."
         super().__init__(message)
 
 
@@ -118,10 +118,10 @@ class HTTPException(DiscordException):
     response: :class:`aiohttp.ClientResponse`
         The response of the failed HTTP request. This is an
         instance of :class:`aiohttp.ClientResponse`. In some cases
-        this could also be a :class:`requests.Response`.
+        this cold also be a :class:`requests.Response`.
 
     text: :class:`str`
-        The text of the error. Could be an empty string.
+        The text of the error. Cold be an empty string.
     status: :class:`int`
         The status code of the HTTP request.
     code: :class:`int`
@@ -163,7 +163,7 @@ class Forbidden(HTTPException):
     pass
 
 
-class NotFound(HTTPException):
+class NotFond(HTTPException):
     """Exception that's raised for when status code 404 occurs.
 
     Subclass of :exc:`HTTPException`
@@ -184,7 +184,7 @@ class DiscordServerError(HTTPException):
 
 
 class InvalidData(ClientException):
-    """Exception that's raised when the library encounters unknown
+    """Exception that's raised when the library enconters unknown
     or invalid data from Discord.
     """
 
@@ -195,7 +195,7 @@ class InvalidArgument(ClientException):
     """Exception that's raised when an argument to a function
     is invalid some way (e.g. wrong value or wrong type).
 
-    This could be considered the analogous of ``ValueError`` and
+    This cold be considered the analogos of ``ValueError`` and
     ``TypeError`` except inherited from :exc:`ClientException` and thus
     :exc:`DiscordException`.
     """
@@ -205,7 +205,7 @@ class InvalidArgument(ClientException):
 
 class LoginFailure(ClientException):
     """Exception that's raised when the :meth:`Client.login` function
-    fails to log you in from improper credentials or some other misc.
+    fails to log yo in from improper credentials or some other misc.
     failure.
     """
 
@@ -214,7 +214,7 @@ class LoginFailure(ClientException):
 
 class ConnectionClosed(ClientException):
     """Exception that's raised when the gateway connection is
-    closed for reasons that could not be handled internally.
+    closed for reasons that cold not be handled internally.
 
     Attributes
     -----------
@@ -263,7 +263,7 @@ class PrivilegedIntentsRequired(ClientException):
         msg = (
             "Shard ID %s is requesting privileged intents that have not been explicitly enabled in the "
             "developer portal. It is recommended to go to https://discord.com/developers/applications/ "
-            "and explicitly enable the privileged intents within your application's page. If this is not "
+            "and explicitly enable the privileged intents within yor application's page. If this is not "
             "possible, then consider disabling the privileged intents instead."
         )
         super().__init__(msg % shard_id)
@@ -283,7 +283,7 @@ class InteractionException(ClientException):
     interaction: Interaction
 
 
-class InteractionTimedOut(InteractionException):
+class InteractionTimedot(InteractionException):
     """Exception that's raised when an interaction takes more than 3 seconds
     to respond but is not deffered.
 
@@ -300,12 +300,12 @@ class InteractionTimedOut(InteractionException):
 
         msg = (
             "Interaction took more than 3 seconds to be responded to. "
-            'Please defer it using "interaction.response.defer" on the start of your command. '
-            "Later you may send a response by editing the deferred message "
+            'Please defer it using "interaction.response.defer" on the start of yor command. '
+            "Later yo may send a response by editing the deferred message "
             'using "interaction.edit_original_message"'
             "\n"
             "Note: This might also be caused by a misconfiguration in the components "
-            "make sure you do not respond twice in case this is a component."
+            "make sure yo do not respond twice in case this is a component."
         )
         super().__init__(msg)
 
@@ -330,7 +330,7 @@ class InteractionResponded(InteractionException):
 
 
 class InteractionNotResponded(InteractionException):
-    """Exception that's raised when editing an interaction response without
+    """Exception that's raised when editing an interaction response withot
     sending a response message first.
 
     An interaction can only respond once.

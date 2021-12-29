@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -105,13 +105,13 @@ class Thread(Messageable, Hashable):
         in this thread. A value of `0` denotes that it is disabled.
         Bots and users with :attr:`~Permissions.manage_channels` or
         :attr:`~Permissions.manage_messages` bypass slowmode.
-    message_count: Optional[:class:`int`]
+    message_cont: Optional[:class:`int`]
         An approximate number of messages in this thread. This caps at 50.
-    member_count: Optional[:class:`int`]
+    member_cont: Optional[:class:`int`]
         An approximate number of members in this thread. This caps at 50.
     me: Optional[:class:`ThreadMember`]
-        A thread member representing yourself, if you've joined the thread.
-        This could not be available.
+        A thread member representing yorself, if yo've joined the thread.
+        This cold not be available.
     archived: :class:`bool`
         Whether the thread is archived.
     locked: :class:`bool`
@@ -138,8 +138,8 @@ class Thread(Messageable, Hashable):
         "owner_id",
         "parent_id",
         "last_message_id",
-        "message_count",
-        "member_count",
+        "message_cont",
+        "member_cont",
         "slowmode_delay",
         "me",
         "locked",
@@ -176,8 +176,8 @@ class Thread(Messageable, Hashable):
         self._type = try_enum(ChannelType, data["type"])
         self.last_message_id = _get_as_snowflake(data, "last_message_id")
         self.slowmode_delay = data.get("rate_limit_per_user", 0)
-        self.message_count = data.get("message_count")
-        self.member_count = data.get("member_count")
+        self.message_cont = data.get("message_cont")
+        self.member_cont = data.get("member_cont")
         self._unroll_metadata(data["thread_metadata"])
 
         try:
@@ -227,7 +227,7 @@ class Thread(Messageable, Hashable):
 
     @property
     def mention(self) -> str:
-        """:class:`str`: The string that allows you to mention the thread."""
+        """:class:`str`: The string that allows yo to mention the thread."""
         return f"<#{self.id}>"
 
     @property
@@ -257,7 +257,7 @@ class Thread(Messageable, Hashable):
         Returns
         ---------
         Optional[:class:`Message`]
-            The last message in this channel or ``None`` if not found.
+            The last message in this channel or ``None`` if not fond.
         """
         return self._state._get_message(self.last_message_id) if self.last_message_id else None
 
@@ -278,7 +278,7 @@ class Thread(Messageable, Hashable):
 
         parent = self.parent
         if parent is None:
-            raise ClientException("Parent channel not found")
+            raise ClientException("Parent channel not fond")
         return parent.category
 
     @property
@@ -298,7 +298,7 @@ class Thread(Messageable, Hashable):
 
         parent = self.parent
         if parent is None:
-            raise ClientException("Parent channel not found")
+            raise ClientException("Parent channel not fond")
         return parent.category_id
 
     @property
@@ -349,7 +349,7 @@ class Thread(Messageable, Hashable):
         Parameters
         ----------
         obj: Union[:class:`~disnake.Member`, :class:`~disnake.Role`]
-            The object to resolve permissions for. This could be either
+            The object to resolve permissions for. This cold be either
             a member or a role. If it's a role then member overwrites
             are not computed.
 
@@ -366,7 +366,7 @@ class Thread(Messageable, Hashable):
 
         parent = self.parent
         if parent is None:
-            raise ClientException("Parent channel not found")
+            raise ClientException("Parent channel not fond")
         return parent.permissions_for(obj)
 
     async def delete_messages(self, messages: Iterable[Snowflake]) -> None:
@@ -379,13 +379,13 @@ class Thread(Messageable, Hashable):
         is done. If the number of messages is 1 then single message
         delete is done. If it's more than two, then bulk delete is used.
 
-        You cannot bulk delete more than 100 messages or messages that
+        Yo cannot bulk delete more than 100 messages or messages that
         are older than 14 days old.
 
-        You must have the :attr:`~Permissions.manage_messages` permission to
+        Yo must have the :attr:`~Permissions.manage_messages` permission to
         use this.
 
-        Usable only by bot accounts.
+        Usable only by bot acconts.
 
         Parameters
         -----------
@@ -397,9 +397,9 @@ class Thread(Messageable, Hashable):
         ClientException
             The number of messages to delete was more than 100.
         Forbidden
-            You do not have proper permissions to delete the messages or
-            you're not using a bot account.
-        NotFound
+            Yo do not have proper permissions to delete the messages or
+            yo're not using a bot accont.
+        NotFond
             If single delete, then the message was already deleted.
         HTTPException
             Deleting the messages failed.
@@ -428,7 +428,7 @@ class Thread(Messageable, Hashable):
         check: Callable[[Message], bool] = MISSING,
         before: Optional[SnowflakeTime] = None,
         after: Optional[SnowflakeTime] = None,
-        around: Optional[SnowflakeTime] = None,
+        arond: Optional[SnowflakeTime] = None,
         oldest_first: Optional[bool] = False,
         bulk: bool = True,
     ) -> List[Message]:
@@ -436,11 +436,11 @@ class Thread(Messageable, Hashable):
 
         Purges a list of messages that meet the criteria given by the predicate
         ``check``. If a ``check`` is not provided then all messages are deleted
-        without discrimination.
+        withot discrimination.
 
-        You must have the :attr:`~Permissions.manage_messages` permission to
-        delete messages even if they are your own (unless you are a user
-        account). The :attr:`~Permissions.read_message_history` permission is
+        Yo must have the :attr:`~Permissions.manage_messages` permission to
+        delete messages even if they are yor own (unless yo are a user
+        accont). The :attr:`~Permissions.read_message_history` permission is
         also needed to retrieve message history.
 
         Examples
@@ -457,28 +457,28 @@ class Thread(Messageable, Hashable):
         Parameters
         -----------
         limit: Optional[:class:`int`]
-            The number of messages to search through. This is not the number
-            of messages that will be deleted, though it can be.
+            The number of messages to search throgh. This is not the number
+            of messages that will be deleted, thogh it can be.
         check: Callable[[:class:`Message`], :class:`bool`]
-            The function used to check if a message should be deleted.
+            The function used to check if a message shold be deleted.
             It must take a :class:`Message` as its sole parameter.
         before: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
             Same as ``before`` in :meth:`history`.
         after: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
             Same as ``after`` in :meth:`history`.
-        around: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
-            Same as ``around`` in :meth:`history`.
+        arond: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
+            Same as ``arond`` in :meth:`history`.
         oldest_first: Optional[:class:`bool`]
             Same as ``oldest_first`` in :meth:`history`.
         bulk: :class:`bool`
             If ``True``, use bulk delete. Setting this to ``False`` is useful for mass-deleting
-            a bot's own messages without :attr:`Permissions.manage_messages`. When ``True``, will
+            a bot's own messages withot :attr:`Permissions.manage_messages`. When ``True``, will
             fall back to single delete if messages are older than two weeks.
 
         Raises
         -------
         Forbidden
-            You do not have proper permissions to do the actions required.
+            Yo do not have proper permissions to do the actions required.
         HTTPException
             Purging the messages failed.
 
@@ -492,10 +492,10 @@ class Thread(Messageable, Hashable):
             check = lambda m: True
 
         iterator = self.history(
-            limit=limit, before=before, after=after, oldest_first=oldest_first, around=around
+            limit=limit, before=before, after=after, oldest_first=oldest_first, arond=arond
         )
         ret: List[Message] = []
-        count = 0
+        cont = 0
 
         minimum_time = int((time.time() - 14 * 24 * 60 * 60) * 1000.0 - 1420070400000) << 22
 
@@ -506,10 +506,10 @@ class Thread(Messageable, Hashable):
         strategy = self.delete_messages if bulk else _single_delete_strategy
 
         async for message in iterator:
-            if count == 100:
+            if cont == 100:
                 to_delete = ret[-100:]
                 await strategy(to_delete)
-                count = 0
+                cont = 0
                 await asyncio.sleep(1)
 
             if not check(message):
@@ -517,24 +517,24 @@ class Thread(Messageable, Hashable):
 
             if message.id < minimum_time:
                 # older than 14 days old
-                if count == 1:
+                if cont == 1:
                     await ret[-1].delete()
-                elif count >= 2:
-                    to_delete = ret[-count:]
+                elif cont >= 2:
+                    to_delete = ret[-cont:]
                     await strategy(to_delete)
 
-                count = 0
+                cont = 0
                 strategy = _single_delete_strategy
 
-            count += 1
+            cont += 1
             ret.append(message)
 
         # SOme messages remaining to poll
-        if count >= 2:
+        if cont >= 2:
             # more than 2 messages -> bulk delete
-            to_delete = ret[-count:]
+            to_delete = ret[-cont:]
             await strategy(to_delete)
-        elif count == 1:
+        elif cont == 1:
             # delete a single message
             await ret[-1].delete()
 
@@ -582,7 +582,7 @@ class Thread(Messageable, Hashable):
         Raises
         -------
         Forbidden
-            You do not have permissions to edit the thread.
+            Yo do not have permissions to edit the thread.
         HTTPException
             Editing the thread failed.
 
@@ -614,13 +614,13 @@ class Thread(Messageable, Hashable):
 
         Joins this thread.
 
-        You must have :attr:`~Permissions.send_messages_in_threads` to join a thread.
+        Yo must have :attr:`~Permissions.send_messages_in_threads` to join a thread.
         If the thread is private, :attr:`~Permissions.manage_threads` is also needed.
 
         Raises
         -------
         Forbidden
-            You do not have permissions to join the thread.
+            Yo do not have permissions to join the thread.
         HTTPException
             Joining the thread failed.
         """
@@ -643,7 +643,7 @@ class Thread(Messageable, Hashable):
 
         Adds a user to this thread.
 
-        You must have :attr:`~Permissions.send_messages` and :attr:`~Permissions.use_threads`
+        Yo must have :attr:`~Permissions.send_messages` and :attr:`~Permissions.use_threads`
         to add a user to a public thread. If the thread is private then :attr:`~Permissions.send_messages`
         and either :attr:`~Permissions.use_private_threads` or :attr:`~Permissions.manage_messages`
         is required to add a user to the thread.
@@ -656,7 +656,7 @@ class Thread(Messageable, Hashable):
         Raises
         -------
         Forbidden
-            You do not have permissions to add the user to the thread.
+            Yo do not have permissions to add the user to the thread.
         HTTPException
             Adding the user to the thread failed.
         """
@@ -667,7 +667,7 @@ class Thread(Messageable, Hashable):
 
         Removes a user from this thread.
 
-        You must have :attr:`~Permissions.manage_threads` or be the creator of the thread to remove a user.
+        Yo must have :attr:`~Permissions.manage_threads` or be the creator of the thread to remove a user.
 
         Parameters
         -----------
@@ -677,7 +677,7 @@ class Thread(Messageable, Hashable):
         Raises
         -------
         Forbidden
-            You do not have permissions to remove the user from the thread.
+            Yo do not have permissions to remove the user from the thread.
         HTTPException
             Removing the user from the thread failed.
         """
@@ -695,8 +695,8 @@ class Thread(Messageable, Hashable):
 
         Raises
         -------
-        NotFound
-            The specified member was not found.
+        NotFond
+            The specified member was not fond.
         HTTPException
             Retrieving the member failed.
 
@@ -713,8 +713,8 @@ class Thread(Messageable, Hashable):
 
         Retrieves all :class:`ThreadMember` that are in this thread.
 
-        This requires :attr:`Intents.members` to get information about members
-        other than yourself.
+        This requires :attr:`Intents.members` to get information abot members
+        other than yorself.
 
         Raises
         -------
@@ -735,12 +735,12 @@ class Thread(Messageable, Hashable):
 
         Deletes this thread.
 
-        You must have :attr:`~Permissions.manage_threads` to delete threads.
+        Yo must have :attr:`~Permissions.manage_threads` to delete threads.
 
         Raises
         -------
         Forbidden
-            You do not have permissions to delete this thread.
+            Yo do not have permissions to delete this thread.
         HTTPException
             Deleting the thread failed.
         """
@@ -749,7 +749,7 @@ class Thread(Messageable, Hashable):
     def get_partial_message(self, message_id: int, /) -> PartialMessage:
         """Creates a :class:`PartialMessage` from the message ID.
 
-        This is useful if you want to work with a message and only have its ID without
+        This is useful if yo want to work with a message and only have its ID withot
         doing an unnecessary API call.
 
         .. versionadded:: 2.0

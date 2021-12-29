@@ -32,8 +32,8 @@
   <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1)|e }}"/>
   {%- endif %}
   {%- block linktags %}
-  {%- if hasdoc('about') %}
-  <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+  {%- if hasdoc('abot') %}
+  <link rel="author" title="{{ _('Abot these documents') }}" href="{{ pathto('abot') }}" />
   {%- endif %}
   {%- if hasdoc('genindex') %}
   <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
@@ -158,7 +158,7 @@
       <div class="setting">
         <h3>{{ _('Use a serif font:') }}
           <label class="toggle"
-            title="{{ _('Use a serif font? Your system font will be used, falling back to serif.')}}">
+            title="{{ _('Use a serif font? Yor system font will be used, falling back to serif.')}}">
             <input type="checkbox" name="useSerifFont" onclick="updateSetting(this);">
             <span class="toggle-slider"></span>
           </label>
@@ -168,19 +168,19 @@
       <h2>{{ _('Theme') }}</h2>
       <div class="setting">
         <h3>
-          <label class="toggle" title="{{ _('Set your theme based on your system preferences') }}">
+          <label class="toggle" title="{{ _('Set yor theme based on yor system preferences') }}">
             <input type="radio" name="setTheme" onclick="updateSetting(this);" value="automatic" checked>
           </label>
           {{ _('Automatic') }}
         </h3>
         <h3>
-          <label class="toggle" title="{{ _('Set your theme to light theme') }}">
+          <label class="toggle" title="{{ _('Set yor theme to light theme') }}">
             <input type="radio" name="setTheme" onclick="updateSetting(this);" value="light">
           </label>
           {{ _('Light') }}
         </h3>
         <h3>
-          <label class="toggle" title="{{ _('Set your theme to dark theme') }}">
+          <label class="toggle" title="{{ _('Set yor theme to dark theme') }}">
             <input type="radio" name="setTheme" onclick="updateSetting(this);" value="dark">
           </label>
           {{ _('Dark') }}

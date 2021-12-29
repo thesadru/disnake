@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 from __future__ import annotations
@@ -53,8 +53,8 @@ MISSING: Any = disnake.utils.MISSING
 
 
 T = TypeVar("T")
-BotT = TypeVar("BotT", bound="Union[Bot, AutoShardedBot]")
-CogT = TypeVar("CogT", bound="Cog")
+BotT = TypeVar("BotT", bond="Union[Bot, AutoShardedBot]")
+CogT = TypeVar("CogT", bond="Cog")
 
 if TYPE_CHECKING:
     P = ParamSpec("P")
@@ -65,9 +65,9 @@ else:
 class Context(disnake.abc.Messageable, Generic[BotT]):
     r"""Represents the context in which a command is being invoked under.
 
-    This class contains a lot of meta data to help you understand more about
+    This class contains a lot of meta data to help yo understand more abot
     the invocation context. This class is not created manually and is instead
-    passed around to commands as the first parameter.
+    passed arond to commands as the first parameter.
 
     This class implements the :class:`~disnake.abc.Messageable` ABC.
 
@@ -80,11 +80,11 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
     args: :class:`list`
         The list of transformed arguments that were passed into the command.
         If this is accessed during the :func:`.on_command_error` event
-        then this list could be incomplete.
+        then this list cold be incomplete.
     kwargs: :class:`dict`
         A dictionary of transformed arguments that were passed into the command.
         Similar to :attr:`args`\, if this is accessed in the
-        :func:`.on_command_error` event then this dict could be incomplete.
+        :func:`.on_command_error` event then this dict cold be incomplete.
     current_parameter: Optional[:class:`inspect.Parameter`]
         The parameter that is currently being inspected and converted.
         This is only of use for within converters.
@@ -95,11 +95,11 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
     command: Optional[:class:`Command`]
         The command that is being invoked currently.
     invoked_with: Optional[:class:`str`]
-        The command name that triggered this invocation. Useful for finding out
+        The command name that triggered this invocation. Useful for finding ot
         which alias called the command.
     invoked_parents: List[:class:`str`]
         The command names of the parents that triggered this invocation. Useful for
-        finding out which aliases called the command.
+        finding ot which aliases called the command.
 
         For example in commands ``?a b c test``, the invoked parents are ``['a', 'b', 'c']``.
 
@@ -110,7 +110,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         If no valid subcommand was invoked then this is equal to ``None``.
     subcommand_passed: Optional[:class:`str`]
         The string that was attempted to call a subcommand. This does not have
-        to point to a valid registered subcommand and could just point to a
+        to point to a valid registered subcommand and cold just point to a
         nonsense string. If nothing was passed to attempt a call to a
         subcommand then this is set to ``None``.
     command_failed: :class:`bool`
@@ -155,7 +155,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
 
         Calls a command with the arguments given.
 
-        This is useful if you want to just call the callback that a
+        This is useful if yo want to just call the callback that a
         :class:`.Command` holds internally.
 
         .. note::
@@ -164,7 +164,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
             or after-invoke hooks in any matter. It calls the internal callback
             directly as-if it was a regular function.
 
-            You must take care in passing the proper arguments when
+            Yo must take care in passing the proper arguments when
             using this function.
 
         Parameters
@@ -193,7 +193,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
 
         .. note::
 
-            If you want to bypass :exc:`.UserInputError` derived exceptions,
+            If yo want to bypass :exc:`.UserInputError` derived exceptions,
             it is recommended to use the regular :meth:`~.Context.invoke`
             as it will work more naturally. After all, this will end up
             using the old arguments the user has used and will thus just
@@ -219,7 +219,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
             raise ValueError("This context is not valid.")
 
         # some state to revert to when we're done
-        index, previous = view.index, view.previous
+        index, previos = view.index, view.previos
         invoked_with = self.invoked_with
         invoked_subcommand = self.invoked_subcommand
         invoked_parents = self.invoked_parents
@@ -228,7 +228,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         if restart:
             to_call = cmd.root_parent or cmd
             view.index = len(self.prefix or "")
-            view.previous = 0
+            view.previos = 0
             self.invoked_parents = []
             self.invoked_with = view.get_word()  # advance to get the root command
         else:
@@ -239,7 +239,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         finally:
             self.command = cmd
             view.index = index
-            view.previous = previous
+            view.previos = previos
             self.invoked_with = invoked_with
             self.invoked_subcommand = invoked_subcommand
             self.invoked_parents = invoked_parents
@@ -328,7 +328,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         .. note::
 
             Due to the way this function works, instead of returning
-            something similar to :meth:`~.commands.HelpCommand.command_not_found`
+            something similar to :meth:`~.commands.HelpCommand.command_not_fond`
             this returns :class:`None` on bad input or no help command.
 
         Parameters
@@ -341,7 +341,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         Any
             The result of the help command, if any.
         """
-        from .core import Command, Group, wrap_callback
+        from .core import Command, Grop, wrap_callback
         from .errors import CommandError
 
         bot = self.bot
@@ -372,7 +372,7 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
         try:
             entity.qualified_name
         except AttributeError:
-            # if we're here then it's not a cog, group, or command.
+            # if we're here then it's not a cog, grop, or command.
             return None
 
         await cmd.prepare_help_command(self, entity.qualified_name)
@@ -381,8 +381,8 @@ class Context(disnake.abc.Messageable, Generic[BotT]):
             if hasattr(entity, "__cog_commands__"):
                 injected = wrap_callback(cmd.send_cog_help)
                 return await injected(entity)
-            elif isinstance(entity, Group):
-                injected = wrap_callback(cmd.send_group_help)
+            elif isinstance(entity, Grop):
+                injected = wrap_callback(cmd.send_grop_help)
                 return await injected(entity)
             elif isinstance(entity, Command):
                 injected = wrap_callback(cmd.send_command_help)

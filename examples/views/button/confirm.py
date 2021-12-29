@@ -42,11 +42,11 @@ async def ask(ctx: commands.Context):
     """Asks the user a question to confirm something."""
     # We create the view and assign it to a variable so we can wait for it later.
     view = Confirm()
-    await ctx.send("Do you want to continue?", view=view)
+    await ctx.send("Do yo want to continue?", view=view)
     # Wait for the View to stop listening for input...
     await view.wait()
     if view.value is None:
-        print("Timed out...")
+        print("Timed ot...")
     elif view.value:
         print("Confirmed...")
     else:

@@ -6,7 +6,7 @@ Commands
 ==========
 
 One of the most appealing aspects of the command extension is how easy it is to define commands and
-how you can arbitrarily nest groups and commands to have a rich sub-command system.
+how yo can arbitrarily nest grops and commands to have a rich sub-command system.
 
 Commands are defined by attaching it to a regular Python function. The command is then invoked by the user using a similar
 signature to the Python function.
@@ -19,7 +19,7 @@ For example, in the given command definition:
     async def foo(ctx, arg):
         await ctx.send(arg)
 
-With the following prefix (``$``), it would be invoked by the user via:
+With the following prefix (``$``), it wold be invoked by the user via:
 
 .. code-block:: none
 
@@ -49,11 +49,11 @@ Essentially, these two are equivalent: ::
 
     bot.add_command(test)
 
-Since the :meth:`.Bot.command` decorator is shorter and easier to comprehend, it will be the one used throughout the
+Since the :meth:`.Bot.command` decorator is shorter and easier to comprehend, it will be the one used throghot the
 documentation here.
 
 Any parameter that is accepted by the :class:`.Command` constructor can be passed into the decorator. For example, to change
-the name to something other than the function would be as simple as doing this:
+the name to something other than the function wold be as simple as doing this:
 
 .. code-block:: python3
 
@@ -64,7 +64,7 @@ the name to something other than the function would be as simple as doing this:
 Parameters
 ------------
 
-Since we define commands by making Python functions, we also define the argument passing behaviour by the function
+Since we define commands by making Python functions, we also define the argument passing behavior by the function
 parameters.
 
 Certain parameter types do different things in the user side and most forms of parameter types are supported.
@@ -81,30 +81,30 @@ The most basic form of parameter passing is the positional parameter. This is wh
         await ctx.send(arg)
 
 
-On the bot using side, you can provide positional arguments by just passing a regular string:
+On the bot using side, yo can provide positional arguments by just passing a regular string:
 
 .. image:: /images/commands/positional1.png
 
-To make use of a word with spaces in between, you should quote it:
+To make use of a word with spaces in between, yo shold quote it:
 
 .. image:: /images/commands/positional2.png
 
-As a note of warning, if you omit the quotes, you will only get the first word:
+As a note of warning, if yo omit the quotes, yo will only get the first word:
 
 .. image:: /images/commands/positional3.png
 
-Since positional arguments are just regular Python arguments, you can have as many as you want:
+Since positional arguments are just regular Python arguments, yo can have as many as yo want:
 
 .. code-block:: python3
 
     @bot.command()
     async def test(ctx, arg1, arg2):
-        await ctx.send(f'You passed {arg1} and {arg2}')
+        await ctx.send(f'Yo passed {arg1} and {arg2}')
 
 Variable
 ++++++++++
 
-Sometimes you want users to pass in an undetermined number of parameters. The library supports this
+Sometimes yo want users to pass in an undetermined number of parameters. The library supports this
 similar to how variable list parameters are done in Python:
 
 .. code-block:: python3
@@ -114,8 +114,8 @@ similar to how variable list parameters are done in Python:
         arguments = ', '.join(args)
         await ctx.send(f'{len(args)} arguments: {arguments}')
 
-This allows our user to accept either one or many arguments as they please. This works similar to positional arguments,
-so multi-word parameters should be quoted.
+This allows or user to accept either one or many arguments as they please. This works similar to positional arguments,
+so multi-word parameters shold be quoted.
 
 For example, on the bot side:
 
@@ -125,19 +125,19 @@ If the user wants to input a multi-word argument, they have to quote it like ear
 
 .. image:: /images/commands/variable2.png
 
-Do note that similar to the Python function behaviour, a user can technically pass no arguments
+Do note that similar to the Python function behavior, a user can technically pass no arguments
 at all:
 
 .. image:: /images/commands/variable3.png
 
 Since the ``args`` variable is a :class:`py:tuple`,
-you can do anything you would usually do with one.
+yo can do anything yo wold usually do with one.
 
 Keyword-Only Arguments
 ++++++++++++++++++++++++
 
-When you want to handle parsing of the argument yourself or do not feel like you want to wrap multi-word user input into
-quotes, you can ask the library to give you the rest as a single argument. We do this by using a **keyword-only argument**,
+When yo want to handle parsing of the argument yorself or do not feel like yo want to wrap multi-word user input into
+quotes, yo can ask the library to give yo the rest as a single argument. We do this by using a **keyword-only argument**,
 seen below:
 
 .. code-block:: python3
@@ -148,7 +148,7 @@ seen below:
 
 .. warning::
 
-    You can only have one keyword-only argument due to parsing ambiguities.
+    Yo can only have one keyword-only argument due to parsing ambiguities.
 
 On the bot side, we do not need to quote input with spaces:
 
@@ -158,7 +158,7 @@ Do keep in mind that wrapping it in quotes leaves it as-is:
 
 .. image:: /images/commands/keyword2.png
 
-By default, the keyword-only arguments are stripped of white space to make it easier to work with. This behaviour can be
+By default, the keyword-only arguments are stripped of white space to make it easier to work with. This behavior can be
 toggled by the :attr:`.Command.rest_is_raw` argument in the decorator.
 
 .. _ext_commands_context:
@@ -168,7 +168,7 @@ Invocation Context
 
 As seen earlier, every command must take at least a single parameter, called the :class:`~ext.commands.Context`.
 
-This parameter gives you access to something called the "invocation context". Essentially all the information you need to
+This parameter gives yo access to something called the "invocation context". Essentially all the information yo need to
 know how the command was executed. It contains a lot of useful information:
 
 - :attr:`.Context.guild` to fetch the :class:`Guild` of the command, if any.
@@ -176,21 +176,21 @@ know how the command was executed. It contains a lot of useful information:
 - :attr:`.Context.author` to fetch the :class:`Member` or :class:`User` that called the command.
 - :meth:`.Context.send` to send a message to the channel the command was used in.
 
-The context implements the :class:`abc.Messageable` interface, so anything you can do on a :class:`abc.Messageable` you
+The context implements the :class:`abc.Messageable` interface, so anything yo can do on a :class:`abc.Messageable` yo
 can do on the :class:`~ext.commands.Context`.
 
 Converters
 ------------
 
-Adding bot arguments with function parameters is only the first step in defining your bot's command interface. To actually
+Adding bot arguments with function parameters is only the first step in defining yor bot's command interface. To actually
 make use of the arguments, we usually want to convert the data into a target type. We call these
 :ref:`ext_commands_api_converters`.
 
-Converters come in a few flavours:
+Converters come in a few flavors:
 
 - A regular callable object that takes an argument as a sole parameter and returns a different type.
 
-    - These range from your own function, to something like :class:`bool` or :class:`int`.
+    - These range from yor own function, to something like :class:`bool` or :class:`int`.
 
 - A custom class that inherits from :class:`~ext.commands.Converter`.
 
@@ -201,7 +201,7 @@ Basic Converters
 
 At its core, a basic converter is a callable that takes in an argument and turns it into something else.
 
-For example, if we wanted to add two numbers together, we could request that they are turned into integers
+For example, if we wanted to add two numbers together, we cold request that they are turned into integers
 for us by specifying the converter:
 
 .. code-block:: python3
@@ -213,7 +213,7 @@ for us by specifying the converter:
 We specify converters by using something called a **function annotation**. This is a Python 3 exclusive feature that was
 introduced in :pep:`3107`.
 
-This works with any callable, such as a function that would convert a string to all upper-case:
+This works with any callable, such as a function that wold convert a string to all upper-case:
 
 .. code-block:: python3
 
@@ -227,7 +227,7 @@ This works with any callable, such as a function that would convert a string to 
 bool
 ^^^^^^
 
-Unlike the other basic converters, the :class:`bool` converter is treated slightly different. Instead of casting directly to the :class:`bool` type, which would result in any non-empty argument returning ``True``, it instead evaluates the argument as ``True`` or ``False`` based on its given content:
+Unlike the other basic converters, the :class:`bool` converter is treated slightly different. Instead of casting directly to the :class:`bool` type, which wold result in any non-empty argument returning ``True``, it instead evaluates the argument as ``True`` or ``False`` based on its given content:
 
 .. code-block:: python3
 
@@ -241,11 +241,11 @@ Unlike the other basic converters, the :class:`bool` converter is treated slight
 Advanced Converters
 +++++++++++++++++++++
 
-Sometimes a basic converter doesn't have enough information that we need. For example, sometimes we want to get some
-information from the :class:`Message` that called the command or we want to do some asynchronous processing.
+Sometimes a basic converter doesn't have enogh information that we need. For example, sometimes we want to get some
+information from the :class:`Message` that called the command or we want to do some asynchronos processing.
 
-For this, the library provides the :class:`~ext.commands.Converter` interface. This allows you to have access to the
-:class:`.Context` and have the callable be asynchronous. Defining a custom converter using this interface requires
+For this, the library provides the :class:`~ext.commands.Converter` interface. This allows yo to have access to the
+:class:`.Context` and have the callable be asynchronos. Defining a custom converter using this interface requires
 overriding a single method, :meth:`.Converter.convert`.
 
 An example converter:
@@ -277,7 +277,7 @@ The converter provided can either be constructed or not. Essentially these two a
     async def slap(ctx, *, reason: Slapper()):
         await ctx.send(reason)
 
-Having the possibility of the converter be constructed allows you to set up some state in the converter's ``__init__`` for
+Having the possibility of the converter be constructed allows yo to set up some state in the converter's ``__init__`` for
 fine tuning the converter. An example of this is actually in the library, :class:`~ext.commands.clean_content`.
 
 .. code-block:: python3
@@ -302,7 +302,7 @@ Inline Advanced Converters
 If we don't want to inherit from :class:`~ext.commands.Converter`, we can still provide a converter that has the
 advanced functionalities of an advanced converter and save us from specifying two types.
 
-For example, a common idiom would be to have a class and a converter for that class:
+For example, a common idiom wold be to have a class and a converter for that class:
 
 .. code-block:: python3
 
@@ -324,11 +324,11 @@ For example, a common idiom would be to have a class and a converter for that cl
     async def delta(ctx, *, member: JoinDistanceConverter):
         is_new = member.delta.days < 100
         if is_new:
-            await ctx.send("Hey you're pretty new!")
+            await ctx.send("Hey yo're pretty new!")
         else:
-            await ctx.send("Hm you're not so new.")
+            await ctx.send("Hm yo're not so new.")
 
-This can get tedious, so an inline advanced converter is possible through a :func:`classmethod` inside the type:
+This can get tedios, so an inline advanced converter is possible throgh a :func:`classmethod` inside the type:
 
 .. code-block:: python3
 
@@ -350,9 +350,9 @@ This can get tedious, so an inline advanced converter is possible through a :fun
     async def delta(ctx, *, member: JoinDistance):
         is_new = member.delta.days < 100
         if is_new:
-            await ctx.send("Hey you're pretty new!")
+            await ctx.send("Hey yo're pretty new!")
         else:
-            await ctx.send("Hm you're not so new.")
+            await ctx.send("Hm yo're not so new.")
 
 Discord Converters
 ++++++++++++++++++++
@@ -360,7 +360,7 @@ Discord Converters
 Working with :ref:`discord_api_models` is a fairly common thing when defining commands, as a result the library makes
 working with them easy.
 
-For example, to receive a :class:`Member` you can just pass it as a converter:
+For example, to receive a :class:`Member` yo can just pass it as a converter:
 
 .. code-block:: python3
 
@@ -372,7 +372,7 @@ When this command is executed, it attempts to convert the string given into a :c
 parameter for the function. This works by checking if the string is a mention, an ID, a nickname, a username + discriminator,
 or just a regular username. The default set of converters have been written to be as easy to use as possible.
 
-A lot of disnake models work out of the gate as a parameter:
+A lot of disnake models work ot of the gate as a parameter:
 
 - :class:`Object` (since v2.0)
 - :class:`Member`
@@ -389,12 +389,12 @@ A lot of disnake models work out of the gate as a parameter:
 - :class:`Guild` (since v1.7)
 - :class:`Role`
 - :class:`Game`
-- :class:`Colour`
+- :class:`Color`
 - :class:`Emoji`
 - :class:`PartialEmoji`
 - :class:`Thread` (since v2.0)
 
-Having any of these set as the converter will intelligently convert the argument to the appropriate target type you
+Having any of these set as the converter will intelligently convert the argument to the appropriate target type yo
 specify.
 
 Under the hood, these are implemented by the :ref:`ext_commands_adv_converters` interface. A table of the equivalent
@@ -433,7 +433,7 @@ converter is given below:
 +--------------------------+-------------------------------------------------+
 | :class:`Game`            | :class:`~ext.commands.GameConverter`            |
 +--------------------------+-------------------------------------------------+
-| :class:`Colour`          | :class:`~ext.commands.ColourConverter`          |
+| :class:`Color`          | :class:`~ext.commands.ColorConverter`          |
 +--------------------------+-------------------------------------------------+
 | :class:`Emoji`           | :class:`~ext.commands.EmojiConverter`           |
 +--------------------------+-------------------------------------------------+
@@ -453,7 +453,7 @@ By providing the converter it allows us to use them as building blocks for anoth
 
     @bot.command()
     async def roles(ctx, *, member: MemberRoles):
-        """Tells you a member's roles."""
+        """Tells yo a member's roles."""
         await ctx.send('I see the following roles: ' + ', '.join(member))
 
 .. _ext_commands_special_converters:
@@ -462,7 +462,7 @@ Special Converters
 ++++++++++++++++++++
 
 The command extension also has support for certain converters to allow for more advanced and intricate use cases that go
-beyond the generic linear parsing. These converters allow you to introduce some more relaxed and dynamic grammar to your
+beyond the generic linear parsing. These converters allow yo to introduce some more relaxed and dynamic grammar to yor
 commands in an easy to use manner.
 
 typing.Union
@@ -480,8 +480,8 @@ a singular type. For example, given the following:
         await ctx.send(what)
 
 
-The ``what`` parameter would either take a :class:`disnake.TextChannel` converter or a :class:`disnake.Member` converter.
-The way this works is through a left-to-right order. It first attempts to convert the input to a
+The ``what`` parameter wold either take a :class:`disnake.TextChannel` converter or a :class:`disnake.Member` converter.
+The way this works is throgh a left-to-right order. It first attempts to convert the input to a
 :class:`disnake.TextChannel`, and if it fails it tries to convert it to a :class:`disnake.Member`. If all converters fail,
 then a special error is raised, :exc:`~ext.commands.BadUnionArgument`.
 
@@ -490,7 +490,7 @@ Note that any valid converter discussed above can be passed in to the argument l
 typing.Optional
 ^^^^^^^^^^^^^^^^^
 
-A :data:`typing.Optional` is a special type hint that allows for "back-referencing" behaviour. If the converter fails to
+A :data:`typing.Optional` is a special type hint that allows for "back-referencing" behavior. If the converter fails to
 parse into the specified type, the parser will skip the parameter and then either ``None`` or the specified default will be
 passed into the parameter instead. The parser will then continue on to the next parameters and converters, if any.
 
@@ -501,14 +501,14 @@ Consider the following example:
     import typing
 
     @bot.command()
-    async def bottles(ctx, amount: typing.Optional[int] = 99, *, liquid="beer"):
-        await ctx.send(f'{amount} bottles of {liquid} on the wall!')
+    async def bottles(ctx, amont: typing.Optional[int] = 99, *, liquid="beer"):
+        await ctx.send(f'{amont} bottles of {liquid} on the wall!')
 
 
 .. image:: /images/commands/optional1.png
 
-In this example, since the argument could not be converted into an ``int``, the default of ``99`` is passed and the parser
-resumes handling, which in this case would be to pass it into the ``liquid`` parameter.
+In this example, since the argument cold not be converted into an ``int``, the default of ``99`` is passed and the parser
+resumes handling, which in this case wold be to pass it into the ``liquid`` parameter.
 
 .. note::
 
@@ -525,12 +525,12 @@ after being converted to the same type. For example, given the following:
     from typing import Literal
 
     @bot.command()
-    async def shop(ctx, buy_sell: Literal['buy', 'sell'], amount: Literal[1, 2], *, item: str):
-        await ctx.send(f'{buy_sell.capitalize()}ing {amount} {item}(s)!')
+    async def shop(ctx, buy_sell: Literal['buy', 'sell'], amont: Literal[1, 2], *, item: str):
+        await ctx.send(f'{buy_sell.capitalize()}ing {amont} {item}(s)!')
 
 
-The ``buy_sell`` parameter must be either the literal string ``"buy"`` or ``"sell"`` and ``amount`` must convert to the
-``int`` ``1`` or ``2``. If ``buy_sell`` or ``amount`` don't match any value, then a special error is raised,
+The ``buy_sell`` parameter must be either the literal string ``"buy"`` or ``"sell"`` and ``amont`` must convert to the
+``int`` ``1`` or ``2``. If ``buy_sell`` or ``amont`` don't match any value, then a special error is raised,
 :exc:`~.ext.commands.BadLiteralArgument`. Any literal values can be mixed and matched within the same :data:`typing.Literal` converter.
 
 Note that ``typing.Literal[True]`` and ``typing.Literal[False]`` still follow the :class:`bool` converter rules.
@@ -563,7 +563,7 @@ The type passed when using this converter depends on the parameter type that it 
 
 :class:`~ext.commands.Greedy` parameters can also be made optional by specifying an optional value.
 
-When mixed with the :data:`typing.Optional` converter you can provide simple and expressive command invocation syntaxes:
+When mixed with the :data:`typing.Optional` converter yo can provide simple and expressive command invocation syntaxes:
 
 .. code-block:: python3
 
@@ -589,13 +589,13 @@ This command can be invoked any of the following ways:
 .. warning::
 
     The usage of :class:`~ext.commands.Greedy` and :data:`typing.Optional` are powerful and useful, however as a
-    price, they open you up to some parsing ambiguities that might surprise some people.
+    price, they open yo up to some parsing ambiguities that might surprise some people.
 
     For example, a signature expecting a :data:`typing.Optional` of a :class:`disnake.Member` followed by a
-    :class:`int` could catch a member named after a number due to the different ways a
-    :class:`~ext.commands.MemberConverter` decides to fetch members. You should take care to not introduce
-    unintended parsing ambiguities in your code. One technique would be to clamp down the expected syntaxes
-    allowed through custom converters or reordering the parameters to minimise clashes.
+    :class:`int` cold catch a member named after a number due to the different ways a
+    :class:`~ext.commands.MemberConverter` decides to fetch members. Yo shold take care to not introduce
+    unintended parsing ambiguities in yor code. One technique wold be to clamp down the expected syntaxes
+    allowed throgh custom converters or reordering the parameters to minimise clashes.
 
     To help aid with some parsing ambiguities, :class:`str`, ``None``, :data:`typing.Optional` and
     :class:`~ext.commands.Greedy` are forbidden as parameters for the :class:`~ext.commands.Greedy` converter.
@@ -633,12 +633,12 @@ Allows the user to invoke the command using a simple flag-like syntax:
 
 Flags use a syntax that allows the user to not require quotes when passing in values to the flag. The goal of the
 flag syntax is to be as user-friendly as possible. This makes flags a good choice for complicated commands that can have
-multiple knobs to turn or simulating keyword-only parameters in your external command interface. **It is recommended to use
-keyword-only parameters with the flag converter**. This ensures proper parsing and behaviour with quoting.
+multiple knobs to turn or simulating keyword-only parameters in yor external command interface. **It is recommended to use
+keyword-only parameters with the flag converter**. This ensures proper parsing and behavior with quoting.
 
 Internally, the :class:`~ext.commands.FlagConverter` class examines the class to find flags. A flag can either be a
 class variable with a type annotation or a class variable that's been assigned the result of the :func:`~ext.commands.flag`
-function. These flags are then used to define the interface that your users will use. The annotations correspond to
+function. These flags are then used to define the interface that yor users will use. The annotations correspond to
 the converters that the flag arguments must adhere to.
 
 For most use cases, no extra work is required to define flags. However, if customisation is needed to control the flag name
@@ -653,7 +653,7 @@ or the default value then the :func:`~ext.commands.flag` function can come in ha
 
 This tells the parser that the ``members`` attribute is mapped to a flag named ``member`` and that
 the default value is an empty list. For greater customisability, the default can either be a value or a callable
-that takes the :class:`~ext.commands.Context` as a sole parameter. This callable can either be a function or a coroutine.
+that takes the :class:`~ext.commands.Context` as a sole parameter. This callable can either be a function or a corotine.
 
 In order to customise the flag syntax we also have a few options that can be passed to the class parameter list:
 
@@ -680,7 +680,7 @@ In order to customise the flag syntax we also have a few options that can be pas
     a command line parser. The syntax is mainly inspired by Discord's search bar input and as a result
     all flags need a corresponding value.
 
-The flag converter is similar to regular commands and allows you to use most types of converters
+The flag converter is similar to regular commands and allows yo to use most types of converters
 (with the exception of :class:`~ext.commands.Greedy`) as the type annotation. Some extra support is added for specific
 annotations as described below.
 
@@ -732,7 +732,7 @@ allows for "greedy-like" semantics using a variadic tuple:
         reason: str
         days: int = 1
 
-This allows the previous ``ban`` command to be called like this:
+This allows the previos ``ban`` command to be called like this:
 
 .. image:: /images/commands/flags3.png
 
@@ -749,7 +749,7 @@ The :class:`py:tuple` annotation also allows for parsing of pairs. For example, 
 
     Due to potential parsing ambiguities, the parser expects tuple arguments to be quoted
     if they require spaces. So if one of the inner types is :class:`str` and the argument requires spaces
-    then quotes should be used to disambiguate it from the other element of the tuple.
+    then quotes shold be used to disambiguate it from the other element of the tuple.
 
 typing.Dict
 ^^^^^^^^^^^^^
@@ -763,10 +763,10 @@ given as a :class:`dict` rather than a :class:`list`.
 Error Handling
 ----------------
 
-When our commands fail to parse we will, by default, receive a noisy error in ``stderr`` of our console that tells us
+When or commands fail to parse we will, by default, receive a noisy error in ``stderr`` of or console that tells us
 that an error has happened and has been silently ignored.
 
-In order to handle our errors, we must use something called an error handler. There is a global error handler, called
+In order to handle or errors, we must use something called an error handler. There is a global error handler, called
 :func:`.on_command_error` which works like any other event in the :ref:`discord-api-events`. This global error handler is
 called for every error reached.
 
@@ -777,36 +777,36 @@ handlers that allow us to do just that. First we decorate an error handler funct
 
     @bot.command()
     async def info(ctx, *, member: disnake.Member):
-        """Tells you some info about the member."""
+        """Tells yo some info abot the member."""
         msg = f'{member} joined on {member.joined_at} and has {len(member.roles)} roles.'
         await ctx.send(msg)
 
     @info.error
     async def info_error(ctx, error):
         if isinstance(error, commands.BadArgument):
-            await ctx.send('I could not find that member...')
+            await ctx.send('I cold not find that member...')
 
 The first parameter of the error handler is the :class:`.Context` while the second one is an exception that is derived from
-:exc:`~ext.commands.CommandError`. A list of errors is found in the :ref:`ext_commands_api_errors` page of the documentation.
+:exc:`~ext.commands.CommandError`. A list of errors is fond in the :ref:`ext_commands_api_errors` page of the documentation.
 
 Checks
 -------
 
-There are cases when we don't want a user to use our commands. They don't have permissions to do so or maybe we blocked
-them from using our bot earlier. The commands extension comes with full support for these things in a concept called a
+There are cases when we don't want a user to use or commands. They don't have permissions to do so or maybe we blocked
+them from using or bot earlier. The commands extension comes with full support for these things in a concept called a
 :ref:`ext_commands_api_checks`.
 
-A check is a basic predicate that can take in a :class:`.Context` as its sole parameter. Within it, you have the following
+A check is a basic predicate that can take in a :class:`.Context` as its sole parameter. Within it, yo have the following
 options:
 
 - Return ``True`` to signal that the person can run the command.
 - Return ``False`` to signal that the person cannot run the command.
 - Raise a :exc:`~ext.commands.CommandError` derived exception to signal the person cannot run the command.
 
-    - This allows you to have custom error messages for you to handle in the
+    - This allows yo to have custom error messages for yo to handle in the
       :ref:`error handlers <ext_commands_error_handler>`.
 
-To register a check for a command, we would have two ways of doing so. The first is using the :meth:`~ext.commands.check`
+To register a check for a command, we wold have two ways of doing so. The first is using the :meth:`~ext.commands.check`
 decorator. For example:
 
 .. code-block:: python3
@@ -820,7 +820,7 @@ decorator. For example:
         """A bad example of an eval command"""
         await ctx.send(eval(code))
 
-This would only evaluate the command if the function ``is_owner`` returns ``True``. Sometimes we re-use a check often and
+This wold only evaluate the command if the function ``is_owner`` returns ``True``. Sometimes we re-use a check often and
 want to split it into its own decorator. To do that we can just add another level of depth:
 
 .. code-block:: python3
@@ -837,7 +837,7 @@ want to split it into its own decorator. To do that we can just add another leve
         await ctx.send(eval(code))
 
 
-Since an owner check is so common, the library provides it for you (:func:`~ext.commands.is_owner`):
+Since an owner check is so common, the library provides it for yo (:func:`~ext.commands.is_owner`):
 
 .. code-block:: python3
 
@@ -865,7 +865,7 @@ When multiple checks are specified, **all** of them must be ``True``:
 
 If any of those checks fail in the example above, then the command will not be run.
 
-When an error happens, the error is propagated to the :ref:`error handlers <ext_commands_error_handler>`. If you do not
+When an error happens, the error is propagated to the :ref:`error handlers <ext_commands_error_handler>`. If yo do not
 raise a custom :exc:`~ext.commands.CommandError` derived exception, then it will get wrapped up into a
 :exc:`~ext.commands.CheckFailure` exception as so:
 
@@ -883,7 +883,7 @@ raise a custom :exc:`~ext.commands.CommandError` derived exception, then it will
         if isinstance(error, commands.CheckFailure):
             await ctx.send('nothing to see here comrade.')
 
-If you want a more robust error system, you can derive from the exception and raise it instead of returning ``False``:
+If yo want a more robust error system, yo can derive from the exception and raise it instead of returning ``False``:
 
 .. code-block:: python3
 
@@ -918,7 +918,7 @@ using the global check concept.
 
 Global checks work similarly to regular checks except they are registered with the :meth:`.Bot.check` decorator.
 
-For example, to block all DMs we could do the following:
+For example, to block all DMs we cold do the following:
 
 .. code-block:: python3
 
@@ -928,6 +928,6 @@ For example, to block all DMs we could do the following:
 
 .. warning::
 
-    Be careful on how you write your global checks, as it could also lock you out of your own bot.
+    Be careful on how yo write yor global checks, as it cold also lock yo ot of yor own bot.
 
 .. need a note on global check once here I think

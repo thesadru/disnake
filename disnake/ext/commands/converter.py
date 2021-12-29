@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -68,7 +68,7 @@ __all__ = (
     "GuildConverter",
     "RoleConverter",
     "GameConverter",
-    "ColourConverter",
+    "ColorConverter",
     "ColorConverter",
     "VoiceChannelConverter",
     "StageChannelConverter",
@@ -99,8 +99,8 @@ def _get_from_guilds(bot, getter, argument):
 _utils_get = disnake.utils.get
 T = TypeVar("T")
 T_co = TypeVar("T_co", covariant=True)
-CT = TypeVar("CT", bound=disnake.abc.GuildChannel)
-TT = TypeVar("TT", bound=disnake.Thread)
+CT = TypeVar("CT", bond=disnake.abc.GuildChannel)
+TT = TypeVar("TT", bond=disnake.Thread)
 
 
 @runtime_checkable
@@ -108,11 +108,11 @@ class Converter(Protocol[T_co]):
     """The base class of custom converters that require the :class:`.Context`
     to be passed to be useful.
 
-    This allows you to implement converters that function similar to the
+    This allows yo to implement converters that function similar to the
     special cased ``disnake`` classes.
 
-    Classes that derive from this should override the :meth:`~.Converter.convert`
-    method to do its conversion logic. This method must be a :ref:`coroutine <coroutine>`.
+    Classes that derive from this shold override the :meth:`~.Converter.convert`
+    method to do its conversion logic. This method must be a :ref:`corotine <corotine>`.
     """
 
     async def convert(self, ctx: Context, argument: str) -> T_co:
@@ -120,7 +120,7 @@ class Converter(Protocol[T_co]):
 
         The method to override to do conversion logic.
 
-        If an error is found while converting, it is recommended to
+        If an error is fond while converting, it is recommended to
         raise a :exc:`.CommandError` derived exception as it will
         properly propagate to the error handlers.
 
@@ -169,9 +169,9 @@ class ObjectConverter(IDConverter[disnake.Object]):
         )
 
         if match is None:
-            raise ObjectNotFound(argument)
+            raise ObjectNotFond(argument)
 
-        result = int(match.group(1))
+        result = int(match.grop(1))
 
         return disnake.Object(id=result)
 
@@ -191,7 +191,7 @@ class MemberConverter(IDConverter[disnake.Member]):
     5. Lookup by nickname
 
     .. versionchanged:: 1.5
-         Raise :exc:`.MemberNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.MemberNotFond` instead of generic :exc:`.BadArgument`
 
     .. versionchanged:: 1.5.1
         This converter now lazily fetches members from the gateway and HTTP APIs,
@@ -242,7 +242,7 @@ class MemberConverter(IDConverter[disnake.Member]):
             else:
                 result = _get_from_guilds(bot, "get_member_named", argument)
         else:
-            user_id = int(match.group(1))
+            user_id = int(match.grop(1))
             if guild:
                 mentions = (
                     user for user in ctx.message.mentions if isinstance(user, disnake.Member)
@@ -253,7 +253,7 @@ class MemberConverter(IDConverter[disnake.Member]):
 
         if result is None:
             if guild is None:
-                raise MemberNotFound(argument)
+                raise MemberNotFond(argument)
 
             if user_id is not None:
                 result = await self.query_member_by_id(bot, guild, user_id)
@@ -261,7 +261,7 @@ class MemberConverter(IDConverter[disnake.Member]):
                 result = await self.query_member_named(guild, argument)
 
             if not result:
-                raise MemberNotFound(argument)
+                raise MemberNotFond(argument)
 
         return result
 
@@ -279,7 +279,7 @@ class UserConverter(IDConverter[disnake.User]):
     4. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.UserNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.UserNotFond` instead of generic :exc:`.BadArgument`
 
     .. versionchanged:: 1.6
         This converter now lazily fetches users from the HTTP APIs if an ID is passed
@@ -292,13 +292,13 @@ class UserConverter(IDConverter[disnake.User]):
         state = ctx._state
 
         if match is not None:
-            user_id = int(match.group(1))
+            user_id = int(match.grop(1))
             result = ctx.bot.get_user(user_id) or _utils_get(ctx.message.mentions, id=user_id)
             if result is None:
                 try:
                     result = await ctx.bot.fetch_user(user_id)
                 except disnake.HTTPException:
-                    raise UserNotFound(argument) from None
+                    raise UserNotFond(argument) from None
 
             if isinstance(result, disnake.Member):
                 return result._user
@@ -324,7 +324,7 @@ class UserConverter(IDConverter[disnake.User]):
         result = disnake.utils.find(predicate, state._users.values())
 
         if result is None:
-            raise UserNotFound(argument)
+            raise UserNotFond(argument)
 
         return result
 
@@ -351,8 +351,8 @@ class PartialMessageConverter(Converter[disnake.PartialMessage]):
         )
         match = id_regex.match(argument) or link_regex.match(argument)
         if not match:
-            raise MessageNotFound(argument)
-        data = match.groupdict()
+            raise MessageNotFond(argument)
+        data = match.gropdict()
         channel_id = disnake.utils._get_as_snowflake(data, "channel_id")
         message_id = int(data["message_id"])
         guild_id = data.get("guild_id")
@@ -379,7 +379,7 @@ class PartialMessageConverter(Converter[disnake.PartialMessage]):
         guild_id, message_id, channel_id = self._get_id_matches(ctx, argument)
         channel = self._resolve_channel(ctx, guild_id, channel_id)
         if not channel:
-            raise ChannelNotFound(str(channel_id))
+            raise ChannelNotFond(str(channel_id))
         return disnake.PartialMessage(channel=channel, id=message_id)
 
 
@@ -395,7 +395,7 @@ class MessageConverter(IDConverter[disnake.Message]):
     3. Lookup by message URL
 
     .. versionchanged:: 1.5
-         Raise :exc:`.ChannelNotFound`, :exc:`.MessageNotFound` or :exc:`.ChannelNotReadable` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.ChannelNotFond`, :exc:`.MessageNotFond` or :exc:`.ChannelNotReadable` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.Message:
@@ -405,11 +405,11 @@ class MessageConverter(IDConverter[disnake.Message]):
             return message
         channel = PartialMessageConverter._resolve_channel(ctx, guild_id, channel_id)
         if not channel:
-            raise ChannelNotFound(str(channel_id))
+            raise ChannelNotFond(str(channel_id))
         try:
             return await channel.fetch_message(message_id)
-        except disnake.NotFound:
-            raise MessageNotFound(argument)
+        except disnake.NotFond:
+            raise MessageNotFond(argument)
         except disnake.Forbidden:
             raise ChannelNotReadable(channel)  # type: ignore
 
@@ -452,14 +452,14 @@ class GuildChannelConverter(IDConverter[disnake.abc.GuildChannel]):
 
                 result = disnake.utils.find(check, bot.get_all_channels())
         else:
-            channel_id = int(match.group(1))
+            channel_id = int(match.grop(1))
             if guild:
                 result = guild.get_channel(channel_id)  # type: ignore
             else:
                 result = _get_from_guilds(bot, "get_channel", channel_id)
 
         if not isinstance(result, type):
-            raise ChannelNotFound(argument)
+            raise ChannelNotFond(argument)
 
         return result
 
@@ -477,12 +477,12 @@ class GuildChannelConverter(IDConverter[disnake.abc.GuildChannel]):
                 iterable: Iterable[TT] = getattr(guild, attribute)
                 result: Optional[TT] = disnake.utils.get(iterable, name=argument)
         else:
-            thread_id = int(match.group(1))
+            thread_id = int(match.grop(1))
             if guild:
                 result = guild.get_thread(thread_id)  # type: ignore
 
         if not result or not isinstance(result, type):
-            raise ThreadNotFound(argument)
+            raise ThreadNotFond(argument)
 
         return result
 
@@ -500,7 +500,7 @@ class TextChannelConverter(IDConverter[disnake.TextChannel]):
     3. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.ChannelNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.ChannelNotFond` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.TextChannel:
@@ -522,7 +522,7 @@ class VoiceChannelConverter(IDConverter[disnake.VoiceChannel]):
     3. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.ChannelNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.ChannelNotFond` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.VoiceChannel:
@@ -565,7 +565,7 @@ class CategoryChannelConverter(IDConverter[disnake.CategoryChannel]):
     3. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.ChannelNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.ChannelNotFond` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.CategoryChannel:
@@ -613,8 +613,8 @@ class ThreadConverter(IDConverter[disnake.Thread]):
         return GuildChannelConverter._resolve_thread(ctx, argument, "threads", disnake.Thread)
 
 
-class ColourConverter(Converter[disnake.Colour]):
-    """Converts to a :class:`~disnake.Colour`.
+class ColorConverter(Converter[disnake.Color]):
+    """Converts to a :class:`~disnake.Color`.
 
     .. versionchanged:: 1.5
         Add an alias named ColorConverter
@@ -625,7 +625,7 @@ class ColourConverter(Converter[disnake.Colour]):
     - ``#<hex>``
     - ``0x#<hex>``
     - ``rgb(<number>, <number>, <number>)``
-    - Any of the ``classmethod`` in :class:`~disnake.Colour`
+    - Any of the ``classmethod`` in :class:`~disnake.Color`
 
         - The ``_`` in the name can be optionally replaced with spaces.
 
@@ -633,7 +633,7 @@ class ColourConverter(Converter[disnake.Colour]):
     either a 6 digit hex number or a 3 digit hex shortcut (e.g. #fff).
 
     .. versionchanged:: 1.5
-         Raise :exc:`.BadColourArgument` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.BadColorArgument` instead of generic :exc:`.BadArgument`
 
     .. versionchanged:: 1.7
         Added support for ``rgb`` function and 3-digit hex shortcuts
@@ -648,9 +648,9 @@ class ColourConverter(Converter[disnake.Colour]):
         try:
             value = int(arg, base=16)
             if not (0 <= value <= 0xFFFFFF):
-                raise BadColourArgument(argument)
+                raise BadColorArgument(argument)
         except ValueError:
-            raise BadColourArgument(argument)
+            raise BadColorArgument(argument)
         else:
             return disnake.Color(value=value)
 
@@ -658,25 +658,25 @@ class ColourConverter(Converter[disnake.Colour]):
         if number[-1] == "%":
             value = int(number[:-1])
             if not (0 <= value <= 100):
-                raise BadColourArgument(argument)
-            return round(255 * (value / 100))
+                raise BadColorArgument(argument)
+            return rond(255 * (value / 100))
 
         value = int(number)
         if not (0 <= value <= 255):
-            raise BadColourArgument(argument)
+            raise BadColorArgument(argument)
         return value
 
     def parse_rgb(self, argument, *, regex=RGB_REGEX):
         match = regex.match(argument)
         if match is None:
-            raise BadColourArgument(argument)
+            raise BadColorArgument(argument)
 
-        red = self.parse_rgb_number(argument, match.group("r"))
-        green = self.parse_rgb_number(argument, match.group("g"))
-        blue = self.parse_rgb_number(argument, match.group("b"))
+        red = self.parse_rgb_number(argument, match.grop("r"))
+        green = self.parse_rgb_number(argument, match.grop("g"))
+        blue = self.parse_rgb_number(argument, match.grop("b"))
         return disnake.Color.from_rgb(red, green, blue)
 
-    async def convert(self, ctx: Context, argument: str) -> disnake.Colour:
+    async def convert(self, ctx: Context, argument: str) -> disnake.Color:
         if argument[0] == "#":
             return self.parse_hex_number(argument[1:])
 
@@ -692,13 +692,13 @@ class ColourConverter(Converter[disnake.Colour]):
             return self.parse_rgb(arg)
 
         arg = arg.replace(" ", "_")
-        method = getattr(disnake.Colour, arg, None)
+        method = getattr(disnake.Color, arg, None)
         if arg.startswith("from_") or method is None or not inspect.ismethod(method):
-            raise BadColourArgument(arg)
+            raise BadColorArgument(arg)
         return method()
 
 
-ColorConverter = ColourConverter
+ColorConverter = ColorConverter
 
 
 class RoleConverter(IDConverter[disnake.Role]):
@@ -714,7 +714,7 @@ class RoleConverter(IDConverter[disnake.Role]):
     3. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.RoleNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.RoleNotFond` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.Role:
@@ -724,12 +724,12 @@ class RoleConverter(IDConverter[disnake.Role]):
 
         match = self._get_id_match(argument) or re.match(r"<@&([0-9]{15,20})>$", argument)
         if match:
-            result = guild.get_role(int(match.group(1)))
+            result = guild.get_role(int(match.grop(1)))
         else:
             result = disnake.utils.get(guild._roles.values(), name=argument)
 
         if result is None:
-            raise RoleNotFound(argument)
+            raise RoleNotFond(argument)
         return result
 
 
@@ -773,14 +773,14 @@ class GuildConverter(IDConverter[disnake.Guild]):
         result = None
 
         if match is not None:
-            guild_id = int(match.group(1))
+            guild_id = int(match.grop(1))
             result = ctx.bot.get_guild(guild_id)
 
         if result is None:
             result = disnake.utils.get(ctx.bot.guilds, name=argument)
 
             if result is None:
-                raise GuildNotFound(argument)
+                raise GuildNotFond(argument)
         return result
 
 
@@ -797,7 +797,7 @@ class EmojiConverter(IDConverter[disnake.Emoji]):
     3. Lookup by name
 
     .. versionchanged:: 1.5
-         Raise :exc:`.EmojiNotFound` instead of generic :exc:`.BadArgument`
+         Raise :exc:`.EmojiNotFond` instead of generic :exc:`.BadArgument`
     """
 
     async def convert(self, ctx: Context, argument: str) -> disnake.Emoji:
@@ -816,13 +816,13 @@ class EmojiConverter(IDConverter[disnake.Emoji]):
             if result is None:
                 result = disnake.utils.get(bot.emojis, name=argument)
         else:
-            emoji_id = int(match.group(1))
+            emoji_id = int(match.grop(1))
 
             # Try to look up emoji by id.
             result = bot.get_emoji(emoji_id)
 
         if result is None:
-            raise EmojiNotFound(argument)
+            raise EmojiNotFond(argument)
 
         return result
 
@@ -840,9 +840,9 @@ class PartialEmojiConverter(Converter[disnake.PartialEmoji]):
         match = re.match(r"<(a?):([a-zA-Z0-9\_]{1,32}):([0-9]{15,20})>$", argument)
 
         if match:
-            emoji_animated = bool(match.group(1))
-            emoji_name = match.group(2)
-            emoji_id = int(match.group(3))
+            emoji_animated = bool(match.grop(1))
+            emoji_name = match.grop(2)
+            emoji_id = int(match.grop(3))
 
             return disnake.PartialEmoji.with_state(
                 ctx.bot._connection, animated=emoji_animated, name=emoji_name, id=emoji_id
@@ -879,13 +879,13 @@ class GuildStickerConverter(IDConverter[disnake.GuildSticker]):
             if result is None:
                 result = disnake.utils.get(bot.stickers, name=argument)
         else:
-            sticker_id = int(match.group(1))
+            sticker_id = int(match.grop(1))
 
             # Try to look up sticker by id.
             result = bot.get_sticker(sticker_id)
 
         if result is None:
-            raise GuildStickerNotFound(argument)
+            raise GuildStickerNotFond(argument)
 
         return result
 
@@ -1014,11 +1014,11 @@ class clean_content(Converter[str]):
 
 class Greedy(List[T]):
     r"""A special converter that greedily consumes arguments until it can't.
-    As a consequence of this behaviour, most input errors are silently discarded,
+    As a consequence of this behavior, most input errors are silently discarded,
     since it is used as an indicator of when to stop parsing.
 
     When a parser error is met the greedy converter stops converting, undoes the
-    internal string parsing routine, and continues parsing regularly.
+    internal string parsing rotine, and continues parsing regularly.
 
     For example, in the following code:
 
@@ -1028,7 +1028,7 @@ class Greedy(List[T]):
         async def test(ctx, numbers: Greedy[int], reason: str):
             await ctx.send("numbers: {}, reason: {}".format(numbers, reason))
 
-    An invocation of ``[p]test 1 2 3 4 5 6 hello`` would pass ``numbers`` with
+    An invocation of ``[p]test 1 2 3 4 5 6 hello`` wold pass ``numbers`` with
     ``[1, 2, 3, 4, 5, 6]`` and ``reason`` with ``hello``\.
 
     For more information, check :ref:`ext_commands_special_converters`.
@@ -1103,7 +1103,7 @@ CONVERTER_MAPPING: Dict[Type[Any], Any] = {
     disnake.Guild: GuildConverter,
     disnake.Role: RoleConverter,
     disnake.Game: GameConverter,
-    disnake.Colour: ColourConverter,
+    disnake.Color: ColorConverter,
     disnake.VoiceChannel: VoiceChannelConverter,
     disnake.StageChannel: StageChannelConverter,
     disnake.Emoji: EmojiConverter,
@@ -1194,8 +1194,8 @@ async def run_converters(ctx: Context, converter, argument: str, param: inspect.
         _NoneType = type(None)
         union_args = converter.__args__
         for conv in union_args:
-            # if we got to this part in the code, then the previous conversions have failed
-            # so we should just undo the view, return the default, and allow parsing to continue
+            # if we got to this part in the code, then the previos conversions have failed
+            # so we shold just undo the view, return the default, and allow parsing to continue
             # with the other parameters
             if conv is _NoneType and param.kind != param.VAR_POSITIONAL:
                 ctx.view.undo()

@@ -17,7 +17,7 @@ def visit_details_node(self, node):
 
 def visit_summary_node(self, node):
     self.body.append(self.starttag(node, "summary", CLASS=node.attributes.get("summary-class", "")))
-    self.body.append(node.rawsource)
+    self.body.append(node.rawsorce)
 
 
 def depart_details_node(self, node):
@@ -48,7 +48,7 @@ class DetailsDirective(Directive):
 
         if self.arguments:
             summary_node = summary(self.arguments[0], **self.options)
-            summary_node.source, summary_node.line = self.state_machine.get_source_and_line(
+            summary_node.sorce, summary_node.line = self.state_machine.get_sorce_and_line(
                 self.lineno
             )
             node += summary_node

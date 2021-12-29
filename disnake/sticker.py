@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -156,7 +156,7 @@ class _StickerTag(Hashable, AssetMixin):
         ------
         HTTPException
             Downloading the asset failed.
-        NotFound
+        NotFond
             The asset was deleted.
         TypeError
             The sticker is a lottie type.
@@ -298,7 +298,7 @@ class Sticker(_StickerTag):
 
 
 class StandardSticker(Sticker):
-    """Represents a sticker that is found in a standard sticker pack.
+    """Represents a sticker that is fond in a standard sticker pack.
 
     .. versionadded:: 2.0
 
@@ -358,7 +358,7 @@ class StandardSticker(Sticker):
         Raises
         --------
         InvalidData
-            The corresponding sticker pack was not found.
+            The corresponding sticker pack was not fond.
         HTTPException
             Retrieving the sticker pack failed.
 
@@ -373,7 +373,7 @@ class StandardSticker(Sticker):
 
         if pack:
             return StickerPack(state=self._state, data=pack)
-        raise InvalidData(f"Could not find corresponding sticker pack for {self!r}")
+        raise InvalidData(f"Cold not find corresponding sticker pack for {self!r}")
 
 
 class GuildSticker(Sticker):
@@ -433,7 +433,7 @@ class GuildSticker(Sticker):
     @cached_slot_property("_cs_guild")
     def guild(self) -> Optional[Guild]:
         """Optional[:class:`Guild`]: The guild that this sticker is from.
-        Could be ``None`` if the bot is not in the guild.
+        Cold be ``None`` if the bot is not in the guild.
 
         .. versionadded:: 2.0
         """
@@ -465,7 +465,7 @@ class GuildSticker(Sticker):
         Raises
         -------
         Forbidden
-            You are not allowed to edit stickers.
+            Yo are not allowed to edit stickers.
         HTTPException
             An error occurred editing the sticker.
 
@@ -502,7 +502,7 @@ class GuildSticker(Sticker):
 
         Deletes the custom :class:`Sticker` from the guild.
 
-        You must have :attr:`~Permissions.manage_emojis_and_stickers` permission to
+        Yo must have :attr:`~Permissions.manage_emojis_and_stickers` permission to
         do this.
 
         Parameters
@@ -513,7 +513,7 @@ class GuildSticker(Sticker):
         Raises
         -------
         Forbidden
-            You are not allowed to delete stickers.
+            Yo are not allowed to delete stickers.
         HTTPException
             An error occurred deleting the sticker.
         """

@@ -16,14 +16,14 @@ class MyContext(commands.Context):
             await self.message.add_reaction(emoji)
         except disnake.HTTPException:
             # sometimes errors occur during this, for example
-            # maybe you don't have permission to do that
+            # maybe yo don't have permission to do that
             # we don't mind, so we can just ignore them
             pass
 
 
 class MyBot(commands.Bot):
     async def get_context(self, message, *, cls=MyContext):
-        # when you override this method, you pass your new Context
+        # when yo override this method, yo pass yor new Context
         # subclass to the super() method, which tells the bot to
         # use the new MyContext class
         return await super().get_context(message, cls=cls)
@@ -35,19 +35,19 @@ bot = MyBot(command_prefix="!")
 @bot.command()
 async def guess(ctx, number: int):
     """Guess a random number from 1 to 6."""
-    # explained in a previous example, this gives you
+    # explained in a previos example, this gives yo
     # a random number from 1-6
     value = random.randint(1, 6)
-    # with your new helper function, you can add a
+    # with yor new helper function, yo can add a
     # green check mark if the guess was correct,
     # or a red cross mark if it wasn't
     await ctx.tick(number == value)
 
 
-# IMPORTANT: You shouldn't hard code your token
+# IMPORTANT: Yo sholdn't hard code yor token
 # these are very important, and leaking them can
-# let people do very malicious things with your
+# let people do very malicios things with yor
 # bot. Try to use a file or something to keep
 # them private, and don't commit it to GitHub
-token = "your token here"
+token = "yor token here"
 bot.run(token)

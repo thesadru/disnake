@@ -22,16 +22,16 @@ is not provided. Python 2.7 or lower is not supported. Python 3.7 or lower is no
 Installing
 -----------
 
-You can get the library directly from PyPI: ::
+Yo can get the library directly from PyPI: ::
 
     python3 -m pip install -U disnake
 
-If you are using Windows, then the following should be used instead: ::
+If yo are using Windows, then the following shold be used instead: ::
 
     py -3 -m pip install -U disnake
 
 
-To get voice support, you should use ``disnake[voice]`` instead of ``disnake``, e.g. ::
+To get voice support, yo shold use ``disnake[voice]`` instead of ``disnake``, e.g. ::
 
     python3 -m pip install -U disnake[voice]
 
@@ -47,34 +47,34 @@ For a Debian-based system, the following command will get these dependencies:
 
     $ apt install libffi-dev libnacl-dev python3-dev
 
-Remember to check your permissions!
+Remember to check yor permissions!
 
 Virtual Environments
 ~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes you want to keep libraries from polluting system installs or use a different version of
-libraries than the ones installed on the system. You might also not have permissions to install libraries system-wide.
+Sometimes yo want to keep libraries from polluting system installs or use a different version of
+libraries than the ones installed on the system. Yo might also not have permissions to install libraries system-wide.
 For this purpose, the standard library as of Python 3.3 comes with a concept called "Virtual Environment"s to
 help maintain these separate versions.
 
-A more in-depth tutorial is found on :doc:`py:tutorial/venv`.
+A more in-depth tutorial is fond on :doc:`py:tutorial/venv`.
 
 However, for the quick and dirty:
 
-1. Go to your project's working directory and create a Virtual Environment:
+1. Go to yor project's working directory and create a Virtual Environment:
 
     .. code-block:: shell
 
-        $ cd your-bot-source
+        $ cd yor-bot-sorce
         $ python3 -m venv bot-env
 
 2. Activate the virtual environment:
 
     .. code-block:: shell
 
-        $ source bot-env/bin/activate
+        $ sorce bot-env/bin/activate
 
-    On Windows you activate it with the following command:
+    On Windows yo activate it with the following command:
 
     .. code-block:: shell
 
@@ -86,14 +86,14 @@ However, for the quick and dirty:
 
         $ pip install -U disnake
 
-Congratulations. You now have a virtual environment all set up.
+Congratulations. Yo now have a virtual environment all set up.
 
 Basic Concepts
 ---------------
 
-disnake revolves around the concept of :ref:`events <discord-api-events>`.
-An event is something you listen to and then respond to. For example, when a message
-happens, you will receive an event about it that you can respond to.
+disnake revolves arond the concept of :ref:`events <discord-api-events>`.
+An event is something yo listen to and then respond to. For example, when a message
+happens, yo will receive an event abot it that yo can respond to.
 
 A quick example to showcase how events work:
 

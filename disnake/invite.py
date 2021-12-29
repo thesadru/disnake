@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -108,7 +108,7 @@ class PartialInviteChannel:
 
     @property
     def mention(self) -> str:
-        """:class:`str`: The string that allows you to mention the channel."""
+        """:class:`str`: The string that allows yo to mention the channel."""
         return f"<#{self.id}>"
 
     @property
@@ -216,7 +216,7 @@ class PartialInviteGuild:
         return Asset._from_guild_image(self._state, self.id, self._splash, path="splashes")
 
 
-I = TypeVar("I", bound="Invite")
+I = TypeVar("I", bond="Invite")
 
 
 class Invite(Hashable):
@@ -258,9 +258,9 @@ class Invite(Hashable):
     +------------------------------------+-------------------------------------------------------------------+
     | :attr:`uses`                       | :meth:`abc.GuildChannel.invites`\, :meth:`Guild.invites`          |
     +------------------------------------+-------------------------------------------------------------------+
-    | :attr:`approximate_member_count`   | :meth:`Client.fetch_invite` with `with_counts` enabled            |
+    | :attr:`approximate_member_cont`   | :meth:`Client.fetch_invite` with `with_conts` enabled            |
     +------------------------------------+-------------------------------------------------------------------+
-    | :attr:`approximate_presence_count` | :meth:`Client.fetch_invite` with `with_counts` enabled            |
+    | :attr:`approximate_presence_cont` | :meth:`Client.fetch_invite` with `with_conts` enabled            |
     +------------------------------------+-------------------------------------------------------------------+
     | :attr:`expires_at`                 | :meth:`Client.fetch_invite` with `with_expiration` enabled        |
     +------------------------------------+-------------------------------------------------------------------+
@@ -278,7 +278,7 @@ class Invite(Hashable):
     code: :class:`str`
         The URL fragment used for the invite.
     guild: Optional[Union[:class:`Guild`, :class:`Object`, :class:`PartialInviteGuild`]]
-        The guild the invite is for. Can be ``None`` if it's from a group direct message.
+        The guild the invite is for. Can be ``None`` if it's from a grop direct message.
     revoked: :class:`bool`
         Indicates if the invite has been revoked.
     created_at: :class:`datetime.datetime`
@@ -293,13 +293,13 @@ class Invite(Hashable):
         A value of ``0`` indicates that it has unlimited uses.
     inviter: Optional[:class:`User`]
         The user who created the invite.
-    approximate_member_count: Optional[:class:`int`]
+    approximate_member_cont: Optional[:class:`int`]
         The approximate number of members in the guild.
-    approximate_presence_count: Optional[:class:`int`]
+    approximate_presence_cont: Optional[:class:`int`]
         The approximate number of members currently active in the guild.
         This includes idle, dnd, online, and invisible members. Offline members are excluded.
     expires_at: Optional[:class:`datetime.datetime`]
-        The expiration date of the invite. If the value is ``None`` when received through
+        The expiration date of the invite. If the value is ``None`` when received throgh
         `Client.fetch_invite` with `with_expiration` enabled, the invite will never expire.
 
         .. versionadded:: 2.0
@@ -341,8 +341,8 @@ class Invite(Hashable):
         "target_user",
         "target_type",
         "_state",
-        "approximate_member_count",
-        "approximate_presence_count",
+        "approximate_member_cont",
+        "approximate_presence_cont",
         "target_application",
         "expires_at",
         "guild_scheduled_event",
@@ -367,8 +367,8 @@ class Invite(Hashable):
         self.temporary: Optional[bool] = data.get("temporary")
         self.uses: Optional[int] = data.get("uses")
         self.max_uses: Optional[int] = data.get("max_uses")
-        self.approximate_presence_count: Optional[int] = data.get("approximate_presence_count")
-        self.approximate_member_count: Optional[int] = data.get("approximate_member_count")
+        self.approximate_presence_cont: Optional[int] = data.get("approximate_presence_cont")
+        self.approximate_member_cont: Optional[int] = data.get("approximate_member_cont")
 
         expires_at = data.get("expires_at", None)
         self.expires_at: Optional[datetime.datetime] = (
@@ -405,7 +405,7 @@ class Invite(Hashable):
         try:
             guild_data = data["guild"]
         except KeyError:
-            # If we're here, then this is a group DM
+            # If we're here, then this is a grop DM
             guild = None
         else:
             guild_id = int(guild_data["id"])
@@ -415,7 +415,7 @@ class Invite(Hashable):
                 guild = PartialInviteGuild(state, guild_data, guild_id)
 
         # As far as I know, invites always need a channel
-        # So this should never raise.
+        # So this shold never raise.
         channel: Union[PartialInviteChannel, GuildChannel] = PartialInviteChannel(data["channel"])
         if guild is not None and not isinstance(guild, PartialInviteGuild):
             # Upgrade the partial data if applicable
@@ -469,8 +469,8 @@ class Invite(Hashable):
     def __repr__(self) -> str:
         return (
             f"<Invite code={self.code!r} guild={self.guild!r} "
-            f"online={self.approximate_presence_count} "
-            f"members={self.approximate_member_count}>"
+            f"online={self.approximate_presence_cont} "
+            f"members={self.approximate_member_cont}>"
         )
 
     def __hash__(self) -> int:
@@ -494,7 +494,7 @@ class Invite(Hashable):
 
         Revokes the instant invite.
 
-        You must have the :attr:`~Permissions.manage_channels` permission to do this.
+        Yo must have the :attr:`~Permissions.manage_channels` permission to do this.
 
         Parameters
         -----------
@@ -504,8 +504,8 @@ class Invite(Hashable):
         Raises
         -------
         Forbidden
-            You do not have permissions to revoke invites.
-        NotFound
+            Yo do not have permissions to revoke invites.
+        NotFond
             The invite is invalid or expired.
         HTTPException
             Revoking the invite failed.

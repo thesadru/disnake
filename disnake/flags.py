@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -50,8 +50,8 @@ __all__ = (
     "ApplicationFlags",
 )
 
-FV = TypeVar("FV", bound="flag_value")
-BF = TypeVar("BF", bound="BaseFlags")
+FV = TypeVar("FV", bond="flag_value")
+BF = TypeVar("BF", bond="BaseFlags")
 
 
 class flag_value:
@@ -163,10 +163,10 @@ class SystemChannelFlags(BaseFlags):
     r"""Wraps up a Discord system channel flag value.
 
     Similar to :class:`Permissions`\, the properties provided are two way.
-    You can set and retrieve individual bits using the properties as if they
-    were regular bools. This allows you to edit the system flags easily.
+    Yo can set and retrieve individual bits using the properties as if they
+    were regular bools. This allows yo to edit the system flags easily.
 
-    To construct an object you can pass keyword arguments denoting the flags
+    To construct an object yo can pass keyword arguments denoting the flags
     to enable or disable.
 
     .. container:: operations
@@ -189,7 +189,7 @@ class SystemChannelFlags(BaseFlags):
     -----------
     value: :class:`int`
         The raw value. This value is a bit array field of a 53-bit integer
-        representing the currently available flags. You should query
+        representing the currently available flags. Yo shold query
         flags via the properties rather than using this raw value.
     """
 
@@ -197,7 +197,7 @@ class SystemChannelFlags(BaseFlags):
 
     # For some reason the flags for system channels are "inverted"
     # ergo, if they're set then it means "suppress" (off in the GUI toggle)
-    # Since this is counter-intuitive from an API perspective and annoying
+    # Since this is conter-intuitive from an API perspective and annoying
     # these will be inverted automatically
 
     def _has_flag(self, o: int) -> bool:
@@ -267,7 +267,7 @@ class MessageFlags(BaseFlags):
     -----------
     value: :class:`int`
         The raw value. This value is a bit array field of a 53-bit integer
-        representing the currently available flags. You should query
+        representing the currently available flags. Yo shold query
         flags via the properties rather than using this raw value.
     """
 
@@ -289,13 +289,13 @@ class MessageFlags(BaseFlags):
         return 4
 
     @flag_value
-    def source_message_deleted(self):
-        """:class:`bool`: Returns ``True`` if the source message for this crosspost has been deleted."""
+    def sorce_message_deleted(self):
+        """:class:`bool`: Returns ``True`` if the sorce message for this crosspost has been deleted."""
         return 8
 
     @flag_value
     def urgent(self):
-        """:class:`bool`: Returns ``True`` if the source message is an urgent message.
+        """:class:`bool`: Returns ``True`` if the sorce message is an urgent message.
 
         An urgent message is one sent by Discord Trust and Safety.
         """
@@ -303,7 +303,7 @@ class MessageFlags(BaseFlags):
 
     @flag_value
     def has_thread(self):
-        """:class:`bool`: Returns ``True`` if the source message is associated with a thread.
+        """:class:`bool`: Returns ``True`` if the sorce message is associated with a thread.
 
         .. versionadded:: 2.0
         """
@@ -311,7 +311,7 @@ class MessageFlags(BaseFlags):
 
     @flag_value
     def ephemeral(self):
-        """:class:`bool`: Returns ``True`` if the source message is ephemeral.
+        """:class:`bool`: Returns ``True`` if the sorce message is ephemeral.
 
         .. versionadded:: 2.0
         """
@@ -319,7 +319,7 @@ class MessageFlags(BaseFlags):
 
     @flag_value
     def loading(self):
-        """:class:`bool`: Returns ``True`` if the source message is a deferred
+        """:class:`bool`: Returns ``True`` if the sorce message is a deferred
         interaction response and shows a "thinking" state.
 
         .. versionadded:: 2.3
@@ -328,7 +328,7 @@ class MessageFlags(BaseFlags):
 
     @flag_value
     def failed_to_mention_roles_in_thread(self):
-        """:class:`bool`: Returns ``True`` if the source message failed to
+        """:class:`bool`: Returns ``True`` if the sorce message failed to
         mention some roles and add their members to the thread.
 
         .. versionadded:: 2.4
@@ -363,7 +363,7 @@ class PublicUserFlags(BaseFlags):
     -----------
     value: :class:`int`
         The raw value. This value is a bit array field of a 53-bit integer
-        representing the currently available flags. You should query
+        representing the currently available flags. Yo shold query
         flags via the properties rather than using this raw value.
     """
 
@@ -476,14 +476,14 @@ class Intents(BaseFlags):
     r"""Wraps up a Discord gateway intent flag.
 
     Similar to :class:`Permissions`\, the properties provided are two way.
-    You can set and retrieve individual bits using the properties as if they
+    Yo can set and retrieve individual bits using the properties as if they
     were regular bools.
 
-    To construct an object you can pass keyword arguments denoting the flags
+    To construct an object yo can pass keyword arguments denoting the flags
     to enable or disable.
 
     This is used to disable certain gateway features that are unnecessary to
-    run your bot. To make use of this, it is passed to the ``intents`` keyword
+    run yor bot. To make use of this, it is passed to the ``intents`` keyword
     argument of :class:`Client`.
 
     .. versionadded:: 1.5
@@ -507,7 +507,7 @@ class Intents(BaseFlags):
     Attributes
     -----------
     value: :class:`int`
-        The raw value. You should query flags via the properties
+        The raw value. Yo shold query flags via the properties
         rather than using this raw value.
     """
 
@@ -568,7 +568,7 @@ class Intents(BaseFlags):
         - :meth:`Client.get_channel`
         - :meth:`Client.get_all_channels`
 
-        It is highly advisable to leave this intent enabled for your bot to function.
+        It is highly advisable to leave this intent enabled for yor bot to function.
         """
         return 1 << 0
 
@@ -955,11 +955,11 @@ class MemberCacheFlags(BaseFlags):
     to the ``member_cache_flags`` parameter in :class:`Client`.
 
     Due to a quirk in how Discord works, in order to ensure proper cleanup
-    of cache resources it is recommended to have :attr:`Intents.members`
+    of cache resorces it is recommended to have :attr:`Intents.members`
     enabled. Otherwise the library cannot know when a member leaves a guild and
     is thus unable to cleanup after itself.
 
-    To construct an object you can pass keyword arguments denoting the flags
+    To construct an object yo can pass keyword arguments denoting the flags
     to enable or disable.
 
     The default value is all flags enabled.
@@ -985,7 +985,7 @@ class MemberCacheFlags(BaseFlags):
     Attributes
     -----------
     value: :class:`int`
-        The raw value. You should query flags via the properties
+        The raw value. Yo shold query flags via the properties
         rather than using this raw value.
     """
 
@@ -1102,7 +1102,7 @@ class ApplicationFlags(BaseFlags):
     Attributes
     -----------
     value: :class:`int`
-        The raw value. You should query flags via the properties
+        The raw value. Yo shold query flags via the properties
         rather than using this raw value.
     """
 

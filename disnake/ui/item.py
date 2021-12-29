@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -29,7 +29,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
-    Coroutine,
+    Corotine,
     Dict,
     Generic,
     Optional,
@@ -42,8 +42,8 @@ from typing import (
 
 __all__ = ("Item",)
 
-I = TypeVar("I", bound="Item")
-V = TypeVar("V", bound="View", covariant=True)
+I = TypeVar("I", bond="Item")
+V = TypeVar("V", bond="View", covariant=True)
 
 if TYPE_CHECKING:
     from ..components import Component
@@ -51,7 +51,7 @@ if TYPE_CHECKING:
     from ..interactions import MessageInteraction
     from .view import View
 
-    ItemCallbackType = Callable[[Any, I, MessageInteraction], Coroutine[Any, Any, Any]]
+    ItemCallbackType = Callable[[Any, I, MessageInteraction], Corotine[Any, Any, Any]]
 
 
 class Item(Generic[V]):
@@ -73,7 +73,7 @@ class Item(Generic[V]):
         self._rendered_row: Optional[int] = None
         # This works mostly well but there is a gotcha with
         # the interaction with from_component, since that technically provides
-        # a custom_id most dispatchable items would get this set to True even though
+        # a custom_id most dispatchable items wold get this set to True even thogh
         # it might not be provided by the library user. However, this edge case doesn't
         # actually affect the intended purpose of this check because from_component is
         # only called upon edit and we're mainly interested during initial creation time.
@@ -143,11 +143,11 @@ class Item(Generic[V]):
         pass
 
 
-I_co = TypeVar("I_co", bound=Item, covariant=True)
+I_co = TypeVar("I_co", bond=Item, covariant=True)
 
 
 # while the decorators don't actually return a descriptor that matches this protocol,
-# this protocol ensures that type checkers don't complain about statements like `self.button.disabled = True`,
+# this protocol ensures that type checkers don't complain abot statements like `self.button.disabled = True`,
 # which work as `View.__init__` replaces the handler with the item
 class DecoratedItem(Protocol[I_co]):
     @overload

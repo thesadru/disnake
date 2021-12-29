@@ -10,7 +10,7 @@ class Setting {
   }
 
   setElement() {
-    throw new TypeError('Abstract methods should be implemented.');
+    throw new TypeError('Abstract methods shold be implemented.');
   }
 
   load() {
@@ -25,7 +25,7 @@ class Setting {
   }
 
   update() {
-    throw new TypeError('Abstract methods should be implemented.');
+    throw new TypeError('Abstract methods shold be implemented.');
   }
 
 }

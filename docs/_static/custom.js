@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tables.forEach(table => {
     let element = document.getElementById(table.getAttribute('data-move-to-id'));
     let parent = element.parentNode;
-    // insert ourselves after the element
+    // insert orselves after the element
     parent.insertBefore(table, element.nextSibling);
   });
 
@@ -105,7 +105,7 @@ var url = new URL(window.location.href);
 if (url.searchParams.has('q')) {
   query = url.searchParams.get('q')
   if (query.toLowerCase().includes('color')) {
-    url.searchParams.set('q', query.replace('color', 'colour').replace('Color', 'Colour'));
+    url.searchParams.set('q', query.replace('color', 'color').replace('Color', 'Color'));
     window.history.replaceState({}, document.title, url.toString());
   }
 }

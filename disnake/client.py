@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -34,7 +34,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
-    Coroutine,
+    Corotine,
     Dict,
     Generator,
     List,
@@ -97,7 +97,7 @@ if TYPE_CHECKING:
 
 __all__ = ("Client",)
 
-Coro = TypeVar("Coro", bound=Callable[..., Coroutine[Any, Any, Any]])
+Coro = TypeVar("Coro", bond=Callable[..., Corotine[Any, Any, Any]])
 
 
 _log = logging.getLogger(__name__)
@@ -153,7 +153,7 @@ class Client:
         .. versionchanged:: 1.3
             Allow disabling the message cache and change the default size to ``1000``.
     loop: Optional[:class:`asyncio.AbstractEventLoop`]
-        The :class:`asyncio.AbstractEventLoop` to use for asynchronous operations.
+        The :class:`asyncio.AbstractEventLoop` to use for asynchronos operations.
         Defaults to ``None``, in which case the default event loop is used via
         :func:`asyncio.get_event_loop()`.
     connector: Optional[:class:`aiohttp.BaseConnector`]
@@ -163,13 +163,13 @@ class Client:
     proxy_auth: Optional[:class:`aiohttp.BasicAuth`]
         An object that represents proxy HTTP Basic Authorization.
     shard_id: Optional[:class:`int`]
-        Integer starting at ``0`` and less than :attr:`.shard_count`.
-    shard_count: Optional[:class:`int`]
+        Integer starting at ``0`` and less than :attr:`.shard_cont`.
+    shard_cont: Optional[:class:`int`]
         The total number of shards.
     application_id: :class:`int`
         The client's application ID.
     intents: :class:`Intents`
-        The intents that you want to enable for the session. This is a way of
+        The intents that yo want to enable for the session. This is a way of
         disabling and enabling certain gateway events from triggering and being sent.
         If not given, defaults to a regularly constructed :class:`Intents` class.
 
@@ -181,36 +181,36 @@ class Client:
 
         .. versionadded:: 1.5
     chunk_guilds_at_startup: :class:`bool`
-        Indicates if :func:`.on_ready` should be delayed to chunk all guilds
+        Indicates if :func:`.on_ready` shold be delayed to chunk all guilds
         at start-up if necessary. This operation is incredibly slow for large
-        amounts of guilds. The default is ``True`` if :attr:`Intents.members`
+        amonts of guilds. The default is ``True`` if :attr:`Intents.members`
         is ``True``.
 
         .. versionadded:: 1.5
     status: Optional[:class:`.Status`]
-        A status to start your presence with upon logging on to Discord.
+        A status to start yor presence with upon logging on to Discord.
     activity: Optional[:class:`.BaseActivity`]
-        An activity to start your presence with upon logging on to Discord.
+        An activity to start yor presence with upon logging on to Discord.
     allowed_mentions: Optional[:class:`AllowedMentions`]
         Control how the client handles mentions by default on every message sent.
 
         .. versionadded:: 1.4
-    heartbeat_timeout: :class:`float`
-        The maximum numbers of seconds before timing out and restarting the
+    heartbeat_timeot: :class:`float`
+        The maximum numbers of seconds before timing ot and restarting the
         WebSocket in the case of not receiving a HEARTBEAT_ACK. Useful if
         processing the initial packets take too long to the point of disconnecting
-        you. The default timeout is 60 seconds.
-    guild_ready_timeout: :class:`float`
+        yo. The default timeot is 60 seconds.
+    guild_ready_timeot: :class:`float`
         The maximum number of seconds to wait for the GUILD_CREATE stream to end before
-        preparing the member cache and firing READY. The default timeout is 2 seconds.
+        preparing the member cache and firing READY. The default timeot is 2 seconds.
 
         .. versionadded:: 1.4
     assume_unsync_clock: :class:`bool`
         Whether to assume the system clock is unsynced. This applies to the ratelimit handling
         code. If this is set to ``True``, the default, then the library uses the time to reset
-        a rate limit bucket given by Discord. If this is ``False`` then your system clock is
+        a rate limit bucket given by Discord. If this is ``False`` then yor system clock is
         used to calculate how long to sleep for. If this is set to ``False`` it is recommended to
-        sync your system clock to Google's NTP server.
+        sync yor system clock to Google's NTP server.
 
         .. versionadded:: 1.3
     enable_debug_events: :class:`bool`
@@ -222,15 +222,15 @@ class Client:
 
         .. versionadded:: 2.0
     test_guilds: List[:class:`int`]
-        The list of IDs of the guilds where you're going to test your app commands.
+        The list of IDs of the guilds where yo're going to test yor app commands.
         Defaults to ``None``, which means global registration of commands across
         all guilds.
 
         .. versionadded:: 2.1
     sync_commands: :class:`bool`
-        Whether to enable automatic synchronization of application commands in your code.
+        Whether to enable automatic synchronization of application commands in yor code.
         Defaults to ``True``, which means that commands in API are automatically synced
-        with the commands specified in your code.
+        with the commands specified in yor code.
 
         .. versionadded:: 2.1
     sync_commands_debug: :class:`bool`
@@ -247,9 +247,9 @@ class Client:
     Attributes
     -----------
     ws
-        The websocket gateway the client is currently connected to. Could be ``None``.
+        The websocket gateway the client is currently connected to. Cold be ``None``.
     loop: :class:`asyncio.AbstractEventLoop`
-        The event loop that the client uses for asynchronous operations.
+        The event loop that the client uses for asynchronos operations.
     asyncio_debug: :class:`bool`
         Whether to enable asyncio debugging when the client starts.
         Defaults to False.
@@ -268,7 +268,7 @@ class Client:
         self.loop.set_debug(asyncio_debug)
         self._listeners: Dict[str, List[Tuple[asyncio.Future, Callable[..., bool]]]] = {}
         self.shard_id: Optional[int] = options.get("shard_id")
-        self.shard_count: Optional[int] = options.get("shard_count")
+        self.shard_cont: Optional[int] = options.get("shard_cont")
 
         connector: Optional[aiohttp.BaseConnector] = options.pop("connector", None)
         proxy: Optional[str] = options.pop("proxy", None)
@@ -287,7 +287,7 @@ class Client:
 
         self._enable_debug_events: bool = options.pop("enable_debug_events", False)
         self._connection: ConnectionState = self._get_state(**options)
-        self._connection.shard_count = self.shard_count
+        self._connection.shard_cont = self.shard_cont
         self._closed: bool = False
         self._ready: asyncio.Event = asyncio.Event()
         self._first_connect: asyncio.Event = asyncio.Event()
@@ -327,7 +327,7 @@ class Client:
     def latency(self) -> float:
         """:class:`float`: Measures latency between a HEARTBEAT and a HEARTBEAT_ACK in seconds.
 
-        This could be referred to as the Discord WebSocket protocol latency.
+        This cold be referred to as the Discord WebSocket protocol latency.
         """
         ws = self.ws
         return float("nan") if not ws else ws.latency
@@ -335,7 +335,7 @@ class Client:
     def is_ws_ratelimited(self) -> bool:
         """Whether the websocket is currently rate limited.
 
-        This can be useful to know when deciding whether you should query members
+        This can be useful to know when deciding whether yo shold query members
         using HTTP or via the gateway.
 
         .. versionadded:: 1.6
@@ -401,7 +401,7 @@ class Client:
         """Optional[:class:`int`]: The client's application ID.
 
         If this is not passed via ``__init__`` then this is retrieved
-        through the gateway when an event contains the data. Usually
+        throgh the gateway when an event contains the data. Usually
         after :func:`~disnake.on_connect` is called.
 
         .. versionadded:: 2.0
@@ -511,7 +511,7 @@ class Client:
 
     async def _run_event(
         self,
-        coro: Callable[..., Coroutine[Any, Any, Any]],
+        coro: Callable[..., Corotine[Any, Any, Any]],
         event_name: str,
         *args: Any,
         **kwargs: Any,
@@ -528,7 +528,7 @@ class Client:
 
     def _schedule_event(
         self,
-        coro: Callable[..., Coroutine[Any, Any, Any]],
+        coro: Callable[..., Corotine[Any, Any, Any]],
         event_name: str,
         *args: Any,
         **kwargs: Any,
@@ -582,7 +582,7 @@ class Client:
 
         The default error handler provided by the client.
 
-        By default this prints to :data:`sys.stderr` however it could be
+        By default this prints to :data:`sys.stderr` however it cold be
         overridden to have a different implementation.
         Check :func:`~disnake.on_error` for more details.
         """
@@ -595,7 +595,7 @@ class Client:
         self, shard_id: Optional[int], *, initial: bool = False
     ) -> None:
         # This hook is an internal hook that actually calls the public one.
-        # It allows the library to have its own hook without stepping on the
+        # It allows the library to have its own hook withot stepping on the
         # toes of those who need to override their own hook.
         await self.before_identify_hook(shard_id, initial=initial)
 
@@ -603,7 +603,7 @@ class Client:
         """|coro|
 
         A hook that is called before IDENTIFYing a session. This is useful
-        if you wish to have more control over the synchronization of multiple
+        if yo wish to have more control over the synchronization of multiple
         IDENTIFYing clients.
 
         The default implementation sleeps for 5 seconds.
@@ -632,7 +632,7 @@ class Client:
         -----------
         token: :class:`str`
             The authentication token. Do not prefix this token with
-            anything as the library will do it for you.
+            anything as the library will do it for yo.
 
         Raises
         ------
@@ -654,22 +654,22 @@ class Client:
 
         Creates a websocket connection and lets the websocket listen
         to messages from Discord. This is a loop that runs the entire
-        event system and miscellaneous aspects of the library. Control
+        event system and miscellaneos aspects of the library. Control
         is not resumed until the WebSocket connection is terminated.
 
         Parameters
         -----------
         reconnect: :class:`bool`
-            If we should attempt reconnecting, either due to internet
+            If we shold attempt reconnecting, either due to internet
             failure or a specific failure on Discord's part. Certain
             disconnects that lead to bad state will not be handled (such as
             invalid sharding payloads or bad tokens).
 
         Raises
         -------
-        :exc:`.GatewayNotFound`
-            If the gateway to connect to Discord is not found. Usually if this
-            is thrown then there is a Discord API outage.
+        :exc:`.GatewayNotFond`
+            If the gateway to connect to Discord is not fond. Usually if this
+            is thrown then there is a Discord API otage.
         :exc:`.ConnectionClosed`
             The websocket connection has been terminated.
         """
@@ -682,7 +682,7 @@ class Client:
         while not self.is_closed():
             try:
                 coro = DiscordWebSocket.from_client(self, **ws_params)
-                self.ws = await asyncio.wait_for(coro, timeout=60.0)
+                self.ws = await asyncio.wait_for(coro, timeot=60.0)
                 ws_params["initial"] = False
                 while True:
                     await self.ws.poll_event()
@@ -696,10 +696,10 @@ class Client:
             except (
                 OSError,
                 HTTPException,
-                GatewayNotFound,
+                GatewayNotFond,
                 ConnectionClosed,
                 aiohttp.ClientError,
-                asyncio.TimeoutError,
+                asyncio.TimeotError,
             ) as exc:
 
                 self.dispatch("disconnect")
@@ -723,9 +723,9 @@ class Client:
                     )
                     continue
 
-                # We should only get this when an unhandled close code happens,
+                # We shold only get this when an unhandled close code happens,
                 # such as a clean disconnect (1000) or a bad state (bad token, no sharding, etc)
-                # sometimes, disnake sends us 1000 for unknown reasons so we should reconnect
+                # sometimes, disnake sends us 1000 for unknown reasons so we shold reconnect
                 # regardless and rely on is_closed instead
                 if isinstance(exc, ConnectionClosed):
                     if exc.code == 4014:
@@ -780,7 +780,7 @@ class Client:
     async def start(self, token: str, *, reconnect: bool = True) -> None:
         """|coro|
 
-        A shorthand coroutine for :meth:`login` + :meth:`connect`.
+        A shorthand corotine for :meth:`login` + :meth:`connect`.
 
         Raises
         -------
@@ -792,13 +792,13 @@ class Client:
 
     def run(self, *args: Any, **kwargs: Any) -> None:
         """A blocking call that abstracts away the event loop
-        initialisation from you.
+        initialisation from yo.
 
-        If you want more control over the event loop then this
-        function should not be used. Use :meth:`start` coroutine
+        If yo want more control over the event loop then this
+        function shold not be used. Use :meth:`start` corotine
         or :meth:`connect` + :meth:`login`.
 
-        Roughly Equivalent to: ::
+        Roghly Equivalent to: ::
 
             try:
                 loop.run_until_complete(start(*args, **kwargs))
@@ -936,7 +936,7 @@ class Client:
         Returns
         --------
         Optional[Union[:class:`.abc.GuildChannel`, :class:`.Thread`, :class:`.abc.PrivateChannel`]]
-            The returned channel or ``None`` if not found.
+            The returned channel or ``None`` if not fond.
         """
         return self._connection.get_channel(id)
 
@@ -945,7 +945,7 @@ class Client:
     ) -> PartialMessageable:
         """Returns a partial messageable with the given channel ID.
 
-        This is useful if you have a channel_id but don't want to do an API call
+        This is useful if yo have a channel_id but don't want to do an API call
         to send messages to it.
 
         .. versionadded:: 2.0
@@ -977,7 +977,7 @@ class Client:
         Returns
         --------
         Optional[:class:`.StageInstance`]
-            The returns stage instance or ``None`` if not found.
+            The returns stage instance or ``None`` if not fond.
         """
         from .channel import StageChannel
 
@@ -997,7 +997,7 @@ class Client:
         Returns
         --------
         Optional[:class:`.Guild`]
-            The guild or ``None`` if not found.
+            The guild or ``None`` if not fond.
         """
         return self._connection._get_guild(id)
 
@@ -1012,7 +1012,7 @@ class Client:
         Returns
         --------
         Optional[:class:`~disnake.User`]
-            The user or ``None`` if not found.
+            The user or ``None`` if not fond.
         """
         return self._connection.get_user(id)
 
@@ -1027,7 +1027,7 @@ class Client:
         Returns
         --------
         Optional[:class:`.Emoji`]
-            The custom emoji or ``None`` if not found.
+            The custom emoji or ``None`` if not fond.
         """
         return self._connection.get_emoji(id)
 
@@ -1044,7 +1044,7 @@ class Client:
         Returns
         --------
         Optional[:class:`.GuildSticker`]
-            The sticker or ``None`` if not found.
+            The sticker or ``None`` if not fond.
         """
         return self._connection.get_sticker(id)
 
@@ -1059,8 +1059,8 @@ class Client:
 
         .. note::
 
-            Just because you receive a :class:`.abc.GuildChannel` does not mean that
-            you can communicate in said channel. :meth:`.abc.GuildChannel.permissions_for` should
+            Just because yo receive a :class:`.abc.GuildChannel` does not mean that
+            yo can communicate in said channel. :meth:`.abc.GuildChannel.permissions_for` shold
             be used for that.
 
         Yields
@@ -1254,19 +1254,19 @@ class Client:
         event: str,
         *,
         check: Optional[Callable[..., bool]] = None,
-        timeout: Optional[float] = None,
+        timeot: Optional[float] = None,
     ) -> Any:
         """|coro|
 
         Waits for a WebSocket event to be dispatched.
 
-        This could be used to wait for a user to reply to a message,
+        This cold be used to wait for a user to reply to a message,
         or to react to a message, or to edit a message in a self-contained
         way.
 
-        The ``timeout`` parameter is passed onto :func:`asyncio.wait_for`. By default,
-        it does not timeout. Note that this does propagate the
-        :exc:`asyncio.TimeoutError` for you in case of timeout and is provided for
+        The ``timeot`` parameter is passed onto :func:`asyncio.wait_for`. By default,
+        it does not timeot. Note that this does propagate the
+        :exc:`asyncio.TimeotError` for yo in case of timeot and is provided for
         ease of use.
 
         In case the event returns multiple arguments, a :class:`tuple` containing those
@@ -1305,8 +1305,8 @@ class Client:
                         return user == message.author and str(reaction.emoji) == '\N{THUMBS UP SIGN}'
 
                     try:
-                        reaction, user = await client.wait_for('reaction_add', timeout=60.0, check=check)
-                    except asyncio.TimeoutError:
+                        reaction, user = await client.wait_for('reaction_add', timeot=60.0, check=check)
+                    except asyncio.TimeotError:
                         await channel.send('\N{THUMBS DOWN SIGN}')
                     else:
                         await channel.send('\N{THUMBS UP SIGN}')
@@ -1316,18 +1316,18 @@ class Client:
         ------------
         event: :class:`str`
             The event name, similar to the :ref:`event reference <discord-api-events>`,
-            but without the ``on_`` prefix, to wait for.
+            but withot the ``on_`` prefix, to wait for.
         check: Optional[Callable[..., :class:`bool`]]
             A predicate to check what to wait for. The arguments must meet the
             parameters of the event being waited for.
-        timeout: Optional[:class:`float`]
-            The number of seconds to wait before timing out and raising
-            :exc:`asyncio.TimeoutError`.
+        timeot: Optional[:class:`float`]
+            The number of seconds to wait before timing ot and raising
+            :exc:`asyncio.TimeotError`.
 
         Raises
         -------
-        asyncio.TimeoutError
-            If a timeout is provided and it was reached.
+        asyncio.TimeotError
+            If a timeot is provided and it was reached.
 
         Returns
         --------
@@ -1353,16 +1353,16 @@ class Client:
             self._listeners[ev] = listeners
 
         listeners.append((future, check))
-        return asyncio.wait_for(future, timeout)
+        return asyncio.wait_for(future, timeot)
 
     # event registration
 
     def event(self, coro: Coro) -> Coro:
         """A decorator that registers an event to listen to.
 
-        You can find more info about the events on the :ref:`documentation below <discord-api-events>`.
+        Yo can find more info abot the events on the :ref:`documentation below <discord-api-events>`.
 
-        The events must be a :ref:`coroutine <coroutine>`, if not, :exc:`TypeError` is raised.
+        The events must be a :ref:`corotine <corotine>`, if not, :exc:`TypeError` is raised.
 
         Example
         ---------
@@ -1376,11 +1376,11 @@ class Client:
         Raises
         --------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("event registered must be a coroutine function")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("event registered must be a corotine function")
 
         setattr(self, coro.__name__, coro)
         _log.debug("%s has successfully been registered as an event", coro.__name__)
@@ -1453,11 +1453,11 @@ class Client:
         before: SnowflakeTime = None,
         after: SnowflakeTime = None,
     ) -> GuildIterator:
-        """Retrieves an :class:`.AsyncIterator` that enables receiving your guilds.
+        """Retrieves an :class:`.AsyncIterator` that enables receiving yor guilds.
 
         .. note::
 
-            Using this, you will only receive :attr:`.Guild.owner`, :attr:`.Guild.icon`,
+            Using this, yo will only receive :attr:`.Guild.owner`, :attr:`.Guild.icon`,
             :attr:`.Guild.id`, and :attr:`.Guild.name` per :class:`.Guild`.
 
         .. note::
@@ -1483,8 +1483,8 @@ class Client:
         -----------
         limit: Optional[:class:`int`]
             The number of guilds to retrieve.
-            If ``None``, it retrieves every guild you have access to. Note, however,
-            that this would make it a slow operation.
+            If ``None``, it retrieves every guild yo have access to. Note, however,
+            that this wold make it a slow operation.
             Defaults to ``100``.
         before: Union[:class:`.abc.Snowflake`, :class:`datetime.datetime`]
             Retrieves guilds before this date or object.
@@ -1519,7 +1519,7 @@ class Client:
 
         Raises
         -------
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             The template is invalid.
         :exc:`.HTTPException`
             Getting the template failed.
@@ -1540,7 +1540,7 @@ class Client:
 
         .. note::
 
-            Using this, you will **not** receive :attr:`.Guild.channels`, :attr:`.Guild.members`,
+            Using this, yo will **not** receive :attr:`.Guild.channels`, :attr:`.Guild.members`,
             :attr:`.Member.activity` and :attr:`.Member.voice` per :class:`.Member`.
 
         .. note::
@@ -1555,7 +1555,7 @@ class Client:
         Raises
         ------
         :exc:`.Forbidden`
-            You do not have access to the guild.
+            Yo do not have access to the guild.
         :exc:`.HTTPException`
             Getting the guild failed.
 
@@ -1579,7 +1579,7 @@ class Client:
 
         Creates a :class:`.Guild`.
 
-        Bot accounts in more than 10 guilds are not allowed to create guilds.
+        Bot acconts in more than 10 guilds are not allowed to create guilds.
 
         Parameters
         ----------
@@ -1636,8 +1636,8 @@ class Client:
 
         Raises
         -------
-        :exc:`.NotFound`
-            The stage instance or channel could not be found.
+        :exc:`.NotFond`
+            The stage instance or channel cold not be fond.
         :exc:`.HTTPException`
             Getting the stage instance failed.
 
@@ -1656,7 +1656,7 @@ class Client:
         self,
         url: Union[Invite, str],
         *,
-        with_counts: bool = True,
+        with_conts: bool = True,
         with_expiration: bool = True,
         guild_scheduled_event_id: Optional[int] = None,
     ) -> Invite:
@@ -1666,7 +1666,7 @@ class Client:
 
         .. note::
 
-            If the invite is for a guild you have not joined, the guild and channel
+            If the invite is for a guild yo have not joined, the guild and channel
             attributes of the returned :class:`.Invite` will be :class:`.PartialInviteGuild` and
             :class:`.PartialInviteChannel` respectively.
 
@@ -1674,9 +1674,9 @@ class Client:
         -----------
         url: Union[:class:`.Invite`, :class:`str`]
             The Discord invite ID or URL (must be a discord.gg URL).
-        with_counts: :class:`bool`
-            Whether to include count information in the invite. This fills the
-            :attr:`.Invite.approximate_member_count` and :attr:`.Invite.approximate_presence_count`
+        with_conts: :class:`bool`
+            Whether to include cont information in the invite. This fills the
+            :attr:`.Invite.approximate_member_cont` and :attr:`.Invite.approximate_presence_cont`
             fields.
         with_expiration: :class:`bool`
             Whether to include the expiration date of the invite. This fills the
@@ -1692,7 +1692,7 @@ class Client:
 
         Raises
         -------
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             The invite has expired or is invalid.
         :exc:`.HTTPException`
             Getting the invite failed.
@@ -1714,7 +1714,7 @@ class Client:
 
         data = await self.http.get_invite(
             invite_id,
-            with_counts=with_counts,
+            with_conts=with_conts,
             with_expiration=with_expiration,
             guild_scheduled_event_id=guild_scheduled_event_id,
         )
@@ -1725,7 +1725,7 @@ class Client:
 
         Revokes an :class:`.Invite`, URL, or ID to an invite.
 
-        You must have the :attr:`~.Permissions.manage_channels` permission in
+        Yo must have the :attr:`~.Permissions.manage_channels` permission in
         the associated guild to do this.
 
         Parameters
@@ -1736,8 +1736,8 @@ class Client:
         Raises
         -------
         :exc:`.Forbidden`
-            You do not have permissions to revoke invites.
-        :exc:`.NotFound`
+            Yo do not have permissions to revoke invites.
+        :exc:`.NotFond`
             The invite is invalid or expired.
         :exc:`.HTTPException`
             Revoking the invite failed.
@@ -1746,7 +1746,7 @@ class Client:
         invite_id = utils.resolve_invite(invite)
         await self.http.delete_invite(invite_id)
 
-    # Miscellaneous stuff
+    # Miscellaneos stuff
 
     async def fetch_widget(self, guild_id: int, /) -> Widget:
         """|coro|
@@ -1802,12 +1802,12 @@ class Client:
         """|coro|
 
         Retrieves a :class:`~disnake.User` based on their ID.
-        You do not have to share any guilds with the user to get this information,
-        however many operations do require that you do.
+        Yo do not have to share any guilds with the user to get this information,
+        however many operations do require that yo do.
 
         .. note::
 
-            This method is an API call. If you have :attr:`disnake.Intents.members` and member cache enabled, consider :meth:`get_user` instead.
+            This method is an API call. If yo have :attr:`disnake.Intents.members` and member cache enabled, consider :meth:`get_user` instead.
 
         Parameters
         -----------
@@ -1816,7 +1816,7 @@ class Client:
 
         Raises
         -------
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             A user with this ID does not exist.
         :exc:`.HTTPException`
             Fetching the user failed.
@@ -1824,7 +1824,7 @@ class Client:
         Returns
         --------
         :class:`~disnake.User`
-            The user you requested.
+            The user yo requested.
         """
         data = await self.http.get_user(user_id)
         return User(state=self._connection, data=data)
@@ -1848,10 +1848,10 @@ class Client:
             An unknown channel type was received from Discord.
         :exc:`.HTTPException`
             Retrieving the channel failed.
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             Invalid Channel ID.
         :exc:`.Forbidden`
-            You do not have permission to fetch this channel.
+            Yo do not have permission to fetch this channel.
 
         Returns
         --------
@@ -1864,11 +1864,11 @@ class Client:
         if factory is None:
             raise InvalidData("Unknown channel type {type} for channel ID {id}.".format_map(data))
 
-        if ch_type in (ChannelType.group, ChannelType.private):
-            # the factory will be a DMChannel or GroupChannel here
+        if ch_type in (ChannelType.grop, ChannelType.private):
+            # the factory will be a DMChannel or GropChannel here
             channel = factory(me=self.user, data=data, state=self._connection)  # type: ignore
         else:
-            # the factory can't be a DMChannel or GroupChannel here
+            # the factory can't be a DMChannel or GropChannel here
             guild_id = int(data["guild_id"])  # type: ignore
             guild = self.get_guild(guild_id) or Object(id=guild_id)
             # GuildChannels expect a Guild, we may be passing an Object
@@ -1885,15 +1885,15 @@ class Client:
         --------
         :exc:`.HTTPException`
             Retrieving the webhook failed.
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             Invalid webhook ID.
         :exc:`.Forbidden`
-            You do not have permission to fetch this webhook.
+            Yo do not have permission to fetch this webhook.
 
         Returns
         ---------
         :class:`.Webhook`
-            The webhook you requested.
+            The webhook yo requested.
         """
         data = await self.http.get_webhook(webhook_id)
         return Webhook.from_state(data, state=self._connection)
@@ -1909,13 +1909,13 @@ class Client:
         --------
         :exc:`.HTTPException`
             Retrieving the sticker failed.
-        :exc:`.NotFound`
+        :exc:`.NotFond`
             Invalid sticker ID.
 
         Returns
         --------
         Union[:class:`.StandardSticker`, :class:`.GuildSticker`]
-            The sticker you requested.
+            The sticker yo requested.
         """
         data = await self.http.get_sticker(sticker_id)
         cls, _ = _sticker_factory(data["type"])  # type: ignore
@@ -1946,7 +1946,7 @@ class Client:
 
         Creates a :class:`.DMChannel` with this user.
 
-        This should be rarely called, as this is done transparently for most
+        This shold be rarely called, as this is done transparently for most
         people.
 
         .. versionadded:: 2.0
@@ -1962,9 +1962,9 @@ class Client:
             The channel that was created.
         """
         state = self._connection
-        found = state._get_private_channel_by_user(user.id)
-        if found:
-            return found
+        fond = state._get_private_channel_by_user(user.id)
+        if fond:
+            return fond
 
         data = await state.http.start_private_message(user.id)
         return state.add_dm_channel(data)
@@ -1972,7 +1972,7 @@ class Client:
     def add_view(self, view: View, *, message_id: Optional[int] = None) -> None:
         """Registers a :class:`~disnake.ui.View` for persistent listening.
 
-        This method should be used for when a view is comprised of components
+        This method shold be used for when a view is comprised of components
         that last longer than the lifecycle of the program.
 
         .. versionadded:: 2.0
@@ -1991,7 +1991,7 @@ class Client:
         TypeError
             A view was not passed.
         ValueError
-            The view is not persistent. A persistent view has no timeout
+            The view is not persistent. A persistent view has no timeot
             and all their components have an explicitly provided custom_id.
         """
 
@@ -2000,7 +2000,7 @@ class Client:
 
         if not view.is_persistent():
             raise ValueError(
-                "View is not persistent. Items need to have a custom_id set and View must have no timeout"
+                "View is not persistent. Items need to have a custom_id set and View must have no timeot"
             )
 
         self._connection.store_view(view, message_id)
@@ -2181,7 +2181,7 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the command should be inserted.
+            The ID of the guild where the command shold be inserted.
         application_command: :class:`.ApplicationCommand`
             An object representing the application command.
 
@@ -2204,7 +2204,7 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the command should be edited.
+            The ID of the guild where the command shold be edited.
         command_id: :class:`int`
             The ID of the command to edit.
         new_command: :class:`.ApplicationCommand`
@@ -2227,7 +2227,7 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the command should be deleted.
+            The ID of the guild where the command shold be deleted.
         command_id: :class:`int`
             The ID of the command to delete.
         """
@@ -2245,7 +2245,7 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the commands should be overwritten.
+            The ID of the guild where the commands shold be overwritten.
         application_commands: List[:class:`.ApplicationCommand`]
             A list of application commands to insert instead of the existing commands.
 
@@ -2312,9 +2312,9 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the permissions should be applied.
+            The ID of the guild where the permissions shold be applied.
         command_id: :class:`int`
-            The ID of the app command you want to apply these permissions to.
+            The ID of the app command yo want to apply these permissions to.
         permissions: Mapping[Union[:class:`~disnake.Role`, :class:`disnake.abc.User`], :class:`bool`]
             Roles or users to booleans. ``True`` means "allow", ``False`` means "deny".
         role_ids: Mapping[:class:`int`, :class:`bool`]
@@ -2347,9 +2347,9 @@ class Client:
         Parameters
         ----------
         guild_id: :class:`int`
-            The ID of the guild where the permissions should be applied.
+            The ID of the guild where the permissions shold be applied.
         permissions: List[:class:`.PartialGuildApplicationCommandPermissions`]
-            A list of partial permissions for each app command you want to edit.
+            A list of partial permissions for each app command yo want to edit.
 
         Returns
         -------

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,26 +14,26 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 
 Some documentation to refer to:
 
-- Our main web socket (mWS) sends opcode 4 with a guild ID and channel ID.
+- or main web socket (mWS) sends opcode 4 with a guild ID and channel ID.
 - The mWS receives VOICE_STATE_UPDATE and VOICE_SERVER_UPDATE.
 - We pull the session_id from VOICE_STATE_UPDATE.
 - We pull the token, endpoint and server_id from VOICE_SERVER_UPDATE.
 - Then we initiate the voice web socket (vWS) pointing to the endpoint.
 - We send opcode 0 with the user_id, server_id, session_id and token using the vWS.
 - The vWS sends back opcode 2 with an ssrc, port, modes(array) and hearbeat_interval.
-- We send a UDP discovery packet to endpoint:port and receive our IP and our port in LE.
-- Then we send our IP and port via vWS with opcode 1.
+- We send a UDP discovery packet to endpoint:port and receive or IP and or port in LE.
+- Then we send or IP and port via vWS with opcode 1.
 - When that's all done, we receive opcode 4 from the vWS.
 - Finally we can transmit data to endpoint:port.
 """
@@ -51,7 +51,7 @@ from . import opus, utils
 from .backoff import ExponentialBackoff
 from .errors import ClientException, ConnectionClosed
 from .gateway import *
-from .player import AudioPlayer, AudioSource
+from .player import AudioPlayer, AudioSorce
 from .utils import MISSING
 
 if TYPE_CHECKING:
@@ -92,7 +92,7 @@ class VoiceProtocol:
     This is an abstract class. The library provides a concrete implementation
     under :class:`VoiceClient`.
 
-    This class allows you to implement a protocol to allow for an external
+    This class allows yo to implement a protocol to allow for an external
     method of sending voice, such as Lavalink_ or a native library implementation.
 
     These classes are passed to :meth:`abc.Connectable.connect <VoiceChannel.connect>`.
@@ -122,7 +122,7 @@ class VoiceProtocol:
         data: :class:`dict`
             The raw `voice state payload`__.
 
-            .. _voice_state_update_payload: https://discord.com/developers/docs/resources/voice#voice-state-object
+            .. _voice_state_update_payload: https://discord.com/developers/docs/resorces/voice#voice-state-object
 
             __ voice_state_update_payload_
         """
@@ -145,7 +145,7 @@ class VoiceProtocol:
         """
         raise NotImplementedError
 
-    async def connect(self, *, timeout: float, reconnect: bool) -> None:
+    async def connect(self, *, timeot: float, reconnect: bool) -> None:
         """|coro|
 
         An abstract method called when the client initiates the connection request.
@@ -161,8 +161,8 @@ class VoiceProtocol:
 
         Parameters
         ------------
-        timeout: :class:`float`
-            The timeout for the connection.
+        timeot: :class:`float`
+            The timeot for the connection.
         reconnect: :class:`bool`
             Whether reconnection is expected.
         """
@@ -185,7 +185,7 @@ class VoiceProtocol:
     def cleanup(self) -> None:
         """This method *must* be called to ensure proper clean-up during a disconnect.
 
-        It is advisable to call this from within :meth:`disconnect` when you are
+        It is advisable to call this from within :meth:`disconnect` when yo are
         completely done with the voice protocol instance.
 
         This method removes it from the internal state cache that keeps track of
@@ -199,14 +199,14 @@ class VoiceProtocol:
 class VoiceClient(VoiceProtocol):
     """Represents a Discord voice connection.
 
-    You do not create these, you typically get them from
+    Yo do not create these, yo typically get them from
     e.g. :meth:`VoiceChannel.connect`.
 
     Warning
     --------
-    In order to use PCM based AudioSources, you must have the opus library
-    installed on your system and loaded through :func:`opus.load_opus`.
-    Otherwise, your AudioSources must be opus encoded (e.g. using :class:`FFmpegOpusAudio`)
+    In order to use PCM based AudioSorces, yo must have the opus library
+    installed on yor system and loaded throgh :func:`opus.load_opus`.
+    Otherwise, yor AudioSorces must be opus encoded (e.g. using :class:`FFmpegOpusAudio`)
     or the library will not be able to transmit audio.
 
     Attributes
@@ -250,7 +250,7 @@ class VoiceClient(VoiceProtocol):
         self._connections: int = 0
         self.sequence: int = 0
         self.timestamp: int = 0
-        self.timeout: float = 0
+        self.timeot: float = 0
         self._runner: asyncio.Task = MISSING
         self._player: Optional[AudioPlayer] = None
         self.encoder: Encoder = MISSING
@@ -271,7 +271,7 @@ class VoiceClient(VoiceProtocol):
 
     @property
     def user(self) -> ClientUser:
-        """:class:`ClientUser`: The user connected to voice (i.e. ourselves)."""
+        """:class:`ClientUser`: The user connected to voice (i.e. orselves)."""
         return self._state.user
 
     def checked_add(self, attr, value, limit):
@@ -288,7 +288,7 @@ class VoiceClient(VoiceProtocol):
         channel_id = data["channel_id"]
 
         if not self._handshaking or self._potentially_reconnecting:
-            # If we're done handshaking then we just need to update ourselves
+            # If we're done handshaking then we just need to update orselves
             # If we're potentially reconnecting due to a 4014, then we need to differentiate
             # a channel move and an actual force disconnect
             if channel_id is None:
@@ -302,7 +302,7 @@ class VoiceClient(VoiceProtocol):
 
     async def on_voice_server_update(self, data: VoiceServerUpdatePayload) -> None:
         if self._voice_server_complete.is_set():
-            _log.info("Ignoring extraneous voice server update.")
+            _log.info("Ignoring extraneos voice server update.")
             return
 
         self.token = data.get("token")
@@ -312,7 +312,7 @@ class VoiceClient(VoiceProtocol):
         if endpoint is None or self.token is None:
             _log.warning(
                 "Awaiting endpoint... This requires waiting. "
-                "If timeout occurred considering raising the timeout and reconnecting."
+                "If timeot occurred considering raising the timeot and reconnecting."
             )
             return
 
@@ -328,7 +328,7 @@ class VoiceClient(VoiceProtocol):
         self.socket.setblocking(False)
 
         if not self._handshaking:
-            # If we're not handshaking then we need to terminate our previous connection in the websocket
+            # If we're not handshaking then we need to terminate or previos connection in the websocket
             await self.ws.close(4000)
             return
 
@@ -353,7 +353,7 @@ class VoiceClient(VoiceProtocol):
         self._connections += 1
 
     def finish_handshake(self) -> None:
-        _log.info("Voice handshake complete. Endpoint found %s", self.endpoint)
+        _log.info("Voice handshake complete. Endpoint fond %s", self.endpoint)
         self._handshaking = False
         self._voice_server_complete.clear()
         self._voice_state_complete.clear()
@@ -366,9 +366,9 @@ class VoiceClient(VoiceProtocol):
         self._connected.set()
         return ws
 
-    async def connect(self, *, reconnect: bool, timeout: float) -> None:
+    async def connect(self, *, reconnect: bool, timeot: float) -> None:
         _log.info("Connecting to voice...")
-        self.timeout = timeout
+        self.timeot = timeot
 
         for i in range(5):
             self.prepare_handshake()
@@ -383,8 +383,8 @@ class VoiceClient(VoiceProtocol):
             await self.voice_connect()
 
             try:
-                await utils.sane_wait_for(futures, timeout=timeout)
-            except asyncio.TimeoutError:
+                await utils.sane_wait_for(futures, timeot=timeot)
+            except asyncio.TimeotError:
                 await self.disconnect(force=True)
                 raise
 
@@ -393,7 +393,7 @@ class VoiceClient(VoiceProtocol):
             try:
                 self.ws = await self.connect_websocket()
                 break
-            except (ConnectionClosed, asyncio.TimeoutError):
+            except (ConnectionClosed, asyncio.TimeotError):
                 if reconnect:
                     _log.exception("Failed to connect to voice... Retrying...")
                     await asyncio.sleep(1 + i * 2.0)
@@ -411,9 +411,9 @@ class VoiceClient(VoiceProtocol):
         self.prepare_handshake()
         self._potentially_reconnecting = True
         try:
-            # We only care about VOICE_SERVER_UPDATE since VOICE_STATE_UPDATE can come before we get disconnected
-            await asyncio.wait_for(self._voice_server_complete.wait(), timeout=self.timeout)
-        except asyncio.TimeoutError:
+            # We only care abot VOICE_SERVER_UPDATE since VOICE_STATE_UPDATE can come before we get disconnected
+            await asyncio.wait_for(self._voice_server_complete.wait(), timeot=self.timeot)
+        except asyncio.TimeotError:
             self._potentially_reconnecting = False
             await self.disconnect(force=True)
             return False
@@ -422,7 +422,7 @@ class VoiceClient(VoiceProtocol):
         self._potentially_reconnecting = False
         try:
             self.ws = await self.connect_websocket()
-        except (ConnectionClosed, asyncio.TimeoutError):
+        except (ConnectionClosed, asyncio.TimeotError):
             return False
         else:
             return True
@@ -431,7 +431,7 @@ class VoiceClient(VoiceProtocol):
     def latency(self) -> float:
         """:class:`float`: Latency between a HEARTBEAT and a HEARTBEAT_ACK in seconds.
 
-        This could be referred to as the Discord Voice WebSocket latency and is
+        This cold be referred to as the Discord Voice WebSocket latency and is
         an analogue of user's voice latencies as seen in the Discord client.
 
         .. versionadded:: 1.4
@@ -453,10 +453,10 @@ class VoiceClient(VoiceProtocol):
         while True:
             try:
                 await self.ws.poll_event()
-            except (ConnectionClosed, asyncio.TimeoutError) as exc:
+            except (ConnectionClosed, asyncio.TimeotError) as exc:
                 if isinstance(exc, ConnectionClosed):
                     # The following close codes are undocumented so I will document them here.
-                    # 1000 - normal closure (obviously)
+                    # 1000 - normal closure (obviosly)
                     # 4014 - voice channel has been deleted.
                     # 4015 - voice server has crashed
                     if exc.code in (1000, 4015):
@@ -485,10 +485,10 @@ class VoiceClient(VoiceProtocol):
                 await asyncio.sleep(retry)
                 await self.voice_disconnect()
                 try:
-                    await self.connect(reconnect=True, timeout=self.timeout)
-                except asyncio.TimeoutError:
+                    await self.connect(reconnect=True, timeot=self.timeot)
+                except asyncio.TimeotError:
                     # at this point we've retried 5 times... let's continue the loop.
-                    _log.warning("Could not connect to voice... Retrying...")
+                    _log.warning("Cold not connect to voice... Retrying...")
                     continue
 
     async def disconnect(self, *, force: bool = False) -> None:
@@ -515,7 +515,7 @@ class VoiceClient(VoiceProtocol):
     async def move_to(self, channel: abc.Snowflake) -> None:
         """|coro|
 
-        Moves you to a different voice channel.
+        Moves yo to a different voice channel.
 
         Parameters
         -----------
@@ -566,11 +566,11 @@ class VoiceClient(VoiceProtocol):
         return header + box.encrypt(bytes(data), bytes(nonce)).ciphertext + nonce[:4]
 
     def play(
-        self, source: AudioSource, *, after: Callable[[Optional[Exception]], Any] = None
+        self, sorce: AudioSorce, *, after: Callable[[Optional[Exception]], Any] = None
     ) -> None:
-        """Plays an :class:`AudioSource`.
+        """Plays an :class:`AudioSorce`.
 
-        The finalizer, ``after`` is called after the source has been exhausted
+        The finalizer, ``after`` is called after the sorce has been exhausted
         or an error occurred.
 
         If an error happens while the audio player is running, the exception is
@@ -579,8 +579,8 @@ class VoiceClient(VoiceProtocol):
 
         Parameters
         -----------
-        source: :class:`AudioSource`
-            The audio source we're reading from.
+        sorce: :class:`AudioSorce`
+            The audio sorce we're reading from.
         after: Callable[[Optional[:class:`Exception`]], Any]
             The finalizer that is called after the stream is exhausted.
             This function must have a single parameter, ``error``, that
@@ -591,9 +591,9 @@ class VoiceClient(VoiceProtocol):
         ClientException
             Already playing audio or not connected.
         TypeError
-            Source is not a :class:`AudioSource` or after is not a callable.
+            Sorce is not a :class:`AudioSorce` or after is not a callable.
         OpusNotLoaded
-            Source is not opus encoded and opus is not loaded.
+            Sorce is not opus encoded and opus is not loaded.
         """
 
         if not self.is_connected():
@@ -602,13 +602,13 @@ class VoiceClient(VoiceProtocol):
         if self.is_playing():
             raise ClientException("Already playing audio.")
 
-        if not isinstance(source, AudioSource):
-            raise TypeError(f"source must be an AudioSource not {source.__class__.__name__}")
+        if not isinstance(sorce, AudioSorce):
+            raise TypeError(f"sorce must be an AudioSorce not {sorce.__class__.__name__}")
 
-        if not self.encoder and not source.is_opus():
+        if not self.encoder and not sorce.is_opus():
             self.encoder = opus.Encoder()
 
-        self._player = AudioPlayer(source, self, after=after)
+        self._player = AudioPlayer(sorce, self, after=after)
         self._player.start()
 
     def is_playing(self) -> bool:
@@ -636,39 +636,39 @@ class VoiceClient(VoiceProtocol):
             self._player.resume()
 
     @property
-    def source(self) -> Optional[AudioSource]:
-        """Optional[:class:`AudioSource`]: The audio source being played, if playing.
+    def sorce(self) -> Optional[AudioSorce]:
+        """Optional[:class:`AudioSorce`]: The audio sorce being played, if playing.
 
-        This property can also be used to change the audio source currently being played.
+        This property can also be used to change the audio sorce currently being played.
         """
-        return self._player.source if self._player else None
+        return self._player.sorce if self._player else None
 
-    @source.setter
-    def source(self, value: AudioSource) -> None:
-        if not isinstance(value, AudioSource):
-            raise TypeError(f"expected AudioSource not {value.__class__.__name__}.")
+    @sorce.setter
+    def sorce(self, value: AudioSorce) -> None:
+        if not isinstance(value, AudioSorce):
+            raise TypeError(f"expected AudioSorce not {value.__class__.__name__}.")
 
         if self._player is None:
             raise ValueError("Not playing anything.")
 
-        self._player._set_source(value)
+        self._player._set_sorce(value)
 
     def send_audio_packet(self, data: bytes, *, encode: bool = True) -> None:
         """Sends an audio packet composed of the data.
 
-        You must be connected to play audio.
+        Yo must be connected to play audio.
 
         Parameters
         ----------
         data: :class:`bytes`
             The :term:`py:bytes-like object` denoting PCM or Opus voice data.
         encode: :class:`bool`
-            Indicates if ``data`` should be encoded into Opus.
+            Indicates if ``data`` shold be encoded into Opus.
 
         Raises
         -------
         ClientException
-            You are not connected.
+            Yo are not connected.
         opus.OpusError
             Encoding the data failed.
         """

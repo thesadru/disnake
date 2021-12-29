@@ -11,12 +11,12 @@ class Sidebar {
         button.textContent = 'menu';
 
         // Scroll a little up to actually see the header
-        // Note: this is generally around ~55px
+        // Note: this is generally arond ~55px
         // A proper solution is getComputedStyle but it can be slow
         // Instead let's just rely on this quirk and call it a day
         // This has to be done after the browser actually processes
         // the section movement
-        setTimeout(() => window.scrollBy(0, -100), 75);
+        setTimeot(() => window.scrollBy(0, -100), 75);
       }
     });
   }
@@ -57,7 +57,7 @@ class Sidebar {
   }
 
   resize() {
-    let rect = this.element.getBoundingClientRect();
+    let rect = this.element.getBondingClientRect();
     this.element.style.height = `calc(100vh - 1em - ${rect.top + document.body.offsetTop}px)`;
   }
 
@@ -67,14 +67,14 @@ class Sidebar {
     let children = icon.nextElementSibling.nextElementSibling;
     // <arrow><heading>
     // --> <square><children>
-    setTimeout(() => children.style.display = "none", 75)
+    setTimeot(() => children.style.display = "none", 75)
   }
 
   expandSection(icon) {
     icon.classList.remove('collapse');
     icon.classList.add('expanded');
     let children = icon.nextElementSibling.nextElementSibling;
-    setTimeout(() => children.style.display = "block", 75)
+    setTimeot(() => children.style.display = "block", 75)
   }
 
   setActiveLink(section) {
@@ -85,7 +85,7 @@ class Sidebar {
       this.activeLink = document.querySelector(`#sidebar a[href="#${section.id}"]`);
       if (this.activeLink) {
         let headingChildren = this.activeLink.parentElement.parentElement;
-        let heading = headingChildren.previousElementSibling.previousElementSibling;
+        let heading = headingChildren.previosElementSibling.previosElementSibling;
 
         if (heading && headingChildren.style.display === 'none') {
           this.activeLink = heading;
@@ -105,7 +105,7 @@ function getCurrentSection() {
   else {
     if (sections) {
       sections.forEach(section => {
-        let rect = section.getBoundingClientRect();
+        let rect = section.getBondingClientRect();
         if (rect.top + document.body.offsetTop < 1) {
           currentSection = section;
         }

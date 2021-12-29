@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -28,7 +28,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, TypeVar, Union
 
 from .asset import Asset
-from .colour import Colour
+from .color import Color
 from .errors import InvalidArgument
 from .mixins import Hashable
 from .partial_emoji import PartialEmoji
@@ -81,7 +81,7 @@ class RoleTags:
         # NOTE: The API returns "null" for this if it's valid, which corresponds to None.
         # This is different from other fields where "null" means "not there".
         # So in this case, a value of None is the same as True.
-        # Which means we would need a different sentinel.
+        # Which means we wold need a different sentinel.
         self._premium_subscriber: Optional[Any] = data.get("premium_subscriber", MISSING)
 
     def is_bot_managed(self) -> bool:
@@ -112,7 +112,7 @@ class RoleTags:
         )
 
 
-R = TypeVar("R", bound="Role")
+R = TypeVar("R", bond="Role")
 
 
 class Role(Hashable):
@@ -175,7 +175,7 @@ class Role(Hashable):
             operators on the role objects themselves.
 
     managed: :class:`bool`
-        Indicates if the role is managed by the guild through some form of
+        Indicates if the role is managed by the guild throgh some form of
         integrations such as Twitch.
     mentionable: :class:`bool`
         Indicates if the role can be mentioned by users.
@@ -187,7 +187,7 @@ class Role(Hashable):
         "id",
         "name",
         "_permissions",
-        "_colour",
+        "_color",
         "position",
         "managed",
         "mentionable",
@@ -251,7 +251,7 @@ class Role(Hashable):
         self.name: str = data["name"]
         self._permissions: int = int(data.get("permissions", 0))
         self.position: int = data.get("position", 0)
-        self._colour: int = data.get("color", 0)
+        self._color: int = data.get("color", 0)
         self.hoist: bool = data.get("hoist", False)
         self._icon: Optional[str] = data.get("icon")
         self._emoji: Optional[str] = data.get("unicode_emoji")
@@ -318,14 +318,14 @@ class Role(Hashable):
         return Permissions(self._permissions)
 
     @property
-    def colour(self) -> Colour:
-        """:class:`Colour`: Returns the role colour. An alias exists under ``color``."""
-        return Colour(self._colour)
+    def color(self) -> Color:
+        """:class:`Color`: Returns the role color. An alias exists under ``color``."""
+        return Color(self._color)
 
     @property
-    def color(self) -> Colour:
-        """:class:`Colour`: Returns the role color. An alias exists under ``colour``."""
-        return self.colour
+    def color(self) -> Color:
+        """:class:`Color`: Returns the role color. An alias exists under ``color``."""
+        return self.color
 
     @property
     def icon(self) -> Optional[Asset]:
@@ -354,7 +354,7 @@ class Role(Hashable):
 
     @property
     def mention(self) -> str:
-        """:class:`str`: Returns a string that allows you to mention a role."""
+        """:class:`str`: Returns a string that allows yo to mention a role."""
         return f"<@&{self.id}>"
 
     @property
@@ -399,8 +399,8 @@ class Role(Hashable):
         *,
         name: str = MISSING,
         permissions: Permissions = MISSING,
-        colour: Union[Colour, int] = MISSING,
-        color: Union[Colour, int] = MISSING,
+        color: Union[Color, int] = MISSING,
+        color: Union[Color, int] = MISSING,
         hoist: bool = MISSING,
         icon: bytes = MISSING,
         emoji: str = MISSING,
@@ -412,13 +412,13 @@ class Role(Hashable):
 
         Edits the role.
 
-        You must have the :attr:`~Permissions.manage_roles` permission to
+        Yo must have the :attr:`~Permissions.manage_roles` permission to
         use this.
 
         All fields are optional.
 
         .. versionchanged:: 1.4
-            Can now pass ``int`` to ``colour`` keyword-only parameter.
+            Can now pass ``int`` to ``color`` keyword-only parameter.
 
         .. versionchanged:: 2.0
             Edits are no longer in-place, the newly edited role is returned instead.
@@ -429,18 +429,18 @@ class Role(Hashable):
             The new role name to change to.
         permissions: :class:`Permissions`
             The new permissions to change to.
-        colour: Union[:class:`Colour`, :class:`int`]
-            The new colour to change to. (aliased to color as well)
+        color: Union[:class:`Color`, :class:`int`]
+            The new color to change to. (aliased to color as well)
         hoist: :class:`bool`
-            Indicates if the role should be shown separately in the member list.
+            Indicates if the role shold be shown separately in the member list.
         icon: :class:`bytes`
             The role's new icon image (if the guild has the ``ROLE_ICONS`` feature).
         emoji: :class:`str`
             The role's new unicode emoji.
         mentionable: :class:`bool`
-            Indicates if the role should be mentionable by others.
+            Indicates if the role shold be mentionable by others.
         position: :class:`int`
-            The new role's position. This must be below your top role's
+            The new role's position. This must be below yor top role's
             position or it will fail.
         reason: Optional[:class:`str`]
             The reason for editing this role. Shows up on the audit log.
@@ -448,7 +448,7 @@ class Role(Hashable):
         Raises
         -------
         Forbidden
-            You do not have permissions to change the role.
+            Yo do not have permissions to change the role.
         HTTPException
             Editing the role failed.
         InvalidArgument
@@ -465,13 +465,13 @@ class Role(Hashable):
 
         payload: Dict[str, Any] = {}
         if color is not MISSING:
-            colour = color
+            color = color
 
-        if colour is not MISSING:
-            if isinstance(colour, int):
-                payload["color"] = colour
+        if color is not MISSING:
+            if isinstance(color, int):
+                payload["color"] = color
             else:
-                payload["color"] = colour.value
+                payload["color"] = color.value
 
         if name is not MISSING:
             payload["name"] = name
@@ -502,7 +502,7 @@ class Role(Hashable):
 
         Deletes the role.
 
-        You must have the :attr:`~Permissions.manage_roles` permission to
+        Yo must have the :attr:`~Permissions.manage_roles` permission to
         use this.
 
         Parameters
@@ -513,7 +513,7 @@ class Role(Hashable):
         Raises
         --------
         Forbidden
-            You do not have permissions to delete the role.
+            Yo do not have permissions to delete the role.
         HTTPException
             Deleting the role failed.
         """

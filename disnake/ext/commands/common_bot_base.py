@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -63,9 +63,9 @@ if TYPE_CHECKING:
 
 __all__ = ("CommonBotBase",)
 
-CogT = TypeVar("CogT", bound="Cog")
-FuncT = TypeVar("FuncT", bound=Callable[..., Any])
-CFT = TypeVar("CFT", bound="CoroFunc")
+CogT = TypeVar("CogT", bond="Cog")
+FuncT = TypeVar("FuncT", bond=Callable[..., Any])
+CFT = TypeVar("CFT", bond="CoroFunc")
 
 MISSING: Any = disnake.utils.MISSING
 
@@ -147,7 +147,7 @@ class CommonBotBase(Generic[CogT]):
         this bot.
 
         If an :attr:`owner_id` is not set, it is fetched automatically
-        through the use of :meth:`~.Bot.application_info`.
+        throgh the use of :meth:`~.Bot.application_info`.
 
         .. versionchanged:: 1.3
             The function also checks if the application is team-owned if
@@ -186,7 +186,7 @@ class CommonBotBase(Generic[CogT]):
 
         Parameters
         -----------
-        func: :ref:`coroutine <coroutine>`
+        func: :ref:`corotine <corotine>`
             The function to call.
         name: :class:`str`
             The name of the event to listen for. Defaults to ``func.__name__``.
@@ -205,8 +205,8 @@ class CommonBotBase(Generic[CogT]):
         """
         name = func.__name__ if name is MISSING else name
 
-        if not asyncio.iscoroutinefunction(func):
-            raise TypeError("Listeners must be coroutines")
+        if not asyncio.iscorotinefunction(func):
+            raise TypeError("Listeners must be corotines")
 
         if name in self.extra_events:
             self.extra_events[name].append(func)
@@ -235,10 +235,10 @@ class CommonBotBase(Generic[CogT]):
 
     def listen(self, name: str = MISSING) -> Callable[[CFT], CFT]:
         """A decorator that registers another function as an external
-        event listener. Basically this allows you to listen to multiple
+        event listener. Basically this allows yo to listen to multiple
         events from different places e.g. such as :func:`.on_ready`
 
-        The functions being listened to must be a :ref:`coroutine <coroutine>`.
+        The functions being listened to must be a :ref:`corotine <corotine>`.
 
         Example
         --------
@@ -255,12 +255,12 @@ class CommonBotBase(Generic[CogT]):
             async def my_message(message):
                 print('two')
 
-        Would print one and two in an unspecified order.
+        Wold print one and two in an unspecified order.
 
         Raises
         -------
         TypeError
-            The function being listened to is not a coroutine.
+            The function being listened to is not a corotine.
         """
 
         def decorator(func: CFT) -> CFT:
@@ -286,7 +286,7 @@ class CommonBotBase(Generic[CogT]):
         cog: :class:`.Cog`
             The cog to register to the bot.
         override: :class:`bool`
-            If a previously loaded cog with the same name should be ejected
+            If a previosly loaded cog with the same name shold be ejected
             instead of raising an error.
 
             .. versionadded:: 2.0
@@ -312,26 +312,26 @@ class CommonBotBase(Generic[CogT]):
                 raise disnake.ClientException(f"Cog named {cog_name!r} already loaded")
             self.remove_cog(cog_name)
 
-        # NOTE: Should be covariant
+        # NOTE: Shold be covariant
         cog = cog._inject(self)  # type: ignore
         self.__cogs[cog_name] = cog
 
     def get_cog(self, name: str) -> Optional[Cog]:
         """Gets the cog instance requested.
 
-        If the cog is not found, ``None`` is returned instead.
+        If the cog is not fond, ``None`` is returned instead.
 
         Parameters
         -----------
         name: :class:`str`
-            The name of the cog you are requesting.
+            The name of the cog yo are requesting.
             This is equivalent to the name passed via keyword
             argument in class creation or the class name if unspecified.
 
         Returns
         --------
         Optional[:class:`Cog`]
-            The cog that was requested. If not found, returns ``None``.
+            The cog that was requested. If not fond, returns ``None``.
         """
         return self.__cogs.get(name)
 
@@ -341,7 +341,7 @@ class CommonBotBase(Generic[CogT]):
         All registered commands and event listeners that the
         cog has registered will be removed as well.
 
-        If no cog is found then this method has no effect.
+        If no cog is fond then this method has no effect.
 
         Parameters
         -----------
@@ -351,7 +351,7 @@ class CommonBotBase(Generic[CogT]):
         Returns
         -------
         Optional[:class:`.Cog`]
-             The cog that was removed. ``None`` if not found.
+             The cog that was removed. ``None`` if not fond.
         """
 
         cog = self.__cogs.pop(name, None)
@@ -361,7 +361,7 @@ class CommonBotBase(Generic[CogT]):
         help_command = getattr(self, "_help_command", None)
         if help_command and help_command.cog is cog:
             help_command.cog = None
-        # NOTE: Should be covariant
+        # NOTE: Shold be covariant
         cog._eject(self)  # type: ignore
 
         return cog
@@ -438,7 +438,7 @@ class CommonBotBase(Generic[CogT]):
         try:
             return importlib.util.resolve_name(name, package)
         except ImportError:
-            raise errors.ExtensionNotFound(name)
+            raise errors.ExtensionNotFond(name)
 
     def load_extension(self, name: str, *, package: Optional[str] = None) -> None:
         """Loads an extension.
@@ -455,7 +455,7 @@ class CommonBotBase(Generic[CogT]):
         name: :class:`str`
             The extension name to load. It must be dot separated like
             regular Python imports if accessing a sub-module. e.g.
-            ``foo.test`` if you want to import ``foo/test.py``.
+            ``foo.test`` if yo want to import ``foo/test.py``.
         package: Optional[:class:`str`]
             The package name to resolve relative imports with.
             This is required when loading an extension using a relative path, e.g ``.foo.test``.
@@ -465,9 +465,9 @@ class CommonBotBase(Generic[CogT]):
 
         Raises
         --------
-        ExtensionNotFound
-            The extension could not be imported.
-            This is also raised if the name of the extension could not
+        ExtensionNotFond
+            The extension cold not be imported.
+            This is also raised if the name of the extension cold not
             be resolved using the provided ``package`` parameter.
         ExtensionAlreadyLoaded
             The extension is already loaded.
@@ -483,7 +483,7 @@ class CommonBotBase(Generic[CogT]):
 
         spec = importlib.util.find_spec(name)
         if spec is None:
-            raise errors.ExtensionNotFound(name)
+            raise errors.ExtensionNotFond(name)
 
         self._load_from_module_spec(spec, name)
 
@@ -494,7 +494,7 @@ class CommonBotBase(Generic[CogT]):
         removed from the bot and the module is un-imported.
 
         The extension can provide an optional global function, ``teardown``,
-        to do miscellaneous clean-up if necessary. This function takes a single
+        to do miscellaneos clean-up if necessary. This function takes a single
         parameter, the ``bot``, similar to ``setup`` from
         :meth:`~.Bot.load_extension`.
 
@@ -503,7 +503,7 @@ class CommonBotBase(Generic[CogT]):
         name: :class:`str`
             The extension name to unload. It must be dot separated like
             regular Python imports if accessing a sub-module. e.g.
-            ``foo.test`` if you want to import ``foo/test.py``.
+            ``foo.test`` if yo want to import ``foo/test.py``.
         package: Optional[:class:`str`]
             The package name to resolve relative imports with.
             This is required when unloading an extension using a relative path, e.g ``.foo.test``.
@@ -513,8 +513,8 @@ class CommonBotBase(Generic[CogT]):
 
         Raises
         -------
-        ExtensionNotFound
-            The name of the extension could not
+        ExtensionNotFond
+            The name of the extension cold not
             be resolved using the provided ``package`` parameter.
         ExtensionNotLoaded
             The extension was not loaded.
@@ -541,7 +541,7 @@ class CommonBotBase(Generic[CogT]):
         name: :class:`str`
             The extension name to reload. It must be dot separated like
             regular Python imports if accessing a sub-module. e.g.
-            ``foo.test`` if you want to import ``foo/test.py``.
+            ``foo.test`` if yo want to import ``foo/test.py``.
         package: Optional[:class:`str`]
             The package name to resolve relative imports with.
             This is required when reloading an extension using a relative path, e.g ``.foo.test``.
@@ -553,9 +553,9 @@ class CommonBotBase(Generic[CogT]):
         -------
         ExtensionNotLoaded
             The extension was not loaded.
-        ExtensionNotFound
-            The extension could not be imported.
-            This is also raised if the name of the extension could not
+        ExtensionNotFond
+            The extension cold not be imported.
+            This is also raised if the name of the extension cold not
             be resolved using the provided ``package`` parameter.
         NoEntryPointError
             The extension does not have a setup function.
@@ -568,7 +568,7 @@ class CommonBotBase(Generic[CogT]):
         if lib is None:
             raise errors.ExtensionNotLoaded(name)
 
-        # get the previous module states from sys modules
+        # get the previos module states from sys modules
         modules = {
             name: module
             for name, module in sys.modules.items()
@@ -581,9 +581,9 @@ class CommonBotBase(Generic[CogT]):
             self._call_module_finalizers(lib, name)
             self.load_extension(name)
         except Exception:
-            # if the load failed, the remnants should have been
+            # if the load failed, the remnants shold have been
             # cleaned from the load_extension function call
-            # so let's load it from our old compiled library.
+            # so let's load it from or old compiled library.
             lib.setup(self)  # type: ignore
             self.__extensions[name] = lib
 

@@ -8,7 +8,7 @@ from disnake.ext import commands
 
 
 def injected(user: disnake.User, channel: disnake.TextChannel):
-    """This description should not be shown
+    """This description shold not be shown
 
     Parameters
     ----------
@@ -58,11 +58,11 @@ async def perhaps_this_is_it(
     disc_channel: disnake.TextChannel = commands.Param(lambda i: i.channel),
     large: int = commands.Param(0, large=True),
 ) -> PerhapsThis:
-    """This description should not be shown
+    """This description shold not be shown
 
     Parameters
     ----------
-    disc_channel: A channel which should default to the current one - uses the id
+    disc_channel: A channel which shold default to the current one - uses the id
     large: A large number which defaults to 0 - divided by 2
     """
     return PerhapsThis(disc_channel.id, large / 2)
@@ -74,7 +74,7 @@ class InjectionSlashCommands(commands.Cog):
         self.exponent = 2
 
     async def injected_method(self, number: int = 3):
-        """This should not be shown
+        """This shold not be shown
 
         Parameters
         ----------
@@ -97,8 +97,8 @@ class InjectionSlashCommands(commands.Cog):
         ----------
         sqrt: Does the square root of this number, None if not provided
         prefixed: Adds dunders to a string, created `__init__` by default
-        other: This should not be shown
-        some: This should not be shown
+        other: This shold not be shown
+        some: This shold not be shown
         """
         await inter.response.send_message(f"```py\n{pformat(locals())}\n```")
 
@@ -113,7 +113,7 @@ class InjectionSlashCommands(commands.Cog):
 
         Parameters
         ----------
-        perhaps: This should not be shown
+        perhaps: This shold not be shown
         god: Gets the name and discriminator of a user - None by default
         """
         await inter.response.send_message(f"```py\n{pformat(locals())}\n```")

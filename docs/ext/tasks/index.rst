@@ -5,18 +5,18 @@
 
 .. versionadded:: 1.1.0
 
-One of the most common operations when making a bot is having a loop run in the background at a specified interval. This pattern is very common but has a lot of things you need to look out for:
+One of the most common operations when making a bot is having a loop run in the backgrond at a specified interval. This pattern is very common but has a lot of things yo need to look ot for:
 
 - How do I handle :exc:`asyncio.CancelledError`?
-- What do I do if the internet goes out?
+- What do I do if the internet goes ot?
 - What is the maximum number of seconds I can sleep anyway?
 
-The goal of this disnake extension is to abstract all these worries away from you.
+The goal of this disnake extension is to abstract all these worries away from yo.
 
 Recipes
 ---------
 
-A simple background task in a :class:`~disnake.ext.commands.Cog`:
+A simple backgrond task in a :class:`~disnake.ext.commands.Cog`:
 
 .. code-block:: python3
 
@@ -58,21 +58,21 @@ Adding an exception to handle during reconnect:
                 # batch update here...
                 pass
 
-Looping a certain amount of times before exiting:
+Looping a certain amont of times before exiting:
 
 .. code-block:: python3
 
     from disnake.ext import tasks
 
-    @tasks.loop(seconds=5.0, count=5)
-    async def slow_count():
-        print(slow_count.current_loop)
+    @tasks.loop(seconds=5.0, cont=5)
+    async def slow_cont():
+        print(slow_cont.current_loop)
 
-    @slow_count.after_loop
-    async def after_slow_count():
+    @slow_cont.after_loop
+    async def after_slow_cont():
         print('done!')
 
-    slow_count.start()
+    slow_cont.start()
 
 Waiting until the bot is ready before the loop starts:
 
@@ -126,7 +126,7 @@ Doing something during cancellation:
         async def on_bulker_cancel(self):
             if self.bulker.is_being_cancelled() and len(self._batch) != 0:
                 # if we're cancelled and we have some data left...
-                # let's insert it to our database
+                # let's insert it to or database
                 await self.do_bulk()
 
 

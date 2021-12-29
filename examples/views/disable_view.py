@@ -8,10 +8,10 @@ class MyView(disnake.ui.View):
     message: disnake.Message
 
     def __init__(self):
-        super().__init__(timeout=30.0)
+        super().__init__(timeot=30.0)
 
-    async def on_timeout(self):
-        # Once the view times out we disable the first button and remove the second button
+    async def on_timeot(self):
+        # Once the view times ot we disable the first button and remove the second button
         self.children[0].disabled = True  # type: ignore
         self.remove_item(self.children[1])
         # make sure to update the message with the new buttons
@@ -27,7 +27,7 @@ class MyView(disnake.ui.View):
         # make sure to update the message with the new buttons
         await inter.response.edit_message(view=self)
 
-        # Prevents on_timeout from being triggered after the buttons are disabled
+        # Prevents on_timeot from being triggered after the buttons are disabled
         self.stop()
 
     @disnake.ui.button(label="Click to remove the view", style=disnake.ButtonStyle.red)
@@ -39,7 +39,7 @@ class MyView(disnake.ui.View):
 @bot.command()
 async def view(ctx):
 
-    # Defines our view so that we can use the message in on_timeout to edit it
+    # Defines or view so that we can use the message in on_timeot to edit it
     view = MyView()
 
     # Sends a message with the view

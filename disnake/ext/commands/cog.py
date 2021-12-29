@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 from __future__ import annotations
@@ -62,8 +62,8 @@ __all__ = (
     "Cog",
 )
 
-CogT = TypeVar("CogT", bound="Cog")
-FuncT = TypeVar("FuncT", bound=Callable[..., Any])
+CogT = TypeVar("CogT", bond="Cog")
+FuncT = TypeVar("FuncT", bond=Callable[..., Any])
 
 MISSING: Any = disnake.utils.MISSING
 
@@ -76,11 +76,11 @@ def _cog_special_method(func: FuncT) -> FuncT:
 class CogMeta(type):
     """A metaclass for defining a cog.
 
-    Note that you should probably not use this directly. It is exposed
+    Note that yo shold probably not use this directly. It is exposed
     purely for documentation purposes along with making custom metaclasses to intermix
     with other metaclasses such as the :class:`abc.ABCMeta` metaclass.
 
-    For example, to create an abstract cog mixin class, the following would be done.
+    For example, to create an abstract cog mixin class, the following wold be done.
 
     .. code-block:: python3
 
@@ -98,7 +98,7 @@ class CogMeta(type):
     .. note::
 
         When passing an attribute of a metaclass that is documented below, note
-        that you must pass it as a keyword-only argument to the class creation
+        that yo must pass it as a keyword-only argument to the class creation
         like the following example:
 
         .. code-block:: python3
@@ -118,7 +118,7 @@ class CogMeta(type):
     command_attrs: :class:`dict`
         A list of attributes to apply to every command inside this cog. The dictionary
         is passed into the :class:`Command` options at ``__init__``.
-        If you specify attributes inside the command attribute in the class, it will
+        If yo specify attributes inside the command attribute in the class, it will
         override the one specified inside this attribute. For example:
 
         .. code-block:: python3
@@ -185,7 +185,7 @@ class CogMeta(type):
                     if elem.startswith(("cog_", "bot_")):
                         raise TypeError(no_bot_cog.format(base, elem))
                     app_commands[elem] = value
-                elif inspect.iscoroutinefunction(value):
+                elif inspect.iscorotinefunction(value):
                     try:
                         getattr(value, "__cog_listener__")
                     except AttributeError:
@@ -220,7 +220,7 @@ class Cog(metaclass=CogMeta):
     """The base class that all cogs must inherit from.
 
     A cog is a collection of commands, listeners, and optional state to
-    help group commands together. More information on them can be found on
+    help grop commands together. More information on them can be fond on
     the :ref:`ext_commands_cogs` page.
 
     When inheriting from this class, the options shown in :class:`CogMeta`
@@ -241,7 +241,7 @@ class Cog(metaclass=CogMeta):
         cmd_attrs = cls.__cog_settings__
 
         # Either update the command with the cog provided defaults or copy it.
-        # r.e type ignore, type-checker complains about overriding a ClassVar
+        # r.e type ignore, type-checker complains abot overriding a ClassVar
         self.__cog_commands__ = tuple(c._update_copy(cmd_attrs) for c in cls.__cog_commands__)  # type: ignore
 
         lookup = {cmd.qualified_name: cmd for cmd in self.__cog_commands__}  # type: ignore
@@ -254,7 +254,7 @@ class Cog(metaclass=CogMeta):
                 # Get the latest parent reference
                 parent = lookup[parent.qualified_name]  # type: ignore
 
-                # Update our parent's reference to our self
+                # Update or parent's reference to or self
                 parent.remove_command(command.name)  # type: ignore
                 parent.add_command(command)  # type: ignore
 
@@ -337,19 +337,19 @@ class Cog(metaclass=CogMeta):
         self.__cog_description__ = description
 
     def walk_commands(self) -> Generator[Command, None, None]:
-        """An iterator that recursively walks through this cog's commands and subcommands.
+        """An iterator that recursively walks throgh this cog's commands and subcommands.
 
         Yields
         ------
-        Union[:class:`.Command`, :class:`.Group`]
-            A command or group from the cog.
+        Union[:class:`.Command`, :class:`.Grop`]
+            A command or grop from the cog.
         """
-        from .core import GroupMixin
+        from .core import GropMixin
 
         for command in self.__cog_commands__:
             if command.parent is None:
                 yield command
-                if isinstance(command, GroupMixin):
+                if isinstance(command, GropMixin):
                     yield from command.walk_commands()
 
     def get_listeners(self) -> List[Tuple[str, Callable[..., Any]]]:
@@ -357,7 +357,7 @@ class Cog(metaclass=CogMeta):
 
         Returns
         --------
-        List[Tuple[:class:`str`, :ref:`coroutine <coroutine>`]]
+        List[Tuple[:class:`str`, :ref:`corotine <corotine>`]]
             The listeners defined in this cog.
         """
         return [(name, getattr(self, method_name)) for name, method_name in self.__cog_listeners__]
@@ -382,7 +382,7 @@ class Cog(metaclass=CogMeta):
         Raises
         --------
         TypeError
-            The function is not a coroutine function or a string was not passed as
+            The function is not a corotine function or a string was not passed as
             the name.
         """
 
@@ -395,8 +395,8 @@ class Cog(metaclass=CogMeta):
             actual = func
             if isinstance(actual, staticmethod):
                 actual = actual.__func__
-            if not inspect.iscoroutinefunction(actual):
-                raise TypeError("Listener function must be a coroutine function.")
+            if not inspect.iscorotinefunction(actual):
+                raise TypeError("Listener function must be a corotine function.")
             actual.__cog_listener__ = True
             to_assign = name or actual.__name__
             try:
@@ -439,10 +439,10 @@ class Cog(metaclass=CogMeta):
     def cog_unload(self) -> None:
         """A special method that is called when the cog gets removed.
 
-        This function **cannot** be a coroutine. It must be a regular
+        This function **cannot** be a corotine. It must be a regular
         function.
 
-        Subclasses must replace this if they want special unloading behaviour.
+        Subclasses must replace this if they want special unloading behavior.
         """
         pass
 
@@ -451,7 +451,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :meth:`.Bot.check_once`
         check.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``ctx``, to represent the :class:`.Context`.
         """
         return True
@@ -461,7 +461,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :meth:`.Bot.check`
         check.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``ctx``, to represent the :class:`.Context`.
         """
         return True
@@ -495,7 +495,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :func:`~disnake.ext.commands.check`
         for every command and subcommand in this cog.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``ctx``, to represent the :class:`.Context`.
         """
         return True
@@ -505,7 +505,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :func:`~disnake.ext.commands.check`
         for every slash command and subcommand in this cog.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``inter``, to represent the :class:`.ApplicationCommandInteraction`.
         """
         return True
@@ -515,7 +515,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :func:`~disnake.ext.commands.check`
         for every user command in this cog.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``inter``, to represent the :class:`.ApplicationCommandInteraction`.
         """
         return True
@@ -525,7 +525,7 @@ class Cog(metaclass=CogMeta):
         """A special method that registers as a :func:`~disnake.ext.commands.check`
         for every message command in this cog.
 
-        This function **can** be a coroutine and must take a sole parameter,
+        This function **can** be a corotine and must take a sole parameter,
         ``inter``, to represent the :class:`.ApplicationCommandInteraction`.
         """
         return True
@@ -538,7 +538,7 @@ class Cog(metaclass=CogMeta):
         This is similar to :func:`.on_command_error` except only applying
         to the commands inside this cog.
 
-        This **must** be a coroutine.
+        This **must** be a corotine.
 
         Parameters
         -----------
@@ -573,7 +573,7 @@ class Cog(metaclass=CogMeta):
 
         This is similar to :meth:`.Command.before_invoke`.
 
-        This **must** be a coroutine.
+        This **must** be a corotine.
 
         Parameters
         -----------
@@ -588,7 +588,7 @@ class Cog(metaclass=CogMeta):
 
         This is similar to :meth:`.Command.after_invoke`.
 
-        This **must** be a coroutine.
+        This **must** be a corotine.
 
         Parameters
         -----------
@@ -634,7 +634,7 @@ class Cog(metaclass=CogMeta):
                 try:
                     bot.add_command(command)  # type: ignore
                 except Exception as e:
-                    # undo our additions
+                    # undo or additions
                     for to_undo in self.__cog_commands__[:index]:
                         if to_undo.parent is None:
                             bot.remove_command(to_undo.name)  # type: ignore
@@ -650,7 +650,7 @@ class Cog(metaclass=CogMeta):
                 elif isinstance(command, InvokableMessageCommand):
                     bot.add_message_command(command)
             except Exception as e:
-                # undo our additions
+                # undo or additions
                 for to_undo in self.__cog_app_commands__[:index]:
                     if isinstance(to_undo, InvokableSlashCommand):
                         bot.remove_slash_command(to_undo.name)
@@ -661,7 +661,7 @@ class Cog(metaclass=CogMeta):
                 raise e
 
         if not hasattr(self.cog_load.__func__, "__cog_special_method__"):
-            bot.loop.create_task(disnake.utils.maybe_coroutine(self.cog_load))
+            bot.loop.create_task(disnake.utils.maybe_corotine(self.cog_load))
 
         # check if we're overriding the default
         if cls.bot_check is not Cog.bot_check:
@@ -700,10 +700,10 @@ class Cog(metaclass=CogMeta):
                 message_commands=True,
             )
 
-        # while Bot.add_listener can raise if it's not a coroutine,
+        # while Bot.add_listener can raise if it's not a corotine,
         # this precondition is already met by the listener decorator
-        # already, thus this should never raise.
-        # Outside of, memory errors and the like...
+        # already, thus this shold never raise.
+        # otside of, memory errors and the like...
         for name, method_name in self.__cog_listeners__:
             bot.add_listener(getattr(self, method_name), name)
 

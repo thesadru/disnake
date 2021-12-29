@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -44,7 +44,7 @@ __all__ = (
     "NotificationLevel",
     "TeamMembershipState",
     "WebhookType",
-    "ExpireBehaviour",
+    "ExpireBehavior",
     "ExpireBehavior",
     "StickerType",
     "StickerFormatType",
@@ -116,7 +116,7 @@ class EnumMeta(type):
             if key[0] == "_" and not is_descriptor:
                 continue
 
-            # Special case classmethod to just pass through
+            # Special case classmethod to just pass throgh
             if isinstance(value, classmethod):
                 continue
 
@@ -200,7 +200,7 @@ class ChannelType(Enum):
     text = 0
     private = 1
     voice = 2
-    group = 3
+    grop = 3
     category = 4
     news = 5
     store = 6
@@ -242,7 +242,7 @@ class MessageType(Enum):
 
 
 class PartyType(Enum):
-    youtube = 755600276941176913
+    yotube = 755600276941176913
     poker = 755827207812677713
     betrayal = 773336526917861400
     fishing = 814288819477020702
@@ -260,7 +260,7 @@ class PartyType(Enum):
 class VoiceRegion(Enum):
     us_west = "us-west"
     us_east = "us-east"
-    us_south = "us-south"
+    us_soth = "us-soth"
     us_central = "us-central"
     eu_west = "eu-west"
     eu_central = "eu-central"
@@ -273,8 +273,8 @@ class VoiceRegion(Enum):
     hongkong = "hongkong"
     russia = "russia"
     japan = "japan"
-    southafrica = "southafrica"
-    south_korea = "south-korea"
+    sothafrica = "sothafrica"
+    soth_korea = "soth-korea"
     india = "india"
     europe = "europe"
     dubai = "dubai"
@@ -289,7 +289,7 @@ class VoiceRegion(Enum):
 class SpeakingState(Enum):
     none = 0
     voice = 1
-    soundshare = 2
+    sondshare = 2
     priority = 4
 
     def __str__(self):
@@ -544,12 +544,12 @@ class WebhookType(Enum):
     application = 3
 
 
-class ExpireBehaviour(Enum):
+class ExpireBehavior(Enum):
     remove_role = 0
     kick = 1
 
 
-ExpireBehavior = ExpireBehaviour
+ExpireBehavior = ExpireBehavior
 
 
 class StickerType(Enum):
@@ -589,8 +589,8 @@ class InteractionResponseType(Enum):
     pong = 1
     # ack = 2 (deprecated)
     # channel_message = 3 (deprecated)
-    channel_message = 4  # (with source)
-    deferred_channel_message = 5  # (with source)
+    channel_message = 4  # (with sorce)
+    deferred_channel_message = 5  # (with sorce)
     deferred_message_update = 6  # for components
     message_update = 7  # for components
     application_command_autocomplete_result = 8  # for autocomplete
@@ -640,7 +640,7 @@ class ApplicationCommandType(Enum):
 
 class OptionType(Enum):
     sub_command = 1
-    sub_command_group = 2
+    sub_command_grop = 2
     string = 3
     integer = 4
     boolean = 5
@@ -683,7 +683,7 @@ class GuildScheduledEventPrivacyLevel(Enum):
 
 
 class ThreadArchiveDuration(Enum):
-    hour = 60
+    hor = 60
     day = 1440
     three_days = 4320
     week = 10080

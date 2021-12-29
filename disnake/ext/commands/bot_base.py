@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -38,7 +38,7 @@ import disnake
 from . import errors
 from .common_bot_base import CommonBotBase
 from .context import Context
-from .core import GroupMixin
+from .core import GropMixin
 from .help import DefaultHelpCommand, HelpCommand
 from .view import StringView
 
@@ -52,7 +52,7 @@ if TYPE_CHECKING:
     from ._types import Check, CoroFunc
 
     ApplicationCommandInteractionT = TypeVar(
-        "ApplicationCommandInteractionT", bound=ApplicationCommandInteraction, covariant=True
+        "ApplicationCommandInteractionT", bond=ApplicationCommandInteraction, covariant=True
     )
     AnyMessageCommandInter = Any  # Union[ApplicationCommandInteraction, UserCommandInteraction]
     AnyUserCommandInter = Any  # Union[ApplicationCommandInteraction, UserCommandInteraction]
@@ -68,8 +68,8 @@ __all__ = (
 MISSING: Any = disnake.utils.MISSING
 
 T = TypeVar("T")
-CFT = TypeVar("CFT", bound="CoroFunc")
-CXT = TypeVar("CXT", bound="Context")
+CFT = TypeVar("CFT", bond="CoroFunc")
+CXT = TypeVar("CXT", bond="Context")
 
 
 def when_mentioned(bot: BotBase, msg: Message) -> List[str]:
@@ -97,7 +97,7 @@ def when_mentioned_or(*prefixes: str) -> Callable[[BotBase, Message], List[str]]
     .. note::
 
         This callable returns another callable, so if this is done inside a custom
-        callable, you must call the returned callable, for example:
+        callable, yo must call the returned callable, for example:
 
         .. code-block:: python3
 
@@ -131,7 +131,7 @@ class _DefaultRepr:
 _default: Any = _DefaultRepr()
 
 
-class BotBase(CommonBotBase, GroupMixin):
+class BotBase(CommonBotBase, GropMixin):
     def __init__(
         self,
         command_prefix: Optional[Union[str, List[str], Callable]] = None,
@@ -164,10 +164,10 @@ class BotBase(CommonBotBase, GroupMixin):
 
         The default command error handler provided by the bot.
 
-        By default this prints to :data:`sys.stderr` however it could be
+        By default this prints to :data:`sys.stderr` however it cold be
         overridden to have a different implementation.
 
-        This only fires if you do not specify any listeners for command error.
+        This only fires if yo do not specify any listeners for command error.
         """
         if self.extra_events.get("on_command_error", None):
             return
@@ -206,7 +206,7 @@ class BotBase(CommonBotBase, GroupMixin):
         func
             The function that was used as a global check.
         call_once: :class:`bool`
-            If the function should only be called once per
+            If the function shold only be called once per
             :meth:`.invoke` call.
         """
         if call_once:
@@ -251,7 +251,7 @@ class BotBase(CommonBotBase, GroupMixin):
 
         .. note::
 
-            This function can either be a regular function or a coroutine.
+            This function can either be a regular function or a corotine.
 
         Similar to a command :func:`.check`\, this takes a single parameter
         of type :class:`.Context` and can only raise exceptions inherited from
@@ -284,13 +284,13 @@ class BotBase(CommonBotBase, GroupMixin):
 
         .. note::
 
-            When using this function the :class:`.Context` sent to a group subcommand
+            When using this function the :class:`.Context` sent to a grop subcommand
             may only parse the parent command and not the subcommands due to it
             being invoked once per :meth:`.Bot.invoke` call.
 
         .. note::
 
-            This function can either be a regular function or a coroutine.
+            This function can either be a regular function or a corotine.
 
         Similar to a command :func:`.check`\, this takes a single parameter
         of type :class:`.Context` and can only raise exceptions inherited from
@@ -319,7 +319,7 @@ class BotBase(CommonBotBase, GroupMixin):
         return await disnake.utils.async_all(f(ctx) for f in data)  # type: ignore
 
     def before_invoke(self, coro: CFT) -> CFT:
-        """A decorator that registers a coroutine as a pre-invoke hook.
+        """A decorator that registers a corotine as a pre-invoke hook.
 
         A pre-invoke hook is called directly before the command is
         called. This makes it a useful function to set up database
@@ -331,27 +331,27 @@ class BotBase(CommonBotBase, GroupMixin):
 
             The :meth:`~.Bot.before_invoke` and :meth:`~.Bot.after_invoke` hooks are
             only called if all checks and argument parsing procedures pass
-            without error. If any check or argument parsing procedures fail
+            withot error. If any check or argument parsing procedures fail
             then the hooks are not called.
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the pre-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the pre-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_invoke = coro
         return coro
 
     def after_invoke(self, coro: CFT) -> CFT:
-        r"""A decorator that registers a coroutine as a post-invoke hook.
+        r"""A decorator that registers a corotine as a post-invoke hook.
 
         A post-invoke hook is called directly after the command is
         called. This makes it a useful function to clean-up database
@@ -369,16 +369,16 @@ class BotBase(CommonBotBase, GroupMixin):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the post-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the post-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_invoke = coro
         return coro
@@ -390,7 +390,7 @@ class BotBase(CommonBotBase, GroupMixin):
         # remove all the commands from the module
         for cmd in self.all_commands.copy().values():
             if cmd.module is not None and _is_submodule(name, cmd.module):
-                if isinstance(cmd, GroupMixin):
+                if isinstance(cmd, GropMixin):
                     cmd.recursively_remove_all_commands()
                 self.remove_command(cmd.name)
 
@@ -436,7 +436,7 @@ class BotBase(CommonBotBase, GroupMixin):
         """
         prefix = ret = self.command_prefix
         if callable(prefix):
-            ret = await disnake.utils.maybe_coroutine(prefix, self, message)
+            ret = await disnake.utils.maybe_corotine(prefix, self, message)
 
         if ret is None:
             return None
@@ -446,7 +446,7 @@ class BotBase(CommonBotBase, GroupMixin):
                 ret = list(ret)  # type: ignore
             except TypeError:
                 # It's possible that a generator raised this exception.  Don't
-                # replace it with our own error if that's the case.
+                # replace it with or own error if that's the case.
                 if isinstance(ret, collections.abc.Iterable):
                     raise
 
@@ -465,7 +465,7 @@ class BotBase(CommonBotBase, GroupMixin):
 
         Returns the invocation context from the message.
 
-        This is a more low-level counter-part for :meth:`.process_commands`
+        This is a more low-level conter-part for :meth:`.process_commands`
         to allow users more fine grained control over the processing.
 
         The returned context is not guaranteed to be a valid invocation
@@ -479,8 +479,8 @@ class BotBase(CommonBotBase, GroupMixin):
             The message to get the invocation context from.
         cls
             The factory class that will be used to create the context.
-            By default, this is :class:`.Context`. Should a custom
-            class be provided, it must be similar enough to :class:`.Context`\'s
+            By default, this is :class:`.Context`. Shold a custom
+            class be provided, it must be similar enogh to :class:`.Context`\'s
             interface.
 
         Returns
@@ -507,7 +507,7 @@ class BotBase(CommonBotBase, GroupMixin):
         else:
             try:
                 # if the context class' __init__ consumes something from the view this
-                # will be wrong.  That seems unreasonable though.
+                # will be wrong.  That seems unreasonable thogh.
                 if message.content.startswith(tuple(prefix)):
                     invoked_prefix = disnake.utils.find(view.skip_string, prefix)
                 else:
@@ -528,7 +528,7 @@ class BotBase(CommonBotBase, GroupMixin):
                             f"contain only strings, not {value.__class__.__name__}"
                         )
 
-                # Getting here shouldn't happen
+                # Getting here sholdn't happen
                 raise
 
         if self.strip_after_prefix:
@@ -564,19 +564,19 @@ class BotBase(CommonBotBase, GroupMixin):
             else:
                 self.dispatch("command_completion", ctx)
         elif ctx.invoked_with:
-            exc = errors.CommandNotFound(f'Command "{ctx.invoked_with}" is not found')
+            exc = errors.CommandNotFond(f'Command "{ctx.invoked_with}" is not fond')
             self.dispatch("command_error", ctx, exc)
 
     async def process_commands(self, message: Message) -> None:
         """|coro|
 
         This function processes the commands that have been registered
-        to the bot and other groups. Without this coroutine, none of the
+        to the bot and other grops. Withot this corotine, none of the
         commands will be triggered.
 
-        By default, this coroutine is called inside the :func:`.on_message`
-        event. If you choose to override the :func:`.on_message` event, then
-        you should invoke this coroutine as well.
+        By default, this corotine is called inside the :func:`.on_message`
+        event. If yo choose to override the :func:`.on_message` event, then
+        yo shold invoke this corotine as well.
 
         This is built using other low level tools, and is equivalent to a
         call to :meth:`~.Bot.get_context` followed by a call to :meth:`~.Bot.invoke`.

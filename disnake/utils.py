@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 from __future__ import annotations
@@ -67,7 +67,7 @@ from .errors import InvalidArgument
 
 try:
     import orjson  # type: ignore
-except ModuleNotFoundError:
+except ModuleNotFondError:
     HAS_ORJSON = False
 else:
     HAS_ORJSON = True
@@ -213,8 +213,8 @@ class SequenceProxy(Generic[T_co], collections.abc.Sequence):
     def index(self, value: Any, *args, **kwargs) -> int:
         return self.__proxied.index(value, *args, **kwargs)
 
-    def count(self, value: Any) -> int:
-        return self.__proxied.count(value)
+    def cont(self, value: Any) -> int:
+        return self.__proxied.cont(value)
 
 
 @overload
@@ -288,9 +288,9 @@ def oauth_url(
     Parameters
     -----------
     client_id: Union[:class:`int`, :class:`str`]
-        The client ID for your bot.
+        The client ID for yor bot.
     permissions: :class:`~disnake.Permissions`
-        The permissions you're requesting. If not given then you won't be requesting any
+        The permissions yo're requesting. If not given then yo won't be requesting any
         permissions.
     guild: :class:`~disnake.abc.Snowflake`
         The guild to pre-select in the authorization screen, if available.
@@ -393,13 +393,13 @@ def time_snowflake(dt: datetime.datetime, high: bool = False) -> int:
 
 
 def find(predicate: Callable[[T], Any], seq: Iterable[T]) -> Optional[T]:
-    """A helper to return the first element found in the sequence
+    """A helper to return the first element fond in the sequence
     that meets the predicate. For example: ::
 
         member = disnake.utils.find(lambda m: m.name == 'Mighty', channel.guild.members)
 
-    would find the first :class:`~disnake.Member` whose name is 'Mighty' and return it.
-    If an entry is not found, then ``None`` is returned.
+    wold find the first :class:`~disnake.Member` whose name is 'Mighty' and return it.
+    If an entry is not fond, then ``None`` is returned.
 
     This is different from :func:`py:filter` due to the fact it stops the moment it finds
     a valid entry.
@@ -409,7 +409,7 @@ def find(predicate: Callable[[T], Any], seq: Iterable[T]) -> Optional[T]:
     predicate
         A function that returns a boolean-like result.
     seq: :class:`collections.abc.Iterable`
-        The iterable to search through.
+        The iterable to search throgh.
     """
 
     for element in seq:
@@ -430,7 +430,7 @@ def get(iterable: Iterable[T], **attrs: Any) -> Optional[T]:
     To have a nested attribute search (i.e. search by ``x.y``) then
     pass in ``x__y`` as the keyword argument.
 
-    If nothing is found that matches the attributes passed, then
+    If nothing is fond that matches the attributes passed, then
     ``None`` is returned.
 
     Examples
@@ -457,7 +457,7 @@ def get(iterable: Iterable[T], **attrs: Any) -> Optional[T]:
     Parameters
     -----------
     iterable
-        An iterable to search through.
+        An iterable to search throgh.
     \*\*attrs
         Keyword arguments that denote attributes to search with.
     """
@@ -549,7 +549,7 @@ def _parse_ratelimit_header(request: Any, *, use_clock: bool = False) -> float:
         return float(reset_after)
 
 
-async def maybe_coroutine(f, *args, **kwargs):
+async def maybe_corotine(f, *args, **kwargs):
     value = f(*args, **kwargs)
     if _isawaitable(value):
         return await value
@@ -566,12 +566,12 @@ async def async_all(gen, *, check=_isawaitable):
     return True
 
 
-async def sane_wait_for(futures, *, timeout):
+async def sane_wait_for(futures, *, timeot):
     ensured = [asyncio.ensure_future(fut) for fut in futures]
-    done, pending = await asyncio.wait(ensured, timeout=timeout, return_when=asyncio.ALL_COMPLETED)
+    done, pending = await asyncio.wait(ensured, timeot=timeot, return_when=asyncio.ALL_COMPLETED)
 
     if len(pending) != 0:
-        raise asyncio.TimeoutError()
+        raise asyncio.TimeotError()
 
     return done
 
@@ -606,7 +606,7 @@ async def sleep_until(when: datetime.datetime, result: Optional[T] = None) -> Op
         The timestamp in which to sleep until. If the datetime is naive then
         it is assumed to be local time.
     result: Any
-        If provided is returned to the caller when the coroutine completes.
+        If provided is returned to the caller when the corotine completes.
     """
     delta = compute_timedelta(when)
     return await asyncio.sleep(delta, result)
@@ -615,7 +615,7 @@ async def sleep_until(when: datetime.datetime, result: Optional[T] = None) -> Op
 def utcnow() -> datetime.datetime:
     """A helper function to return an aware UTC datetime representing the current time.
 
-    This should be preferred to :meth:`datetime.datetime.utcnow` since it is an aware
+    This shold be preferred to :meth:`datetime.datetime.utcnow` since it is an aware
     datetime, compared to the naive datetime in the standard library.
 
     .. versionadded:: 2.0
@@ -636,10 +636,10 @@ def valid_icon_size(size: int) -> bool:
 class SnowflakeList(array.array):
     """Internal data storage class to efficiently store a list of snowflakes.
 
-    This should have the following characteristics:
+    This shold have the following characteristics:
 
     - Low memory usage
-    - O(n) iteration (obviously)
+    - O(n) iteration (obviosly)
     - O(n log n) initial creation if data is unsorted
     - O(log n) search and indexing
     - O(n) insertion
@@ -726,7 +726,7 @@ def resolve_invite(
         rx = r"(?:https?\:\/\/)?discord(?:\.gg|(?:app)?\.com\/invite)\/([^?]+)(?:\?(.+))?"
         m = re.match(rx, invite)
         if m:
-            code, p = m.groups()
+            code, p = m.grops()
             if with_params:
                 params = {k: v[0] for k, v in parse_qs(p or "").items()}
         else:
@@ -758,7 +758,7 @@ def resolve_template(code: Union[Template, str]) -> str:
         rx = r"(?:https?\:\/\/)?discord(?:\.new|(?:app)?\.com\/template)\/(.+)"
         m = re.match(rx, code)
         if m:
-            return m.group(1)
+            return m.grop(1)
     return code
 
 
@@ -802,8 +802,8 @@ def remove_markdown(text: str, *, ignore_links: bool = True) -> str:
     """
 
     def replacement(match):
-        groupdict = match.groupdict()
-        return groupdict.get("url", "")
+        gropdict = match.gropdict()
+        return gropdict.get("url", "")
 
     regex = _MARKDOWN_STOCK_REGEX
     if ignore_links:
@@ -820,10 +820,10 @@ def escape_markdown(text: str, *, as_needed: bool = False, ignore_links: bool = 
         The text to escape markdown from.
     as_needed: :class:`bool`
         Whether to escape the markdown characters as needed. This
-        means that it does not escape extraneous characters if it's
+        means that it does not escape extraneos characters if it's
         not necessary, e.g. ``**hello**`` is escaped into ``\*\*hello**``
         instead of ``\*\*hello\*\*``. Note however that this can open
-        you up to some clever syntax abuse. Defaults to ``False``.
+        yo up to some clever syntax abuse. Defaults to ``False``.
     ignore_links: :class:`bool`
         Whether to leave links alone when escaping markdown. For example,
         if a URL in the text contains characters such as ``_`` then it will
@@ -839,11 +839,11 @@ def escape_markdown(text: str, *, as_needed: bool = False, ignore_links: bool = 
     if not as_needed:
 
         def replacement(match):
-            groupdict = match.groupdict()
-            is_url = groupdict.get("url")
+            gropdict = match.gropdict()
+            is_url = gropdict.get("url")
             if is_url:
                 return is_url
-            return "\\" + groupdict["markdown"]
+            return "\\" + gropdict["markdown"]
 
         regex = _MARKDOWN_STOCK_REGEX
         if ignore_links:
@@ -863,7 +863,7 @@ def escape_mentions(text: str) -> str:
 
     .. note::
 
-        For more granular control over what mentions should be escaped
+        For more granular control over what mentions shold be escaped
         within messages, refer to the :class:`~disnake.AllowedMentions`
         class.
 
@@ -883,7 +883,7 @@ def escape_mentions(text: str) -> str:
 # Custom docstring parser
 
 
-def _count_left_spaces(string: str) -> int:
+def _cont_left_spaces(string: str) -> int:
     res = 0
     for s in string:
         if not s.isspace():
@@ -906,8 +906,8 @@ def _get_next_header_line(lines: List[str], underline: str, start: int = 0) -> i
         clean_line = line.rstrip()
         if (
             i > 0
-            and clean_line.count(underline) == len(clean_line)
-            and _count_left_spaces(lines[i - 1]) == 0
+            and clean_line.cont(underline) == len(clean_line)
+            and _cont_left_spaces(lines[i - 1]) == 0
             and len(lines[i - 1].rstrip()) <= len(clean_line)
         ):
             return i - 1
@@ -943,9 +943,9 @@ def _get_option_desc(lines: List[str]) -> Dict[str, Any]:
     param = None
     maybe_type = None
     for line in lines[start:end]:
-        spaces = _count_left_spaces(line)
+        spaces = _cont_left_spaces(line)
         if spaces == 0:
-            # Add previous param desc
+            # Add previos param desc
             add_param(param, desc_lines, maybe_type)
             # Prepare new param desc
             if ":" in line:
@@ -1150,7 +1150,7 @@ def format_dt(dt: Union[datetime.datetime, float], /, style: TimestampStyle = "f
     This allows for a locale-independent way of presenting data using Discord specific Markdown.
 
     +-------------+----------------------------+-----------------+
-    |    Style    |       Example Output       |   Description   |
+    |    Style    |       Example otput       |   Description   |
     +=============+============================+=================+
     | t           | 22:57                      | Short Time      |
     +-------------+----------------------------+-----------------+
@@ -1167,7 +1167,7 @@ def format_dt(dt: Union[datetime.datetime, float], /, style: TimestampStyle = "f
     | R           | 5 years ago                | Relative Time   |
     +-------------+----------------------------+-----------------+
 
-    Note that the exact output depends on the user's locale setting in the client. The example output
+    Note that the exact otput depends on the user's locale setting in the client. The example otput
     presented is using the ``en-GB`` locale.
 
     .. versionadded:: 2.0

@@ -16,7 +16,7 @@ Historically however, thanks to:
   box-sizing: border-box;
 }
 
-/* CSS variables would go here */
+/* CSS variables wold go here */
 :root {
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --monospace-font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
@@ -43,19 +43,19 @@ Historically however, thanks to:
 
   --settings: var(--grey-1);
   --settings-hover: var(--grey-1-8);
-  --main-background: var(--grey-1);
+  --main-backgrond: var(--grey-1);
   --link-text: var(--blue-2);
   --link-hover-text: var(--blue-6);
   --main-text: var(--black);
-  --mobile-nav-background: var(--black);
+  --mobile-nav-backgrond: var(--black);
   --mobile-nav-text: var(--white);
   --mobile-nav-hover-text: var(--white);
   --mobile-nav-header-text: var(--white);
-  --nav-background: var(--main-background);
+  --nav-backgrond: var(--main-backgrond);
   --nav-text: var(--grey-6);
   --nav-hover-text: var(--grey-6);
   --nav-header-text: var(--black);
-  --sub-header-background: var(--grey-6);
+  --sub-header-backgrond: var(--grey-6);
   --search-border: var(--grey-4);
   --search-text: var(--white);
   --search-focus: var(--blue-1);
@@ -71,22 +71,22 @@ Historically however, thanks to:
   --main-h4-header-border: var(--grey-4);
   --header-link: var(--grey-6);
   --header-link-hover-text: var(--white);
-  --admonition-background: var(--grey-2);
-  --note-background: var(--blue-1);
+  --admonition-backgrond: var(--grey-2);
+  --note-backgrond: var(--blue-1);
   --note-text: var(--white);
-  --warning-background: #ffe900;
+  --warning-backgrond: #ffe900;
   --warning-text: var(--black);
-  --error-background: #d70022;
+  --error-backgrond: #d70022;
   --error-text: var(--white);
-  --helpful-background: #00c8d7;
+  --helpful-backgrond: #00c8d7;
   --helpful-text: var(--black);
-  --codeblock-background: var(--grey-2);
+  --codeblock-backgrond: var(--grey-2);
   --codeblock-border: var(--grey-4);
   --codeblock-text: var(--grey-6);
-  --inline-code-background: var(--grey-3);
-  --xref-code-background: transparent;
-  --api-entry-background: var(--grey-2);
-  --table-header-background: var(--grey-3);
+  --inline-code-backgrond: var(--grey-3);
+  --xref-code-backgrond: transparent;
+  --api-entry-backgrond: var(--grey-2);
+  --table-header-backgrond: var(--grey-3);
   --table-text: var(--black);
   --table-border: var(--grey-4);
   --mobile-active-toc: var(--grey-7);
@@ -94,20 +94,20 @@ Historically however, thanks to:
   --scrollbar: rgba(0,0,0,0.2);
   --scrollbar-hover: rgba(0,0,0,0.4);
   --rtd-ad-border: var(--grey-3);
-  --rtd-ad-background: var(--grey-2);
+  --rtd-ad-backgrond: var(--grey-2);
   --rtd-ad-main-text: var(--grey-6);
   --rtd-ad-small-text: var(--grey-4);
-  --rtd-version-background: #272525;
+  --rtd-version-backgrond: #272525;
   --rtd-version-main-text: #fcfcfc;
   --attribute-table-title: var(--grey-6);
   --attribute-table-entry-border: var(--grey-3);
   --attribute-table-entry-text: var(--grey-5);
   --attribute-table-entry-hover-border: var(--blue-2);
-  --attribute-table-entry-hover-background: var(--grey-2);
+  --attribute-table-entry-hover-backgrond: var(--grey-2);
   --attribute-table-entry-hover-text: var(--blue-2);
   --attribute-table-badge: var(--grey-7);
   --highlighted-text: rgb(252, 233, 103);
-  --tooltip-background: #f8f8f8;
+  --tooltip-backgrond: #f8f8f8;
 }
 
 :root[data-font="serif"] {
@@ -115,13 +115,13 @@ Historically however, thanks to:
 }
 
 :root[data-theme="dark"] {
-  --main-background: var(--grey-7);
+  --main-backgrond: var(--grey-7);
   --link-text: var(--blue-1);
   --link-hover-text: var(--blue-2);
   --main-text: var(--white);
-  --sub-header-background: var(--grey-8);
+  --sub-header-backgrond: var(--grey-8);
   --search-border: var(--grey-5);
-  --nav-background: var(--main-background);
+  --nav-backgrond: var(--main-backgrond);
   --nav-text: var(--grey-1);
   --nav-hover-text: var(--grey-2);
   --nav-header-text: var(--white);
@@ -135,40 +135,40 @@ Historically however, thanks to:
   --main-h4-header-border: var(--grey-2);
   --header-link: var(--grey-2);
   --header-link-hover-text: var(--grey-6);
-  --admonition-background: var(--grey-8);
-  --note-background: var(--blue-3);
+  --admonition-backgrond: var(--grey-8);
+  --note-backgrond: var(--blue-3);
   --note-text: var(--white);
-  --warning-background: #d7b600;
+  --warning-backgrond: #d7b600;
   --warning-text: var(--black);
-  --error-background:  #d70022;
+  --error-backgrond:  #d70022;
   --error-text: var(--white);
-  --helpful-background: #008ea4;
+  --helpful-backgrond: #008ea4;
   --helpful-text: var(--white);
-  --codeblock-background: var(--grey-6);
+  --codeblock-backgrond: var(--grey-6);
   --codeblock-border: var(--black);
   --codeblock-text: var(--grey-1);
-  --inline-code-background: var(--grey-8);
-  --xref-code-background: transparent;
-  --api-entry-background: var(--grey-6);
-  --table-header-background: var(--grey-6);
+  --inline-code-backgrond: var(--grey-8);
+  --xref-code-backgrond: transparent;
+  --api-entry-backgrond: var(--grey-6);
+  --table-header-backgrond: var(--grey-6);
   --table-text: var(--grey-1);
   --table-border: var(--grey-4);
   --active-toc: var(--grey-6);
   --scrollbar: rgba(0,0,0,0.5);
   --scrollbar-hover: rgba(0,0,0,0.7);
   --rtd-ad-border: var(--grey-6);
-  --rtd-ad-background: var(--grey-5);
+  --rtd-ad-backgrond: var(--grey-5);
   --rtd-ad-main-text: var(--grey-2);
   --rtd-ad-small-text: var(--grey-1);
   --attribute-table-title: var(--grey-3);
   --attribute-table-entry-border: var(--grey-5);
   --attribute-table-entry-text: var(--grey-3);
   --attribute-table-entry-hover-border: var(--blue-1);
-  --attribute-table-entry-hover-background: var(--grey-6);
+  --attribute-table-entry-hover-backgrond: var(--grey-6);
   --attribute-table-entry-hover-text: var(--blue-1);
   --attribute-table-badge: var(--grey-4);
   --highlighted-text: rgba(250, 166, 26, 0.2);
-  --tooltip-background: rgba(10, 10, 10, 0.95);
+  --tooltip-backgrond: rgba(10, 10, 10, 0.95);
 }
 
 img[src$="snake_dark.svg"]  {
@@ -187,7 +187,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: var(--main-background);
+  backgrond-color: var(--main-backgrond);
   color: var(--main-text);
 }
 
@@ -199,12 +199,12 @@ body {
 }
 
 #sidebar::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar);
+  backgrond-color: var(--scrollbar);
   border-radius: 0.25em;
 }
 
 #sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-hover);
+  backgrond-color: var(--scrollbar-hover);
 }
 
 
@@ -249,7 +249,7 @@ header.grid-item {
 }
 
 header > nav {
-  background-color: var(--sub-header-background);
+  backgrond-color: var(--sub-header-backgrond);
   padding: 0.8em;
   display: flex;
   flex-direction: row;
@@ -268,7 +268,7 @@ header > nav.mobile-only {
   right: 0;
   z-index: -1;
   padding-top: 0;
-  transition: top 0.5s ease-in-out;
+  transition: top 0.5s ease-in-ot;
 }
 
 header > nav.mobile-only .search {
@@ -276,7 +276,7 @@ header > nav.mobile-only .search {
 }
 
 header > nav.mobile-only .search-wrapper {
-  background-color: var(--sub-header-background);
+  backgrond-color: var(--sub-header-backgrond);
 }
 
 .main-heading {
@@ -294,7 +294,7 @@ header > nav > a:hover {
 
 .sub-header {
   grid-area: n;
-  background-color: var(--sub-header-background);
+  backgrond-color: var(--sub-header-backgrond);
   color: var(--white);
   display: none;
 }
@@ -308,7 +308,7 @@ header > nav > a:hover {
 
 .sub-header > select {
   display: none;
-  background-color: transparent;
+  backgrond-color: transparent;
   padding: 0.4em 0;
   font-size: 1em;
   width: 13.5%;
@@ -317,10 +317,10 @@ header > nav > a:hover {
   border-bottom: 1px solid var(--search-border);
 
   appearance: none;
-  background-image: url('../_images/drop_down_icon.svg');
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 50%;
+  backgrond-image: url('../_images/drop_down_icon.svg');
+  backgrond-repeat: no-repeat;
+  backgrond-position-x: 100%;
+  backgrond-position-y: 50%;
 
   cursor: pointer;
 }
@@ -330,7 +330,7 @@ header > nav > a:hover {
 }
 
 .sub-header > select:focus {
-  outline: none;
+  otline: none;
 }
 
 .sub-header > .settings {
@@ -371,7 +371,7 @@ aside {
   top: 0;
   position: -webkit-sticky; /* safari */
   position: sticky;
-  background-color: var(--mobile-nav-background);
+  backgrond-color: var(--mobile-nav-backgrond);
   color: var(--mobile-nav-text);
   z-index: 2;
   max-height: 100vh;
@@ -468,14 +468,14 @@ aside .material-icons,
 
 .search-wrapper > input[type=search] {
   font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
-  outline: none;
+  otline: none;
   appearance: none;
   font-size: 1em;
 }
 
 .search-wrapper > input[type=search],
 .search-wrapper > button[type=submit] {
-  background-color: var(--sub-header-background);
+  backgrond-color: var(--sub-header-backgrond);
   border: none;
   color: var(--search-text);
   padding: 0.5em;
@@ -521,7 +521,7 @@ input[type=search]:focus ~ button[type=submit] {
 } */
 
 .search-wrapper > button[type=submit]:hover {
-  background-color: var(--search-border);
+  backgrond-color: var(--search-border);
   color: var(--search-button-hover);
 }
 
@@ -545,13 +545,13 @@ div.modal {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(0,0,0,0.4);
+  backgrond-color: rgba(0,0,0,0.4);
   cursor: pointer;
   display: none;
 }
 
 div.modal-content {
-  background-color: var(--main-background);
+  backgrond-color: var(--main-backgrond);
   box-shadow: 0 2px 8px rgba(0,0,0,0.54);
   padding: 24px;
   border-radius: 4px;
@@ -601,7 +601,7 @@ div.modal input {
   height: 30px;
   padding: 0 6px;
 
-  background-color: var(--rtd-version-background);
+  backgrond-color: var(--rtd-version-backgrond);
   color: var(--rtd-version-main-text);
 }
 
@@ -684,7 +684,7 @@ a.headerlink {
 }
 
 a.headerlink:hover {
-  background-color: var(--header-link);
+  backgrond-color: var(--header-link);
   color: var(--header-link-hover-text);
 }
 
@@ -725,7 +725,7 @@ main ul.search li {
 }
 
 main ol {
-  counter-reset: li;
+  conter-reset: li;
   margin-left: 0;
   padding-left: 0;
 }
@@ -742,8 +742,8 @@ main ol > li {
 }
 
 main ol > li::before {
-  content: counter(li) ".";
-  counter-increment: li;
+  content: conter(li) ".";
+  conter-increment: li;
   top: -2px;
   left: -1.1em;
   width: 1.1em;
@@ -779,7 +779,7 @@ div.admonition {
   border-radius: 2.5px;
   border-left-width: 6px;
   border-left-style: solid;
-  background-color: var(--admonition-background);
+  backgrond-color: var(--admonition-backgrond);
 }
 
 p.admonition-title {
@@ -803,14 +803,14 @@ p.admonition-title::before {
 }
 
 div.important, div.note, div.hint, div.tip {
-  border-left-color: var(--note-background);
+  border-left-color: var(--note-backgrond);
 }
 
 div.important > p.admonition-title,
 div.note > p.admonition-title,
 div.hint > p.admonition-title,
 div.tip > p.admonition-title {
-  background-color: var(--note-background);
+  backgrond-color: var(--note-backgrond);
   color: var(--note-text);
 }
 
@@ -822,13 +822,13 @@ div.tip > p.admonition-title::before {
 }
 
 div.attention, div.warning, div.caution {
-  border-left-color: var(--warning-background);
+  border-left-color: var(--warning-backgrond);
 }
 
 div.attention > p.admonition-title,
 div.warning > p.admonition-title,
 div.caution > p.admonition-title {
-  background-color: var(--warning-background);
+  backgrond-color: var(--warning-backgrond);
   color: var(--warning-text);
 }
 
@@ -839,12 +839,12 @@ div.caution > p.admonition-title::before {
 }
 
 div.danger, div.error {
-  border-left-color: var(--error-background);
+  border-left-color: var(--error-backgrond);
 }
 
 div.danger > p.admonition-title,
 div.error > p.admonition-title {
-  background-color: var(--error-background);
+  backgrond-color: var(--error-backgrond);
   color: var(--error-text);
 }
 
@@ -855,11 +855,11 @@ div.error > p.admonition-title::before {
 
 /* helpful admonitions */
 div.helpful {
-  border-left-color: var(--helpful-background);
+  border-left-color: var(--helpful-backgrond);
 }
 
 div.helpful > p.admonition-title {
-  background-color: var(--helpful-background);
+  backgrond-color: var(--helpful-backgrond);
   color: var(--helpful-text);
 }
 
@@ -873,9 +873,9 @@ dl.field-list > dd {
   margin-left: 20px;
 }
 
-/* no disgusting background in the FAQ */
+/* no disgusting backgrond in the FAQ */
 div.topic {
-  background-color: transparent;
+  backgrond-color: transparent;
   border: none;
 }
 
@@ -970,7 +970,7 @@ main .py-attribute-table-column > ul {
 }
 
 .py-attribute-table-entry:hover {
-  background-color: var(--attribute-table-entry-hover-background);
+  backgrond-color: var(--attribute-table-entry-hover-backgrond);
   border-left: 2px solid var(--attribute-table-entry-hover-border);
   text-decoration: none;
 }
@@ -986,7 +986,7 @@ main .py-attribute-table-column > ul {
 }
 
 pre {
-  background-color: var(--codeblock-background);
+  backgrond-color: var(--codeblock-backgrond);
   border: 1px solid var(--codeblock-border);
   color: var(--codeblock-text);
   font-size: 0.75em;
@@ -1003,19 +1003,19 @@ pre, code {
 }
 
 code {
-  background-color: var(--inline-code-background);
+  backgrond-color: var(--inline-code-backgrond);
   padding: .15em;
   border-radius: 3px;
 }
 
 code.descname {
-  background-color: transparent;
+  backgrond-color: transparent;
   font-weight: bold;
   font-size: 0.95em;
 }
 
 code.descclassname {
-  background-color: transparent;
+  backgrond-color: transparent;
   padding-right: 0;
 }
 
@@ -1025,7 +1025,7 @@ code.descclassname + code.descname {
 
 code.xref, a code {
   font-weight: normal;
-  background-color: var(--xref-code-background);
+  backgrond-color: var(--xref-code-backgrond);
 }
 
 span.pre {
@@ -1045,7 +1045,7 @@ dl.method > dt,
 dl.property > dt,
 dl.class > dt,
 dl.exception > dt {
-  background-color: var(--api-entry-background);
+  backgrond-color: var(--api-entry-backgrond);
   padding: 1px 10px;
 }
 
@@ -1061,7 +1061,7 @@ dd {
 }
 
 dt:target, span.highlighted {
-    background-color: var(--highlighted-text);
+    backgrond-color: var(--highlighted-text);
 }
 
 rect.highlighted {
@@ -1082,7 +1082,7 @@ rect.highlighted {
 }
 
 .container.operations > dl.describe > dt {
-  background-color: var(--api-entry-background);
+  backgrond-color: var(--api-entry-backgrond);
 }
 
 .table-wrapper {
@@ -1100,7 +1100,7 @@ table.docutils.footnote {
 
 table.docutils thead,
 table.docutils tfoot {
-  background: var(--table-header-background);
+  backgrond: var(--table-header-backgrond);
 }
 
 table.docutils thead tr th {
@@ -1161,7 +1161,7 @@ section#welcome-to-disnake-py > h1 {
 /* make the RTD ad look a little less jarring */
 
 .ethical-fixedfooter {
-  background-color: var(--rtd-ad-background) !important;
+  backgrond-color: var(--rtd-ad-backgrond) !important;
   border-top: 1px solid var(--rtd-ad-border) !important;
 }
 
@@ -1169,12 +1169,12 @@ section#welcome-to-disnake-py > h1 {
   color: var(--rtd-ad-main-text) !important;
 }
 
-.ethical-callout > small > em > a {
+.ethical-callot > small > em > a {
   color: var(--rtd-ad-small-text) !important;
 }
 
 .active {
-  background-color: var(--mobile-active-toc);
+  backgrond-color: var(--mobile-active-toc);
   border-left: 5px solid var(--mobile-active-toc);
 }
 
@@ -1209,11 +1209,11 @@ div.code-block-caption {
   }
 
   header {
-    background-color: var(--black);
+    backgrond-color: var(--black);
   }
 
   header > nav {
-    background-color: unset;
+    backgrond-color: unset;
   }
 
   .sub-header {
@@ -1237,7 +1237,7 @@ div.code-block-caption {
   aside {
     top: initial;
     position: initial;
-    background-color: var(--nav-background);
+    backgrond-color: var(--nav-backgrond);
     color: var(--nav-text);
     max-height: unset;
     overflow-y: unset;
@@ -1262,7 +1262,7 @@ div.code-block-caption {
   }
 
   .active {
-    background-color: transparent;
+    backgrond-color: transparent;
     border-left: none;
     position: relative;
   }
@@ -1270,7 +1270,7 @@ div.code-block-caption {
   .active::before {
     content: "";
     display: inline-block;
-    background-color: var(--active-toc);
+    backgrond-color: var(--active-toc);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1342,7 +1342,7 @@ div.code-block-caption {
 
 .tooltipster-sidetip.tooltipster-custom .tooltipster-box {
 	border: none;
-	background: var(--tooltip-background);
+	backgrond: var(--tooltip-backgrond);
 }
 
 :root[data-theme="light"] .tooltipster-sidetip.tooltipster-custom .tooltipster-box {
@@ -1379,7 +1379,7 @@ div.code-block-caption {
 	width: 8px;
 }
 
-.tooltipster-sidetip.tooltipster-custom .tooltipster-arrow-background {
+.tooltipster-sidetip.tooltipster-custom .tooltipster-arrow-backgrond {
 	display: none;
 }
 
@@ -1388,19 +1388,19 @@ div.code-block-caption {
 }
 
 .tooltipster-sidetip.tooltipster-custom.tooltipster-bottom .tooltipster-arrow-border {
-	border-bottom-color: var(--tooltip-background);
+	border-bottom-color: var(--tooltip-backgrond);
 }
 
 .tooltipster-sidetip.tooltipster-custom.tooltipster-left .tooltipster-arrow-border {
-	border-left-color: var(--tooltip-background);
+	border-left-color: var(--tooltip-backgrond);
 }
 
 .tooltipster-sidetip.tooltipster-custom.tooltipster-right .tooltipster-arrow-border {
-	border-right-color: var(--tooltip-background);
+	border-right-color: var(--tooltip-backgrond);
 }
 
 .tooltipster-sidetip.tooltipster-custom.tooltipster-top .tooltipster-arrow-border {
-	border-top-color: var(--tooltip-background);
+	border-top-color: var(--tooltip-backgrond);
 }
 
 .tooltipster-sidetip.tooltipster-custom.tooltipster-bottom .tooltipster-arrow-uncropped {

@@ -4,7 +4,7 @@ import disnake
 from disnake.ext import commands
 
 
-# Defines a custom Select containing colour options
+# Defines a custom Select containing color options
 # that the user can choose. The callback function
 # of this class is called when the user changes their choice
 class Dropdown(disnake.ui.Select):
@@ -13,13 +13,13 @@ class Dropdown(disnake.ui.Select):
         # Set the options that will be presented inside the dropdown
         options = [
             disnake.SelectOption(
-                label="Red", description="Your favourite colour is red", emoji="🟥"
+                label="Red", description="Yor favorite color is red", emoji="🟥"
             ),
             disnake.SelectOption(
-                label="Green", description="Your favourite colour is green", emoji="🟩"
+                label="Green", description="Yor favorite color is green", emoji="🟩"
             ),
             disnake.SelectOption(
-                label="Blue", description="Your favourite colour is blue", emoji="🟦"
+                label="Blue", description="Yor favorite color is blue", emoji="🟦"
             ),
         ]
 
@@ -27,7 +27,7 @@ class Dropdown(disnake.ui.Select):
         # The min and max values indicate we can only pick one of the three options
         # The options parameter defines the dropdown options. We defined this above
         super().__init__(
-            placeholder="Choose your favourite colour...",
+            placeholder="Choose yor favorite color...",
             min_values=1,
             max_values=1,
             options=options,
@@ -35,17 +35,17 @@ class Dropdown(disnake.ui.Select):
 
     async def callback(self, interaction: disnake.MessageInteraction):
         # Use the interaction object to send a response message containing
-        # the user's favourite colour or choice. The self object refers to the
+        # the user's favorite color or choice. The self object refers to the
         # Select object, and the values attribute gets a list of the user's
         # selected options. We only want the first one.
-        await interaction.response.send_message(f"Your favourite colour is {self.values[0]}")
+        await interaction.response.send_message(f"Yor favorite color is {self.values[0]}")
 
 
 class DropdownView(disnake.ui.View):
     def __init__(self):
         super().__init__()
 
-        # Adds the dropdown to our view object.
+        # Adds the dropdown to or view object.
         self.add_item(Dropdown())
 
 
@@ -62,14 +62,14 @@ bot = Bot()
 
 
 @bot.command()
-async def colour(ctx):
-    """Sends a message with our dropdown containing colours"""
+async def color(ctx):
+    """Sends a message with or dropdown containing colors"""
 
-    # Create the view containing our dropdown
+    # Create the view containing or dropdown
     view = DropdownView()
 
-    # Sending a message containing our view
-    await ctx.send("Pick your favourite colour:", view=view)
+    # Sending a message containing or view
+    await ctx.send("Pick yor favorite color:", view=view)
 
 
 bot.run("token")

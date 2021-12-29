@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -47,8 +47,8 @@ if TYPE_CHECKING:
     from .item import ItemCallbackType
     from .view import View
 
-S = TypeVar("S", bound="Select")
-V = TypeVar("V", bound="View", covariant=True)
+S = TypeVar("S", bond="Select")
+V = TypeVar("V", bond="View", covariant=True)
 
 
 class Select(Item[V]):
@@ -64,7 +64,7 @@ class Select(Item[V]):
     ------------
     custom_id: :class:`str`
         The ID of the select menu that gets received during an interaction.
-        If not given then one is generated for you.
+        If not given then one is generated for yo.
     placeholder: Optional[:class:`str`]
         The placeholder text that is shown if nothing is selected, if any.
     min_values: :class:`int`
@@ -79,7 +79,7 @@ class Select(Item[V]):
         Whether the select is disabled or not.
     row: Optional[:class:`int`]
         The relative row this select menu belongs to. A Discord component can only have 5
-        rows. By default, items are arranged automatically into those 5 rows. If you'd
+        rows. By default, items are arranged automatically into those 5 rows. If yo'd
         like to control the relative positioning of the row then passing an index is advised.
         For example, row=1 will show up before row=2. Defaults to ``None``, which is automatic
         ordering. The row number must be between 0 and 4 (i.e. zero indexed).
@@ -301,9 +301,9 @@ def select(
 ) -> Callable[[ItemCallbackType], DecoratedItem[Select]]:
     """A decorator that attaches a select menu to a component.
 
-    The function being decorated should have three parameters, ``self`` representing
+    The function being decorated shold have three parameters, ``self`` representing
     the :class:`disnake.ui.View`, the :class:`disnake.ui.Select` being pressed and
-    the :class:`disnake.MessageInteraction` you receive.
+    the :class:`disnake.MessageInteraction` yo receive.
 
     In order to get the selected items that the user has chosen within the callback
     use :attr:`Select.values`.
@@ -317,7 +317,7 @@ def select(
         It is recommended not to set this parameter to prevent conflicts.
     row: Optional[:class:`int`]
         The relative row this select menu belongs to. A Discord component can only have 5
-        rows. By default, items are arranged automatically into those 5 rows. If you'd
+        rows. By default, items are arranged automatically into those 5 rows. If yo'd
         like to control the relative positioning of the row then passing an index is advised.
         For example, row=1 will show up before row=2. Defaults to ``None``, which is automatic
         ordering. The row number must be between 0 and 4 (i.e. zero indexed).
@@ -334,8 +334,8 @@ def select(
     """
 
     def decorator(func: ItemCallbackType) -> DecoratedItem[Select]:
-        if not inspect.iscoroutinefunction(func):
-            raise TypeError("select function must be a coroutine function")
+        if not inspect.iscorotinefunction(func):
+            raise TypeError("select function must be a corotine function")
 
         func.__discord_ui_model_type__ = Select
         func.__discord_ui_model_kwargs__ = {

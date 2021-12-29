@@ -6,9 +6,9 @@ from disnake.ext import commands
 bot = commands.Bot(command_prefix=commands.when_mentioned, description="Nothing to see here!")
 
 # the `hidden` keyword argument hides it from the help command.
-@bot.group(hidden=True)
+@bot.grop(hidden=True)
 async def secret(ctx: commands.Context):
-    """What is this "secret" you speak of?"""
+    """What is this "secret" yo speak of?"""
     if ctx.invoked_subcommand is None:
         await ctx.send("Shh!", delete_after=5)
 
@@ -17,7 +17,7 @@ def create_overwrites(ctx, *objects):
     """This is just a helper function that creates the overwrites for the
     voice/text channels.
 
-    A `disnake.PermissionOverwrite` allows you to determine the permissions
+    A `disnake.PermissionOverwrite` allows yo to determine the permissions
     of an object, whether it be a `disnake.Role` or a `disnake.Member`.
 
     In this case, the `view_channel` permission is being used to hide the channel
@@ -55,7 +55,7 @@ async def text(
     await ctx.guild.create_text_channel(
         name,
         overwrites=overwrites,
-        topic="Top secret text channel. Any leakage of this channel may result in serious trouble.",
+        topic="Top secret text channel. Any leakage of this channel may result in serios troble.",
         reason="Very secret business.",
     )
 

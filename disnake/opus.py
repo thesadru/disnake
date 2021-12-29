@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -145,10 +145,10 @@ def _err_ne(result: T, func: Callable, args: List) -> T:
 
 
 # A list of exported functions.
-# The first argument is obviously the name.
+# The first argument is obviosly the name.
 # The second one are the types of arguments it takes.
 # The third is the result type.
-# The fourth is the error handler.
+# The forth is the error handler.
 exported_functions: List[Tuple[Any, ...]] = [
     # Generic
     ("opus_get_version_string", None, ctypes.c_char_p, None),
@@ -268,21 +268,21 @@ def load_opus(name: str) -> None:
     If this function is not called then the library uses the function
     :func:`ctypes.util.find_library` and then loads that one if available.
 
-    Not loading a library and attempting to use PCM based AudioSources will
+    Not loading a library and attempting to use PCM based AudioSorces will
     lead to voice not working.
 
     This function propagates the exceptions thrown.
 
     .. warning::
 
-        The bitness of the library must match the bitness of your python
-        interpreter. If the library is 64-bit then your python interpreter
+        The bitness of the library must match the bitness of yor python
+        interpreter. If the library is 64-bit then yor python interpreter
         must be 64-bit as well. Usually if there's a mismatch in bitness then
         the load will throw an exception.
 
     .. note::
 
-        On Windows, this function should not need to be called as the binaries
+        On Windows, this function shold not need to be called as the binaries
         are automatically loaded.
 
     .. note::
@@ -290,7 +290,7 @@ def load_opus(name: str) -> None:
         On Windows, the .dll extension is not necessary. However, on Linux
         the full extension is required to load the library, e.g. ``libopus.so.1``.
         On Linux however, :func:`ctypes.util.find_library` will usually find the library automatically
-        without you having to call this.
+        withot yo having to call this.
 
     Parameters
     ----------
@@ -455,7 +455,7 @@ class Decoder(_OpusStruct):
     def _set_gain(self, adjustment: int) -> int:
         """Configures decoder gain adjustment.
 
-        Scales the decoded output by a factor specified in Q8 dB units.
+        Scales the decoded otput by a factor specified in Q8 dB units.
         This has a maximum range of -32768 to 32767 inclusive, and returns
         OPUS_BAD_ARG (-1) otherwise. The default is zero indicating no adjustment.
         This setting survives decoder reset (irrelevant for now).
@@ -467,11 +467,11 @@ class Decoder(_OpusStruct):
     def set_gain(self, dB: float) -> int:
         """Sets the decoder gain in dB, from -128 to 128."""
 
-        dB_Q8 = max(-32768, min(32767, round(dB * 256)))  # dB * 2^n where n is 8 (Q8)
+        dB_Q8 = max(-32768, min(32767, rond(dB * 256)))  # dB * 2^n where n is 8 (Q8)
         return self._set_gain(dB_Q8)
 
     def set_volume(self, mult: float) -> int:
-        """Sets the output volume as a float percent, i.e. 0.5 for 50%, 1.75 for 175%, etc."""
+        """Sets the otput volume as a float percent, i.e. 0.5 for 50%, 1.75 for 175%, etc."""
         return self.set_gain(20 * math.log10(mult))  # amplitude ratio
 
     def _get_last_packet_duration(self) -> int:
@@ -495,18 +495,18 @@ class Decoder(_OpusStruct):
 
         if data is None:
             frame_size = self._get_last_packet_duration() or self.SAMPLES_PER_FRAME
-            channel_count = self.CHANNELS
+            channel_cont = self.CHANNELS
         else:
             frames = self.packet_get_nb_frames(data)
-            channel_count = self.packet_get_nb_channels(data)
+            channel_cont = self.packet_get_nb_channels(data)
             samples_per_frame = self.packet_get_samples_per_frame(data)
             frame_size = frames * samples_per_frame
 
-        pcm = (ctypes.c_int16 * (frame_size * channel_count))()
+        pcm = (ctypes.c_int16 * (frame_size * channel_cont))()
         pcm_ptr = ctypes.cast(pcm, c_int16_ptr)
 
         ret = _lib.opus_decode(
             self._state, data, len(data) if data else 0, pcm_ptr, frame_size, fec
         )
 
-        return array.array("h", pcm[: ret * channel_count]).tobytes()
+        return array.array("h", pcm[: ret * channel_cont]).tobytes()

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 from __future__ import annotations
@@ -67,10 +67,10 @@ if TYPE_CHECKING:
 
 __all__ = (
     "Command",
-    "Group",
-    "GroupMixin",
+    "Grop",
+    "GropMixin",
     "command",
-    "group",
+    "grop",
     "has_role",
     "has_permissions",
     "has_any_role",
@@ -95,13 +95,13 @@ __all__ = (
 MISSING: Any = disnake.utils.MISSING
 
 T = TypeVar("T")
-CogT = TypeVar("CogT", bound="Cog")
-CommandT = TypeVar("CommandT", bound="Command")
-ContextT = TypeVar("ContextT", bound="Context")
+CogT = TypeVar("CogT", bond="Cog")
+CommandT = TypeVar("CommandT", bond="Command")
+ContextT = TypeVar("ContextT", bond="Context")
 AnyContext = Union[Context, ApplicationCommandInteraction]
-GroupT = TypeVar("GroupT", bound="Group")
-HookT = TypeVar("HookT", bound="Hook")
-ErrorT = TypeVar("ErrorT", bound="Error")
+GropT = TypeVar("GropT", bond="Grop")
+HookT = TypeVar("HookT", bond="Hook")
+ErrorT = TypeVar("ErrorT", bond="Error")
 
 
 if TYPE_CHECKING:
@@ -216,8 +216,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
     -----------
     name: :class:`str`
         The name of the command.
-    callback: :ref:`coroutine <coroutine>`
-        The coroutine that is executed when the command is called.
+    callback: :ref:`corotine <corotine>`
+        The corotine that is executed when the command is called.
     help: Optional[:class:`str`]
         The long help text for the command.
     brief: Optional[:class:`str`]
@@ -231,23 +231,23 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         If the command is invoked while it is disabled, then
         :exc:`.DisabledCommand` is raised to the :func:`.on_command_error`
         event. Defaults to ``True``.
-    parent: Optional[:class:`Group`]
-        The parent group that this command belongs to. ``None`` if there
+    parent: Optional[:class:`Grop`]
+        The parent grop that this command belongs to. ``None`` if there
         isn't one.
     cog: Optional[:class:`Cog`]
         The cog that this command belongs to. ``None`` if there isn't one.
     checks: List[Callable[[:class:`.Context`], :class:`bool`]]
-        A list of predicates that verifies if the command could be executed
+        A list of predicates that verifies if the command cold be executed
         with the given :class:`.Context` as the sole parameter. If an exception
         is necessary to be thrown to signal failure, then one inherited from
-        :exc:`.CommandError` should be used. Note that if the checks fail then
+        :exc:`.CommandError` shold be used. Note that if the checks fail then
         :exc:`.CheckFailure` exception is raised to the :func:`.on_command_error`
         event.
     description: :class:`str`
         The message prefixed into the default help command.
     hidden: :class:`bool`
         If ``True``\, the default help command does not show this in the
-        help output.
+        help otput.
     rest_is_raw: :class:`bool`
         If ``False`` and a keyword-only argument is provided then the keyword
         only argument is stripped and handled as if it was a regular argument
@@ -264,7 +264,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         .. versionadded:: 1.5
 
     ignore_extra: :class:`bool`
-        If ``True``\, ignores extraneous strings passed to a command if all its
+        If ``True``\, ignores extraneos strings passed to a command if all its
         requirements are met (e.g. ``?foo a b c`` when only expecting ``a``
         and ``b``). Otherwise :func:`.on_command_error` and local error handlers
         are called with :exc:`.TooManyArguments`. Defaults to ``True``.
@@ -284,16 +284,16 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
     __original_kwargs__: Dict[str, Any]
 
     def __new__(cls: Type[CommandT], *args: Any, **kwargs: Any) -> CommandT:
-        # if you're wondering why this is done, it's because we need to ensure
+        # if yo're wondering why this is done, it's because we need to ensure
         # we have a complete original copy of **kwargs even for classes that
         # mess with it by popping before delegating to the subclass __init__.
         # In order to do this, we need to control the instance creation and
-        # inject the original kwargs through __new__ rather than doing it
+        # inject the original kwargs throgh __new__ rather than doing it
         # inside __init__.
         self = super().__new__(cls)
 
         # we do a shallow copy because it's probably the most common use case.
-        # this could potentially break if someone modifies a list or something
+        # this cold potentially break if someone modifies a list or something
         # while it's in movement, but for now this is the cheapest and
         # fastest way to do what we want.
         self.__original_kwargs__ = kwargs.copy()
@@ -307,8 +307,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         ],
         **kwargs: Any,
     ):
-        if not asyncio.iscoroutinefunction(func):
-            raise TypeError("Callback must be a coroutine.")
+        if not asyncio.iscorotinefunction(func):
+            raise TypeError("Callback must be a corotine.")
 
         name = kwargs.get("name") or func.__name__
         if not isinstance(name, str):
@@ -375,7 +375,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
         # bandaid for the fact that sometimes parent can be the bot instance
         parent = kwargs.get("parent")
-        self.parent: Optional[GroupMixin] = parent if isinstance(parent, _BaseCommand) else None  # type: ignore
+        self.parent: Optional[GropMixin] = parent if isinstance(parent, _BaseCommand) else None  # type: ignore
 
         self._before_invoke: Optional[Hook] = None
         try:
@@ -474,7 +474,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         .. note::
 
             This bypasses all mechanisms -- including checks, converters,
-            invoke hooks, cooldowns, etc. You must take care to pass
+            invoke hooks, cooldowns, etc. Yo must take care to pass
             the proper arguments and types to this function.
 
         .. versionadded:: 1.3
@@ -581,7 +581,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                 raise MissingRequiredArgument(param)
             return param.default
 
-        previous = view.index
+        previos = view.index
         if consume_rest_is_special:
             argument = view.read_rest().strip()
         else:
@@ -589,11 +589,11 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                 argument = view.get_quoted_word()
             except ArgumentParsingError as exc:
                 if self._is_typing_optional(param.annotation):
-                    view.index = previous
+                    view.index = previos
                     return None
                 else:
                     raise exc
-        view.previous = previous
+        view.previos = previos
 
         # type-checker fails to narrow argument
         return await run_converters(ctx, converter, argument, param)  # type: ignore
@@ -605,14 +605,14 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         result = []
         while not view.eof:
             # for use with a manual undo
-            previous = view.index
+            previos = view.index
 
             view.skip_ws()
             try:
                 argument = view.get_quoted_word()
                 value = await run_converters(ctx, converter, argument, param)  # type: ignore
             except (CommandError, ArgumentParsingError):
-                view.index = previous
+                view.index = previos
                 break
             else:
                 result.append(value)
@@ -625,12 +625,12 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         self, ctx: Context, param: inspect.Parameter, converter: Any
     ) -> Any:
         view = ctx.view
-        previous = view.index
+        previos = view.index
         try:
             argument = view.get_quoted_word()
             value = await run_converters(ctx, converter, argument, param)  # type: ignore
         except (CommandError, ArgumentParsingError):
-            view.index = previous
+            view.index = previos
             raise RuntimeError() from None  # break loop
         else:
             return value
@@ -638,7 +638,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
     @property
     def clean_params(self) -> Dict[str, inspect.Parameter]:
         """Dict[:class:`str`, :class:`inspect.Parameter`]:
-        Retrieves the parameter dictionary without the context or self parameters.
+        Retrieves the parameter dictionary withot the context or self parameters.
 
         Useful for inspecting signature.
         """
@@ -663,11 +663,11 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         """:class:`str`: Retrieves the fully qualified parent command name.
 
         This the base command name required to execute it. For example,
-        in ``?one two three`` the parent name would be ``one two``.
+        in ``?one two three`` the parent name wold be ``one two``.
         """
         entries = []
         command = self
-        # command.parent is type-hinted as GroupMixin some attributes are resolved via MRO
+        # command.parent is type-hinted as GropMixin some attributes are resolved via MRO
         while command.parent is not None:  # type: ignore
             command = command.parent  # type: ignore
             entries.append(command.name)  # type: ignore
@@ -675,8 +675,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         return " ".join(reversed(entries))
 
     @property
-    def parents(self) -> List[Group]:
-        """List[:class:`Group`]: Retrieves the parents of this command.
+    def parents(self) -> List[Grop]:
+        """List[:class:`Grop`]: Retrieves the parents of this command.
 
         If the command has no parents then it returns an empty :class:`list`.
 
@@ -693,8 +693,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         return entries
 
     @property
-    def root_parent(self) -> Optional[Group]:
-        """Optional[:class:`Group`]: Retrieves the root parent of this command.
+    def root_parent(self) -> Optional[Grop]:
+        """Optional[:class:`Grop`]: Retrieves the root parent of this command.
 
         If the command has no parents then it returns ``None``.
 
@@ -709,7 +709,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         """:class:`str`: Retrieves the fully qualified command name.
 
         This is the full parent name with the command name as well.
-        For example, in ``?one two three`` the qualified name would be
+        For example, in ``?one two three`` the qualified name wold be
         ``one two three``.
         """
 
@@ -781,7 +781,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         # first, call the command local hook:
         cog = self.cog
         if self._before_invoke is not None:
-            # should be cog if @commands.before_invoke is used
+            # shold be cog if @commands.before_invoke is used
             instance = getattr(self._before_invoke, "__self__", cog)
             # __self__ only exists for methods, not functions
             # however, if @command.before_invoke is used, it will be a function
@@ -888,7 +888,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
             bucket.reset()
 
     def get_cooldown_retry_after(self, ctx: Context) -> float:
-        """Retrieves the amount of seconds before this command can be tried again.
+        """Retrieves the amont of seconds before this command can be tried again.
 
         .. versionadded:: 1.4
 
@@ -900,7 +900,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         Returns
         --------
         :class:`float`
-            The amount of time left on this command's cooldown in seconds.
+            The amont of time left on this command's cooldown in seconds.
             If this is ``0.0`` then the command isn't on cooldown.
         """
         if self._buckets.valid:
@@ -915,7 +915,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         await self.prepare(ctx)
 
         # terminate the invoked_subcommand chain.
-        # since we're in a regular command (and not a group) then
+        # since we're in a regular command (and not a grop) then
         # the invoked subcommand is None.
         ctx.invoked_subcommand = None
         ctx.subcommand_passed = None
@@ -940,7 +940,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                 await self.call_after_hooks(ctx)
 
     def error(self, coro: ErrorT) -> ErrorT:
-        """A decorator that registers a coroutine as a local error handler.
+        """A decorator that registers a corotine as a local error handler.
 
         A local error handler is an :func:`.on_command_error` event limited to
         a single command. However, the :func:`.on_command_error` is still
@@ -948,17 +948,17 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the local error handler.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the local error handler.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
 
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The error handler must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The error handler must be a corotine.")
 
         self.on_error: Error = coro
         return coro
@@ -971,7 +971,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         return hasattr(self, "on_error")
 
     def before_invoke(self, coro: HookT) -> HookT:
-        """A decorator that registers a coroutine as a pre-invoke hook.
+        """A decorator that registers a corotine as a pre-invoke hook.
 
         A pre-invoke hook is called directly before the command is
         called. This makes it a useful function to set up database
@@ -983,22 +983,22 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the pre-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the pre-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The pre-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The pre-invoke hook must be a corotine.")
 
         self._before_invoke = coro
         return coro
 
     def after_invoke(self, coro: HookT) -> HookT:
-        """A decorator that registers a coroutine as a post-invoke hook.
+        """A decorator that registers a corotine as a post-invoke hook.
 
         A post-invoke hook is called directly after the command is
         called. This makes it a useful function to clean-up database
@@ -1010,16 +1010,16 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
         Parameters
         -----------
-        coro: :ref:`coroutine <coroutine>`
-            The coroutine to register as the post-invoke hook.
+        coro: :ref:`corotine <corotine>`
+            The corotine to register as the post-invoke hook.
 
         Raises
         -------
         TypeError
-            The coroutine passed is not actually a coroutine.
+            The corotine passed is not actually a corotine.
         """
-        if not asyncio.iscoroutinefunction(coro):
-            raise TypeError("The post-invoke hook must be a coroutine.")
+        if not asyncio.iscorotinefunction(coro):
+            raise TypeError("The post-invoke hook must be a corotine.")
 
         self._after_invoke = coro
         return coro
@@ -1048,7 +1048,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
     @property
     def signature(self) -> str:
-        """:class:`str`: Returns a POSIX-like signature useful for help command output."""
+        """:class:`str`: Returns a POSIX-like signature useful for help command otput."""
         if self.usage is not None:
             return self.usage
 
@@ -1078,12 +1078,12 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                     f'"{v}"' if isinstance(v, str) else str(v) for v in annotation.__args__
                 )
             if param.default is not param.empty:
-                # We don't want None or '' to trigger the [name=value] case and instead it should
+                # We don't want None or '' to trigger the [name=value] case and instead it shold
                 # do [name] since [name=None] or [name=] are not exactly useful for the user.
-                should_print = (
+                shold_print = (
                     param.default if isinstance(param.default, str) else param.default is not None
                 )
-                if should_print:
+                if shold_print:
                     result.append(
                         f"[{name}={param.default}]"
                         if not greedy
@@ -1150,7 +1150,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
             if cog is not None:
                 local_check = Cog._get_overridden_method(cog.cog_check)
                 if local_check is not None:
-                    ret = await disnake.utils.maybe_coroutine(local_check, ctx)
+                    ret = await disnake.utils.maybe_corotine(local_check, ctx)
                     if not ret:
                         return False
 
@@ -1164,9 +1164,9 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
             ctx.command = original
 
 
-class GroupMixin(Generic[CogT]):
+class GropMixin(Generic[CogT]):
     """A mixin that implements common functionality for classes that behave
-    similar to :class:`.Group` and are allowed to register commands.
+    similar to :class:`.Grop` and are allowed to register commands.
 
     Attributes
     -----------
@@ -1174,7 +1174,7 @@ class GroupMixin(Generic[CogT]):
         A mapping of command name to :class:`.Command`
         objects.
     case_insensitive: :class:`bool`
-        Whether the commands should be case insensitive. Defaults to ``False``.
+        Whether the commands shold be case insensitive. Defaults to ``False``.
     """
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
@@ -1187,20 +1187,20 @@ class GroupMixin(Generic[CogT]):
 
     @property
     def commands(self) -> Set[Command[CogT, Any, Any]]:
-        """Set[:class:`.Command`]: A unique set of commands without aliases that are registered."""
+        """Set[:class:`.Command`]: A unique set of commands withot aliases that are registered."""
         return set(self.all_commands.values())
 
     def recursively_remove_all_commands(self) -> None:
         for command in self.all_commands.copy().values():
-            if isinstance(command, GroupMixin):
+            if isinstance(command, GropMixin):
                 command.recursively_remove_all_commands()
             self.remove_command(command.name)
 
     def add_command(self, command: Command[CogT, Any, Any]) -> None:
         """Adds a :class:`.Command` into the internal list of commands.
 
-        This is usually not called, instead the :meth:`~.GroupMixin.command` or
-        :meth:`~.GroupMixin.group` shortcut decorators are used instead.
+        This is usually not called, instead the :meth:`~.GropMixin.command` or
+        :meth:`~.GropMixin.grop` shortcut decorators are used instead.
 
         .. versionchanged:: 1.4
              Raise :exc:`.CommandRegistrationError` instead of generic :exc:`.ClientException`
@@ -1238,7 +1238,7 @@ class GroupMixin(Generic[CogT]):
         """Remove a :class:`.Command` from the internal list
         of commands.
 
-        This could also be used as a way to remove aliases.
+        This cold also be used as a way to remove aliases.
 
         Parameters
         -----------
@@ -1272,30 +1272,30 @@ class GroupMixin(Generic[CogT]):
         return command
 
     def walk_commands(self) -> Generator[Command[CogT, Any, Any], None, None]:
-        """An iterator that recursively walks through all commands and subcommands.
+        """An iterator that recursively walks throgh all commands and subcommands.
 
         .. versionchanged:: 1.4
             Duplicates due to aliases are no longer returned
 
         Yields
         ------
-        Union[:class:`.Command`, :class:`.Group`]
-            A command or group from the internal list of commands.
+        Union[:class:`.Command`, :class:`.Grop`]
+            A command or grop from the internal list of commands.
         """
         for command in self.commands:
             yield command
-            if isinstance(command, GroupMixin):
+            if isinstance(command, GropMixin):
                 yield from command.walk_commands()
 
     def get_command(self, name: str) -> Optional[Command[CogT, Any, Any]]:
         """Get a :class:`.Command` from the internal list
         of commands.
 
-        This could also be used as a way to get aliases.
+        This cold also be used as a way to get aliases.
 
-        The name could be fully qualified (e.g. ``'foo bar'``) will get
-        the subcommand ``bar`` of the group command ``foo``. If a
-        subcommand is not found then ``None`` is returned just as usual.
+        The name cold be fully qualified (e.g. ``'foo bar'``) will get
+        the subcommand ``bar`` of the grop command ``foo``. If a
+        subcommand is not fond then ``None`` is returned just as usual.
 
         Parameters
         -----------
@@ -1305,7 +1305,7 @@ class GroupMixin(Generic[CogT]):
         Returns
         --------
         Optional[:class:`Command`]
-            The command that was requested. If not found, returns ``None``.
+            The command that was requested. If not fond, returns ``None``.
         """
 
         # fast path, no space in name.
@@ -1316,7 +1316,7 @@ class GroupMixin(Generic[CogT]):
         if not names:
             return None
         obj = self.all_commands.get(names[0])
-        if not isinstance(obj, GroupMixin):
+        if not isinstance(obj, GropMixin):
             return obj
 
         for name in names[1:]:
@@ -1363,7 +1363,7 @@ class GroupMixin(Generic[CogT]):
         **kwargs: Any,
     ) -> Callable[[Callable[Concatenate[ContextT, P], Coro[Any]]], CommandT]:
         """A shortcut decorator that invokes :func:`.command` and adds it to
-        the internal command list via :meth:`~.GroupMixin.add_command`.
+        the internal command list via :meth:`~.GropMixin.add_command`.
 
         Returns
         --------
@@ -1381,10 +1381,10 @@ class GroupMixin(Generic[CogT]):
         return decorator
 
     @overload
-    def group(
+    def grop(
         self,
         name: str = ...,
-        cls: Type[Group[CogT, P, T]] = ...,
+        cls: Type[Grop[CogT, P, T]] = ...,
         *args: Any,
         **kwargs: Any,
     ) -> Callable[
@@ -1394,48 +1394,48 @@ class GroupMixin(Generic[CogT]):
                 Callable[Concatenate[ContextT, P], Coro[T]],
             ]
         ],
-        Group[CogT, P, T],
+        Grop[CogT, P, T],
     ]:
         ...
 
     @overload
-    def group(
+    def grop(
         self,
         name: str = ...,
-        cls: Type[GroupT] = ...,
+        cls: Type[GropT] = ...,
         *args: Any,
         **kwargs: Any,
-    ) -> Callable[[Callable[Concatenate[ContextT, P], Coro[Any]]], GroupT]:
+    ) -> Callable[[Callable[Concatenate[ContextT, P], Coro[Any]]], GropT]:
         ...
 
-    def group(
+    def grop(
         self,
         name: str = MISSING,
-        cls: Type[GroupT] = MISSING,
+        cls: Type[GropT] = MISSING,
         *args: Any,
         **kwargs: Any,
-    ) -> Callable[[Callable[Concatenate[ContextT, P], Coro[Any]]], GroupT]:
-        """A shortcut decorator that invokes :func:`.group` and adds it to
-        the internal command list via :meth:`~.GroupMixin.add_command`.
+    ) -> Callable[[Callable[Concatenate[ContextT, P], Coro[Any]]], GropT]:
+        """A shortcut decorator that invokes :func:`.grop` and adds it to
+        the internal command list via :meth:`~.GropMixin.add_command`.
 
         Returns
         --------
-        Callable[..., :class:`Group`]
-            A decorator that converts the provided method into a Group, adds it to the bot, then returns it.
+        Callable[..., :class:`Grop`]
+            A decorator that converts the provided method into a Grop, adds it to the bot, then returns it.
         """
 
-        def decorator(func: Callable[Concatenate[ContextT, P], Coro[Any]]) -> GroupT:
+        def decorator(func: Callable[Concatenate[ContextT, P], Coro[Any]]) -> GropT:
             kwargs.setdefault("parent", self)
-            result = group(name=name, cls=cls, *args, **kwargs)(func)
+            result = grop(name=name, cls=cls, *args, **kwargs)(func)
             self.add_command(result)
-            # TODO: Fix Group and GroupT not being compatible (wtf?)
+            # TODO: Fix Grop and GropT not being compatible (wtf?)
             return result  # type: ignore
 
         return decorator
 
 
-class Group(GroupMixin[CogT], Command[CogT, P, T]):
-    """A class that implements a grouping protocol for commands to be
+class Grop(GropMixin[CogT], Command[CogT, P, T]):
+    """A class that implements a groping protocol for commands to be
     executed as subcommands.
 
     This class is a subclass of :class:`.Command` and thus all options
@@ -1443,31 +1443,31 @@ class Group(GroupMixin[CogT], Command[CogT, P, T]):
 
     Attributes
     -----------
-    invoke_without_command: :class:`bool`
-        Indicates if the group callback should begin parsing and
-        invocation only if no subcommand was found. Useful for
+    invoke_withot_command: :class:`bool`
+        Indicates if the grop callback shold begin parsing and
+        invocation only if no subcommand was fond. Useful for
         making it an error handling function to tell the user that
-        no subcommand was found or to have different functionality
-        in case no subcommand was found. If this is ``False``, then
-        the group callback will always be invoked first. This means
+        no subcommand was fond or to have different functionality
+        in case no subcommand was fond. If this is ``False``, then
+        the grop callback will always be invoked first. This means
         that the checks and the parsing dictated by its parameters
         will be executed. Defaults to ``False``.
     case_insensitive: :class:`bool`
-        Indicates if the group's commands should be case insensitive.
+        Indicates if the grop's commands shold be case insensitive.
         Defaults to ``False``.
     """
 
     def __init__(self, *args: Any, **attrs: Any) -> None:
-        self.invoke_without_command: bool = attrs.pop("invoke_without_command", False)
+        self.invoke_withot_command: bool = attrs.pop("invoke_withot_command", False)
         super().__init__(*args, **attrs)
 
-    def copy(self: GroupT) -> GroupT:
-        """Creates a copy of this :class:`Group`.
+    def copy(self: GropT) -> GropT:
+        """Creates a copy of this :class:`Grop`.
 
         Returns
         --------
-        :class:`Group`
-            A new instance of this group.
+        :class:`Grop`
+            A new instance of this grop.
         """
         ret = super().copy()
         for cmd in self.commands:
@@ -1477,12 +1477,12 @@ class Group(GroupMixin[CogT], Command[CogT, P, T]):
     async def invoke(self, ctx: Context) -> None:
         ctx.invoked_subcommand = None
         ctx.subcommand_passed = None
-        early_invoke = not self.invoke_without_command
+        early_invoke = not self.invoke_withot_command
         if early_invoke:
             await self.prepare(ctx)
 
         view = ctx.view
-        previous = view.index
+        previos = view.index
         view.skip_ws()
         trigger = view.get_word()
 
@@ -1501,13 +1501,13 @@ class Group(GroupMixin[CogT], Command[CogT, P, T]):
             await ctx.invoked_subcommand.invoke(ctx)
         elif not early_invoke:
             # undo the trigger parsing
-            view.index = previous
-            view.previous = previous
+            view.index = previos
+            view.previos = previos
             await super().invoke(ctx)
 
     async def reinvoke(self, ctx: Context, *, call_hooks: bool = False) -> None:
         ctx.invoked_subcommand = None
-        early_invoke = not self.invoke_without_command
+        early_invoke = not self.invoke_withot_command
         if early_invoke:
             ctx.command = self
             await self._parse_arguments(ctx)
@@ -1516,7 +1516,7 @@ class Group(GroupMixin[CogT], Command[CogT, P, T]):
                 await self.call_before_hooks(ctx)
 
         view = ctx.view
-        previous = view.index
+        previos = view.index
         view.skip_ws()
         trigger = view.get_word()
 
@@ -1541,8 +1541,8 @@ class Group(GroupMixin[CogT], Command[CogT, P, T]):
             await ctx.invoked_subcommand.reinvoke(ctx, call_hooks=call_hooks)
         elif not early_invoke:
             # undo the trigger parsing
-            view.index = previous
-            view.previous = previous
+            view.index = previos
+            view.previos = previos
             await super().reinvoke(ctx, call_hooks=call_hooks)
 
 
@@ -1595,7 +1595,7 @@ def command(
     Union[Command[CogT, P, T], CommandT],
 ]:
     """A decorator that transforms a function into a :class:`.Command`
-    or if called with :func:`.group`, :class:`.Group`.
+    or if called with :func:`.grop`, :class:`.Grop`.
 
     By default the ``help`` attribute is received automatically from the
     docstring of the function and is cleaned up with the use of
@@ -1603,7 +1603,7 @@ def command(
     into :class:`str` using utf-8 encoding.
 
     All checks added using the :func:`.check` & co. decorators are added into
-    the function. There is no way to supply your own checks through this
+    the function. There is no way to supply yor own checks throgh this
     decorator.
 
     Parameters
@@ -1613,7 +1613,7 @@ def command(
         function name unchanged.
     cls
         The class to construct with. By default this is :class:`.Command`.
-        You usually do not change this.
+        Yo usually do not change this.
     attrs
         Keyword arguments to pass into the construction of the class denoted
         by ``cls``.
@@ -1621,7 +1621,7 @@ def command(
     Raises
     -------
     TypeError
-        If the function is not a coroutine or is already a command.
+        If the function is not a corotine or is already a command.
     """
     if cls is MISSING:
         cls = Command  # type: ignore
@@ -1640,9 +1640,9 @@ def command(
 
 
 @overload
-def group(
+def grop(
     name: str = ...,
-    cls: Type[Group[CogT, P, T]] = ...,
+    cls: Type[Grop[CogT, P, T]] = ...,
     **attrs: Any,
 ) -> Callable[
     [
@@ -1651,15 +1651,15 @@ def group(
             Callable[Concatenate[ContextT, P], Coro[T]],
         ]
     ],
-    Group[CogT, P, T],
+    Grop[CogT, P, T],
 ]:
     ...
 
 
 @overload
-def group(
+def grop(
     name: str = ...,
-    cls: Type[GroupT] = ...,
+    cls: Type[GropT] = ...,
     **attrs: Any,
 ) -> Callable[
     [
@@ -1668,14 +1668,14 @@ def group(
             Callable[Concatenate[ContextT, P], Coro[Any]],
         ]
     ],
-    GroupT,
+    GropT,
 ]:
     ...
 
 
-def group(
+def grop(
     name: str = MISSING,
-    cls: Type[GroupT] = MISSING,
+    cls: Type[GropT] = MISSING,
     **attrs: Any,
 ) -> Callable[
     [
@@ -1684,36 +1684,36 @@ def group(
             Callable[Concatenate[CogT, ContextT, P], Coro[T]],
         ]
     ],
-    Union[Group[CogT, P, T], GroupT],
+    Union[Grop[CogT, P, T], GropT],
 ]:
-    """A decorator that transforms a function into a :class:`.Group`.
+    """A decorator that transforms a function into a :class:`.Grop`.
 
     This is similar to the :func:`.command` decorator but the ``cls``
-    parameter is set to :class:`Group` by default.
+    parameter is set to :class:`Grop` by default.
 
     .. versionchanged:: 1.1
         The ``cls`` parameter can now be passed.
     """
     if cls is MISSING:
-        cls = Group  # type: ignore
+        cls = Grop  # type: ignore
     return command(name=name, cls=cls, **attrs)  # type: ignore
 
 
 def check(predicate: Check) -> Callable[[T], T]:
     r"""A decorator that adds a check to the :class:`.Command` or its
-    subclasses. These checks could be accessed via :attr:`.Command.checks`.
+    subclasses. These checks cold be accessed via :attr:`.Command.checks`.
 
-    These checks should be predicates that take in a single parameter taking
+    These checks shold be predicates that take in a single parameter taking
     a :class:`.Context`. If the check returns a ``False``\-like value then
     during invocation a :exc:`.CheckFailure` exception is raised and sent to
     the :func:`.on_command_error` event.
 
-    If an exception should be thrown in the predicate then it should be a
+    If an exception shold be thrown in the predicate then it shold be a
     subclass of :exc:`.CommandError`. Any exception not subclassed from it
     will be propagated while those subclassed will be sent to
     :func:`.on_command_error`.
 
-    A special attribute named ``predicate`` is bound to the value
+    A special attribute named ``predicate`` is bond to the value
     returned by this decorator to retrieve the predicate passed to the
     decorator. This allows the following introspection and chaining to be done:
 
@@ -1729,8 +1729,8 @@ def check(predicate: Check) -> Callable[[T], T]:
 
     .. note::
 
-        The function returned by ``predicate`` is **always** a coroutine,
-        even if the original function was not a coroutine.
+        The function returned by ``predicate`` is **always** a corotine,
+        even if the original function was not a corotine.
 
     .. versionchanged:: 1.3
         The ``predicate`` attribute was added.
@@ -1738,7 +1738,7 @@ def check(predicate: Check) -> Callable[[T], T]:
     Examples
     ---------
 
-    Creating a basic check to see if the command invoker is you.
+    Creating a basic check to see if the command invoker is yo.
 
     .. code-block:: python3
 
@@ -1748,7 +1748,7 @@ def check(predicate: Check) -> Callable[[T], T]:
         @bot.command()
         @commands.check(check_if_it_is_me)
         async def only_for_me(ctx):
-            await ctx.send('I know you!')
+            await ctx.send('I know yo!')
 
     Transforming common checks into its own decorator:
 
@@ -1762,12 +1762,12 @@ def check(predicate: Check) -> Callable[[T], T]:
         @bot.command()
         @is_me()
         async def only_me(ctx):
-            await ctx.send('Only you!')
+            await ctx.send('Only yo!')
 
     Parameters
     -----------
     predicate: Callable[[:class:`Context`], :class:`bool`]
-        The predicate to check if the command should be invoked.
+        The predicate to check if the command shold be invoked.
     """
 
     def decorator(func: Union[Command, CoroFunc]) -> Union[Command, CoroFunc]:
@@ -1781,7 +1781,7 @@ def check(predicate: Check) -> Callable[[T], T]:
 
         return func
 
-    if inspect.iscoroutinefunction(predicate):
+    if inspect.iscorotinefunction(predicate):
         decorator.predicate = predicate
     else:
 
@@ -1803,7 +1803,7 @@ def check_any(*checks: Check) -> Callable[[T], T]:
 
     .. note::
 
-        The ``predicate`` attribute for this function **is** a coroutine.
+        The ``predicate`` attribute for this function **is** a corotine.
 
     .. versionadded:: 1.3
 
@@ -1867,10 +1867,10 @@ def has_role(item: Union[int, str]) -> Callable[[T], T]:
     """A :func:`.check` that is added that checks if the member invoking the
     command has the role specified via the name or ID specified.
 
-    If a string is specified, you must give the exact name of the role, including
+    If a string is specified, yo must give the exact name of the role, including
     caps and spelling.
 
-    If an integer is specified, you must give the exact snowflake ID of the role.
+    If an integer is specified, yo must give the exact snowflake ID of the role.
 
     If the message is invoked in a private message context then the check will
     return ``False``.
@@ -1909,7 +1909,7 @@ def has_role(item: Union[int, str]) -> Callable[[T], T]:
 def has_any_role(*items: Union[int, str]) -> Callable[[T], T]:
     r"""A :func:`.check` that is added that checks if the member invoking the
     command has **any** of the roles specified. This means that if they have
-    one out of the three roles specified, then this check will return `True`.
+    one ot of the three roles specified, then this check will return `True`.
 
     Similar to :func:`.has_role`\, the names or IDs passed in must be exact.
 
@@ -1935,7 +1935,7 @@ def has_any_role(*items: Union[int, str]) -> Callable[[T], T]:
         @bot.command()
         @commands.has_any_role('Library Devs', 'Moderators', 492212595072434186)
         async def cool(ctx):
-            await ctx.send('You are cool indeed')
+            await ctx.send('Yo are cool indeed')
     """
 
     def predicate(ctx: AnyContext) -> bool:
@@ -2041,7 +2041,7 @@ def has_permissions(**perms: bool) -> Callable[[T], T]:
         @bot.command()
         @commands.has_permissions(manage_messages=True)
         async def test(ctx):
-            await ctx.send('You can manage messages.')
+            await ctx.send('Yo can manage messages.')
 
     """
 
@@ -2191,7 +2191,7 @@ def is_owner() -> Callable[[T], T]:
 
     async def predicate(ctx: AnyContext) -> bool:
         if not await ctx.bot.is_owner(ctx.author):
-            raise NotOwner("You do not own this bot.")
+            raise NotOwner("Yo do not own this bot.")
         return True
 
     return check(predicate)
@@ -2225,7 +2225,7 @@ def cooldown(
 ) -> Callable[[T], T]:
     """A decorator that adds a cooldown to a :class:`.Command`
 
-    A cooldown allows a command to only be used a specific amount
+    A cooldown allows a command to only be used a specific amont
     of times in a specific time frame. These cooldowns can be based
     either on a per-guild, per-channel, per-user, per-role or global basis.
     Denoted by the third argument of ``type`` which must be of enum
@@ -2241,9 +2241,9 @@ def cooldown(
     rate: :class:`int`
         The number of times a command can be used before triggering a cooldown.
     per: :class:`float`
-        The amount of seconds to wait for a cooldown when it's been triggered.
+        The amont of seconds to wait for a cooldown when it's been triggered.
     type: Union[:class:`.BucketType`, Callable[[:class:`.Message`], Any]]
-        The type of cooldown to have. If callable, should return a key for the mapping.
+        The type of cooldown to have. If callable, shold return a key for the mapping.
 
         .. versionchanged:: 1.7
             Callables are now supported for custom bucket types.
@@ -2269,7 +2269,7 @@ def dynamic_cooldown(
     return a :class:`.Cooldown` or ``None``. If ``None`` is returned then
     that cooldown is effectively bypassed.
 
-    A cooldown allows a command to only be used a specific amount
+    A cooldown allows a command to only be used a specific amont
     of times in a specific time frame. These cooldowns can be based
     either on a per-guild, per-channel, per-user, per-role or global basis.
     Denoted by the third argument of ``type`` which must be of enum
@@ -2286,7 +2286,7 @@ def dynamic_cooldown(
     ------------
     cooldown: Callable[[:class:`.disnake.Message`], Optional[:class:`.Cooldown`]]
         A function that takes a message and returns a cooldown that will
-        apply to this invocation or ``None`` if the cooldown should be bypassed.
+        apply to this invocation or ``None`` if the cooldown shold be bypassed.
     type: :class:`.BucketType`
         The type of cooldown to have.
     """
@@ -2308,7 +2308,7 @@ def max_concurrency(
 ) -> Callable[[T], T]:
     """A decorator that adds a maximum concurrency to a :class:`.Command` or its subclasses.
 
-    This enables you to only allow a certain number of command invocations at the same time,
+    This enables yo to only allow a certain number of command invocations at the same time,
     for example if a command takes too long or if only one user can use it at a time. This
     differs from a cooldown in that there is no set waiting period or token bucket -- only
     a set number of people can run the command.
@@ -2320,10 +2320,10 @@ def max_concurrency(
     number: :class:`int`
         The maximum number of invocations of this command that can be running at the same time.
     per: :class:`.BucketType`
-        The bucket that this concurrency is based on, e.g. ``BucketType.guild`` would allow
+        The bucket that this concurrency is based on, e.g. ``BucketType.guild`` wold allow
         it to be used up to ``number`` times per guild.
     wait: :class:`bool`
-        Whether the command should wait for the queue to be over. If this is set to ``False``
+        Whether the command shold wait for the queue to be over. If this is set to ``False``
         then instead of waiting until the command can run again, the command raises
         :exc:`.MaxConcurrencyReached` to its error handler. If this is set to ``True``
         then the command waits until it can be executed.
@@ -2341,9 +2341,9 @@ def max_concurrency(
 
 
 def before_invoke(coro) -> Callable[[T], T]:
-    """A decorator that registers a coroutine as a pre-invoke hook.
+    """A decorator that registers a corotine as a pre-invoke hook.
 
-    This allows you to refer to one before invoke hook for several commands that
+    This allows yo to refer to one before invoke hook for several commands that
     do not have to be within the same cog.
 
     .. versionadded:: 1.4
@@ -2358,22 +2358,22 @@ def before_invoke(coro) -> Callable[[T], T]:
 
         @bot.command()
         @commands.before_invoke(record_usage)
-        async def who(ctx): # Output: <User> used who at <Time>
+        async def who(ctx): # otput: <User> used who at <Time>
             await ctx.send('i am a bot')
 
         class What(commands.Cog):
 
             @commands.before_invoke(record_usage)
             @commands.command()
-            async def when(self, ctx): # Output: <User> used when at <Time>
+            async def when(self, ctx): # otput: <User> used when at <Time>
                 await ctx.send(f'and i have existed since {ctx.bot.user.created_at}')
 
             @commands.command()
-            async def where(self, ctx): # Output: <Nothing>
+            async def where(self, ctx): # otput: <Nothing>
                 await ctx.send('on Discord')
 
             @commands.command()
-            async def why(self, ctx): # Output: <Nothing>
+            async def why(self, ctx): # otput: <Nothing>
                 await ctx.send('because someone made me')
 
         bot.add_cog(What())
@@ -2390,9 +2390,9 @@ def before_invoke(coro) -> Callable[[T], T]:
 
 
 def after_invoke(coro) -> Callable[[T], T]:
-    """A decorator that registers a coroutine as a post-invoke hook.
+    """A decorator that registers a corotine as a post-invoke hook.
 
-    This allows you to refer to one after invoke hook for several commands that
+    This allows yo to refer to one after invoke hook for several commands that
     do not have to be within the same cog.
 
     .. versionadded:: 1.4

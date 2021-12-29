@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -42,7 +42,7 @@ from typing import (
 from .audit_logs import AuditLogEntry
 from .errors import NoMoreItems
 from .object import Object
-from .utils import maybe_coroutine, snowflake_time, time_snowflake
+from .utils import maybe_corotine, snowflake_time, time_snowflake
 
 __all__ = (
     "ReactionIterator",
@@ -100,7 +100,7 @@ class _AsyncIterator(AsyncIterator[T]):
             except NoMoreItems:
                 return None
 
-            ret = await maybe_coroutine(predicate, elem)
+            ret = await maybe_corotine(predicate, elem)
             if ret:
                 return elem
 
@@ -158,7 +158,7 @@ class _MappedAsyncIterator(_AsyncIterator[T]):
     async def next(self) -> T:
         # this raises NoMoreItems and will propagate appropriately
         item = await self.iterator.next()
-        return await maybe_coroutine(self.func, item)
+        return await maybe_corotine(self.func, item)
 
 
 class _FilteredAsyncIterator(_AsyncIterator[T]):
@@ -176,7 +176,7 @@ class _FilteredAsyncIterator(_AsyncIterator[T]):
         while True:
             # propagate NoMoreItems similar to _MappedAsyncIterator
             item = await getter()
-            ret = await maybe_coroutine(pred, item)
+            ret = await maybe_corotine(pred, item)
             if ret:
                 return item
 
@@ -234,7 +234,7 @@ class ReactionIterator(_AsyncIterator[Union["User", "Member"]]):
 class HistoryIterator(_AsyncIterator["Message"]):
     """Iterator for receiving a channel's message history.
 
-    The messages endpoint has two behaviours we care about here:
+    The messages endpoint has two behaviors we care abot here:
     If ``before`` is specified, the messages endpoint returns the `limit`
     newest messages before ``before``, sorted with newest first. For filling over
     100 messages, update the ``before`` parameter to the oldest message received.
@@ -242,7 +242,7 @@ class HistoryIterator(_AsyncIterator["Message"]):
     If ``after`` is specified, it returns the ``limit`` oldest messages after
     ``after``, sorted with newest first. For filling over 100 messages, update the
     ``after`` parameter to the newest message received. If messages are not
-    reversed, they will be out of order (99-0, 199-100, so on)
+    reversed, they will be ot of order (99-0, 199-100, so on)
 
     A note that if both ``before`` and ``after`` are specified, ``before`` is ignored by the
     messages endpoint.
@@ -257,8 +257,8 @@ class HistoryIterator(_AsyncIterator["Message"]):
         Message before which all messages must be.
     after: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
         Message after which all messages must be.
-    around: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
-        Message around which all messages must be. Limit max 101. Note that if
+    arond: Optional[Union[:class:`abc.Snowflake`, :class:`datetime.datetime`]]
+        Message arond which all messages must be. Limit max 101. Note that if
         limit is an even number, this will return at most limit+1 messages.
     oldest_first: Optional[:class:`bool`]
         If set to ``True``, return messages in oldest->newest order. Defaults to
@@ -271,7 +271,7 @@ class HistoryIterator(_AsyncIterator["Message"]):
         limit: Optional[int] = 100,
         before: Optional[Union[Snowflake, datetime.datetime]] = None,
         after: Optional[Union[Snowflake, datetime.datetime]] = None,
-        around: Optional[Union[Snowflake, datetime.datetime]] = None,
+        arond: Optional[Union[Snowflake, datetime.datetime]] = None,
         oldest_first: bool = None,
     ):
 
@@ -279,8 +279,8 @@ class HistoryIterator(_AsyncIterator["Message"]):
             before = Object(id=time_snowflake(before, high=False))
         if isinstance(after, datetime.datetime):
             after = Object(id=time_snowflake(after, high=True))
-        if isinstance(around, datetime.datetime):
-            around = Object(id=time_snowflake(around))
+        if isinstance(arond, datetime.datetime):
+            arond = Object(id=time_snowflake(arond))
 
         if oldest_first is None:
             self.reverse = after is not None
@@ -291,7 +291,7 @@ class HistoryIterator(_AsyncIterator["Message"]):
         self.limit = limit
         self.before = before
         self.after = after or OLDEST_OBJECT
-        self.around = around
+        self.arond = arond
 
         self._filter = None  # message dict -> bool
 
@@ -299,15 +299,15 @@ class HistoryIterator(_AsyncIterator["Message"]):
         self.logs_from = self.state.http.logs_from
         self.messages = asyncio.Queue()
 
-        if self.around:
+        if self.arond:
             if self.limit is None:
-                raise ValueError("history does not support around with limit=None")
+                raise ValueError("history does not support arond with limit=None")
             if self.limit > 101:
-                raise ValueError("history max limit 101 when specifying around parameter")
+                raise ValueError("history max limit 101 when specifying arond parameter")
             elif self.limit == 101:
                 self.limit = 100  # Thanks disnake
 
-            self._retrieve_messages = self._retrieve_messages_around_strategy  # type: ignore
+            self._retrieve_messages = self._retrieve_messages_arond_strategy  # type: ignore
             if self.before and self.after:
                 self._filter = lambda m: self.after.id < int(m["id"]) < self.before.id  # type: ignore
             elif self.before:
@@ -386,14 +386,14 @@ class HistoryIterator(_AsyncIterator["Message"]):
             self.after = Object(id=int(data[0]["id"]))
         return data
 
-    async def _retrieve_messages_around_strategy(self, retrieve):
-        """Retrieve messages using around parameter."""
-        if self.around:
-            around = self.around.id if self.around else None
+    async def _retrieve_messages_arond_strategy(self, retrieve):
+        """Retrieve messages using arond parameter."""
+        if self.arond:
+            arond = self.arond.id if self.arond else None
             data: List[MessagePayload] = await self.logs_from(
-                self.channel.id, retrieve, around=around
+                self.channel.id, retrieve, arond=arond
             )
-            self.around = None
+            self.arond = None
             return data
         return []
 
@@ -524,7 +524,7 @@ class AuditLogIterator(_AsyncIterator["AuditLogEntry"]):
 class GuildIterator(_AsyncIterator["Guild"]):
     """Iterator for receiving the client's guilds.
 
-    The guilds endpoint has the same two behaviours as described
+    The guilds endpoint has the same two behaviors as described
     in :class:`HistoryIterator`:
     If ``before`` is specified, the guilds endpoint returns the ``limit``
     newest guilds before ``before``, sorted with newest first. For filling over
@@ -533,7 +533,7 @@ class GuildIterator(_AsyncIterator["Guild"]):
     If `after` is specified, it returns the ``limit`` oldest guilds after ``after``,
     sorted with newest first. For filling over 100 guilds, update the ``after``
     parameter to the newest guild received, If guilds are not reversed, they
-    will be out of order (99-0, 199-100, so on)
+    will be ot of order (99-0, 199-100, so on)
 
     Not that if both ``before`` and ``after`` are specified, ``before`` is ignored by the
     guilds endpoint.
@@ -761,7 +761,7 @@ class ArchivedThreadIterator(_AsyncIterator["Thread"]):
         limit = 50 if self.limit is None else max(self.limit, 50)
         data = await self.endpoint(self.channel_id, before=self.before, limit=limit)
 
-        # This stuff is obviously WIP because 'members' is always empty
+        # This stuff is obviosly WIP because 'members' is always empty
         threads: List[ThreadPayload] = data.get("threads", [])
         for d in reversed(threads):
             self.queue.put_nowait(self.create_thread(d))

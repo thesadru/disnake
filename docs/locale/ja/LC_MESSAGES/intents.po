@@ -50,16 +50,16 @@ msgstr ""
 
 #: ../../intents.rst:17
 msgid ""
-"The intents that are necessary for your bot can only be dictated by "
-"yourself. Each attribute in the :class:`Intents` class documents what "
+"The intents that are necessary for yor bot can only be dictated by "
+"yorself. Each attribute in the :class:`Intents` class documents what "
 ":ref:`events <disnake-api-events>` it corresponds to and what kind of "
 "cache it enables."
 msgstr ""
 
 #: ../../intents.rst:19
 msgid ""
-"For example, if you want a bot that functions without spammy events like "
-"presences or typing then we could do the following:"
+"For example, if yo want a bot that functions withot spammy events like "
+"presences or typing then we cold do the following:"
 msgstr ""
 
 #: ../../intents.rst:34
@@ -87,14 +87,14 @@ msgstr ""
 
 #: ../../intents.rst:58
 msgid ""
-"A privileged intent is one that requires you to go to the developer "
+"A privileged intent is one that requires yo to go to the developer "
 "portal and manually enable it. To enable privileged intents do the "
 "following:"
 msgstr ""
 
 #: ../../intents.rst:60
 msgid ""
-"Make sure you're logged on to the `Discord website "
+"Make sure yo're logged on to the `Discord website "
 "<https://discord.com>`_."
 msgstr ""
 
@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 
 #: ../../intents.rst:62
-msgid "Click on the bot you want to enable privileged intents for."
+msgid "Click on the bot yo want to enable privileged intents for."
 msgstr ""
 
 #: ../../intents.rst:63
@@ -115,22 +115,22 @@ msgstr ""
 #: ../../intents.rst:68
 msgid ""
 "Scroll down to the \"Privileged Gateway Intents\" section and enable the "
-"ones you want."
+"ones yo want."
 msgstr ""
 
 #: ../../intents.rst:75
 msgid ""
-"Enabling privileged intents when your bot is in over 100 guilds requires "
-"going through `bot verification <https://support.discord.com/hc/en-"
-"us/articles/360040720412>`_. If your bot is already verified and you "
-"would like to enable a privileged intent you must go through `disnake "
-"support <https://dis.gd/contact>`_ and talk to them about it."
+"Enabling privileged intents when yor bot is in over 100 guilds requires "
+"going throgh `bot verification <https://support.discord.com/hc/en-"
+"us/articles/360040720412>`_. If yor bot is already verified and yo "
+"wold like to enable a privileged intent yo must go throgh `disnake "
+"support <https://dis.gd/contact>`_ and talk to them abot it."
 msgstr ""
 
 #: ../../intents.rst:79
 msgid ""
-"Even if you enable intents through the developer portal, you still have "
-"to enable the intents through code as well."
+"Even if yo enable intents throgh the developer portal, yo still have "
+"to enable the intents throgh code as well."
 msgstr ""
 
 #: ../../intents.rst:83
@@ -138,7 +138,7 @@ msgid "Do I need privileged intents?"
 msgstr ""
 
 #: ../../intents.rst:85
-msgid "This is a quick checklist to see if you need specific privileged intents."
+msgid "This is a quick checklist to see if yo need specific privileged intents."
 msgstr ""
 
 #: ../../intents.rst:90
@@ -146,12 +146,12 @@ msgid "Presence Intent"
 msgstr ""
 
 #: ../../intents.rst:92
-msgid "Whether you use :attr:`Member.status` at all to track member statuses."
+msgid "Whether yo use :attr:`Member.status` at all to track member statuses."
 msgstr ""
 
 #: ../../intents.rst:93
 msgid ""
-"Whether you use :attr:`Member.activity` or :attr:`Member.activities` to "
+"Whether yo use :attr:`Member.activity` or :attr:`Member.activities` to "
 "check member's activities."
 msgstr ""
 
@@ -161,28 +161,28 @@ msgstr ""
 
 #: ../../intents.rst:100
 msgid ""
-"Whether you track member joins or member leaves, corresponds to "
+"Whether yo track member joins or member leaves, corresponds to "
 ":func:`on_member_join` and :func:`on_member_remove` events."
 msgstr ""
 
 #: ../../intents.rst:101
-msgid "Whether you want to track member updates such as nickname or role changes."
+msgid "Whether yo want to track member updates such as nickname or role changes."
 msgstr ""
 
 #: ../../intents.rst:102
 msgid ""
-"Whether you want to track user updates such as usernames, avatars, "
+"Whether yo want to track user updates such as usernames, avatars, "
 "discriminators, etc."
 msgstr ""
 
 #: ../../intents.rst:103
 msgid ""
-"Whether you want to request the guild member list through "
+"Whether yo want to request the guild member list throgh "
 ":meth:`Guild.chunk` or :meth:`Guild.fetch_members`."
 msgstr ""
 
 #: ../../intents.rst:104
-msgid "Whether you want high accuracy member cache under :attr:`Guild.members`."
+msgid "Whether yo want high accuracy member cache under :attr:`Guild.members`."
 msgstr ""
 
 #: ../../intents.rst:109
@@ -208,7 +208,7 @@ msgstr ""
 
 #: ../../intents.rst:115
 msgid ""
-"It should be noted that certain things do not need a member cache since "
+"It shold be noted that certain things do not need a member cache since "
 "Discord will provide full member information if possible. For example:"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 
 #: ../../intents.rst:130
 msgid ""
-"If cache is disabled or you disable chunking guilds at startup, we might "
+"If cache is disabled or yo disable chunking guilds at startup, we might "
 "still need a way to load members. The library offers a few ways to do "
 "this:"
 msgstr ""
@@ -282,7 +282,7 @@ msgid ":meth:`Guild.chunk`"
 msgstr ""
 
 #: ../../intents.rst:137
-msgid "This can be used to fetch the entire member list through the gateway."
+msgid "This can be used to fetch the entire member list throgh the gateway."
 msgstr ""
 
 #: ../../intents.rst:138
@@ -290,7 +290,7 @@ msgid ":meth:`Guild.fetch_member`"
 msgstr ""
 
 #: ../../intents.rst:139
-msgid "Used to fetch a member by ID through the HTTP API."
+msgid "Used to fetch a member by ID throgh the HTTP API."
 msgstr ""
 
 #: ../../intents.rst:141
@@ -298,17 +298,17 @@ msgid ":meth:`Guild.fetch_members`"
 msgstr ""
 
 #: ../../intents.rst:141
-msgid "used to fetch a large number of members through the HTTP API."
+msgid "used to fetch a large number of members throgh the HTTP API."
 msgstr ""
 
 #: ../../intents.rst:143
 msgid ""
-"It should be noted that the gateway has a strict rate limit of 120 "
+"It shold be noted that the gateway has a strict rate limit of 120 "
 "requests per 60 seconds."
 msgstr ""
 
 #: ../../intents.rst:146
-msgid "Troubleshooting"
+msgid "Trobleshooting"
 msgstr ""
 
 #: ../../intents.rst:148
@@ -324,7 +324,7 @@ msgid ""
 "Due to an :ref:`API change <intents_member_cache>` Discord is now forcing"
 " developers who want member caching to explicitly opt-in to it. This is a"
 " Discord mandated change and there is no way to bypass it. In order to "
-"get members back you have to explicitly enable the :ref:`members "
+"get members back yo have to explicitly enable the :ref:`members "
 "privileged intent <privileged_intents>` and change the "
 ":attr:`Intents.members` attribute to true."
 msgstr ""
@@ -340,11 +340,11 @@ msgstr ""
 #: ../../intents.rst:172
 msgid ""
 "As part of the API change regarding intents, Discord also changed how "
-"members are loaded in the beginning. Originally the library could request"
+"members are loaded in the beginning. Originally the library cold request"
 " 75 guilds at once and only request members from guilds that have the "
 ":attr:`Guild.large` attribute set to ``True``. With the new intent "
 "changes, Discord mandates that we can only send 1 guild per request. This"
-" causes a 75x slowdown which is further compounded by the fact that *all*"
+" causes a 75x slowdown which is further componded by the fact that *all*"
 " guilds, not just large guilds are being requested."
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid ""
 "The second solution is to disable member chunking by setting "
 "``chunk_guilds_at_startup`` to ``False`` when constructing a client. "
-"Then, when chunking for a guild is necessary you can use the various "
+"Then, when chunking for a guild is necessary yo can use the varios "
 "techniques to :ref:`retrieve members <retrieving_members>`."
 msgstr ""
 
@@ -377,15 +377,15 @@ msgstr ""
 
 #: ../../intents.rst:182
 msgid ""
-"Under the original system this would result in 2 requests to fetch the "
-"member list (75 guilds, 20 guilds) roughly taking 60 seconds. With "
+"Under the original system this wold result in 2 requests to fetch the "
+"member list (75 guilds, 20 guilds) roghly taking 60 seconds. With "
 ":attr:`Intents.members` but not :attr:`Intents.presences` this requires "
 "840 requests, with a rate limit of 120 requests per 60 seconds means that"
-" due to waiting for the rate limit it totals to around 7 minutes of "
+" due to waiting for the rate limit it totals to arond 7 minutes of "
 "waiting for the rate limit to fetch all the members. With both "
 ":attr:`Intents.members` and :attr:`Intents.presences` we mostly get the "
-"old behaviour so we're only required to request for the 95 guilds that "
-"are large, this is slightly less than our rate limit so it's close to the"
+"old behavior so we're only required to request for the 95 guilds that "
+"are large, this is slightly less than or rate limit so it's close to the"
 " original timing to fetch the member list."
 msgstr ""
 
@@ -404,12 +404,12 @@ msgid ""
 "For now, the old gateway will still work so downgrading to disnake "
 "v1.4 is still possible and will continue to be supported until Discord "
 "officially kills the v6 gateway, which is imminent. However it is "
-"paramount that for the future of your bot that you upgrade your code to "
+"paramont that for the future of yor bot that yo upgrade yor code to "
 "the new way things are done."
 msgstr ""
 
 #: ../../intents.rst:191
-msgid "To downgrade you can do the following:"
+msgid "To downgrade yo can do the following:"
 msgstr ""
 
 #: ../../intents.rst:197
@@ -419,11 +419,11 @@ msgstr ""
 #: ../../intents.rst:201
 msgid ""
 "There is no currently set date in which the old gateway will stop working"
-" so it is recommended to update your code instead."
+" so it is recommended to update yor code instead."
 msgstr ""
 
 #: ../../intents.rst:203
 msgid ""
-"If you truly dislike the direction Discord is going with their API, you "
+"If yo truly dislike the direction Discord is going with their API, yo "
 "can contact them via `support <https://dis.gd/contact>`_"
 msgstr ""

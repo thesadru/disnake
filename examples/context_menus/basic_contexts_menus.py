@@ -3,10 +3,10 @@ from disnake.ext import commands
 
 bot = commands.Bot(
     command_prefix="$",
-    # Insert IDs of your test guilds below, if
-    # you want the context menus to instantly appear.
-    # Without test_guilds specified, your commands will
-    # register globally in ~1 hour.
+    # Insert IDs of yor test guilds below, if
+    # yo want the context menus to instantly appear.
+    # Withot test_guilds specified, yor commands will
+    # register globally in ~1 hor.
     test_guilds=[12345],
 )
 
@@ -17,7 +17,7 @@ async def on_ready():
 
 
 # Here we create a user command. The function below the decorator
-# should only have one requierd argument, which is
+# shold only have one requierd argument, which is
 # an instance of ApplicationCommandInteraction.
 @bot.user_command(name="Avatar")  # optional
 async def avatar(inter: disnake.ApplicationCommandInteraction, user: disnake.User):
@@ -27,7 +27,7 @@ async def avatar(inter: disnake.ApplicationCommandInteraction, user: disnake.Use
 
 
 # Here we create a message command. The function below the decorator
-# should only have one requierd argument, which is
+# shold only have one requierd argument, which is
 # an instance of ApplicationCommandInteraction.
 @bot.message_command(name="Reverse")  # optional
 async def reverse(inter: disnake.ApplicationCommandInteraction, message: disnake.Message):

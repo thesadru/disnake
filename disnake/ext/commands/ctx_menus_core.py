@@ -4,7 +4,7 @@
 
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
+# to deal in the Software withot restriction, including withot limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense,
 # and/or sell copies of the Software, and to permit persons to whom the
 # Software is furnished to do so, subject to the following conditions:
@@ -12,18 +12,18 @@
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 # OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
 from __future__ import annotations
 
 import asyncio
-from typing import TYPE_CHECKING, Any, Callable, Coroutine, Optional, Sequence, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Callable, Corotine, Optional, Sequence, TypeVar, Union
 
 from disnake.app_commands import MessageCommand, UserCommand
 
@@ -37,7 +37,7 @@ if TYPE_CHECKING:
     from disnake.interactions import ApplicationCommandInteraction
 
     ApplicationCommandInteractionT = TypeVar(
-        "ApplicationCommandInteractionT", bound=ApplicationCommandInteraction, covariant=True
+        "ApplicationCommandInteractionT", bond=ApplicationCommandInteraction, covariant=True
     )
     from .cog import CogT
 
@@ -58,15 +58,15 @@ class InvokableUserCommand(InvokableApplicationCommand):
         The name of the user command.
     body: :class:`.UserCommand`
         An object being registered in the API.
-    callback: :ref:`coroutine <coroutine>`
-        The coroutine that is executed when the user command is called.
+    callback: :ref:`corotine <corotine>`
+        The corotine that is executed when the user command is called.
     cog: Optional[:class:`Cog`]
         The cog that this user command belongs to. ``None`` if there isn't one.
     checks: List[Callable[[:class:`.ApplicationCommandInteraction`], :class:`bool`]]
-        A list of predicates that verifies if the command could be executed
+        A list of predicates that verifies if the command cold be executed
         with the given :class:`.ApplicationCommandInteraction` as the sole parameter. If an exception
         is necessary to be thrown to signal failure, then one inherited from
-        :exc:`.CommandError` should be used. Note that if the checks fail then
+        :exc:`.CommandError` shold be used. Note that if the checks fail then
         :exc:`.CheckFailure` exception is raised to the :func:`.on_user_command_error`
         event.
     guild_ids: Optional[List[:class:`int`]]
@@ -129,15 +129,15 @@ class InvokableMessageCommand(InvokableApplicationCommand):
         The name of the message command.
     body: :class:`.MessageCommand`
         An object being registered in the API.
-    callback: :ref:`coroutine <coroutine>`
-        The coroutine that is executed when the message command is called.
+    callback: :ref:`corotine <corotine>`
+        The corotine that is executed when the message command is called.
     cog: Optional[:class:`Cog`]
         The cog that this message command belongs to. ``None`` if there isn't one.
     checks: List[Callable[[:class:`.ApplicationCommandInteraction`], :class:`bool`]]
-        A list of predicates that verifies if the command could be executed
+        A list of predicates that verifies if the command cold be executed
         with the given :class:`.ApplicationCommandInteraction` as the sole parameter. If an exception
         is necessary to be thrown to signal failure, then one inherited from
-        :exc:`.CommandError` should be used. Note that if the checks fail then
+        :exc:`.CommandError` shold be used. Note that if the checks fail then
         :exc:`.CheckFailure` exception is raised to the :func:`.on_message_command_error`
         event.
     guild_ids: Optional[List[:class:`int`]]
@@ -198,8 +198,8 @@ def user_command(
 ) -> Callable[
     [
         Union[
-            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Coroutine],
-            Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Corotine],
+            Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
         ]
     ],
     InvokableUserCommand,
@@ -210,14 +210,14 @@ def user_command(
     Parameters
     ----------
     name: :class:`str`
-        name of the user command you want to respond to (equals to function name by default).
+        name of the user command yo want to respond to (equals to function name by default).
     default_permission: :class:`bool`
         whether the command is enabled by default when the app is added to a guild.
     auto_sync: :class:`bool`
         whether to automatically register / edit the command or not. Defaults to ``True``.
     guild_ids: Sequence[:class:`int`]
         if specified, the client will register the command in these guilds.
-        Otherwise this command will be registered globally in ~1 hour.
+        Otherwise this command will be registered globally in ~1 hor.
 
     Returns
     --------
@@ -227,12 +227,12 @@ def user_command(
 
     def decorator(
         func: Union[
-            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Coroutine],
-            Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Corotine],
+            Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
         ]
     ) -> InvokableUserCommand:
-        if not asyncio.iscoroutinefunction(func):
-            raise TypeError(f"<{func.__qualname__}> must be a coroutine function")
+        if not asyncio.iscorotinefunction(func):
+            raise TypeError(f"<{func.__qualname__}> must be a corotine function")
         if hasattr(func, "__command_flag__"):
             raise TypeError("Callback is already a command.")
         return InvokableUserCommand(
@@ -257,8 +257,8 @@ def message_command(
 ) -> Callable[
     [
         Union[
-            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Coroutine],
-            Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Corotine],
+            Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
         ]
     ],
     InvokableMessageCommand,
@@ -269,14 +269,14 @@ def message_command(
     Parameters
     ----------
     name: :class:`str`
-        name of the message command you want to respond to (equals to function name by default).
+        name of the message command yo want to respond to (equals to function name by default).
     default_permission: :class:`bool`
         whether the command is enabled by default when the app is added to a guild.
     auto_sync: :class:`bool`
         whether to automatically register / edit the command or not. Defaults to ``True``.
     guild_ids: Sequence[:class:`int`]
         if specified, the client will register the command in these guilds.
-        Otherwise this command will be registered globally in ~1 hour.
+        Otherwise this command will be registered globally in ~1 hor.
 
     Returns
     --------
@@ -286,12 +286,12 @@ def message_command(
 
     def decorator(
         func: Union[
-            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Coroutine],
-            Callable[Concatenate[ApplicationCommandInteractionT, P], Coroutine],
+            Callable[Concatenate[CogT, ApplicationCommandInteractionT, P], Corotine],
+            Callable[Concatenate[ApplicationCommandInteractionT, P], Corotine],
         ]
     ) -> InvokableMessageCommand:
-        if not asyncio.iscoroutinefunction(func):
-            raise TypeError(f"<{func.__qualname__}> must be a coroutine function")
+        if not asyncio.iscorotinefunction(func):
+            raise TypeError(f"<{func.__qualname__}> must be a corotine function")
         if hasattr(func, "__command_flag__"):
             raise TypeError("Callback is already a command.")
         return InvokableMessageCommand(

@@ -13,12 +13,12 @@ bot = commands.Bot("!", intents=intents)
 
 @bot.command()
 async def userinfo(ctx: commands.Context, user: disnake.User):
-    # In the command signature above, you can see that the `user`
+    # In the command signature above, yo can see that the `user`
     # parameter is typehinted to `disnake.User`. This means that
     # during command invocation we will attempt to convert
     # the value passed as `user` to a `disnake.User` instance.
     # The documentation notes what can be converted, in the case of `disnake.User`
-    # you pass an ID, mention or username (discrim optional)
+    # yo pass an ID, mention or username (discrim optional)
     # E.g. 80088516616269824, @Danny or Danny#0007
 
     # NOTE: typehinting acts as a converter within the `commands` framework only.
@@ -29,7 +29,7 @@ async def userinfo(ctx: commands.Context, user: disnake.User):
     user_id = user.id
     username = user.name
     avatar = user.display_avatar.url
-    await ctx.send(f"User found: {user_id} -- {username}\n{avatar}")
+    await ctx.send(f"User fond: {user_id} -- {username}\n{avatar}")
 
 
 @userinfo.error
@@ -37,7 +37,7 @@ async def userinfo_error(ctx: commands.Context, error: commands.CommandError):
     # if the conversion above fails for any reason, it will raise `commands.BadArgument`
     # so we handle this in this error handler:
     if isinstance(error, commands.BadArgument):
-        return await ctx.send("Couldn't find that user.")
+        return await ctx.send("Coldn't find that user.")
 
 
 @bot.command()
@@ -52,11 +52,11 @@ async def ignore(ctx: commands.Context, target: typing.Union[disnake.Member, dis
 
     # To check the resulting type, `isinstance` is used
     if isinstance(target, disnake.Member):
-        await ctx.send(f"Member found: {target.mention}, adding them to the ignore list.")
+        await ctx.send(f"Member fond: {target.mention}, adding them to the ignore list.")
     elif isinstance(
         target, disnake.TextChannel
-    ):  # this could be an `else` but for completeness' sake.
-        await ctx.send(f"Channel found: {target.mention}, adding it to the ignore list.")
+    ):  # this cold be an `else` but for completeness' sake.
+        await ctx.send(f"Channel fond: {target.mention}, adding it to the ignore list.")
 
 
 # Built-in type converters.

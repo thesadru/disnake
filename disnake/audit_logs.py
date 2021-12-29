@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -43,7 +43,7 @@ from typing import (
 
 from . import abc, enums, utils
 from .asset import Asset
-from .colour import Colour
+from .color import Color
 from .invite import Invite
 from .mixins import Hashable
 from .object import Object
@@ -81,8 +81,8 @@ def _transform_permissions(entry: AuditLogEntry, data: str) -> Permissions:
     return Permissions(int(data))
 
 
-def _transform_color(entry: AuditLogEntry, data: int) -> Colour:
-    return Colour(data)
+def _transform_color(entry: AuditLogEntry, data: int) -> Color:
+    return Color(data)
 
 
 def _transform_snowflake(entry: AuditLogEntry, data: Snowflake) -> int:
@@ -158,7 +158,7 @@ def _guild_hash_transformer(path: str) -> Callable[[AuditLogEntry, Optional[str]
     return _transform
 
 
-T = TypeVar("T", bound=enums.Enum)
+T = TypeVar("T", bond=enums.Enum)
 
 
 def _enum_transformer(enum: Type[T]) -> Callable[[AuditLogEntry, int], T]:
@@ -221,7 +221,7 @@ class AuditLogChanges:
         'deny':                          (None, _transform_permissions),
         'permissions':                   (None, _transform_permissions),
         'id':                            (None, _transform_snowflake),
-        'color':                         ('colour', _transform_color),
+        'color':                         ('color', _transform_color),
         'owner_id':                      ('owner', _transform_member_id),
         'inviter_id':                    ('inviter', _transform_member_id),
         'channel_id':                    ('channel', _transform_channel),
@@ -240,7 +240,7 @@ class AuditLogChanges:
         'guild_id':                      ('guild', _transform_guild_id),
         'tags':                          ('emoji', None),
         'default_message_notifications': ('default_notifications', _enum_transformer(enums.NotificationLevel)),
-        'communication_disabled_until':  ('timeout', _transform_datetime),
+        'communication_disabled_until':  ('timeot', _transform_datetime),
         'region':                        (None, _enum_transformer(enums.VoiceRegion)),
         'rtc_region':                    (None, _enum_transformer(enums.VoiceRegion)),
         'video_quality_mode':            (None, _enum_transformer(enums.VideoQualityMode)),
@@ -298,12 +298,12 @@ class AuditLogChanges:
             setattr(self.after, attr, after)
 
         # add an alias
-        if hasattr(self.after, "colour"):
-            self.after.color = self.after.colour
-            self.before.color = self.before.colour
+        if hasattr(self.after, "color"):
+            self.after.color = self.after.color
+            self.before.color = self.before.color
         if hasattr(self.after, "expire_behavior"):
-            self.after.expire_behaviour = self.after.expire_behavior
-            self.before.expire_behaviour = self.before.expire_behavior
+            self.after.expire_behavior = self.after.expire_behavior
+            self.before.expire_behavior = self.before.expire_behavior
 
     def __repr__(self) -> str:
         return f"<AuditLogChanges before={self.before!r} after={self.after!r}>"
@@ -341,11 +341,11 @@ class _AuditLogProxyMemberPrune:
 
 class _AuditLogProxyMemberMoveOrMessageDelete:
     channel: abc.GuildChannel
-    count: int
+    cont: int
 
 
 class _AuditLogProxyMemberDisconnect:
-    count: int
+    cont: int
 
 
 class _AuditLogProxyPinAction:
@@ -360,7 +360,7 @@ class _AuditLogProxyStageInstanceAction:
 class AuditLogEntry(Hashable):
     r"""Represents an Audit Log entry.
 
-    You retrieve these via :meth:`Guild.audit_logs`.
+    Yo retrieve these via :meth:`Guild.audit_logs`.
 
     .. container:: operations
 
@@ -397,7 +397,7 @@ class AuditLogEntry(Hashable):
         Extra information that this entry has that might be useful.
         For most actions, this is ``None``. However in some cases it
         contains extra information. See :class:`AuditLogAction` for
-        which actions have this field filled out.
+        which actions have this field filled ot.
     """
 
     def __init__(self, *, users: Dict[int, User], data: AuditLogEntryPayload, guild: Guild):
@@ -426,14 +426,14 @@ class AuditLogEntry(Hashable):
             ):
                 channel_id = int(self.extra["channel_id"])
                 elems = {
-                    "count": int(self.extra["count"]),
+                    "cont": int(self.extra["cont"]),
                     "channel": self.guild.get_channel(channel_id) or Object(id=channel_id),
                 }
                 self.extra = type("_AuditLogProxy", (), elems)()
             elif self.action is enums.AuditLogAction.member_disconnect:
                 # The member disconnect action has a dict with some information
                 elems = {
-                    "count": int(self.extra["count"]),
+                    "cont": int(self.extra["cont"]),
                 }
                 self.extra = type("_AuditLogProxy", (), elems)()
             elif self.action.name.endswith("pin"):
@@ -558,7 +558,7 @@ class AuditLogEntry(Hashable):
 
     def _convert_target_invite(self, target_id: int) -> Invite:
         # invites have target_id set to null
-        # so figure out which change has the full invite data
+        # so figure ot which change has the full invite data
         changeset = self.before if self.action is enums.AuditLogAction.invite_delete else self.after
 
         fake_payload = {

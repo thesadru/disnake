@@ -66,7 +66,7 @@ msgstr "追加情報"
 
 #: ../../index.rst:57
 msgid ""
-"If you still can't find what you're looking for, try in one of the "
+"If yo still can't find what yo're looking for, try in one of the "
 "following pages:"
 msgstr "探しているものが見つからない場合は、以下のページを試してください。"
 

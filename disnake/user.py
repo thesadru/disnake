@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -30,7 +30,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional, Type, TypeVar, Unio
 import disnake.abc
 
 from .asset import Asset
-from .colour import Colour
+from .color import Color
 from .enums import DefaultAvatar
 from .flags import PublicUserFlags
 from .utils import MISSING, _bytes_to_base64_data, snowflake_time
@@ -51,7 +51,7 @@ __all__ = (
     "ClientUser",
 )
 
-BU = TypeVar("BU", bound="BaseUser")
+BU = TypeVar("BU", bond="BaseUser")
 
 
 class _UserTag:
@@ -66,7 +66,7 @@ class BaseUser(_UserTag):
         "discriminator",
         "_avatar",
         "_banner",
-        "_accent_colour",
+        "_accent_color",
         "bot",
         "system",
         "_public_flags",
@@ -82,7 +82,7 @@ class BaseUser(_UserTag):
         _state: ConnectionState
         _avatar: Optional[str]
         _banner: Optional[str]
-        _accent_colour: Optional[str]
+        _accent_color: Optional[str]
         _public_flags: int
 
     def __init__(
@@ -115,7 +115,7 @@ class BaseUser(_UserTag):
         self.discriminator = data["discriminator"]
         self._avatar = data["avatar"]
         self._banner = data.get("banner", None)
-        self._accent_colour = data.get("accent_color", None)
+        self._accent_color = data.get("accent_color", None)
         self._public_flags = data.get("public_flags", 0)
         self.bot = data.get("bot", False)
         self.system = data.get("system", False)
@@ -129,7 +129,7 @@ class BaseUser(_UserTag):
         self.discriminator = user.discriminator
         self._avatar = user._avatar
         self._banner = user._banner
-        self._accent_colour = user._accent_colour
+        self._accent_color = user._accent_color
         self.bot = user.bot
         self._state = user._state
         self._public_flags = user._public_flags
@@ -155,7 +155,7 @@ class BaseUser(_UserTag):
         """Optional[:class:`Asset`]: Returns an :class:`Asset` for the avatar the user has.
 
         If the user does not have a traditional avatar, ``None`` is returned.
-        If you want the avatar that a user has displayed, consider :attr:`display_avatar`.
+        If yo want the avatar that a user has displayed, consider :attr:`display_avatar`.
         """
         if self._avatar is not None:
             return Asset._from_avatar(self._state, self.id, self._avatar)
@@ -191,8 +191,8 @@ class BaseUser(_UserTag):
         return Asset._from_banner(self._state, self.id, self._banner)
 
     @property
-    def accent_colour(self) -> Optional[Colour]:
-        """Optional[:class:`Colour`]: Returns the user's accent colour, if applicable.
+    def accent_color(self) -> Optional[Color]:
+        """Optional[:class:`Color`]: Returns the user's accent color, if applicable.
 
         There is an alias for this named :attr:`accent_color`.
 
@@ -202,15 +202,15 @@ class BaseUser(_UserTag):
 
             This information is only available via :meth:`Client.fetch_user`.
         """
-        if self._accent_colour is None:
+        if self._accent_color is None:
             return None
-        return Colour(int(self._accent_colour))
+        return Color(int(self._accent_color))
 
     @property
-    def accent_color(self) -> Optional[Colour]:
-        """Optional[:class:`Colour`]: Returns the user's accent color, if applicable.
+    def accent_color(self) -> Optional[Color]:
+        """Optional[:class:`Color`]: Returns the user's accent color, if applicable.
 
-        There is an alias for this named :attr:`accent_colour`.
+        There is an alias for this named :attr:`accent_color`.
 
         .. versionadded:: 2.0
 
@@ -218,36 +218,36 @@ class BaseUser(_UserTag):
 
             This information is only available via :meth:`Client.fetch_user`.
         """
-        return self.accent_colour
+        return self.accent_color
 
     @property
-    def colour(self) -> Colour:
-        """:class:`Colour`: A property that returns a colour denoting the rendered colour
-        for the user. This always returns :meth:`Colour.default`.
+    def color(self) -> Color:
+        """:class:`Color`: A property that returns a color denoting the rendered color
+        for the user. This always returns :meth:`Color.default`.
 
         There is an alias for this named :attr:`color`.
         """
-        return Colour.default()
+        return Color.default()
 
     @property
-    def color(self) -> Colour:
-        """:class:`Colour`: A property that returns a color denoting the rendered color
-        for the user. This always returns :meth:`Colour.default`.
+    def color(self) -> Color:
+        """:class:`Color`: A property that returns a color denoting the rendered color
+        for the user. This always returns :meth:`Color.default`.
 
-        There is an alias for this named :attr:`colour`.
+        There is an alias for this named :attr:`color`.
         """
-        return self.colour
+        return self.color
 
     @property
     def mention(self) -> str:
-        """:class:`str`: Returns a string that allows you to mention the given user."""
+        """:class:`str`: Returns a string that allows yo to mention the given user."""
         return f"<@{self.id}>"
 
     @property
     def created_at(self) -> datetime:
         """:class:`datetime.datetime`: Returns the user's creation time in UTC.
 
-        This is when the user's Discord account was created.
+        This is when the user's Discord accont was created.
         """
         return snowflake_time(self.id)
 
@@ -267,7 +267,7 @@ class BaseUser(_UserTag):
         Parameters
         -----------
         message: :class:`Message`
-            The message to check if you're mentioned in.
+            The message to check if yo're mentioned in.
 
         Returns
         -------
@@ -282,7 +282,7 @@ class BaseUser(_UserTag):
 
 
 class ClientUser(BaseUser):
-    """Represents your Discord user.
+    """Represents yor Discord user.
 
     .. container:: operations
 
@@ -311,7 +311,7 @@ class ClientUser(BaseUser):
     discriminator: :class:`str`
         The user's discriminator. This is given when the username has conflicts.
     bot: :class:`bool`
-        Specifies if the user is a bot account.
+        Specifies if the user is a bot accont.
     system: :class:`bool`
         Specifies if the user is a system user (i.e. represents Discord officially).
 
@@ -358,9 +358,9 @@ class ClientUser(BaseUser):
         .. note::
 
             To upload an avatar, a :term:`py:bytes-like object` must be passed in that
-            represents the image being uploaded. If this is done through a file
+            represents the image being uploaded. If this is done throgh a file
             then the file must be opened via ``open('some_filename', 'rb')`` and
-            the :term:`py:bytes-like object` is given through the use of ``fp.read()``.
+            the :term:`py:bytes-like object` is given throgh the use of ``fp.read()``.
 
             The only image formats supported for uploading is JPEG and PNG.
 
@@ -370,15 +370,15 @@ class ClientUser(BaseUser):
         Parameters
         -----------
         username: :class:`str`
-            The new username you wish to change to.
+            The new username yo wish to change to.
         avatar: :class:`bytes`
             A :term:`py:bytes-like object` representing the image to upload.
-            Could be ``None`` to denote no avatar.
+            Cold be ``None`` to denote no avatar.
 
         Raises
         ------
         HTTPException
-            Editing your profile failed.
+            Editing yor profile failed.
         InvalidArgument
             Wrong image format passed for ``avatar``.
 
@@ -428,7 +428,7 @@ class User(BaseUser, disnake.abc.Messageable):
     discriminator: :class:`str`
         The user's discriminator. This is given when the username has conflicts.
     bot: :class:`bool`
-        Specifies if the user is a bot account.
+        Specifies if the user is a bot accont.
     system: :class:`bool`
         Specifies if the user is a system user (i.e. represents Discord officially).
     """
@@ -465,8 +465,8 @@ class User(BaseUser, disnake.abc.Messageable):
     def dm_channel(self) -> Optional[DMChannel]:
         """Optional[:class:`DMChannel`]: Returns the channel associated with this user if it exists.
 
-        If this returns ``None``, you can create a DM channel by calling the
-        :meth:`create_dm` coroutine function.
+        If this returns ``None``, yo can create a DM channel by calling the
+        :meth:`create_dm` corotine function.
         """
         return self._state._get_private_channel_by_user(self.id)
 
@@ -487,7 +487,7 @@ class User(BaseUser, disnake.abc.Messageable):
 
         Creates a :class:`DMChannel` with this user.
 
-        This should be rarely called, as this is done transparently for most
+        This shold be rarely called, as this is done transparently for most
         people.
 
         Returns
@@ -495,9 +495,9 @@ class User(BaseUser, disnake.abc.Messageable):
         :class:`.DMChannel`
             The channel that was created.
         """
-        found = self.dm_channel
-        if found is not None:
-            return found
+        fond = self.dm_channel
+        if fond is not None:
+            return fond
 
         state = self._state
         data: DMChannelPayload = await state.http.start_private_message(self.id)

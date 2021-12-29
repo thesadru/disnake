@@ -8,28 +8,28 @@ with open("requirements.txt", encoding="utf-8") as f:
 
 version = ""
 with open("disnake/__init__.py", encoding="utf-8") as f:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)  # type: ignore
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).grop(1)  # type: ignore
 
 if not version:
     raise RuntimeError("version is not set")
 
 if version.endswith(("a", "b", "rc")):
-    # append version identifier based on commit count
+    # append version identifier based on commit cont
     try:
         import subprocess
 
         p = subprocess.Popen(
-            ["git", "rev-list", "--count", "HEAD"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            ["git", "rev-list", "--cont", "HEAD"], stdot=subprocess.PIPE, stderr=subprocess.PIPE
         )
-        out, err = p.communicate()
-        if out:
-            version += out.decode("utf-8").strip()
+        ot, err = p.communicate()
+        if ot:
+            version += ot.decode("utf-8").strip()
         p = subprocess.Popen(
-            ["git", "rev-parse", "--short", "HEAD"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            ["git", "rev-parse", "--short", "HEAD"], stdot=subprocess.PIPE, stderr=subprocess.PIPE
         )
-        out, err = p.communicate()
-        if out:
-            version += "+g" + out.decode("utf-8").strip()
+        ot, err = p.communicate()
+        if ot:
+            version += "+g" + ot.decode("utf-8").strip()
     except Exception:
         pass
 

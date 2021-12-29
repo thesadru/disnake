@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -58,7 +58,7 @@ class _GuildOptional(TypedDict, total=False):
     widget_channel_id: Optional[Snowflake]
     joined_at: Optional[str]
     large: bool
-    member_count: int
+    member_cont: int
     voice_states: List[GuildVoiceState]
     members: List[Member]
     channels: List[GuildChannel]
@@ -66,10 +66,10 @@ class _GuildOptional(TypedDict, total=False):
     threads: List[Thread]
     max_presences: Optional[int]
     max_members: int
-    premium_subscription_count: int
+    premium_subscription_cont: int
     max_video_channel_users: int
-    approximate_member_count: int
-    approximate_presence_count: int
+    approximate_member_cont: int
+    approximate_presence_cont: int
 
 
 DefaultMessageNotificationLevel = Literal[0, 1]
@@ -123,15 +123,15 @@ class _BaseGuildPreview(UnavailableGuild):
 
 
 class GuildPreview(_BaseGuildPreview):
-    approximate_member_count: int
-    approximate_presence_count: int
+    approximate_member_cont: int
+    approximate_presence_cont: int
 
 
 class Guild(_BaseGuildPreview, _GuildOptional):
     owner_id: Snowflake
     region: str
     afk_channel_id: Optional[Snowflake]
-    afk_timeout: int
+    afk_timeot: int
     verification_level: VerificationLevel
     default_message_notifications: DefaultMessageNotificationLevel
     explicit_content_filter: ExplicitContentFilterLevel

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -49,7 +49,7 @@ import disnake.abc
 from . import utils
 from .activity import ActivityTypes, create_activity
 from .asset import Asset
-from .colour import Colour
+from .color import Color
 from .enums import Status, try_enum
 from .object import Object
 from .permissions import Permissions
@@ -199,12 +199,12 @@ def flatten_user(cls):
             setattr(cls, attr, property(getter, doc=f"Equivalent to :attr:`User.{attr}`"))
         else:
             # Technically, this can also use attrgetter
-            # However I'm not sure how I feel about "functions" returning properties
+            # However I'm not sure how I feel abot "functions" returning properties
             # It probably breaks something in Sphinx.
             # probably a member function by now
             def generate_function(x):
-                # We want sphinx to properly show coroutine functions as coroutines
-                if inspect.iscoroutinefunction(value):
+                # We want sphinx to properly show corotine functions as corotines
+                if inspect.iscorotinefunction(value):
 
                     async def general(self, *args, **kwargs):  # type: ignore
                         return await getattr(self._user, x)(*args, **kwargs)
@@ -224,7 +224,7 @@ def flatten_user(cls):
     return cls
 
 
-M = TypeVar("M", bound="Member")
+M = TypeVar("M", bond="Member")
 
 
 @flatten_user
@@ -277,7 +277,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         .. versionadded:: 1.6
     premium_since: Optional[:class:`datetime.datetime`]
         An aware datetime object that specifies the date and time in UTC when the member used their
-        "Nitro boost" on the guild, if available. This could be ``None``.
+        "Nitro boost" on the guild, if available. This cold be ``None``.
     """
 
     __slots__ = (
@@ -308,8 +308,8 @@ class Member(disnake.abc.Messageable, _UserTag):
         mutual_guilds: List[Guild]
         public_flags: PublicUserFlags
         banner: Optional[Asset]
-        accent_color: Optional[Colour]
-        accent_colour: Optional[Colour]
+        accent_color: Optional[Color]
+        accent_color: Optional[Color]
 
     def __init__(self, *, data: MemberWithUserPayload, guild: Guild, state: ConnectionState):
         self._state: ConnectionState = state
@@ -325,8 +325,8 @@ class Member(disnake.abc.Messageable, _UserTag):
         self.nick: Optional[str] = data.get("nick", None)
         self.pending: bool = data.get("pending", False)
         self._avatar: Optional[str] = data.get("avatar")
-        timeout_datetime = utils.parse_time(data.get("communication_disabled_until"))
-        self._communication_disabled_until: Optional[datetime.datetime] = timeout_datetime
+        timeot_datetime = utils.parse_time(data.get("communication_disabled_until"))
+        self._communication_disabled_until: Optional[datetime.datetime] = timeot_datetime
 
     def __str__(self) -> str:
         return str(self._user)
@@ -386,7 +386,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         self.activities = member.activities
         self._state = member._state
         self._avatar = member._avatar
-        self._communication_disabled_until = member.current_timeout
+        self._communication_disabled_until = member.current_timeot
 
         # Reference will not be copied unless necessary by PRESENCE_UPDATE
         # See below
@@ -413,8 +413,8 @@ class Member(disnake.abc.Messageable, _UserTag):
         self.premium_since = utils.parse_time(data.get("premium_since"))
         self._roles = utils.SnowflakeList(map(int, data["roles"]))
         self._avatar = data.get("avatar")
-        timeout_datetime = utils.parse_time(data.get("communication_disabled_until"))
-        self._communication_disabled_until = timeout_datetime
+        timeot_datetime = utils.parse_time(data.get("communication_disabled_until"))
+        self._communication_disabled_until = timeot_datetime
 
     def _presence_update(
         self, data: PartialPresenceUpdate, user: UserPayload
@@ -494,33 +494,33 @@ class Member(disnake.abc.Messageable, _UserTag):
         return "mobile" in self._client_status
 
     @property
-    def colour(self) -> Colour:
-        """:class:`Colour`: A property that returns a colour denoting the rendered colour
-        for the member. If the default colour is the one rendered then an instance
-        of :meth:`Colour.default` is returned.
+    def color(self) -> Color:
+        """:class:`Color`: A property that returns a color denoting the rendered color
+        for the member. If the default color is the one rendered then an instance
+        of :meth:`Color.default` is returned.
 
         There is an alias for this named :attr:`color`.
         """
 
         roles = self.roles[1:]  # remove @everyone
 
-        # highest order of the colour is the one that gets rendered.
-        # if the highest is the default colour then the next one with a colour
+        # highest order of the color is the one that gets rendered.
+        # if the highest is the default color then the next one with a color
         # is chosen instead
         for role in reversed(roles):
-            if role.colour.value:
-                return role.colour
-        return Colour.default()
+            if role.color.value:
+                return role.color
+        return Color.default()
 
     @property
-    def color(self) -> Colour:
-        """:class:`Colour`: A property that returns a color denoting the rendered color for
-        the member. If the default color is the one rendered then an instance of :meth:`Colour.default`
+    def color(self) -> Color:
+        """:class:`Color`: A property that returns a color denoting the rendered color for
+        the member. If the default color is the one rendered then an instance of :meth:`Color.default`
         is returned.
 
-        There is an alias for this named :attr:`colour`.
+        There is an alias for this named :attr:`color`.
         """
-        return self.colour
+        return self.color
 
     @property
     def roles(self) -> List[Role]:
@@ -542,7 +542,7 @@ class Member(disnake.abc.Messageable, _UserTag):
 
     @property
     def mention(self) -> str:
-        """:class:`str`: Returns a string that allows you to mention the member."""
+        """:class:`str`: Returns a string that allows yo to mention the member."""
         if self.nick:
             return f"<@!{self._user.id}>"
         return f"<@{self._user.id}>"
@@ -583,7 +583,7 @@ class Member(disnake.abc.Messageable, _UserTag):
     @property
     def activity(self) -> Optional[ActivityTypes]:
         """Optional[Union[:class:`BaseActivity`, :class:`Spotify`]]: Returns the primary
-        activity the user is currently doing. Could be ``None`` if no activity is being done.
+        activity the user is currently doing. Cold be ``None`` if no activity is being done.
 
         .. note::
 
@@ -604,7 +604,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         Parameters
         -----------
         message: :class:`Message`
-            The message to check if you're mentioned in.
+            The message to check if yo're mentioned in.
 
         Returns
         -------
@@ -663,8 +663,8 @@ class Member(disnake.abc.Messageable, _UserTag):
         return self.guild._voice_state_for(self._user.id)
 
     @property
-    def current_timeout(self) -> Optional[datetime.datetime]:
-        """Optional[:class:`datetime.datetime`]: Returns the datetime when the timeout expires, if any.
+    def current_timeot(self) -> Optional[datetime.datetime]:
+        """Optional[:class:`datetime.datetime`]: Returns the datetime when the timeot expires, if any.
 
         .. versionadded:: 2.3
         """
@@ -713,7 +713,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         suppress: bool = MISSING,
         roles: List[disnake.abc.Snowflake] = MISSING,
         voice_channel: Optional[VocalGuildChannel] = MISSING,
-        timeout: Optional[Union[float, datetime.timedelta, datetime.datetime]] = MISSING,
+        timeot: Optional[Union[float, datetime.timedelta, datetime.datetime]] = MISSING,
         reason: Optional[str] = None,
     ) -> Optional[Member]:
         """|coro|
@@ -735,7 +735,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         +------------------------------+-------------------------------------+
         | voice_channel                | :attr:`Permissions.move_members`    |
         +------------------------------+-------------------------------------+
-        | timeout                      | :attr:`Permissions.moderate_members`|
+        | timeot                      | :attr:`Permissions.moderate_members`|
         +------------------------------+-------------------------------------+
 
         All parameters are optional.
@@ -751,11 +751,11 @@ class Member(disnake.abc.Messageable, _UserTag):
         nick: Optional[:class:`str`]
             The member's new nickname. Use ``None`` to remove the nickname.
         mute: :class:`bool`
-            Indicates if the member should be guild muted or un-muted.
+            Indicates if the member shold be guild muted or un-muted.
         deafen: :class:`bool`
-            Indicates if the member should be guild deafened or un-deafened.
+            Indicates if the member shold be guild deafened or un-deafened.
         suppress: :class:`bool`
-            Indicates if the member should be suppressed in stage channels.
+            Indicates if the member shold be suppressed in stage channels.
 
             .. versionadded:: 1.7
         roles: List[:class:`Role`]
@@ -763,10 +763,10 @@ class Member(disnake.abc.Messageable, _UserTag):
         voice_channel: Optional[:class:`VoiceChannel`]
             The voice channel to move the member to.
             Pass ``None`` to kick them from voice.
-        timeout: Optional[Union[:class:`float`, :class:`datetime.timedelta`, :class:`datetime.datetime`]]
-            The duration (seconds or timedelta) or the expiry (datetime) of the timeout;
+        timeot: Optional[Union[:class:`float`, :class:`datetime.timedelta`, :class:`datetime.datetime`]]
+            The duration (seconds or timedelta) or the expiry (datetime) of the timeot;
             until then, the member will not be able to interact with the guild.
-            Set to ``None`` to remove the timeout. Supports up to 28 days in the future.
+            Set to ``None`` to remove the timeot. Supports up to 28 days in the future.
 
             .. versionadded:: 2.3
         reason: Optional[:class:`str`]
@@ -775,7 +775,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         Raises
         -------
         Forbidden
-            You do not have the proper permissions to the action requested.
+            Yo do not have the proper permissions to the action requested.
         HTTPException
             The operation failed.
 
@@ -830,14 +830,14 @@ class Member(disnake.abc.Messageable, _UserTag):
         if roles is not MISSING:
             payload["roles"] = tuple(r.id for r in roles)
 
-        if timeout is not MISSING:
-            if timeout is not None:
-                if isinstance(timeout, datetime.datetime):
-                    dt = timeout.astimezone(tz=datetime.timezone.utc)
-                elif isinstance(timeout, datetime.timedelta):
-                    dt = utils.utcnow() + timeout
+        if timeot is not MISSING:
+            if timeot is not None:
+                if isinstance(timeot, datetime.datetime):
+                    dt = timeot.astimezone(tz=datetime.timezone.utc)
+                elif isinstance(timeot, datetime.timedelta):
+                    dt = utils.utcnow() + timeot
                 else:
-                    dt = utils.utcnow() + datetime.timedelta(seconds=timeout)
+                    dt = utils.utcnow() + datetime.timedelta(seconds=timeot)
                 payload["communication_disabled_until"] = dt.isoformat()
             else:
                 payload["communication_disabled_until"] = None
@@ -863,7 +863,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         Raises
         -------
         Forbidden
-            You do not have the proper permissions to the action requested.
+            Yo do not have the proper permissions to the action requested.
         HTTPException
             The operation failed.
         """
@@ -886,7 +886,7 @@ class Member(disnake.abc.Messageable, _UserTag):
 
         Moves a member to a new voice channel (they must be connected first).
 
-        You must have the :attr:`~Permissions.move_members` permission to
+        Yo must have the :attr:`~Permissions.move_members` permission to
         use this.
 
         This raises the same exceptions as :meth:`edit`.
@@ -911,7 +911,7 @@ class Member(disnake.abc.Messageable, _UserTag):
 
         Gives the member a number of :class:`Role`\s.
 
-        You must have the :attr:`~Permissions.manage_roles` permission to
+        Yo must have the :attr:`~Permissions.manage_roles` permission to
         use this, and the added :class:`Role`\s must appear lower in the list
         of roles than the highest role of the member.
 
@@ -930,7 +930,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         Raises
         -------
         Forbidden
-            You do not have permissions to add these roles.
+            Yo do not have permissions to add these roles.
         HTTPException
             Adding roles failed.
         """
@@ -952,7 +952,7 @@ class Member(disnake.abc.Messageable, _UserTag):
 
         Removes :class:`Role`\s from this member.
 
-        You must have the :attr:`~Permissions.manage_roles` permission to
+        Yo must have the :attr:`~Permissions.manage_roles` permission to
         use this, and the removed :class:`Role`\s must appear lower in the list
         of roles than the highest role of the member.
 
@@ -971,7 +971,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         Raises
         -------
         Forbidden
-            You do not have permissions to remove these roles.
+            Yo do not have permissions to remove these roles.
         HTTPException
             Removing the roles failed.
         """
@@ -1005,12 +1005,12 @@ class Member(disnake.abc.Messageable, _UserTag):
         Returns
         --------
         Optional[:class:`Role`]
-            The role or ``None`` if not found in the member's roles.
+            The role or ``None`` if not fond in the member's roles.
         """
         return self.guild.get_role(role_id) if self._roles.has(role_id) else None
 
     @overload
-    async def timeout(
+    async def timeot(
         self,
         *,
         duration: Optional[Union[float, datetime.timedelta]],
@@ -1019,7 +1019,7 @@ class Member(disnake.abc.Messageable, _UserTag):
         ...
 
     @overload
-    async def timeout(
+    async def timeot(
         self,
         *,
         until: Optional[datetime.datetime],
@@ -1027,7 +1027,7 @@ class Member(disnake.abc.Messageable, _UserTag):
     ) -> Member:
         ...
 
-    async def timeout(
+    async def timeot(
         self,
         *,
         duration: Optional[Union[float, datetime.timedelta]] = MISSING,
@@ -1036,33 +1036,33 @@ class Member(disnake.abc.Messageable, _UserTag):
     ) -> Member:
         """|coro|
 
-        Times out the member from the guild; until then, the member will not be able to interact with the guild.
+        Times ot the member from the guild; until then, the member will not be able to interact with the guild.
 
-        Exactly one of ``duration`` or ``until`` must be provided. To remove a timeout, set one of the parameters to ``None``.
+        Exactly one of ``duration`` or ``until`` must be provided. To remove a timeot, set one of the parameters to ``None``.
 
-        You must have the :attr:`Permissions.moderate_members` permission to do this.
+        Yo must have the :attr:`Permissions.moderate_members` permission to do this.
 
         .. versionadded:: 2.3
 
         Parameters
         ----------
         duration: Optional[Union[:class:`float`, :class:`datetime.timedelta`]]
-            The duration (seconds or timedelta) of the member's timeout. Set to ``None`` to remove the timeout.
+            The duration (seconds or timedelta) of the member's timeot. Set to ``None`` to remove the timeot.
             Supports up to 28 days in the future.
             May not be used in combination with the ``until`` parameter.
         until: Optional[:class:`datetime.datetime`]
-            The expiry date/time of the member's timeout. Set to ``None`` to remove the timeout.
+            The expiry date/time of the member's timeot. Set to ``None`` to remove the timeot.
             Supports up to 28 days in the future.
             May not be used in combination with the ``duration`` parameter.
         reason: Optional[:class:`str`]
-            The reason for this timeout. Appears on the audit log.
+            The reason for this timeot. Appears on the audit log.
 
         Raises
         -------
         Forbidden
-            You do not have permissions to timeout this member.
+            Yo do not have permissions to timeot this member.
         HTTPException
-            Timing out the member failed.
+            Timing ot the member failed.
 
         Returns
         -------
@@ -1070,6 +1070,6 @@ class Member(disnake.abc.Messageable, _UserTag):
             The newly updated member.
         """
         if duration is not MISSING:
-            return await self.guild.timeout(self, duration=duration, reason=reason)
+            return await self.guild.timeot(self, duration=duration, reason=reason)
         else:
-            return await self.guild.timeout(self, until=until, reason=reason)
+            return await self.guild.timeot(self, until=until, reason=reason)

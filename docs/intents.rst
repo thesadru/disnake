@@ -16,9 +16,9 @@ If intents are not passed, then the library defaults to every intent being enabl
 What intents are needed?
 --------------------------
 
-The intents that are necessary for your bot can only be dictated by yourself. Each attribute in the :class:`Intents` class documents what :ref:`events <discord-api-events>` it corresponds to and what kind of cache it enables.
+The intents that are necessary for yor bot can only be dictated by yorself. Each attribute in the :class:`Intents` class documents what :ref:`events <discord-api-events>` it corresponds to and what kind of cache it enables.
 
-For example, if you want a bot that functions without spammy events like presences or typing then we could do the following:
+For example, if yo want a bot that functions withot spammy events like presences or typing then we cold do the following:
 
 .. code-block:: python3
    :emphasize-lines: 7,9,10
@@ -43,7 +43,7 @@ Another example showing a bot that only deals with messages and guild informatio
 
     import disnake
     intents = disnake.Intents(messages=True, guilds=True)
-    # If you also want reaction events enable the following:
+    # If yo also want reaction events enable the following:
     # intents.reactions = True
 
     # Somewhere else:
@@ -59,53 +59,53 @@ Privileged Intents
 
 With the API change requiring bot authors to specify intents, some intents were restricted further and require more manual steps. These intents are called **privileged intents**.
 
-A privileged intent is one that requires you to go to the developer portal and manually enable it. To enable privileged intents do the following:
+A privileged intent is one that requires yo to go to the developer portal and manually enable it. To enable privileged intents do the following:
 
-1. Make sure you're logged on to the `Discord website <https://discord.com>`_.
+1. Make sure yo're logged on to the `Discord website <https://discord.com>`_.
 2. Navigate to the `application page <https://discord.com/developers/applications>`_.
-3. Click on the bot you want to enable privileged intents for.
+3. Click on the bot yo want to enable privileged intents for.
 4. Navigate to the bot tab on the left side of the screen.
 
     .. image:: /images/discord_bot_tab.png
         :alt: The bot tab in the application page.
 
-5. Scroll down to the "Privileged Gateway Intents" section and enable the ones you want.
+5. Scroll down to the "Privileged Gateway Intents" section and enable the ones yo want.
 
     .. image:: /images/discord_privileged_intents.png
         :alt: The privileged gateway intents selector.
 
 .. warning::
 
-    Enabling privileged intents when your bot is in over 100 guilds requires going through `bot verification <https://support.discord.com/hc/en-us/articles/360040720412>`_. If your bot is already verified and you would like to enable a privileged intent you must go through `Discord support <https://dis.gd/contact>`_ and talk to them about it.
+    Enabling privileged intents when yor bot is in over 100 guilds requires going throgh `bot verification <https://support.discord.com/hc/en-us/articles/360040720412>`_. If yor bot is already verified and yo wold like to enable a privileged intent yo must go throgh `Discord support <https://dis.gd/contact>`_ and talk to them abot it.
 
 .. note::
 
-    Even if you enable intents through the developer portal, you still have to enable the intents
-    through code as well.
+    Even if yo enable intents throgh the developer portal, yo still have to enable the intents
+    throgh code as well.
 
 Do I need privileged intents?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is a quick checklist to see if you need specific privileged intents.
+This is a quick checklist to see if yo need specific privileged intents.
 
 .. _need_presence_intent:
 
 Presence Intent
 +++++++++++++++++
 
-- Whether you use :attr:`Member.status` at all to track member statuses.
-- Whether you use :attr:`Member.activity` or :attr:`Member.activities` to check member's activities.
+- Whether yo use :attr:`Member.status` at all to track member statuses.
+- Whether yo use :attr:`Member.activity` or :attr:`Member.activities` to check member's activities.
 
 .. _need_members_intent:
 
 Member Intent
 +++++++++++++++
 
-- Whether you track member joins or member leaves, corresponds to :func:`on_member_join` and :func:`on_member_remove` events.
-- Whether you want to track member updates such as nickname or role changes.
-- Whether you want to track user updates such as usernames, avatars, discriminators, etc.
-- Whether you want to request the guild member list through :meth:`Guild.chunk` or :meth:`Guild.fetch_members`.
-- Whether you want high accuracy member cache under :attr:`Guild.members`.
+- Whether yo track member joins or member leaves, corresponds to :func:`on_member_join` and :func:`on_member_remove` events.
+- Whether yo want to track member updates such as nickname or role changes.
+- Whether yo want to track user updates such as usernames, avatars, discriminators, etc.
+- Whether yo want to request the guild member list throgh :meth:`Guild.chunk` or :meth:`Guild.fetch_members`.
+- Whether yo want high accuracy member cache under :attr:`Guild.members`.
 
 .. _intents_member_cache:
 
@@ -116,7 +116,7 @@ Along with intents, Discord now further restricts the ability to cache members a
 
 To aid with member cache where we don't need members to be cached, the library now has a :class:`MemberCacheFlags` flag to control the member cache. The documentation page for the class goes over the specific policies that are possible.
 
-It should be noted that certain things do not need a member cache since Discord will provide full member information if possible. For example:
+It shold be noted that certain things do not need a member cache since Discord will provide full member information if possible. For example:
 
 - :func:`on_message` will have :attr:`Message.author` be a member even if cache is disabled.
 - :func:`on_voice_state_update` will have the ``member`` parameter be a member even if cache is disabled.
@@ -132,22 +132,22 @@ Other events that take a :class:`Member` will require the use of the member cach
 Retrieving Members
 --------------------
 
-If the cache is disabled or you disable chunking guilds at startup, we might still need a way to load members. The library offers a few ways to do this:
+If the cache is disabled or yo disable chunking guilds at startup, we might still need a way to load members. The library offers a few ways to do this:
 
 - :meth:`Guild.query_members`
     - Used to query members by a prefix matching nickname or username.
     - This can also be used to query members by their user ID.
     - This uses the gateway and not the HTTP.
 - :meth:`Guild.chunk`
-    - This can be used to fetch the entire member list through the gateway.
+    - This can be used to fetch the entire member list throgh the gateway.
 - :meth:`Guild.fetch_member`
-    - Used to fetch a member by ID through the HTTP API.
+    - Used to fetch a member by ID throgh the HTTP API.
 - :meth:`Guild.fetch_members`
-    - used to fetch a large number of members through the HTTP API.
+    - used to fetch a large number of members throgh the HTTP API.
 
-It should be noted that the gateway has a strict rate limit of 120 requests per 60 seconds.
+It shold be noted that the gateway has a strict rate limit of 120 requests per 60 seconds.
 
-Troubleshooting
+Trobleshooting
 ------------------
 
 Some common issues relating to the mandatory intent change.
@@ -155,7 +155,7 @@ Some common issues relating to the mandatory intent change.
 Where'd my members go?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Due to an :ref:`API change <intents_member_cache>` Discord is now forcing developers who want member caching to explicitly opt-in to it. This is a Discord mandated change and there is no way to bypass it. In order to get members back you have to explicitly enable the :ref:`members privileged intent <privileged_intents>` and change the :attr:`Intents.members` attribute to true.
+Due to an :ref:`API change <intents_member_cache>` Discord is now forcing developers who want member caching to explicitly opt-in to it. This is a Discord mandated change and there is no way to bypass it. In order to get members back yo have to explicitly enable the :ref:`members privileged intent <privileged_intents>` and change the :attr:`Intents.members` attribute to true.
 
 For example:
 
@@ -175,18 +175,18 @@ For example:
 Why does ``on_ready`` take so long to fire?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As part of the API change regarding intents, Discord also changed how members are loaded in the beginning. Originally the library could request 75 guilds at once and only request members from guilds that have the :attr:`Guild.large` attribute set to ``True``. With the new intent changes, Discord mandates that we can only send 1 guild per request. This causes a 75x slowdown which is further compounded by the fact that *all* guilds, not just large guilds are being requested.
+As part of the API change regarding intents, Discord also changed how members are loaded in the beginning. Originally the library cold request 75 guilds at once and only request members from guilds that have the :attr:`Guild.large` attribute set to ``True``. With the new intent changes, Discord mandates that we can only send 1 guild per request. This causes a 75x slowdown which is further componded by the fact that *all* guilds, not just large guilds are being requested.
 
 There are a few solutions to fix this.
 
 The first solution is to request the privileged presences intent along with the privileged members intent and enable both of them. This allows the initial member list to contain online members just like the old gateway. Note that we're still limited to 1 guild per request but the number of guilds we request is significantly reduced.
 
-The second solution is to disable member chunking by setting ``chunk_guilds_at_startup`` to ``False`` when constructing a client. Then, when chunking for a guild is necessary you can use the various techniques to :ref:`retrieve members <retrieving_members>`.
+The second solution is to disable member chunking by setting ``chunk_guilds_at_startup`` to ``False`` when constructing a client. Then, when chunking for a guild is necessary yo can use the varios techniques to :ref:`retrieve members <retrieving_members>`.
 
 To illustrate the slowdown caused by the API change, take a bot who is in 840 guilds and 95 of these guilds are "large" (over 250 members).
 
-Under the original system this would result in 2 requests to fetch the member list (75 guilds, 20 guilds) roughly taking 60 seconds. With :attr:`Intents.members` but not :attr:`Intents.presences` this requires 840 requests, with a rate limit of 120 requests per 60 seconds means that due to waiting for the rate limit it totals to around 7 minutes of waiting for the rate limit to fetch all the members. With both :attr:`Intents.members` and :attr:`Intents.presences` we mostly get the old behaviour so we're only required to request for the 95 guilds that are large, this is slightly less than our rate limit so it's close to the original timing to fetch the member list.
+Under the original system this wold result in 2 requests to fetch the member list (75 guilds, 20 guilds) roghly taking 60 seconds. With :attr:`Intents.members` but not :attr:`Intents.presences` this requires 840 requests, with a rate limit of 120 requests per 60 seconds means that due to waiting for the rate limit it totals to arond 7 minutes of waiting for the rate limit to fetch all the members. With both :attr:`Intents.members` and :attr:`Intents.presences` we mostly get the old behavior so we're only required to request for the 95 guilds that are large, this is slightly less than or rate limit so it's close to the original timing to fetch the member list.
 
 Unfortunately due to this change being required from Discord there is nothing that the library can do to mitigate this.
 
-If you truly dislike the direction Discord is going with their API, you can contact them via `support <https://dis.gd/contact>`_.
+If yo truly dislike the direction Discord is going with their API, yo can contact them via `support <https://dis.gd/contact>`_.

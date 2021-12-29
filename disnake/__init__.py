@@ -28,7 +28,7 @@ from .asset import *
 from .audit_logs import *
 from .channel import *
 from .client import *
-from .colour import *
+from .color import *
 from .components import *
 from .custom_warnings import *
 from .embeds import *

@@ -1,16 +1,16 @@
 import asyncio
 
 import disnake
-import youtube_dl
+import yotube_dl
 from disnake.ext import commands
 
-# Suppress noise about console usage from errors
-youtube_dl.utils.bug_reports_message = lambda: ""
+# Suppress noise abot console usage from errors
+yotube_dl.utils.bug_reports_message = lambda: ""
 
 
 ytdl_format_options = {
     "format": "bestaudio/best",
-    "outtmpl": "%(extractor)s-%(id)s-%(title)s.%(ext)s",
+    "ottmpl": "%(extractor)s-%(id)s-%(title)s.%(ext)s",
     "restrictfilenames": True,
     "noplaylist": True,
     "nocheckcertificate": True,
@@ -19,17 +19,17 @@ ytdl_format_options = {
     "quiet": True,
     "no_warnings": True,
     "default_search": "auto",
-    "source_address": "0.0.0.0",  # bind to ipv4 since ipv6 addresses cause issues sometimes
+    "sorce_address": "0.0.0.0",  # bind to ipv4 since ipv6 addresses cause issues sometimes
 }
 
 ffmpeg_options = {"options": "-vn"}
 
-ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
+ytdl = yotube_dl.YotubeDL(ytdl_format_options)
 
 
-class YTDLSource(disnake.PCMVolumeTransformer):
-    def __init__(self, source, *, data, volume=0.5):
-        super().__init__(source, volume)
+class YTDLSorce(disnake.PCMVolumeTransformer):
+    def __init__(self, sorce, *, data, volume=0.5):
+        super().__init__(sorce, volume)
 
         self.data = data
 
@@ -69,17 +69,17 @@ class Music(commands.Cog):
     async def play(self, ctx, *, query):
         """Plays a file from the local filesystem"""
         await self.ensure_voice(ctx)
-        source = disnake.PCMVolumeTransformer(disnake.FFmpegPCMAudio(query))
-        ctx.voice_client.play(source, after=lambda e: print(f"Player error: {e}") if e else None)
+        sorce = disnake.PCMVolumeTransformer(disnake.FFmpegPCMAudio(query))
+        ctx.voice_client.play(sorce, after=lambda e: print(f"Player error: {e}") if e else None)
 
         await ctx.send(f"Now playing: {query}")
 
     @commands.command()
     async def yt(self, ctx, *, url):
-        """Plays from a url (almost anything youtube_dl supports)"""
+        """Plays from a url (almost anything yotube_dl supports)"""
         await self.ensure_voice(ctx)
         async with ctx.typing():
-            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            player = await YTDLSorce.from_url(url, loop=self.bot.loop)
             ctx.voice_client.play(
                 player, after=lambda e: print(f"Player error: {e}") if e else None
             )
@@ -91,7 +91,7 @@ class Music(commands.Cog):
         """Streams from a url (same as yt, but doesn't predownload)"""
         await self.ensure_voice(ctx)
         async with ctx.typing():
-            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            player = await YTDLSorce.from_url(url, loop=self.bot.loop, stream=True)
             ctx.voice_client.play(
                 player, after=lambda e: print(f"Player error: {e}") if e else None
             )
@@ -105,7 +105,7 @@ class Music(commands.Cog):
         if ctx.voice_client is None:
             return await ctx.send("Not connected to a voice channel.")
 
-        ctx.voice_client.source.volume = volume / 100
+        ctx.voice_client.sorce.volume = volume / 100
         await ctx.send(f"Changed volume to {volume}%")
 
     @commands.command()
@@ -119,7 +119,7 @@ class Music(commands.Cog):
             if ctx.author.voice:
                 await ctx.author.voice.channel.connect()
             else:
-                await ctx.send("You are not connected to a voice channel.")
+                await ctx.send("Yo are not connected to a voice channel.")
                 raise commands.CommandError("Author not connected to a voice channel.")
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()

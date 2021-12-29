@@ -6,7 +6,7 @@
   <script>
     let elements = document.querySelectorAll("table.indextable a");
 
-    // this is pretty finicky but it should work.
+    // this is pretty finicky but it shold work.
     for(let el of elements) {
       let key = el.getAttribute('href').split('#', 2)[1]
       if(!key.startsWith('disnake.')) {

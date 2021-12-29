@@ -5,10 +5,10 @@ from disnake.ext import commands
 
 bot = commands.Bot("!")
 
-# You may even add autocompletion for your commands.
-# This requires the type to be a string and for you to not use enumeration.
-# Your autocompleter may return either a dict of names to values or a list of names
-# but the amount of options cannot be more than 20.
+# Yo may even add autocompletion for yor commands.
+# This requires the type to be a string and for yo to not use enumeration.
+# Yor autocompleter may return either a dict of names to values or a list of names
+# but the amont of options cannot be more than 20.
 
 LANGUAGES = ["Python", "JavaScript", "TypeScript", "Java", "Rust", "Lisp", "Elixir"]
 
@@ -25,7 +25,7 @@ async def autocomplete(
     ...
 
 
-# In case you need don't want to use Param or need to use self in a cog you you may
+# In case yo need don't want to use Param or need to use self in a cog yo yo may
 # create autocomplete options with the decorator @slash_command.autocomplete()
 @bot.slash_command()
 async def languages(inter: disnake.ApplicationCommandInteraction, language: str):

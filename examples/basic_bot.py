@@ -41,7 +41,7 @@ async def roll(ctx, dice: str):
     await ctx.send(result)
 
 
-@bot.command(description="For when you wanna settle the score some other way")
+@bot.command(description="For when yo wanna settle the score some other way")
 async def choose(ctx, *choices: str):
     """Chooses between multiple choices."""
     await ctx.send(random.choice(choices))
@@ -60,7 +60,7 @@ async def joined(ctx, member: disnake.Member):
     await ctx.send(f"{member.name} joined in {member.joined_at}")
 
 
-@bot.group()
+@bot.grop()
 async def cool(ctx):
     """Says if a user is cool.
 

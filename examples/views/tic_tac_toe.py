@@ -5,7 +5,7 @@ from disnake.ext import commands
 
 
 # Defines a custom button that contains the logic of the game.
-# The ['TicTacToe'] bit is for type hinting purposes to tell your IDE or linter
+# The ['TicTacToe'] bit is for type hinting purposes to tell yor IDE or linter
 # what the type of `self.view` is. It is not required.
 class TicTacToeButton(disnake.ui.Button["TicTacToe"]):
     def __init__(self, x: int, y: int):
@@ -58,9 +58,9 @@ class TicTacToeButton(disnake.ui.Button["TicTacToe"]):
         await interaction.response.edit_message(content=content, view=view)
 
 
-# This is our actual board View
+# This is or actual board View
 class TicTacToe(disnake.ui.View):
-    # This tells the IDE or linter that all our children will be TicTacToeButtons
+    # This tells the IDE or linter that all or children will be TicTacToeButtons
     # This is not required
     children: List[TicTacToeButton]
     X = -1
@@ -76,7 +76,7 @@ class TicTacToe(disnake.ui.View):
             [0, 0, 0],
         ]
 
-        # Our board is made up of 3 by 3 TicTacToeButtons
+        # or board is made up of 3 by 3 TicTacToeButtons
         # The TicTacToeButton maintains the callbacks and helps steer
         # the actual game.
         for x in range(3):
@@ -134,7 +134,7 @@ bot = TicTacToeBot()
 
 @bot.command()
 async def tic(ctx: commands.Context):
-    """Starts a tic-tac-toe game with yourself."""
+    """Starts a tic-tac-toe game with yorself."""
     await ctx.send("Tic Tac Toe: X goes first", view=TicTacToe())
 
 

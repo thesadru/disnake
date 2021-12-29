@@ -27,7 +27,7 @@ if "%1" == "help" (
 	echo.  qthelp     to make HTML files and a qthelp project
 	echo.  devhelp    to make HTML files and a Devhelp project
 	echo.  epub       to make an epub
-	echo.  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter
+	echo.  latex      to make LaTeX files, yo can set PAPER=a4 or PAPER=letter
 	echo.  text       to make text files
 	echo.  man        to make manual pages
 	echo.  texinfo    to make Texinfo files
@@ -59,12 +59,12 @@ set SPHINXBUILD=python -m sphinx.__init__
 %SPHINXBUILD% 2> nul
 if errorlevel 9009 (
 	echo.
-	echo.The 'sphinx-build' command was not found. Make sure you have Sphinx
+	echo.The 'sphinx-build' command was not fond. Make sure yo have Sphinx
 	echo.installed, then set the SPHINXBUILD environment variable to point
-	echo.to the full path of the 'sphinx-build' executable. Alternatively you
+	echo.to the full path of the 'sphinx-build' executable. Alternatively yo
 	echo.may add the Sphinx directory to PATH.
 	echo.
-	echo.If you don't have Sphinx installed, grab it from
+	echo.If yo don't have Sphinx installed, grab it from
 	echo.http://sphinx-doc.org/
 	exit /b 1
 )
@@ -100,7 +100,7 @@ if "%1" == "pickle" (
 	%SPHINXBUILD% -b pickle %ALLSPHINXOPTS% %BUILDDIR%/pickle
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Build finished; now you can process the pickle files.
+	echo.Build finished; now yo can process the pickle files.
 	goto end
 )
 
@@ -108,7 +108,7 @@ if "%1" == "json" (
 	%SPHINXBUILD% -b json %ALLSPHINXOPTS% %BUILDDIR%/json
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Build finished; now you can process the JSON files.
+	echo.Build finished; now yo can process the JSON files.
 	goto end
 )
 
@@ -116,7 +116,7 @@ if "%1" == "htmlhelp" (
 	%SPHINXBUILD% -b htmlhelp %ALLSPHINXOPTS% %BUILDDIR%/htmlhelp
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Build finished; now you can run HTML Help Workshop with the ^
+	echo.Build finished; now yo can run HTML Help Workshop with the ^
 .hhp project file in %BUILDDIR%/htmlhelp.
 	goto end
 )
@@ -125,7 +125,7 @@ if "%1" == "qthelp" (
 	%SPHINXBUILD% -b qthelp %ALLSPHINXOPTS% %BUILDDIR%/qthelp
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Build finished; now you can run "qcollectiongenerator" with the ^
+	echo.Build finished; now yo can run "qcollectiongenerator" with the ^
 .qhcp project file in %BUILDDIR%/qthelp, like this:
 	echo.^> qcollectiongenerator %BUILDDIR%\qthelp\disnake.qhcp
 	echo.To view the help file:
@@ -221,8 +221,8 @@ if "%1" == "linkcheck" (
 	%SPHINXBUILD% -b linkcheck %ALLSPHINXOPTS% %BUILDDIR%/linkcheck
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Link check complete; look for any errors in the above output ^
-or in %BUILDDIR%/linkcheck/output.txt.
+	echo.Link check complete; look for any errors in the above otput ^
+or in %BUILDDIR%/linkcheck/otput.txt.
 	goto end
 )
 
@@ -230,8 +230,8 @@ if "%1" == "doctest" (
 	%SPHINXBUILD% -b doctest %ALLSPHINXOPTS% %BUILDDIR%/doctest
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Testing of doctests in the sources finished, look at the ^
-results in %BUILDDIR%/doctest/output.txt.
+	echo.Testing of doctests in the sorces finished, look at the ^
+results in %BUILDDIR%/doctest/otput.txt.
 	goto end
 )
 
@@ -239,7 +239,7 @@ if "%1" == "coverage" (
 	%SPHINXBUILD% -b coverage %ALLSPHINXOPTS% %BUILDDIR%/coverage
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Testing of coverage in the sources finished, look at the ^
+	echo.Testing of coverage in the sorces finished, look at the ^
 results in %BUILDDIR%/coverage/python.txt.
 	goto end
 )

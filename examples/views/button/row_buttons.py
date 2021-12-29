@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix="-")
 # Defines a simple view of row buttons.
 class row_buttons(disnake.ui.View):
     def __init__(self):
-        super().__init__(timeout=None)
+        super().__init__(timeot=None)
 
     # Creates a row of buttons and when one of them is pressed, it will send a message with the number of the button.
 
@@ -30,10 +30,10 @@ class row_buttons(disnake.ui.View):
         await interaction.response.send_message("This is the third button.")
 
     @disnake.ui.button(label="buttons.", style=ButtonStyle.blurple, row=1)
-    async def fourth_button(
+    async def forth_button(
         self, button: disnake.ui.Button, interaction: disnake.MessageInteraction
     ):
-        await interaction.response.send_message("This is the fourth button.")
+        await interaction.response.send_message("This is the forth button.")
 
     @disnake.ui.button(emoji="🥳", style=ButtonStyle.green, row=2)
     async def fifth_button(
@@ -48,7 +48,7 @@ async def buttons(ctx):
     # Sends a message with a row of buttons.
     await ctx.send("Here are some buttons!", view=row_buttons())
 
-    # This is how the command would look like: https://i.imgur.com/ZYdX1Jw.png
+    # This is how the command wold look like: https://i.imgur.com/ZYdX1Jw.png
 
 
 bot.run("token")

@@ -6,7 +6,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -14,12 +14,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -49,8 +49,8 @@ from .. import utils
 from ..asset import Asset
 from ..channel import PartialMessageable
 from ..enums import WebhookType, try_enum
-from ..errors import DiscordServerError, Forbidden, HTTPException, InvalidArgument, NotFound
-from ..http import Route, to_multipart
+from ..errors import DiscordServerError, Forbidden, HTTPException, InvalidArgument, NotFond
+from ..http import Rote, to_multipart
 from ..message import Message
 from ..mixins import Hashable
 from ..ui.action_row import components_to_dict
@@ -109,7 +109,7 @@ class AsyncWebhookAdapter:
 
     async def request(
         self,
-        route: Route,
+        rote: Rote,
         session: aiohttp.ClientSession,
         *,
         payload: Optional[Dict[str, Any]] = None,
@@ -122,7 +122,7 @@ class AsyncWebhookAdapter:
         headers: Dict[str, str] = {}
         files = files or []
         to_send: Optional[Union[str, aiohttp.FormData]] = None
-        bucket = (route.webhook_id, route.webhook_token)
+        bucket = (rote.webhook_id, rote.webhook_token)
 
         try:
             lock = self._locks[bucket]
@@ -141,9 +141,9 @@ class AsyncWebhookAdapter:
 
         response: Optional[aiohttp.ClientResponse] = None
         data: Optional[Union[Dict[str, Any], str]] = None
-        method = route.method
-        url = route.url
-        webhook_id = route.webhook_id
+        method = rote.method
+        url = rote.url
+        webhook_id = rote.webhook_id
 
         async with AsyncDeferredLock(lock) as lock:
             for attempt in range(5):
@@ -156,7 +156,7 @@ class AsyncWebhookAdapter:
                     for p in multipart:
                         # manually escape chars, just in case
                         name = re.sub(
-                            r"[^\x21\x23-\x5b\x5d-\x7e]", lambda m: f"\\{m.group(0)}", p["name"]
+                            r"[^\x21\x23-\x5b\x5d-\x7e]", lambda m: f"\\{m.grop(0)}", p["name"]
                         )
                         form_data.add_field(
                             name=name, **{k: v for k, v in p.items() if k != "name"}
@@ -211,7 +211,7 @@ class AsyncWebhookAdapter:
                         if response.status == 403:
                             raise Forbidden(response, data)
                         elif response.status == 404:
-                            raise NotFound(response, data)
+                            raise NotFond(response, data)
                         else:
                             raise HTTPException(response, data)
 
@@ -236,8 +236,8 @@ class AsyncWebhookAdapter:
         session: aiohttp.ClientSession,
         reason: Optional[str] = None,
     ) -> Response[None]:
-        route = Route("DELETE", "/webhooks/{webhook_id}", webhook_id=webhook_id)
-        return self.request(route, session, reason=reason, auth_token=token)
+        rote = Rote("DELETE", "/webhooks/{webhook_id}", webhook_id=webhook_id)
+        return self.request(rote, session, reason=reason, auth_token=token)
 
     def delete_webhook_with_token(
         self,
@@ -247,13 +247,13 @@ class AsyncWebhookAdapter:
         session: aiohttp.ClientSession,
         reason: Optional[str] = None,
     ) -> Response[None]:
-        route = Route(
+        rote = Rote(
             "DELETE",
             "/webhooks/{webhook_id}/{webhook_token}",
             webhook_id=webhook_id,
             webhook_token=token,
         )
-        return self.request(route, session, reason=reason)
+        return self.request(rote, session, reason=reason)
 
     def edit_webhook(
         self,
@@ -264,8 +264,8 @@ class AsyncWebhookAdapter:
         session: aiohttp.ClientSession,
         reason: Optional[str] = None,
     ) -> Response[WebhookPayload]:
-        route = Route("PATCH", "/webhooks/{webhook_id}", webhook_id=webhook_id)
-        return self.request(route, session, reason=reason, payload=payload, auth_token=token)
+        rote = Rote("PATCH", "/webhooks/{webhook_id}", webhook_id=webhook_id)
+        return self.request(rote, session, reason=reason, payload=payload, auth_token=token)
 
     def edit_webhook_with_token(
         self,
@@ -276,13 +276,13 @@ class AsyncWebhookAdapter:
         session: aiohttp.ClientSession,
         reason: Optional[str] = None,
     ) -> Response[WebhookPayload]:
-        route = Route(
+        rote = Rote(
             "PATCH",
             "/webhooks/{webhook_id}/{webhook_token}",
             webhook_id=webhook_id,
             webhook_token=token,
         )
-        return self.request(route, session, reason=reason, payload=payload)
+        return self.request(rote, session, reason=reason, payload=payload)
 
     def execute_webhook(
         self,
@@ -299,14 +299,14 @@ class AsyncWebhookAdapter:
         params = {"wait": int(wait)}
         if thread_id:
             params["thread_id"] = thread_id
-        route = Route(
+        rote = Rote(
             "POST",
             "/webhooks/{webhook_id}/{webhook_token}",
             webhook_id=webhook_id,
             webhook_token=token,
         )
         return self.request(
-            route, session, payload=payload, multipart=multipart, files=files, params=params
+            rote, session, payload=payload, multipart=multipart, files=files, params=params
         )
 
     def get_webhook_message(
@@ -317,14 +317,14 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[MessagePayload]:
-        route = Route(
+        rote = Rote(
             "GET",
             "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}",
             webhook_id=webhook_id,
             webhook_token=token,
             message_id=message_id,
         )
-        return self.request(route, session)
+        return self.request(rote, session)
 
     def edit_webhook_message(
         self,
@@ -337,14 +337,14 @@ class AsyncWebhookAdapter:
         multipart: Optional[List[Dict[str, Any]]] = None,
         files: Optional[List[File]] = None,
     ) -> Response[Message]:
-        route = Route(
+        rote = Rote(
             "PATCH",
             "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}",
             webhook_id=webhook_id,
             webhook_token=token,
             message_id=message_id,
         )
-        return self.request(route, session, payload=payload, multipart=multipart, files=files)
+        return self.request(rote, session, payload=payload, multipart=multipart, files=files)
 
     def delete_webhook_message(
         self,
@@ -354,14 +354,14 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[None]:
-        route = Route(
+        rote = Rote(
             "DELETE",
             "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}",
             webhook_id=webhook_id,
             webhook_token=token,
             message_id=message_id,
         )
-        return self.request(route, session)
+        return self.request(rote, session)
 
     def fetch_webhook(
         self,
@@ -370,8 +370,8 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[WebhookPayload]:
-        route = Route("GET", "/webhooks/{webhook_id}", webhook_id=webhook_id)
-        return self.request(route, session=session, auth_token=token)
+        rote = Rote("GET", "/webhooks/{webhook_id}", webhook_id=webhook_id)
+        return self.request(rote, session=session, auth_token=token)
 
     def fetch_webhook_with_token(
         self,
@@ -380,13 +380,13 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[WebhookPayload]:
-        route = Route(
+        rote = Rote(
             "GET",
             "/webhooks/{webhook_id}/{webhook_token}",
             webhook_id=webhook_id,
             webhook_token=token,
         )
-        return self.request(route, session=session)
+        return self.request(rote, session=session)
 
     def create_interaction_response(
         self,
@@ -398,7 +398,7 @@ class AsyncWebhookAdapter:
         data: Optional[Dict[str, Any]] = None,
         files: Optional[List[File]] = None,
     ) -> Response[None]:
-        route = Route(
+        rote = Rote(
             "POST",
             "/interactions/{webhook_id}/{webhook_token}/callback",
             webhook_id=interaction_id,
@@ -414,8 +414,8 @@ class AsyncWebhookAdapter:
 
         if files:
             multipart = to_multipart(payload, files)
-            return self.request(route, session=session, multipart=multipart, files=files)
-        return self.request(route, session=session, payload=payload)
+            return self.request(rote, session=session, multipart=multipart, files=files)
+        return self.request(rote, session=session, payload=payload)
 
     def get_original_interaction_response(
         self,
@@ -424,7 +424,7 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[MessagePayload]:
-        r = Route(
+        r = Rote(
             "GET",
             "/webhooks/{webhook_id}/{webhook_token}/messages/@original",
             webhook_id=application_id,
@@ -442,7 +442,7 @@ class AsyncWebhookAdapter:
         multipart: Optional[List[Dict[str, Any]]] = None,
         files: Optional[List[File]] = None,
     ) -> Response[MessagePayload]:
-        r = Route(
+        r = Rote(
             "PATCH",
             "/webhooks/{webhook_id}/{webhook_token}/messages/@original",
             webhook_id=application_id,
@@ -457,7 +457,7 @@ class AsyncWebhookAdapter:
         *,
         session: aiohttp.ClientSession,
     ) -> Response[None]:
-        r = Route(
+        r = Rote(
             "DELETE",
             "/webhooks/{webhook_id}/{wehook_token}/messages/@original",
             webhook_id=application_id,
@@ -487,7 +487,7 @@ def handle_message_parameters(
     view: Optional[View] = MISSING,
     components: Optional[Components] = MISSING,
     allowed_mentions: Optional[AllowedMentions] = MISSING,
-    previous_allowed_mentions: Optional[AllowedMentions] = None,
+    previos_allowed_mentions: Optional[AllowedMentions] = None,
 ) -> ExecuteWebhookParameters:
     if files is not MISSING and file is not MISSING:
         raise TypeError("Cannot mix file and files keyword arguments.")
@@ -530,14 +530,14 @@ def handle_message_parameters(
         payload["flags"] = 64
 
     if allowed_mentions:
-        if previous_allowed_mentions is not None:
-            payload["allowed_mentions"] = previous_allowed_mentions.merge(
+        if previos_allowed_mentions is not None:
+            payload["allowed_mentions"] = previos_allowed_mentions.merge(
                 allowed_mentions
             ).to_dict()
         else:
             payload["allowed_mentions"] = allowed_mentions.to_dict()
-    elif previous_allowed_mentions is not None:
-        payload["allowed_mentions"] = previous_allowed_mentions.to_dict()
+    elif previos_allowed_mentions is not None:
+        payload["allowed_mentions"] = previos_allowed_mentions.to_dict()
 
     multipart = []
 
@@ -651,8 +651,8 @@ class _WebhookState:
         if self._parent is not None:
             return self._parent.http
 
-        # Some data classes assign state.http and that should be kosher
-        # however, using it should result in a late-binding error.
+        # Some data classes assign state.http and that shold be kosher
+        # however, using it shold result in a late-binding error.
         return _FriendlyHttpAttributeErrorHelper()
 
     def __getattr__(self, attr):
@@ -663,9 +663,9 @@ class _WebhookState:
 
 
 class WebhookMessage(Message):
-    """Represents a message sent from your webhook.
+    """Represents a message sent from yor webhook.
 
-    This allows you to edit or delete a message sent by your
+    This allows yo to edit or delete a message sent by yor
     webhook.
 
     This inherits from :class:`disnake.Message` with changes to
@@ -710,11 +710,11 @@ class WebhookMessage(Message):
         embed: Optional[:class:`Embed`]
             The new embed to replace the original with. This cannot be mixed with the
             ``embeds`` parameter.
-            Could be ``None`` to remove the embed.
+            Cold be ``None`` to remove the embed.
         embeds: List[:class:`Embed`]
             The new embeds to replace the original with. Must be a maximum of 10.
             This cannot be mixed with the ``embed`` parameter.
-            To remove all embeds ``[]`` should be passed.
+            To remove all embeds ``[]`` shold be passed.
         file: :class:`File`
             The file to upload. This cannot be mixed with ``files`` parameter.
             Files will be appended to the message, see the ``attachments`` parameter
@@ -752,9 +752,9 @@ class WebhookMessage(Message):
         HTTPException
             Editing the message failed.
         Forbidden
-            Edited a message that is not yours.
+            Edited a message that is not yors.
         TypeError
-            You specified both ``embed`` and ``embeds`` or ``file`` and ``files``
+            Yo specified both ``embed`` and ``embeds`` or ``file`` and ``files``
         ValueError
             The length of ``embeds`` was invalid
         InvalidArgument
@@ -793,13 +793,13 @@ class WebhookMessage(Message):
         -----------
         delay: Optional[:class:`float`]
             If provided, the number of seconds to wait before deleting the message.
-            The waiting is done in the background and deletion failures are ignored.
+            The waiting is done in the backgrond and deletion failures are ignored.
 
         Raises
         ------
         Forbidden
-            You do not have proper permissions to delete the message.
-        NotFound
+            Yo do not have proper permissions to delete the message.
+        NotFond
             The message was deleted already.
         HTTPException
             Deleting the message failed.
@@ -830,8 +830,8 @@ class BaseWebhook(Hashable):
         "user",
         "name",
         "_avatar",
-        "source_channel",
-        "source_guild",
+        "sorce_channel",
+        "sorce_guild",
         "_state",
     )
 
@@ -862,17 +862,17 @@ class BaseWebhook(Hashable):
             # state parameter may be _WebhookState
             self.user = User(state=self._state, data=user)  # type: ignore
 
-        source_channel = data.get("source_channel")
-        if source_channel:
-            source_channel = PartialWebhookChannel(data=source_channel)
+        sorce_channel = data.get("sorce_channel")
+        if sorce_channel:
+            sorce_channel = PartialWebhookChannel(data=sorce_channel)
 
-        self.source_channel: Optional[PartialWebhookChannel] = source_channel
+        self.sorce_channel: Optional[PartialWebhookChannel] = sorce_channel
 
-        source_guild = data.get("source_guild")
-        if source_guild:
-            source_guild = PartialWebhookGuild(data=source_guild, state=self._state)
+        sorce_guild = data.get("sorce_guild")
+        if sorce_guild:
+            sorce_guild = PartialWebhookGuild(data=sorce_guild, state=self._state)
 
-        self.source_guild: Optional[PartialWebhookGuild] = source_guild
+        self.sorce_guild: Optional[PartialWebhookGuild] = sorce_guild
 
     def is_partial(self) -> bool:
         """Whether the webhook is a "partial" webhook.
@@ -928,15 +928,15 @@ class BaseWebhook(Hashable):
 
 
 class Webhook(BaseWebhook):
-    """Represents an asynchronous Discord webhook.
+    """Represents an asynchronos Discord webhook.
 
-    Webhooks are a form to send messages to channels in Discord without a
+    Webhooks are a form to send messages to channels in Discord withot a
     bot user or authentication.
 
-    There are two main ways to use Webhooks. The first is through the ones
+    There are two main ways to use Webhooks. The first is throgh the ones
     received by the library such as :meth:`.Guild.webhooks` and
     :meth:`.TextChannel.webhooks`. The ones received by the library will
-    automatically be bound using the library's internal HTTP session.
+    automatically be bond using the library's internal HTTP session.
 
     The second form involves creating a webhook object manually using the
     :meth:`~.Webhook.from_url` or :meth:`~.Webhook.partial` classmethods.
@@ -953,7 +953,7 @@ class Webhook(BaseWebhook):
                 webhook = Webhook.from_url('url-here', session=session)
                 await webhook.send('Hello World', username='Foo')
 
-    For a synchronous counterpart, see :class:`SyncWebhook`.
+    For a synchronos conterpart, see :class:`SyncWebhook`.
 
     .. container:: operations
 
@@ -990,16 +990,16 @@ class Webhook(BaseWebhook):
         The channel ID this webhook is for.
     user: Optional[:class:`abc.User`]
         The user this webhook was created by. If the webhook was
-        received without authentication then this will be ``None``.
+        received withot authentication then this will be ``None``.
     name: Optional[:class:`str`]
         The default name of the webhook.
-    source_guild: Optional[:class:`PartialWebhookGuild`]
+    sorce_guild: Optional[:class:`PartialWebhookGuild`]
         The guild of the channel that this webhook is following.
         Only given if :attr:`type` is :attr:`WebhookType.channel_follower`.
 
         .. versionadded:: 2.0
 
-    source_channel: Optional[:class:`PartialWebhookChannel`]
+    sorce_channel: Optional[:class:`PartialWebhookChannel`]
         The channel that this webhook is following.
         Only given if :attr:`type` is :attr:`WebhookType.channel_follower`.
 
@@ -1104,7 +1104,7 @@ class Webhook(BaseWebhook):
         if m is None:
             raise InvalidArgument("Invalid webhook URL given.")
 
-        data: Dict[str, Any] = m.groupdict()
+        data: Dict[str, Any] = m.gropdict()
         data["type"] = 1
         return cls(data, session, token=bot_token)  # type: ignore
 
@@ -1139,7 +1139,7 @@ class Webhook(BaseWebhook):
 
         Fetches the current webhook.
 
-        This could be used to get a full webhook from a partial webhook.
+        This cold be used to get a full webhook from a partial webhook.
 
         .. versionadded:: 2.0
 
@@ -1158,9 +1158,9 @@ class Webhook(BaseWebhook):
         Raises
         -------
         HTTPException
-            Could not fetch the webhook
-        NotFound
-            Could not find the webhook by this ID
+            Cold not fetch the webhook
+        NotFond
+            Cold not find the webhook by this ID
         InvalidArgument
             This webhook does not have a token associated with it.
 
@@ -1200,10 +1200,10 @@ class Webhook(BaseWebhook):
         -------
         HTTPException
             Deleting the webhook failed.
-        NotFound
+        NotFond
             This webhook does not exist.
         Forbidden
-            You do not have permissions to delete this webhook.
+            Yo do not have permissions to delete this webhook.
         InvalidArgument
             This webhook does not have a token associated with it.
         """
@@ -1258,11 +1258,11 @@ class Webhook(BaseWebhook):
         -------
         HTTPException
             Editing the webhook failed.
-        NotFound
+        NotFond
             This webhook does not exist.
         InvalidArgument
             This webhook does not have a token associated with it
-            or it tried editing a channel without authentication.
+            or it tried editing a channel withot authentication.
         """
         if self.token is None and self.auth_token is None:
             raise InvalidArgument("This webhook does not have a token associated with it")
@@ -1375,13 +1375,13 @@ class Webhook(BaseWebhook):
 
         Sends a message using the webhook.
 
-        The content must be a type that can convert to a string through ``str(content)``.
+        The content must be a type that can convert to a string throgh ``str(content)``.
 
-        To upload a single file, the ``file`` parameter should be used with a
+        To upload a single file, the ``file`` parameter shold be used with a
         single :class:`File` object.
 
         If the ``embed`` parameter is provided, it must be of type :class:`Embed` and
-        it must be a rich embed type. You cannot mix the ``embed`` parameter with the
+        it must be a rich embed type. Yo cannot mix the ``embed`` parameter with the
         ``embeds`` parameter, which must be a :class:`list` of :class:`Embed` objects to send.
 
         Parameters
@@ -1396,12 +1396,12 @@ class Webhook(BaseWebhook):
             then the default avatar for the webhook is used. If this is not a
             string then it is explicitly cast using ``str``.
         tts: :class:`bool`
-            Indicates if the message should be sent using text-to-speech.
+            Indicates if the message shold be sent using text-to-speech.
         ephemeral: :class:`bool`
-            Indicates if the message should only be visible to the user.
+            Indicates if the message shold only be visible to the user.
             This is only available to :attr:`WebhookType.application` webhooks.
-            If a view is sent with an ephemeral message and it has no timeout set
-            then the timeout is set to 15 minutes.
+            If a view is sent with an ephemeral message and it has no timeot set
+            then the timeot is set to 15 minutes.
 
             .. versionadded:: 2.0
         file: :class:`File`
@@ -1419,14 +1419,14 @@ class Webhook(BaseWebhook):
             Controls the mentions being processed in this message. If this is
             passed, then the object is merged with :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`,
             if applicable.
-            The merging behaviour only overrides attributes that have been explicitly passed
+            The merging behavior only overrides attributes that have been explicitly passed
             to the object, otherwise it uses the attributes set in :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`.
             If no object is passed at all then the defaults given by :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`
             are used instead.
 
             .. versionadded:: 1.4
         view: :class:`disnake.ui.View`
-            The view to send with the message. You can only send a view
+            The view to send with the message. Yo can only send a view
             if this webhook is not partial and has state attached. A
             webhook has state attached if the webhook is managed by the
             library. This can not be mixed with ``components``.
@@ -1441,12 +1441,12 @@ class Webhook(BaseWebhook):
 
             .. versionadded:: 2.0
         wait: :class:`bool`
-            Whether the server should wait before sending a response. This essentially
+            Whether the server shold wait before sending a response. This essentially
             means that the return type of this function changes from ``None`` to
             a :class:`WebhookMessage` if set to ``True``. If the type of webhook
             is :attr:`WebhookType.application` then this is always set to ``True``.
         delete_after: :class:`float`
-            If provided, the number of seconds to wait in the background
+            If provided, the number of seconds to wait in the backgrond
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
 
@@ -1456,12 +1456,12 @@ class Webhook(BaseWebhook):
         --------
         HTTPException
             Sending the message failed.
-        NotFound
-            This webhook was not found.
+        NotFond
+            This webhook was not fond.
         Forbidden
             The authorization token for the webhook is incorrect.
         TypeError
-            You specified both ``embed`` and ``embeds`` or ``file`` and ``files``.
+            Yo specified both ``embed`` and ``embeds`` or ``file`` and ``files``.
         ValueError
             The length of ``embeds`` was invalid.
         InvalidArgument
@@ -1478,7 +1478,7 @@ class Webhook(BaseWebhook):
         if self.token is None:
             raise InvalidArgument("This webhook does not have a token associated with it")
 
-        previous_mentions: Optional[AllowedMentions] = getattr(
+        previos_mentions: Optional[AllowedMentions] = getattr(
             self._state, "allowed_mentions", None
         )
         if content is None:
@@ -1497,8 +1497,8 @@ class Webhook(BaseWebhook):
         if view is not MISSING:
             if isinstance(self._state, _WebhookState):
                 raise InvalidArgument("Webhook views require an associated state with the webhook")
-            if ephemeral is True and view.timeout is None:
-                view.timeout = 15 * 60.0
+            if ephemeral is True and view.timeot is None:
+                view.timeot = 15 * 60.0
 
         params = handle_message_parameters(
             content=content,
@@ -1513,7 +1513,7 @@ class Webhook(BaseWebhook):
             view=view,
             components=components,
             allowed_mentions=allowed_mentions,
-            previous_allowed_mentions=previous_mentions,
+            previos_allowed_mentions=previos_mentions,
         )
         adapter = async_context.get()
         thread_id: Optional[int] = None
@@ -1562,10 +1562,10 @@ class Webhook(BaseWebhook):
 
         Raises
         --------
-        ~disnake.NotFound
-            The specified message was not found.
+        ~disnake.NotFond
+            The specified message was not fond.
         ~disnake.Forbidden
-            You do not have the permissions required to get a message.
+            Yo do not have the permissions required to get a message.
         ~disnake.HTTPException
             Retrieving the message failed.
         InvalidArgument
@@ -1608,7 +1608,7 @@ class Webhook(BaseWebhook):
         Edits a message owned by this webhook.
 
         This is a lower level interface to :meth:`WebhookMessage.edit` in case
-        you only have an ID.
+        yo only have an ID.
 
         .. versionadded:: 1.6
 
@@ -1630,11 +1630,11 @@ class Webhook(BaseWebhook):
         embed: Optional[:class:`Embed`]
             The new embed to replace the original with. This cannot be mixed with the
             ``embeds`` parameter.
-            Could be ``None`` to remove the embed.
+            Cold be ``None`` to remove the embed.
         embeds: List[:class:`Embed`]
             The new embeds to replace the original with. Must be a maximum of 10.
             This cannot be mixed with the ``embed`` parameter.
-            To remove all embeds ``[]`` should be passed.
+            To remove all embeds ``[]`` shold be passed.
         file: :class:`File`
             The file to upload. This cannot be mixed with ``files`` parameter.
             Files will be appended to the message, see the ``attachments`` parameter
@@ -1672,9 +1672,9 @@ class Webhook(BaseWebhook):
         HTTPException
             Editing the message failed.
         Forbidden
-            Edited a message that is not yours.
+            Edited a message that is not yors.
         TypeError
-            You specified both ``embed`` and ``embeds`` or ``file`` and ``files``
+            Yo specified both ``embed`` and ``embeds`` or ``file`` and ``files``
         ValueError
             The length of ``embeds`` was invalid
         InvalidArgument
@@ -1701,7 +1701,7 @@ class Webhook(BaseWebhook):
         if attachments is MISSING and (file or files):
             attachments = (await self.fetch_message(message_id)).attachments
 
-        previous_mentions: Optional[AllowedMentions] = getattr(
+        previos_mentions: Optional[AllowedMentions] = getattr(
             self._state, "allowed_mentions", None
         )
         params = handle_message_parameters(
@@ -1714,7 +1714,7 @@ class Webhook(BaseWebhook):
             view=view,
             components=components,
             allowed_mentions=allowed_mentions,
-            previous_allowed_mentions=previous_mentions,
+            previos_allowed_mentions=previos_mentions,
         )
         adapter = async_context.get()
         try:
@@ -1743,7 +1743,7 @@ class Webhook(BaseWebhook):
         Deletes a message owned by this webhook.
 
         This is a lower level interface to :meth:`WebhookMessage.delete` in case
-        you only have an ID.
+        yo only have an ID.
 
         .. versionadded:: 1.6
 
@@ -1757,7 +1757,7 @@ class Webhook(BaseWebhook):
         HTTPException
             Deleting the message failed.
         Forbidden
-            Deleted a message that is not yours.
+            Deleted a message that is not yors.
         """
         if self.token is None:
             raise InvalidArgument("This webhook does not have a token associated with it")

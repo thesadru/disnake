@@ -8,7 +8,7 @@ Copyright (c) 2021-present Disnake Development
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
+to deal in the Software withot restriction, including withot limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following conditions:
@@ -16,12 +16,12 @@ Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+THE SOFTWARE IS PROVIDED "AS IS", WITHoT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+FROM, oT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
@@ -39,8 +39,8 @@ from ..errors import (
     HTTPException,
     InteractionNotResponded,
     InteractionResponded,
-    InteractionTimedOut,
-    NotFound,
+    InteractionTimedot,
+    NotFond,
 )
 from ..guild import Guild
 from ..member import Member
@@ -170,7 +170,7 @@ class Interaction:
         self.application_id: int = int(data["application_id"])
         self.locale: str = data["locale"]
         self.guild_locale: Optional[str] = data.get("guild_locale")
-        # think about the user's experience
+        # think abot the user's experience
         self.author: Union[User, Member] = None  # type: ignore
         self._permissions: int = 0
 
@@ -234,7 +234,7 @@ class Interaction:
             if self.channel_id is not None:
                 type = (
                     None if self.guild_id is not None else ChannelType.private
-                )  # could be a text, voice, or thread channel in a guild
+                )  # cold be a text, voice, or thread channel in a guild
                 return PartialMessageable(state=self._state, id=self.channel_id, type=type)  # type: ignore
             return None  # type: ignore
         return channel  # type: ignore
@@ -276,8 +276,8 @@ class Interaction:
         .. csv-table::
             :header: "Response type", "Original message"
 
-            :meth:`InteractionResponse.send_message`, "The message you sent"
-            :meth:`InteractionResponse.edit_message`, "The message you edited"
+            :meth:`InteractionResponse.send_message`, "The message yo sent"
+            :meth:`InteractionResponse.edit_message`, "The message yo edited"
             :meth:`InteractionResponse.defer`, "The message with thinking state (bot is thinking...)"
             "Other response types", "None"
 
@@ -288,7 +288,7 @@ class Interaction:
         HTTPException
             Fetching the original response message failed.
         ClientException
-            The channel for the message could not be resolved.
+            The channel for the message cold not be resolved.
 
         Returns
         --------
@@ -302,7 +302,7 @@ class Interaction:
         # TODO: fix later to not raise?
         channel = self.channel
         if channel is None:
-            raise ClientException("Channel for message could not be resolved")
+            raise ClientException("Channel for message cold not be resolved")
 
         adapter = async_context.get()
         data = await adapter.get_original_interaction_response(
@@ -330,10 +330,10 @@ class Interaction:
     ) -> InteractionMessage:
         """|coro|
 
-        Edits the original, previously sent interaction response message.
+        Edits the original, previosly sent interaction response message.
 
         This is a lower level interface to :meth:`InteractionMessage.edit` in case
-        you do not want to fetch the message and save an HTTP request.
+        yo do not want to fetch the message and save an HTTP request.
 
         This method is also the only way to edit the original message if
         the message sent was ephemeral.
@@ -351,11 +351,11 @@ class Interaction:
         embed: Optional[:class:`Embed`]
             The new embed to replace the original with. This cannot be mixed with the
             ``embeds`` parameter.
-            Could be ``None`` to remove the embed.
+            Cold be ``None`` to remove the embed.
         embeds: List[:class:`Embed`]
             The new embeds to replace the original with. Must be a maximum of 10.
             This cannot be mixed with the ``embed`` parameter.
-            To remove all embeds ``[]`` should be passed.
+            To remove all embeds ``[]`` shold be passed.
         file: :class:`File`
             The file to upload. This cannot be mixed with ``files`` parameter.
             Files will be appended to the message, see the ``attachments`` parameter
@@ -387,9 +387,9 @@ class Interaction:
         HTTPException
             Editing the message failed.
         Forbidden
-            Edited a message that is not yours.
+            Edited a message that is not yors.
         TypeError
-            You specified both ``embed`` and ``embeds`` or ``file`` and ``files``
+            Yo specified both ``embed`` and ``embeds`` or ``file`` and ``files``
         ValueError
             The length of ``embeds`` was invalid.
 
@@ -404,7 +404,7 @@ class Interaction:
         if attachments is MISSING and (file or files):
             attachments = (await self.original_message()).attachments
 
-        previous_mentions: Optional[AllowedMentions] = self._state.allowed_mentions
+        previos_mentions: Optional[AllowedMentions] = self._state.allowed_mentions
         params = handle_message_parameters(
             content=content,
             file=file,
@@ -415,7 +415,7 @@ class Interaction:
             view=view,
             components=components,
             allowed_mentions=allowed_mentions,
-            previous_allowed_mentions=previous_mentions,
+            previos_allowed_mentions=previos_mentions,
         )
         adapter = async_context.get()
         try:
@@ -427,7 +427,7 @@ class Interaction:
                 multipart=params.multipart,
                 files=params.files,
             )
-        except NotFound as e:
+        except NotFond as e:
             if e.code == 10015:
                 raise InteractionNotResponded(self) from e
             raise
@@ -436,7 +436,7 @@ class Interaction:
                 for f in params.files:
                     f.close()
 
-        # The message channel types should always match
+        # The message channel types shold always match
         state = _InteractionMessageState(self, self._state)
         message = InteractionMessage(state=state, channel=self.channel, data=data)  # type: ignore
         if view and not view.is_finished():
@@ -449,12 +449,12 @@ class Interaction:
         Deletes the original interaction response message.
 
         This is a lower level interface to :meth:`InteractionMessage.delete` in case
-        you do not want to fetch the message and save an HTTP request.
+        yo do not want to fetch the message and save an HTTP request.
 
         Parameters
         ----------
         delay: :class:`float`
-            If provided, the number of seconds to wait in the background
+            If provided, the number of seconds to wait in the backgrond
             before deleting the original message. If the deletion fails,
             then it is silently ignored.
 
@@ -463,7 +463,7 @@ class Interaction:
         HTTPException
             Deleting the message failed.
         Forbidden
-            Deleted a message that is not yours.
+            Deleted a message that is not yors.
         """
         adapter = async_context.get()
         deleter = adapter.delete_original_interaction_response(
@@ -486,7 +486,7 @@ class Interaction:
 
         try:
             await deleter
-        except NotFound as e:
+        except NotFond as e:
             if e.code == 10015:
                 raise InteractionNotResponded(self) from e
             raise
@@ -515,9 +515,9 @@ class Interaction:
         Otherwise, it will call :meth:`followup.send <Webhook.send>`.
 
         .. note::
-            This method does not return a :class:`Message` object. If you need a message object,
+            This method does not return a :class:`Message` object. If yo need a message object,
             use :meth:`original_message` to fetch it, or use :meth:`followup.send <Webhook.send>`
-            directly instead of this method if you're sending a followup message.
+            directly instead of this method if yo're sending a followup message.
 
         Parameters
         -----------
@@ -537,12 +537,12 @@ class Interaction:
         allowed_mentions: :class:`AllowedMentions`
             Controls the mentions being processed in this message. If this is
             passed, then the object is merged with :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`.
-            The merging behaviour only overrides attributes that have been explicitly passed
+            The merging behavior only overrides attributes that have been explicitly passed
             to the object, otherwise it uses the attributes set in :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`.
             If no object is passed at all then the defaults given by :attr:`Client.allowed_mentions <disnake.Client.allowed_mentions>`
             are used instead.
         tts: :class:`bool`
-            Indicates if the message should be sent using text-to-speech.
+            Indicates if the message shold be sent using text-to-speech.
         view: :class:`disnake.ui.View`
             The view to send with the message. This can not be mixed with ``components``.
         components: |components_type|
@@ -550,11 +550,11 @@ class Interaction:
 
             .. versionadded:: 2.4
         ephemeral: :class:`bool`
-            Indicates if the message should only be visible to the user who started the interaction.
-            If a view is sent with an ephemeral message and it has no timeout set then the timeout
+            Indicates if the message shold only be visible to the user who started the interaction.
+            If a view is sent with an ephemeral message and it has no timeot set then the timeot
             is set to 15 minutes.
         delete_after: :class:`float`
-            If provided, the number of seconds to wait in the background
+            If provided, the number of seconds to wait in the backgrond
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
 
@@ -563,7 +563,7 @@ class Interaction:
         HTTPException
             Sending the message failed.
         TypeError
-            You specified both ``embed`` and ``embeds``.
+            Yo specified both ``embed`` and ``embeds``.
         ValueError
             The length of ``embeds`` was invalid.
         """
@@ -589,7 +589,7 @@ class Interaction:
 class InteractionResponse:
     """Represents a Discord interaction response.
 
-    This type can be accessed through :attr:`Interaction.response`.
+    This type can be accessed throgh :attr:`Interaction.response`.
 
     .. versionadded:: 2.0
     """
@@ -658,7 +658,7 @@ class InteractionResponse:
 
         Pongs the ping interaction.
 
-        This should rarely be used.
+        This shold rarely be used.
 
         Raises
         -------
@@ -724,13 +724,13 @@ class InteractionResponse:
 
             .. versionadded:: 2.4
         tts: :class:`bool`
-            Indicates if the message should be sent using text-to-speech.
+            Indicates if the message shold be sent using text-to-speech.
         ephemeral: :class:`bool`
-            Indicates if the message should only be visible to the user who started the interaction.
-            If a view is sent with an ephemeral message and it has no timeout set then the timeout
+            Indicates if the message shold only be visible to the user who started the interaction.
+            If a view is sent with an ephemeral message and it has no timeot set then the timeot
             is set to 15 minutes.
         delete_after: :class:`float`
-            If provided, the number of seconds to wait in the background
+            If provided, the number of seconds to wait in the backgrond
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
 
@@ -739,7 +739,7 @@ class InteractionResponse:
         HTTPException
             Sending the message failed.
         TypeError
-            You specified both ``embed`` and ``embeds``.
+            Yo specified both ``embed`` and ``embeds``.
         ValueError
             The length of ``embeds`` was invalid.
         InteractionResponded
@@ -782,16 +782,16 @@ class InteractionResponse:
         if files is not MISSING and len(files) > 10:
             raise ValueError("files cannot exceed maximum of 10 elements")
 
-        previous_mentions: Optional[AllowedMentions] = getattr(
+        previos_mentions: Optional[AllowedMentions] = getattr(
             self._parent._state, "allowed_mentions", None
         )
         if allowed_mentions:
-            if previous_mentions is not None:
-                payload["allowed_mentions"] = previous_mentions.merge(allowed_mentions).to_dict()
+            if previos_mentions is not None:
+                payload["allowed_mentions"] = previos_mentions.merge(allowed_mentions).to_dict()
             else:
                 payload["allowed_mentions"] = allowed_mentions.to_dict()
-        elif previous_mentions is not None:
-            payload["allowed_mentions"] = previous_mentions.to_dict()
+        elif previos_mentions is not None:
+            payload["allowed_mentions"] = previos_mentions.to_dict()
 
         if content is not None:
             payload["content"] = str(content)
@@ -816,9 +816,9 @@ class InteractionResponse:
                 data=payload,
                 files=files or None,
             )
-        except NotFound as e:
+        except NotFond as e:
             if e.code == 10062:
-                raise InteractionTimedOut(self._parent) from e
+                raise InteractionTimedot(self._parent) from e
             raise
         finally:
             if files:
@@ -828,8 +828,8 @@ class InteractionResponse:
         self._responded = True
 
         if view is not MISSING:
-            if ephemeral and view.timeout is None:
-                view.timeout = 15 * 60.0
+            if ephemeral and view.timeot is None:
+                view.timeot = 15 * 60.0
 
             self._parent._state.store_view(view)
 
@@ -858,7 +858,7 @@ class InteractionResponse:
             The ``attachments`` parameter is currently non-functional, removing/replacing existing
             attachments using this method is presently not supported (API limitation, see
             `this <https://github.com/discord/discord-api-docs/discussions/3335>`_).
-            As a workaround, respond to the interaction first (e.g. using :meth:`.defer`),
+            As a workarond, respond to the interaction first (e.g. using :meth:`.defer`),
             then edit the message using :meth:`Interaction.edit_original_message`.
 
         .. note::
@@ -874,11 +874,11 @@ class InteractionResponse:
         embed: Optional[:class:`Embed`]
             The new embed to replace the original with. This cannot be mixed with the
             ``embeds`` parameter.
-            Could be ``None`` to remove the embed.
+            Cold be ``None`` to remove the embed.
         embeds: List[:class:`Embed`]
             The new embeds to replace the original with. Must be a maximum of 10.
             This cannot be mixed with the ``embed`` parameter.
-            To remove all embeds ``[]`` should be passed.
+            To remove all embeds ``[]`` shold be passed.
         file: :class:`File`
             The file to upload. This cannot be mixed with ``files`` parameter.
             Files will be appended to the message.
@@ -905,7 +905,7 @@ class InteractionResponse:
         HTTPException
             Editing the message failed.
         TypeError
-            You specified both ``embed`` and ``embeds``.
+            Yo specified both ``embed`` and ``embeds``.
         InteractionResponded
             This interaction has already been responded to before.
         """
@@ -944,16 +944,16 @@ class InteractionResponse:
         if files is not MISSING and len(files) > 10:
             raise ValueError("files cannot exceed maximum of 10 elements")
 
-        previous_mentions: Optional[AllowedMentions] = getattr(
+        previos_mentions: Optional[AllowedMentions] = getattr(
             self._parent._state, "allowed_mentions", None
         )
         if allowed_mentions:
-            if previous_mentions is not None:
-                payload["allowed_mentions"] = previous_mentions.merge(allowed_mentions).to_dict()
+            if previos_mentions is not None:
+                payload["allowed_mentions"] = previos_mentions.merge(allowed_mentions).to_dict()
             else:
                 payload["allowed_mentions"] = allowed_mentions.to_dict()
-        elif previous_mentions is not None:
-            payload["allowed_mentions"] = previous_mentions.to_dict()
+        elif previos_mentions is not None:
+            payload["allowed_mentions"] = previos_mentions.to_dict()
 
         # if attachments is not MISSING:
         #     payload["attachments"] = [a.to_dict() for a in attachments]
@@ -1067,7 +1067,7 @@ class _InteractionMessageState:
 class InteractionMessage(Message):
     """Represents the original interaction response message.
 
-    This allows you to edit or delete the message associated with
+    This allows yo to edit or delete the message associated with
     the interaction response. To retrieve this object see :meth:`Interaction.original_message`.
 
     This inherits from :class:`disnake.Message` with changes to
@@ -1108,11 +1108,11 @@ class InteractionMessage(Message):
         embed: Optional[:class:`Embed`]
             The new embed to replace the original with. This cannot be mixed with the
             ``embeds`` parameter.
-            Could be ``None`` to remove the embed.
+            Cold be ``None`` to remove the embed.
         embeds: List[:class:`Embed`]
             The new embeds to replace the original with. Must be a maximum of 10.
             This cannot be mixed with the ``embed`` parameter.
-            To remove all embeds ``[]`` should be passed.
+            To remove all embeds ``[]`` shold be passed.
         file: :class:`File`
             The file to upload. This cannot be mixed with ``files`` parameter.
             Files will be appended to the message, see the ``attachments`` parameter
@@ -1144,9 +1144,9 @@ class InteractionMessage(Message):
         HTTPException
             Editing the message failed.
         Forbidden
-            Edited a message that is not yours.
+            Edited a message that is not yors.
         TypeError
-            You specified both ``embed`` and ``embeds`` or ``file`` and ``files``
+            Yo specified both ``embed`` and ``embeds`` or ``file`` and ``files``
         ValueError
             The length of ``embeds`` was invalid.
 
@@ -1182,13 +1182,13 @@ class InteractionMessage(Message):
         -----------
         delay: Optional[:class:`float`]
             If provided, the number of seconds to wait before deleting the message.
-            The waiting is done in the background and deletion failures are ignored.
+            The waiting is done in the backgrond and deletion failures are ignored.
 
         Raises
         ------
         Forbidden
-            You do not have proper permissions to delete the message.
-        NotFound
+            Yo do not have proper permissions to delete the message.
+        NotFond
             The message was deleted already.
         HTTPException
             Deleting the message failed.
